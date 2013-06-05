@@ -38,7 +38,7 @@ namespace CavaPlugin
         public bool hasBeenInitialized2 = false;
         public bool hasBeenInitialized3 = false;
         public static bool hasBeenInitialized4 = false;
-        public bool cavaupdated =  false;
+        public bool cavaupdated = false;
         
         #region Overrides except pulse
         public override string Author { get { return "Cava"; } }
