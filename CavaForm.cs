@@ -325,7 +325,7 @@ namespace CavaPlugin
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://cava.repositoryhosting.com/svn_public/cava_plugin/");
+            System.Diagnostics.Process.Start("http://cavaplugin.googlecode.com/svn/trunk/");
         }
 
         private void linkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -435,12 +435,12 @@ namespace CavaPlugin
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://cava.repositoryhosting.com/svn_public/cava_qbs");
+            System.Diagnostics.Process.Start("http://cavaqbs.googlecode.com/svn/trunk/");
         }
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://cava.repositoryhosting.com/svn_public/cava_profiles");
+            System.Diagnostics.Process.Start("http://cavaprofiles.googlecode.com/svn/trunk/");
         }
 
         private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

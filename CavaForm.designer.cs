@@ -521,6 +521,7 @@
             this.groupBox5.Size = new System.Drawing.Size(263, 88);
             this.groupBox5.TabIndex = 13;
             this.groupBox5.TabStop = false;
+            this.groupBox5.Visible = false;
             // 
             // label16
             // 
