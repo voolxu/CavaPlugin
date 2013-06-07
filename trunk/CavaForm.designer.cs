@@ -423,6 +423,7 @@
             this.radioButton5.TabStop = true;
             this.radioButton5.Text = "Horde 44 to 64 (testers only)";
             this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButton5.Visible = false;
             this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
             // 
             // radioButton3
@@ -521,7 +522,6 @@
             this.groupBox5.Size = new System.Drawing.Size(263, 88);
             this.groupBox5.TabIndex = 13;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Visible = false;
             // 
             // label16
             // 
@@ -531,6 +531,7 @@
             this.label16.Size = new System.Drawing.Size(78, 13);
             this.label16.TabIndex = 4;
             this.label16.Text = "Testers Only";
+            this.label16.Visible = false;
             // 
             // label15
             // 
@@ -540,15 +541,16 @@
             this.label15.Size = new System.Drawing.Size(189, 13);
             this.label15.TabIndex = 3;
             this.label15.Text = "New Leveling path for WoW 5.3";
+            this.label15.Visible = false;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(71, 25);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(114, 13);
+            this.label14.Size = new System.Drawing.Size(121, 13);
             this.label14.TabIndex = 2;
-            this.label14.Text = "New Horde 1 to 20";
+            this.label14.Text = "New Horde 44 to 64";
             // 
             // pictureBox6
             // 
