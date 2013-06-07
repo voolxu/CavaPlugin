@@ -142,7 +142,7 @@ namespace CavaPlugin
         {
             timer1.Enabled = false;
             lastUseProfile = 1; //Leveling 1 to 90
-            richTextBox2.Text = "This profile will level-up any char from any level till level 90, \n This is a work in progresss so far: \n Alliance can use it from level 1 til 67 and from 85 to 90 \n Horde can use it from level 1 till 44 and from 85 to 88 \n Can start profile anywhere, after start profile bot will move your char to right map";
+            richTextBox2.Text = "This profile will level-up any char from any level till level 90, \n This is a work in progresss so far: \n Alliance can use it from level 1 til 67 and from 85 to 90 \n Horde can use it from level 1 till 64 and from 85 to 88 \n Can start profile anywhere, after start profile bot will move your char to right map";
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
