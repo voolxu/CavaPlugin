@@ -418,12 +418,11 @@
             this.radioButton5.AutoSize = true;
             this.radioButton5.Location = new System.Drawing.Point(6, 111);
             this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(158, 17);
+            this.radioButton5.Size = new System.Drawing.Size(233, 17);
             this.radioButton5.TabIndex = 17;
             this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Horde 44 to 64 (testers only)";
+            this.radioButton5.Text = "Horde Terokkar Forest  (64-65) (testers only)";
             this.radioButton5.UseVisualStyleBackColor = true;
-            this.radioButton5.Visible = false;
             this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
             // 
             // radioButton3
@@ -531,17 +530,15 @@
             this.label16.Size = new System.Drawing.Size(78, 13);
             this.label16.TabIndex = 4;
             this.label16.Text = "Testers Only";
-            this.label16.Visible = false;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(71, 57);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(189, 13);
+            this.label15.Size = new System.Drawing.Size(186, 13);
             this.label15.TabIndex = 3;
-            this.label15.Text = "New Leveling path for WoW 5.3";
-            this.label15.Visible = false;
+            this.label15.Text = "New Terokkar Forest For Horde";
             // 
             // label14
             // 
