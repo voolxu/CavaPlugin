@@ -376,6 +376,7 @@
             this.radioButton6.TabStop = true;
             this.radioButton6.Text = "Horde 1 to 20 (WoW 5.3)  (testers only)";
             this.radioButton6.UseVisualStyleBackColor = true;
+            this.radioButton6.Visible = false;
             this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
             // 
             // radioButton4
@@ -527,27 +528,27 @@
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(71, 72);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(78, 13);
+            this.label16.Size = new System.Drawing.Size(102, 13);
             this.label16.TabIndex = 4;
-            this.label16.Text = "Testers Only";
+            this.label16.Text = "Silverpine Forest";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(71, 57);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(186, 13);
+            this.label15.Size = new System.Drawing.Size(135, 13);
             this.label15.TabIndex = 3;
-            this.label15.Text = "New Terokkar Forest For Horde";
+            this.label15.Text = "Via Tirisfal Glades and";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(71, 25);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(121, 13);
+            this.label14.Size = new System.Drawing.Size(163, 13);
             this.label14.TabIndex = 2;
-            this.label14.Text = "New Horde 44 to 64";
+            this.label14.Text = "New Horde 1 to 20 for (5.3)";
             // 
             // pictureBox6
             // 
