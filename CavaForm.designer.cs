@@ -419,10 +419,10 @@
             this.radioButton5.AutoSize = true;
             this.radioButton5.Location = new System.Drawing.Point(6, 111);
             this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(233, 17);
+            this.radioButton5.Size = new System.Drawing.Size(325, 17);
             this.radioButton5.TabIndex = 17;
             this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Horde Terokkar Forest  (64-65) (testers only)";
+            this.radioButton5.Text = "Horde Terokkar Forest/Nagrand  (64-67) (testers/donators only)";
             this.radioButton5.UseVisualStyleBackColor = true;
             this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
             // 
@@ -496,7 +496,7 @@
             this.groupBox6.Size = new System.Drawing.Size(263, 88);
             this.groupBox6.TabIndex = 14;
             this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Reserved for Testers";
+            this.groupBox6.Text = "Reserved for Testers/Donators";
             // 
             // button5
             // 
@@ -531,24 +531,25 @@
             this.label16.Size = new System.Drawing.Size(102, 13);
             this.label16.TabIndex = 4;
             this.label16.Text = "Silverpine Forest";
+            this.label16.Visible = false;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(71, 57);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(135, 13);
+            this.label15.Size = new System.Drawing.Size(154, 13);
             this.label15.TabIndex = 3;
-            this.label15.Text = "Via Tirisfal Glades and";
+            this.label15.Text = "Only for Testers/Donators";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(71, 25);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(163, 13);
+            this.label14.Size = new System.Drawing.Size(158, 13);
             this.label14.TabIndex = 2;
-            this.label14.Text = "New Horde 1 to 20 for (5.3)";
+            this.label14.Text = "New Horde Nagrand 65-67";
             // 
             // pictureBox6
             // 
@@ -1049,10 +1050,10 @@
             this.linkLabel4.AutoSize = true;
             this.linkLabel4.Location = new System.Drawing.Point(6, 100);
             this.linkLabel4.Name = "linkLabel4";
-            this.linkLabel4.Size = new System.Drawing.Size(168, 13);
+            this.linkLabel4.Size = new System.Drawing.Size(216, 13);
             this.linkLabel4.TabIndex = 3;
             this.linkLabel4.TabStop = true;
-            this.linkLabel4.Text = "Cava Profiles Reserved to Testers";
+            this.linkLabel4.Text = "Cava Profiles Reserved to Testers/Donators\r\n";
             this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
             // 
             // linkLabel3
@@ -1117,7 +1118,7 @@
             this.groupBox4.Size = new System.Drawing.Size(250, 394);
             this.groupBox4.TabIndex = 20;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Reserved for Testers";
+            this.groupBox4.Text = "Reserved for Testers/Donators";
             // 
             // label13
             // 

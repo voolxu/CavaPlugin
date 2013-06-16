@@ -86,12 +86,12 @@ namespace CavaPlugin
             if (!hasBeenInitialized)
             {
                 Logging.Write(Colors.Teal, "Loaded Cava Plugin v" + Version.ToString());
+                Logging.Write(Colors.Teal, "Please Wait While [Cava Plugin] Check For Updates, This Can Take Several Minutes");
                 hasBeenInitialized = true;
-
                 try
                 {
                     UpdaterPlugin = new Cava_Plugin_Updater("http://cavaplugin.googlecode.com/svn/trunk/", "CavaPlugin");
-                    if (UpdaterPlugin.UpdateAvailable())    
+                    if (UpdaterPlugin.UpdateAvailable())
                     {
                         Logging.Write("[Cava Plugin] Update to $" + UpdaterPlugin.GetNewestRev().ToString() + " is available! You are on $" + UpdaterPlugin.CurrentRev.ToString());
                         Logging.Write("[Cava Plugin] Starting update process");
