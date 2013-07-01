@@ -42,7 +42,7 @@ namespace CavaPlugin
         
         #region Overrides except pulse
         public override string Author { get { return "Cava"; } }
-        public override Version Version { get { return new Version(3, 1, 0); } }
+        public override Version Version { get { return new Version(3, 1, 1); } }
         public override string Name { get { return "CavaPlugin"; } }
         public override bool WantButton { get { return true; } }
         public override string ButtonText { get { return "Cava Profiles"; } }
@@ -192,6 +192,19 @@ namespace CavaPlugin
         {
             Logging.Write(Colors.Teal, "CavaPlugin Disposed");
         }
+
+        private bool IsObjectiveComplete(int objectiveId, uint questId)
+        {
+            if (Me.QuestLog.GetQuestById(questId) == null)
+            {
+                return false;
+            }
+            int returnVal = Lua.GetReturnVal<int>("return GetQuestLogIndexByID(" + questId + ")", 0);
+            return
+                Lua.GetReturnVal<bool>(
+                    string.Concat(new object[] { "return GetQuestLogLeaderBoard(", objectiveId, ",", returnVal, ")" }), 2);
+        }
+
         #endregion
 
         #region Privates/Publics
@@ -212,6 +225,11 @@ namespace CavaPlugin
         public List<WoWUnit> MobDocZapnozzle { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 36608)).OrderBy(ret => ret.Distance).ToList(); } }
         public List<WoWUnit> MobArctanus { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 34292)).OrderBy(ret => ret.Distance).ToList(); } }
         public List<WoWUnit> MobTidecrusher { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 38750 && ret.IsAlive)).OrderBy(ret => ret.Distance).ToList(); } }
+        public List<WoWUnit> MobElectromental { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 21729 && ret.IsAlive && !ret.HasAura(37136))).OrderBy(ret => ret.Distance).ToList(); } }
+        public List<WoWUnit> MobNetherWhelp { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 20021 && ret.IsAlive)).OrderBy(ret => ret.Distance).ToList(); } }
+        public List<WoWUnit> MobProtoNetherDrake { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 21821 && ret.IsAlive)).OrderBy(ret => ret.Distance).ToList(); } }
+        public List<WoWUnit> MobAdolescentNetherDrake { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 21817 && ret.IsAlive)).OrderBy(ret => ret.Distance).ToList(); } }
+        public List<WoWUnit> MobMatureNetherDrake { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 21820 && ret.IsAlive)).OrderBy(ret => ret.Distance).ToList(); } }
 
         #endregion
 
@@ -237,8 +255,51 @@ namespace CavaPlugin
                 MobTidecrusher[0].Face();
                 Styx.CommonBot.Routines.RoutineManager.Current.Pull();
             }
+            if (Me.QuestLog.GetQuestById(10584) != null && !Me.QuestLog.GetQuestById(10584).IsCompleted && MobElectromental.Count > 0 )
+            {
+                MobElectromental[0].Interact();
+                MobElectromental[0].Face();
+                Lua.DoString("UseItemByName(30656)");
+                Thread.Sleep(4000);
+            }
+            if (Me.QuestLog.GetQuestById(10609) != null && !Me.QuestLog.GetQuestById(10609).IsCompleted && MobNetherWhelp.Count > 0 )
+            {
+                MobNetherWhelp[0].Interact();
+                MobNetherWhelp[0].Face();
+                Lua.DoString("UseItemByName(30742)");
+                Thread.Sleep(4000);
+            }
+            if (Me.QuestLog.GetQuestById(10609) != null && !Me.QuestLog.GetQuestById(10609).IsCompleted && IsObjectiveComplete(1, 10609) && MobProtoNetherDrake.Count > 0 )
+            {
+                MobProtoNetherDrake[0].Interact();
+                MobProtoNetherDrake[0].Face();
+                Lua.DoString("UseItemByName(30742)");
+                Thread.Sleep(4000);
+            }
+            if (Me.QuestLog.GetQuestById(10609) != null && !Me.QuestLog.GetQuestById(10609).IsCompleted && IsObjectiveComplete(2, 10609) && MobAdolescentNetherDrake.Count > 0 )
+            {
+                MobAdolescentNetherDrake[0].Interact();
+                MobAdolescentNetherDrake[0].Face();
+                Lua.DoString("UseItemByName(30742)");
+                Thread.Sleep(4000);
+            }
+            if (Me.QuestLog.GetQuestById(10609) != null && !Me.QuestLog.GetQuestById(10609).IsCompleted && IsObjectiveComplete(3, 10609) && MobMatureNetherDrake.Count > 0 )
+            {
+                MobMatureNetherDrake[0].Interact();
+                MobMatureNetherDrake[0].Face();
+                Lua.DoString("UseItemByName(30742)");
+                Thread.Sleep(4000);
+            }
         }
         #endregion
-
     }
+
+
+
+
+
+
+
+
+
 }
