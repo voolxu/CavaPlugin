@@ -419,10 +419,10 @@
             this.radioButton5.AutoSize = true;
             this.radioButton5.Location = new System.Drawing.Point(6, 111);
             this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(325, 17);
+            this.radioButton5.Size = new System.Drawing.Size(260, 17);
             this.radioButton5.TabIndex = 17;
             this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Horde Terokkar Forest/Nagrand  (64-67) (testers/donators only)";
+            this.radioButton5.Text = "Alliance And Horde (64-68) (testers/donators only)";
             this.radioButton5.UseVisualStyleBackColor = true;
             this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
             // 
@@ -547,9 +547,9 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(71, 25);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(158, 13);
+            this.label14.Size = new System.Drawing.Size(179, 13);
             this.label14.TabIndex = 2;
-            this.label14.Text = "New Horde Nagrand 65-67";
+            this.label14.Text = "Blade\'s Edge Mountains 67-68";
             // 
             // pictureBox6
             // 

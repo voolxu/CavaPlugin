@@ -259,7 +259,7 @@ namespace CavaPlugin
                     }
                 }
                 //carrega novo profile
-                Styx.CommonBot.Profiles.ProfileManager.LoadNew(ProfileToLoad, false);
+                Styx.CommonBot.Profiles.ProfileManager.LoadNew(ProfileToLoad);
                 //isRunningdepois = TreeRoot.IsRunning;
                 //if (!isRunningdepois) { TreeRoot.Start(); }
                 Close();
