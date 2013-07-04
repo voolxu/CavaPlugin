@@ -230,6 +230,7 @@ namespace CavaPlugin
         public List<WoWUnit> MobProtoNetherDrake { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 21821 && ret.IsAlive)).OrderBy(ret => ret.Distance).ToList(); } }
         public List<WoWUnit> MobAdolescentNetherDrake { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 21817 && ret.IsAlive)).OrderBy(ret => ret.Distance).ToList(); } }
         public List<WoWUnit> MobMatureNetherDrake { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 21820 && ret.IsAlive)).OrderBy(ret => ret.Distance).ToList(); } }
+        public List<WoWUnit> MobKoiKoiSpirit { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 22226 && ret.IsAlive)).OrderBy(ret => ret.Distance).ToList(); } }
 
         #endregion
 
@@ -289,6 +290,12 @@ namespace CavaPlugin
                 MobMatureNetherDrake[0].Face();
                 Lua.DoString("UseItemByName(30742)");
                 Thread.Sleep(4000);
+            }
+            if (Me.QuestLog.GetQuestById(10830) != null && !Me.QuestLog.GetQuestById(10830).IsCompleted && MobKoiKoiSpirit.Count > 0 )
+            {
+                MobKoiKoiSpirit[0].Interact();
+                MobKoiKoiSpirit[0].Face();
+                Styx.CommonBot.Routines.RoutineManager.Current.Pull();
             }
         }
         #endregion
