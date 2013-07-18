@@ -42,7 +42,7 @@ namespace CavaPlugin
         
         #region Overrides except pulse
         public override string Author { get { return "Cava"; } }
-        public override Version Version { get { return new Version(3, 1, 1); } }
+        public override Version Version { get { return new Version(3, 1, 2); } }
         public override string Name { get { return "CavaPlugin"; } }
         public override bool WantButton { get { return true; } }
         public override string ButtonText { get { return "Cava Profiles"; } }
@@ -231,6 +231,8 @@ namespace CavaPlugin
         public List<WoWUnit> MobAdolescentNetherDrake { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 21817 && ret.IsAlive)).OrderBy(ret => ret.Distance).ToList(); } }
         public List<WoWUnit> MobMatureNetherDrake { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 21820 && ret.IsAlive)).OrderBy(ret => ret.Distance).ToList(); } }
         public List<WoWUnit> MobKoiKoiSpirit { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 22226 && ret.IsAlive)).OrderBy(ret => ret.Distance).ToList(); } }
+        public List<WoWUnit> MobEthereumRelay { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 20619 && ret.IsAlive)).OrderBy(ret => ret.Distance).ToList(); } }
+        public List<WoWUnit> MobWitheredCorpse { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 20561 && ret.Distance < 16 && ret.HasAura(31261))).OrderBy(ret => ret.Distance).ToList(); } }
 
         #endregion
 
@@ -296,6 +298,18 @@ namespace CavaPlugin
                 MobKoiKoiSpirit[0].Interact();
                 MobKoiKoiSpirit[0].Face();
                 Styx.CommonBot.Routines.RoutineManager.Current.Pull();
+            }
+            if (Me.QuestLog.GetQuestById(10385) != null && !Me.QuestLog.GetQuestById(10385).IsCompleted && Me.HasAura(35409) && MobEthereumRelay.Count > 0)
+            {
+                MobEthereumRelay[0].Interact();
+                MobEthereumRelay[0].Face();
+                Styx.CommonBot.Routines.RoutineManager.Current.Pull();
+            }
+            if (Me.QuestLog.GetQuestById(10345) != null && !Me.Combat && MobWitheredCorpse.Count > 0)
+            {
+                WoWMovement.MoveStop();
+                Lua.DoString("UseItemByName(29473)");
+                Thread.Sleep(500);
             }
         }
         #endregion
