@@ -133,8 +133,8 @@ namespace CavaPlugin
             if (lastUseProfile == 1) { label4.Text = "Leveling 1 to 90"; }
             if (lastUseProfile == 2) { label4.Text = "Leveling Pandaren 1 to 90 Horde"; }
             if (lastUseProfile == 3) { label4.Text = "Leveling Pandaren 1 to 90 Alliance"; }
-            if (lastUseProfile == 4) { label4.Text = "Leveling 85 to 90 With Loot"; }
-            if (lastUseProfile == 5) { label4.Text = "HORDE- Leveling 44 to 64"; }
+            if (lastUseProfile == 4) { label4.Text = "Leveling 85 to 90 With Map Achievments"; }
+            if (lastUseProfile == 5) { label4.Text = "ALLIANCE+HORDE- Leveling 64 to 70"; }
             if (lastUseProfile == 6) { label4.Text = "HORDE- Leveling 1 to 20 (WoW 5.3)"; }
         }
 
@@ -164,15 +164,15 @@ namespace CavaPlugin
         {
             timer1.Enabled = false;
             lastUseProfile = 4; //Leveling 85 to 90 With Loot 
-            richTextBox2.Text = "This profile will level-up any char class from level 85 till 90. Looting mobs \n This profiles are not AFK and its a work in progresss so far: \n Alliance can use it from level 85 til 90 \n Horde can use it from level 85 till 88 ";
+            richTextBox2.Text = "This profile will level-up any char class from level 85 till 90. \n This profiles are not AFK and its a work in progresss so far: \n Alliance can use it from level 85 til 90 \n Horde can use it from level 85 till 88 \n This profile runs for all quests and all Map Achievments";
         }
 
 
         private void radioButton5_CheckedChanged(object sender, EventArgs e)
         {
             timer1.Enabled = false;
-            lastUseProfile = 5; //HORDE- Leveling 44 to 64
-            richTextBox2.Text = "This profile will level-up any Horde char from level 44 till level 64 \n TANARIS is non AFK (need one quest behavior)";
+            lastUseProfile = 5; //test profiles
+            richTextBox2.Text = "This profile will level-up any Horde char from level 64 till level 70";
         }
 
         private void button2_Click(object sender, EventArgs e)
