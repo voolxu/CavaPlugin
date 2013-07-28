@@ -389,7 +389,6 @@
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "Leveling 85 to 90 With Loot";
             this.radioButton4.UseVisualStyleBackColor = true;
-            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
             // 
             // radioButton2
             // 
@@ -423,7 +422,7 @@
             this.radioButton5.Size = new System.Drawing.Size(260, 17);
             this.radioButton5.TabIndex = 17;
             this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Alliance And Horde (64-70) (testers/donators only)";
+            this.radioButton5.Text = "Alliance And Horde (65-68) (testers/donators only)";
             this.radioButton5.UseVisualStyleBackColor = true;
             this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
             // 
@@ -542,15 +541,16 @@
             this.label15.Size = new System.Drawing.Size(154, 13);
             this.label15.TabIndex = 3;
             this.label15.Text = "Only for Testers/Donators";
+            this.label15.Visible = false;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(71, 25);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(111, 13);
+            this.label14.Size = new System.Drawing.Size(133, 13);
             this.label14.TabIndex = 2;
-            this.label14.Text = "Netherstorm 68-70";
+            this.label14.Text = "Terokkar Forest 64-65";
             // 
             // pictureBox6
             // 

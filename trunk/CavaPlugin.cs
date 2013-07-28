@@ -42,7 +42,7 @@ namespace CavaPlugin
         
         #region Overrides except pulse
         public override string Author { get { return "Cava"; } }
-        public override Version Version { get { return new Version(3, 1, 3); } }
+        public override Version Version { get { return new Version(3, 1, 4); } }
         public override string Name { get { return "CavaPlugin"; } }
         public override bool WantButton { get { return true; } }
         public override string ButtonText { get { return "Cava Profiles"; } }
@@ -231,7 +231,6 @@ namespace CavaPlugin
         public List<WoWUnit> MobAdolescentNetherDrake { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 21817 && ret.IsAlive)).OrderBy(ret => ret.Distance).ToList(); } }
         public List<WoWUnit> MobMatureNetherDrake { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 21820 && ret.IsAlive)).OrderBy(ret => ret.Distance).ToList(); } }
         public List<WoWUnit> MobKoiKoiSpirit { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 22226 && ret.IsAlive)).OrderBy(ret => ret.Distance).ToList(); } }
-        public List<WoWUnit> MobEthereumRelay { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 20619 && ret.IsAlive)).OrderBy(ret => ret.Distance).ToList(); } }
         public List<WoWUnit> MobWitheredCorpse { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 20561 && ret.Distance < 16 && ret.HasAura(31261))).OrderBy(ret => ret.Distance).ToList(); } }
         public List<WoWUnit> MobGlacierIce { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 49233 && ret.IsAlive)).OrderBy(ret => ret.Distance).ToList(); } }
 
@@ -240,6 +239,13 @@ namespace CavaPlugin
         #region Override Pulse
         public override void Pulse()
         {
+            if (Me.IsAlive && Me.IsAFKFlagged && !Me.IsCasting && !Me.IsMoving && !Me.Combat)
+            {
+                KeyboardManager.KeyUpDown((char)KeyboardManager.eVirtualKeyMessages.VK_SPACE);
+                Mount.Dismount();
+                Lua.DoString("Dismount()");
+            }
+
             if (Me.Race == WoWRace.Goblin && Me.HasAura("Near Death!") && Me.ZoneId == 4720 && MobDocZapnozzle.Count > 0)
             {
                 MobDocZapnozzle[0].Interact();
@@ -300,12 +306,6 @@ namespace CavaPlugin
                 MobKoiKoiSpirit[0].Face();
                 Styx.CommonBot.Routines.RoutineManager.Current.Pull();
             }
-            if (Me.QuestLog.GetQuestById(10385) != null && !Me.QuestLog.GetQuestById(10385).IsCompleted && Me.HasAura(35409) && MobEthereumRelay.Count > 0)
-            {
-                MobEthereumRelay[0].Interact();
-                MobEthereumRelay[0].Face();
-                Styx.CommonBot.Routines.RoutineManager.Current.Pull();
-            }
             if (Me.QuestLog.GetQuestById(10345) != null && !Me.Combat && MobWitheredCorpse.Count > 0)
             {
                 WoWMovement.MoveStop();
@@ -316,7 +316,16 @@ namespace CavaPlugin
             {
                 MobGlacierIce[0].Interact();
             }
-
+            if (Me.QuestLog.GetQuestById(11606) != null && Me.QuestLog.GetQuestById(11606).IsCompleted && Me.QuestLog.GetQuestById(11598) != null && Me.QuestLog.GetQuestById(11598).IsCompleted && Me.QuestLog.GetQuestById(11611) != null && Me.QuestLog.GetQuestById(11611).IsCompleted && Me.Combat)
+            {
+                Navigator.MoveTo(new WoWPoint(2732.637f, 6132.453f, 77.65173f));
+            }
+            if (Me.QuestLog.GetQuestById(11794) != null && Me.QuestLog.GetQuestById(11794).IsCompleted && !Me.Combat && !Me.HasAura(46078))
+            {
+                WoWMovement.MoveStop();
+                Lua.DoString("UseItemByName(35125)");
+                Thread.Sleep(500);
+            }
         }
         #endregion
     }
