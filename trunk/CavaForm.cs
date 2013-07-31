@@ -134,7 +134,7 @@ namespace CavaPlugin
             if (lastUseProfile == 2) { label4.Text = "Leveling Pandaren 1 to 90 Horde"; }
             if (lastUseProfile == 3) { label4.Text = "Leveling Pandaren 1 to 90 Alliance"; }
             if (lastUseProfile == 4) { label4.Text = "Leveling 85 to 90 With Map Achievments"; }
-            if (lastUseProfile == 5) { label4.Text = "ALLIANCE+HORDE- Leveling 65 to 70"; }
+            if (lastUseProfile == 5) { label4.Text = "ALLIANCE+HORDE- Leveling 65 to 72"; }
             if (lastUseProfile == 6) { label4.Text = "HORDE- Leveling 1 to 20 (WoW 5.3)"; }
         }
 
@@ -172,7 +172,7 @@ namespace CavaPlugin
         {
             timer1.Enabled = false;
             lastUseProfile = 5; //test profiles
-            richTextBox2.Text = "This profile will level-up any char from level 65 till level 70";
+            richTextBox2.Text = "This profile will level-up any char from level 65 till level 72";
         }
 
         private void button2_Click(object sender, EventArgs e)
