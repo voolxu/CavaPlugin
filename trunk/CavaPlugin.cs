@@ -42,7 +42,7 @@ namespace CavaPlugin
         
         #region Overrides except pulse
         public override string Author { get { return "Cava"; } }
-        public override Version Version { get { return new Version(3, 1, 5); } }
+        public override Version Version { get { return new Version(3, 1, 6); } }
         public override string Name { get { return "CavaPlugin"; } }
         public override bool WantButton { get { return true; } }
         public override string ButtonText { get { return "Cava Profiles"; } }
@@ -239,11 +239,14 @@ namespace CavaPlugin
         #region Override Pulse
         public override void Pulse()
         {
-            if (Me.IsAlive && Me.IsAFKFlagged && !Me.IsCasting && !Me.IsMoving && !Me.Combat)
+            if (Me.IsAlive && Me.IsAFKFlagged && !Me.IsCasting && !Me.IsMoving && !Me.Combat && !Me.OnTaxi)
             {
+                Logging.Write("[CavaPlugin] I'm AFK flagged, Anti-Afking at " + DateTime.Now.ToString());
+                WoWMovement.Move(WoWMovement.MovementDirection.JumpAscend, TimeSpan.FromMilliseconds(100));
                 KeyboardManager.KeyUpDown((char)KeyboardManager.eVirtualKeyMessages.VK_SPACE);
                 Mount.Dismount();
                 Lua.DoString("Dismount()");
+                StyxWoW.ResetAfk();
             }
 
             if (Me.Race == WoWRace.Goblin && Me.HasAura("Near Death!") && Me.ZoneId == 4720 && MobDocZapnozzle.Count > 0)
