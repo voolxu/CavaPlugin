@@ -39,10 +39,15 @@ namespace CavaPlugin
         public bool hasBeenInitialized3 = false;
         public static bool hasBeenInitialized4 = false;
         public bool cavaupdated = false;
+        private WoWPoint UltimoLocal;
+        private Stopwatch UltimoSemStuck;
+        private static Thread Recomecar;
+        private int NVezesBotUnstuck;
+
         
         #region Overrides except pulse
         public override string Author { get { return "Cava"; } }
-        public override Version Version { get { return new Version(3, 1, 6); } }
+        public override Version Version { get { return new Version(3, 1, 7); } }
         public override string Name { get { return "CavaPlugin"; } }
         public override bool WantButton { get { return true; } }
         public override string ButtonText { get { return "Cava Profiles"; } }
@@ -63,6 +68,7 @@ namespace CavaPlugin
         private Cava_QB_Updater UpdaterQB;
         private Cava_Profile_Updater UpdaterProfile;
         public string pathToCavaArmageddoner = Path.Combine(Utilities.AssemblyDirectory + @"\Default Profiles\Cava\Scripts\Armageddoner\");
+        public bool ASSystem = CPGlobalSettings.Instance.AntiStuckSystem;
         static void UpdaterArmageddoner(string f)
         {
             //ProcessStartInfo startInfo = new ProcessStartInfo();
@@ -83,10 +89,12 @@ namespace CavaPlugin
 
         public override void Initialize()
         {
+            Styx.CommonBot.BotEvents.OnBotStart += _OnBotStart;
             if (!hasBeenInitialized)
             {
                 Logging.Write(Colors.Teal, "Loaded Cava Plugin v" + Version.ToString());
                 Logging.Write(Colors.Teal, "Please Wait While [Cava Plugin] Check For Updates, This Can Take Several Minutes");
+                System.Threading.Thread.Sleep(2000); 
                 hasBeenInitialized = true;
                 try
                 {
@@ -152,6 +160,7 @@ namespace CavaPlugin
                         if (UpdaterProfile.Update())
                         {
                             Logging.Write("[Cava Profile Updater] is now up to date!");
+                            cavaupdated = true;
                         }
                         else
                         {
@@ -168,11 +177,20 @@ namespace CavaPlugin
                     Logging.Write(Colors.Teal,"Unable to run [Cava Profile Updater] update process");
                     Logging.Write(LogLevel.Diagnostic, "[Cava Profile Updater]: Exception " + ex.Message);
                 }
+             
+                if (cavaupdated && CPGlobalSettings.Instance.AutoShutdownWhenUpdate)
+                {
+                    Logging.Write("[Cava Plugin] Auto-Shutdown in progress at " + DateTime.Now.ToString());
+                    System.Threading.Thread.Sleep(5000);
+                    Environment.Exit(0); 
+                }
+
                 CPGlobalSettings.Instance.Load();
                 if (CPGlobalSettings.Instance.Armageddoner && CPGlobalSettings.Instance.AllowUpdate)
                 {
                     UpdaterArmageddoner("/command:\"update\" /path:\"" + pathToCavaArmageddoner + "\" /closeonend:1");
                 }
+                UltimoSemStuck = new Stopwatch();
               }
             //duplo ignore, bot corre 2 vezes o Initialize 
             if (!hasBeenInitialized2)
@@ -190,8 +208,25 @@ namespace CavaPlugin
 
         public override void Dispose()
         {
+            Styx.CommonBot.BotEvents.OnBotStart -= _OnBotStart;
             Logging.Write(Colors.Teal, "CavaPlugin Disposed");
         }
+
+        private void _OnBotStart(EventArgs args)
+        {
+            Logging.Write(@"[NoMoveDetector] Bot started");
+            UltimoLocal = StyxWoW.Me.Location;
+            UltimoSemStuck.Restart();
+            Recomecar = new Thread(new ThreadStart(_Recomecar));
+        }
+
+        private static void _Recomecar()
+        {
+            TreeRoot.Stop();
+            Thread.Sleep(2000);
+            TreeRoot.Start();
+        }
+        
 
         private bool IsObjectiveComplete(int objectiveId, uint questId)
         {
@@ -204,7 +239,6 @@ namespace CavaPlugin
                 Lua.GetReturnVal<bool>(
                     string.Concat(new object[] { "return GetQuestLogLeaderBoard(", objectiveId, ",", returnVal, ")" }), 2);
         }
-
         #endregion
 
         #region Privates/Publics
@@ -213,6 +247,7 @@ namespace CavaPlugin
             if (cavaupdated)
             {
                 MessageBox.Show("Cava Plugin/Quest Behaviors has been updated a restart is required.", "RESTART REQUIRED", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Environment.Exit(0);
             }
             var mainCavaForm = new CavaForm();
             mainCavaForm.ShowDialog();
@@ -239,14 +274,61 @@ namespace CavaPlugin
         #region Override Pulse
         public override void Pulse()
         {
-            if (Me.IsAlive && Me.IsAFKFlagged && !Me.IsCasting && !Me.IsMoving && !Me.Combat && !Me.OnTaxi)
+            if (ASSystem)
             {
-                Logging.Write("[CavaPlugin] I'm AFK flagged, Anti-Afking at " + DateTime.Now.ToString());
-                WoWMovement.Move(WoWMovement.MovementDirection.JumpAscend, TimeSpan.FromMilliseconds(100));
-                KeyboardManager.KeyUpDown((char)KeyboardManager.eVirtualKeyMessages.VK_SPACE);
-                Mount.Dismount();
-                Lua.DoString("Dismount()");
-                StyxWoW.ResetAfk();
+                if (!TreeRoot.IsRunning)
+                {
+                    if (UltimoSemStuck.ElapsedMilliseconds > 1000 * 30)
+                    {
+                        Logging.Write(@"[CavaPlugin-AntiStuck] LastPosition reseted, bot is not running (but pulse is called ???)");
+                        UltimoSemStuck.Restart();
+                    }
+                    return;
+                }
+                if (UltimoLocal.Distance(Me.Location) > 10f)
+                {
+                    UltimoSemStuck.Restart();
+                    UltimoLocal = Me.Location;
+                    NVezesBotUnstuck = 0;
+                    return;
+                }
+                if (Me.IsAlive && Me.IsAFKFlagged && !Me.IsCasting && !Me.IsMoving && !Me.Combat && !Me.OnTaxi && NVezesBotUnstuck==0)
+                    {
+                        Logging.Write("[CavaPlugin-AntiStuck] I'm AFK flagged, Anti-Afking at " + DateTime.Now.ToString());
+                        WoWMovement.Move(WoWMovement.MovementDirection.JumpAscend, TimeSpan.FromMilliseconds(100));
+                        KeyboardManager.KeyUpDown((char)KeyboardManager.eVirtualKeyMessages.VK_SPACE);
+                        KeyboardManager.AntiAfk();
+                        Mount.Dismount();
+                        Lua.DoString("Dismount()");
+                        StyxWoW.ResetAfk();
+                        NVezesBotUnstuck++;
+                    }
+                if (UltimoSemStuck.ElapsedMilliseconds > 1000 * 60 * 5)
+                {
+                    if (Styx.CommonBot.Frames.AuctionFrame.Instance.IsVisible || Styx.CommonBot.Frames.MailFrame.Instance.IsVisible)
+                    {
+                        UltimoSemStuck.Restart();
+                        UltimoLocal = Me.Location;
+                        return;
+                    }
+                    if (Me.HasAura("Resurrection Sickness"))
+                    {
+                        UltimoSemStuck.Restart();
+                        return;
+                    }
+                    if (NVezesBotUnstuck > 2)
+                    {
+                        Logging.Write(@"[CavaPlugin-AntiStuck] not mooving last 15 min : Stopping Game...");
+                        Lua.DoString(@"ForceQuit()");
+                    }
+                    else
+                    {
+                        NVezesBotUnstuck++;
+                        Logging.Write(@"[CavaPlugin-AntiStuck] not mooving last {0} min : Restarting bot...", NVezesBotUnstuck * 5);
+                        UltimoSemStuck.Restart();
+                        Recomecar.Start();
+                    }
+                }
             }
 
             if (Me.Race == WoWRace.Goblin && Me.HasAura("Near Death!") && Me.ZoneId == 4720 && MobDocZapnozzle.Count > 0)
@@ -332,13 +414,4 @@ namespace CavaPlugin
         }
         #endregion
     }
-
-
-
-
-
-
-
-
-
 }

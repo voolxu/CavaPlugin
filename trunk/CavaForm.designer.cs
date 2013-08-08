@@ -118,6 +118,8 @@
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.AutoShutDown_Checkbox = new System.Windows.Forms.CheckBox();
+            this.AntiStuck_CheckBox = new System.Windows.Forms.CheckBox();
             this.label13 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -1110,6 +1112,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.AutoShutDown_Checkbox);
+            this.groupBox4.Controls.Add(this.AntiStuck_CheckBox);
             this.groupBox4.Controls.Add(this.label13);
             this.groupBox4.Controls.Add(this.listBox1);
             this.groupBox4.Controls.Add(this.checkBox1);
@@ -1120,10 +1124,32 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Reserved for Testers/Donators";
             // 
+            // AutoShutDown_Checkbox
+            // 
+            this.AutoShutDown_Checkbox.AutoSize = true;
+            this.AutoShutDown_Checkbox.Location = new System.Drawing.Point(6, 80);
+            this.AutoShutDown_Checkbox.Name = "AutoShutDown_Checkbox";
+            this.AutoShutDown_Checkbox.Size = new System.Drawing.Size(162, 17);
+            this.AutoShutDown_Checkbox.TabIndex = 23;
+            this.AutoShutDown_Checkbox.Text = "Auto Shutdown After Update";
+            this.AutoShutDown_Checkbox.UseVisualStyleBackColor = true;
+            this.AutoShutDown_Checkbox.CheckedChanged += new System.EventHandler(this.AutoShutDown_Checkbox_CheckedChanged);
+            // 
+            // AntiStuck_CheckBox
+            // 
+            this.AntiStuck_CheckBox.AutoSize = true;
+            this.AntiStuck_CheckBox.Location = new System.Drawing.Point(6, 60);
+            this.AntiStuck_CheckBox.Name = "AntiStuck_CheckBox";
+            this.AntiStuck_CheckBox.Size = new System.Drawing.Size(193, 17);
+            this.AntiStuck_CheckBox.TabIndex = 22;
+            this.AntiStuck_CheckBox.Text = "Anti-Stuck System (Need Relogger)";
+            this.AntiStuck_CheckBox.UseVisualStyleBackColor = true;
+            this.AntiStuck_CheckBox.CheckedChanged += new System.EventHandler(this.AntiStuck_CheckBox_CheckedChanged);
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(189, 51);
+            this.label13.Location = new System.Drawing.Point(184, 24);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(55, 13);
             this.label13.TabIndex = 21;
@@ -1134,7 +1160,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Items.AddRange(new object[] {
             "English (Default)"});
-            this.listBox1.Location = new System.Drawing.Point(6, 51);
+            this.listBox1.Location = new System.Drawing.Point(6, 20);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(172, 17);
             this.listBox1.TabIndex = 21;
@@ -1144,7 +1170,7 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(6, 19);
+            this.checkBox1.Location = new System.Drawing.Point(6, 40);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(172, 17);
             this.checkBox1.TabIndex = 0;
@@ -1320,5 +1346,7 @@
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioButton6;
+        private System.Windows.Forms.CheckBox AntiStuck_CheckBox;
+        private System.Windows.Forms.CheckBox AutoShutDown_Checkbox;
     }
 }
