@@ -77,6 +77,9 @@ namespace CavaPlugin
             CPsettings.Instance.Load();
             CPGlobalSettings.Instance.Load();
             lastUseProfile = CPsettings.Instance.lastUsedPath;
+            AntiStuck_CheckBox.Checked = CPGlobalSettings.Instance.AntiStuckSystem;
+            AutoShutDown_Checkbox.Checked = CPGlobalSettings.Instance.AutoShutdownWhenUpdate;
+
             if (CPGlobalSettings.Instance.AllowUpdate)
             {
                 checkBox1.Checked = true;
@@ -93,6 +96,10 @@ namespace CavaPlugin
                 linkLabel4.Enabled = false;
                 radioButton5.Enabled = false;
                 radioButton6.Enabled = false;
+                AntiStuck_CheckBox.Checked = false;
+                AntiStuck_CheckBox.Enabled = false;
+                AutoShutDown_Checkbox.Checked = false;
+                AutoShutDown_Checkbox.Enabled = false;
                 CPGlobalSettings.Instance.Armageddoner = false;
                 CPGlobalSettings.Instance.Save();
             }
@@ -310,6 +317,7 @@ namespace CavaPlugin
                     Updater_Armageddoner("/command:\"checkout\" /url:\"https://cava.repositoryhosting.com/svn/cava_armageddoner\" /path:\"" + pathToProfiles + "Armageddoner" + "\" /closeonend:1");
                 }
                 MessageBox.Show("Need restart HonorBuddy for this change take effect.", "RESTART REQUIRED", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Application.Exit();
             }
             else
             {
@@ -464,6 +472,16 @@ namespace CavaPlugin
             lastUseProfile = 6; //HORDE- Leveling 1 to 20
             richTextBox2.Text = "This profile will level-up any Horde char from level 1 till level 20 \n Via Tirisfal Glades and Silverpine Forest";
         }
+
+        private void AntiStuck_CheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            CPGlobalSettings.Instance.AntiStuckSystem = AntiStuck_CheckBox.Checked;
+        }
+
+        private void AutoShutDown_Checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            CPGlobalSettings.Instance.AutoShutdownWhenUpdate = AutoShutDown_Checkbox.Checked;
+        }
     }
     public class CPsettings : Settings
     {
@@ -491,5 +509,9 @@ namespace CavaPlugin
         public bool Allowlunch { get; set; }
         [Setting, DefaultValue(0)]
         public int BaseProfileToLunch { get; set; }
+        [Setting, DefaultValue(false)]
+        public bool AntiStuckSystem { get; set; }
+        [Setting, DefaultValue(false)]
+        public bool AutoShutdownWhenUpdate { get; set; }
     }
 }
