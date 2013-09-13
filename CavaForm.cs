@@ -68,6 +68,7 @@ namespace CavaPlugin
             pictureBox5.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\about.png");
             pictureBox6.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\new.gif");
             pictureBox7.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\about.png");
+            pictureBox8.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\quests.png");
             BeenInitialized4 = CavaPlugin.hasBeenInitialized4;
             UpdateStuff();
         }
@@ -79,7 +80,8 @@ namespace CavaPlugin
             lastUseProfile = CPsettings.Instance.lastUsedPath;
             AntiStuck_CheckBox.Checked = CPGlobalSettings.Instance.AntiStuckSystem;
             AutoShutDown_Checkbox.Checked = CPGlobalSettings.Instance.AutoShutdownWhenUpdate;
-
+            AllowSummonPet_Checkbox.Checked = CPGlobalSettings.Instance.CheckAllowSummonPet;
+            MiningBS_Checkbox.Checked = CPGlobalSettings.Instance.PBMiningBlacksmithing;
             if (CPGlobalSettings.Instance.AllowUpdate)
             {
                 checkBox1.Checked = true;
@@ -100,6 +102,8 @@ namespace CavaPlugin
                 AntiStuck_CheckBox.Enabled = false;
                 AutoShutDown_Checkbox.Checked = false;
                 AutoShutDown_Checkbox.Enabled = false;
+                AllowSummonPet_Checkbox.Checked = false;
+                AllowSummonPet_Checkbox.Enabled = false;
                 CPGlobalSettings.Instance.Armageddoner = false;
                 CPGlobalSettings.Instance.Save();
             }
@@ -143,6 +147,22 @@ namespace CavaPlugin
             if (lastUseProfile == 4) { label4.Text = "Leveling 85 to 90 With Map Achievments"; }
             if (lastUseProfile == 5) { label4.Text = "ALLIANCE+HORDE- Leveling 65 to 72"; }
             if (lastUseProfile == 6) { label4.Text = "HORDE- Leveling 1 to 20 (WoW 5.3)"; }
+            if (!File.Exists(pathToProfiles + "PB\\MB\\[PB]MB(Cava).xml") && lastUseProfile == 7)
+            {
+                lastUseProfile = 8;
+            }
+            if (File.Exists(pathToProfiles + "PB\\MB\\[PB]MB(Cava).xml") && lastUseProfile == 8)
+            {
+                lastUseProfile = 7;
+            }
+            if (lastUseProfile == 7) {
+                label4.Text = "Mining And Blacksmithing 1 to 600";
+                MiningBlacksmithingProf.Text = "Mining And Blacksmithing 1 to 600";
+            }
+            if (lastUseProfile == 8) {
+                label4.Text = "Mining And Blacksmithing 1 to 300";
+                MiningBlacksmithingProf.Text = "Mining And Blacksmithing 1 to 300";
+            }
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -230,7 +250,8 @@ namespace CavaPlugin
             if (lastUseProfile == 4) { lancaprofile(pathToProfiles + "[Quest]MOP85to90WithLootBy[Cava].xml"); }
             if (lastUseProfile == 5) { lancaprofile(pathToProfiles + "Armageddoner\\Next[Cava].xml"); }
             if (lastUseProfile == 6) { lancaprofile(pathToProfiles + "Armageddoner\\Next[Cava].xml"); }
-
+            if (lastUseProfile == 7) { lancaprofile(pathToProfiles + "emptymb600.xml"); }
+            if (lastUseProfile == 8) { lancaprofile(pathToProfiles + "emptymb300.xml"); }
         }
 
         private void lancaprofile(string ProfileToLoad)
@@ -482,6 +503,56 @@ namespace CavaPlugin
         {
             CPGlobalSettings.Instance.AutoShutdownWhenUpdate = AutoShutDown_Checkbox.Checked;
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = false;
+            timer1.Dispose();
+            CPsettings.Instance.lastUsedPath = lastUseProfile;
+            CPGlobalSettings.Instance.Save();
+            CPsettings.Instance.Save();
+            nomeiaprofile();
+        }
+
+        private void CheckAllowSummonPet_CheckedChanged(object sender, EventArgs e)
+        {
+            CPGlobalSettings.Instance.CheckAllowSummonPet = AllowSummonPet_Checkbox.Checked;
+        }
+
+        private void MiningBS_Checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (MiningBS_Checkbox.Checked)
+            {
+                CPGlobalSettings.Instance.PBMiningBlacksmithing = true;
+                if (!Directory.Exists(pathToProfiles + "/PB/MB"))
+                {
+                    Directory.CreateDirectory(pathToProfiles + "PB/MB");
+                    Updater_Armageddoner("/command:\"checkout\" /url:\"https://cava.repositoryhosting.com/svn/cava_mining_blacksmithing\" /path:\"" + pathToProfiles + "PB/MB" + "\" /closeonend:1");
+                }
+                MessageBox.Show("Need restart HonorBuddy for this change take effect.", "RESTART REQUIRED", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Application.Exit();
+            }
+            else
+            {
+                CPGlobalSettings.Instance.PBMiningBlacksmithing = false;
+            }
+            CPGlobalSettings.Instance.Save();
+        }
+
+        private void MiningBlacksmithingProf_CheckedChanged(object sender, EventArgs e)
+        {
+            timer1.Enabled = false;
+            if (File.Exists(pathToProfiles + "PB\\MB\\[PB]MB(Cava).xml"))
+            {
+                ProfessionsrichTextBox.Text = "This profile will level-up Mining and Blacksmithing Professions fron any level till level 600. \n Works for Alliance and Horde chars. \n Can start profile anywhere, after start profile bot will move your char to Main city (Stormwind or Orgrimmar)";
+                lastUseProfile = 7; //MB 1 to 600
+            }
+            else
+            {
+                ProfessionsrichTextBox.Text = "This profile will level-up Mining and Blacksmithing Professions fron any level till level 300. \n Works for Alliance and Horde chars. \n Can start profile anywhere, after start profile bot will move your char to Main city (Stormwind or Orgrimmar)";
+                lastUseProfile = 8; //MB 1 to 300
+            }
+        }
     }
     public class CPsettings : Settings
     {
@@ -513,5 +584,10 @@ namespace CavaPlugin
         public bool AntiStuckSystem { get; set; }
         [Setting, DefaultValue(false)]
         public bool AutoShutdownWhenUpdate { get; set; }
+        [Setting, DefaultValue(false)]
+        public bool CheckAllowSummonPet { get; set; }
+        [Setting, DefaultValue(false)]
+        public bool PBMiningBlacksmithing { get; set; }
+
     }
 }

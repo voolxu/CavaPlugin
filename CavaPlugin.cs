@@ -13,10 +13,11 @@ using Styx.Patchables;
 using Styx.Plugins;
 using Styx.Common;
 using Styx.CommonBot;
+using Styx.CommonBot.Profiles;
 using Styx.Pathing;
 using Styx.WoWInternals;
 using Styx.WoWInternals.Misc;
-using Styx.WoWInternals.Misc.DBC;
+//using Styx.WoWInternals.Misc.DBC;
 using Styx.WoWInternals.World;
 using Styx.WoWInternals.WoWCache;
 using Styx.WoWInternals.WoWObjects;
@@ -25,7 +26,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Media;
-
+//using System.Windows;
 using CavaHPlugin;
 using CavaHProfile;
 using CavaHQB;
@@ -41,13 +42,14 @@ namespace CavaPlugin
         public bool cavaupdated = false;
         private WoWPoint UltimoLocal;
         private Stopwatch UltimoSemStuck;
+        private Stopwatch summonpettime;
         private static Thread Recomecar;
         private int NVezesBotUnstuck;
         private Stopwatch MountedTime;
         
         #region Overrides except pulse
         public override string Author { get { return "Cava"; } }
-        public override Version Version { get { return new Version(3, 1, 8); } }
+        public override Version Version { get { return new Version(3, 1, 10); } }
         public override string Name { get { return "CavaPlugin"; } }
         public override bool WantButton { get { return true; } }
         public override string ButtonText { get { return "Cava Profiles"; } }
@@ -68,13 +70,12 @@ namespace CavaPlugin
         private Cava_QB_Updater UpdaterQB;
         private Cava_Profile_Updater UpdaterProfile;
         public string pathToCavaArmageddoner = Path.Combine(Utilities.AssemblyDirectory + @"\Default Profiles\Cava\Scripts\Armageddoner\");
+        public string pathToPBMiningBS = Path.Combine(Utilities.AssemblyDirectory + @"\Default Profiles\Cava\Scripts\PB\MB\");
         public bool ASSystem = CPGlobalSettings.Instance.AntiStuckSystem;
+        public bool CallRandomPets = CPGlobalSettings.Instance.CheckAllowSummonPet;
+
         static void UpdaterArmageddoner(string f)
         {
-            //ProcessStartInfo startInfo = new ProcessStartInfo();
-            //startInfo.FileName = "TortoiseProc.exe";
-            //startInfo.Arguments = f;
-            //Process.Start(startInfo);
             Process p = new Process();
             p.StartInfo.FileName = "TortoiseProc.exe";
             p.StartInfo.Arguments = f;
@@ -84,7 +85,18 @@ namespace CavaPlugin
             {
                 hasBeenInitialized4 = true;
             }
-
+        }
+        static void UpdaterMiningBS(string f)
+        {
+            Process p = new Process();
+            p.StartInfo.FileName = "TortoiseProc.exe";
+            p.StartInfo.Arguments = f;
+            p.Start();
+            p.WaitForExit();
+            if (p.ExitCode == 0)
+            {
+                CPGlobalSettings.Instance.PBMiningBlacksmithing = false;
+            }
         }
 
         public override void Initialize()
@@ -189,8 +201,13 @@ namespace CavaPlugin
                 {
                     UpdaterArmageddoner("/command:\"update\" /path:\"" + pathToCavaArmageddoner + "\" /closeonend:1");
                 }
+                if (CPGlobalSettings.Instance.PBMiningBlacksmithing)
+                {
+                    UpdaterMiningBS("/command:\"update\" /path:\"" + pathToPBMiningBS + "\" /closeonend:1");
+                }
                 UltimoSemStuck = new Stopwatch();
                 MountedTime = new Stopwatch();
+                summonpettime = new Stopwatch();
                 NVezesBotUnstuck = 0;
               }
             //duplo ignore, bot corre 2 vezes o Initialize 
@@ -229,6 +246,11 @@ namespace CavaPlugin
                 MountedTime.Restart();
             }
             Recomecar = new Thread(new ThreadStart(_Recomecar));
+            if (CallRandomPets)
+            {
+                Lua.DoString("RunMacroText('/randompet')");
+                summonpettime.Restart();
+            }
             
         }
 
@@ -250,6 +272,16 @@ namespace CavaPlugin
                 Lua.GetReturnVal<bool>(
                     string.Concat(new object[] { "return GetQuestLogLeaderBoard(", objectiveId, ",", returnVal, ")" }), 2);
         }
+        private String NewProfilePath
+        {
+            get
+            {
+                string directory = Utilities.AssemblyDirectory + @"\Default Profiles\Cava\Scripts\";
+                return (Path.Combine(directory, ProfileName));
+            }
+        }
+        public String ProfileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Format(@"Plugins\CavaPlugin\Settings\Main-Settings.xml"));
+
         #endregion
 
         #region Privates/Publics
@@ -285,6 +317,35 @@ namespace CavaPlugin
         #region Override Pulse
         public override void Pulse()
         {
+            if (CallRandomPets && summonpettime.Elapsed.TotalMinutes > 30)
+            {
+                Lua.DoString("RunMacroText('/randompet')");
+                summonpettime.Restart();
+            }
+            if (ProfileManager.CurrentOuterProfile.Name == "Mining Blacksmithing 1 to 600" ||
+                ProfileManager.CurrentOuterProfile.Name == "Mining Blacksmithing 1 to 300")
+            {
+               
+                Logging.Write(@"Loading '{0}'", ProfileManager.CurrentOuterProfile.Name);
+                Thread.Sleep(3000);
+                BotBase pbBotBase;
+                BotManager.Instance.Bots.TryGetValue("ProfessionBuddy", out pbBotBase);
+                if (pbBotBase != null && BotManager.Current != pbBotBase)
+                {
+                    System.Windows.Application.Current.Dispatcher.Invoke(
+                        new Action(
+                            () =>
+                            {
+                                TreeRoot.Stop();
+                                BotManager.Instance.SetCurrent(pbBotBase);
+                                Thread.Sleep(2000);
+                                if (ProfileManager.CurrentOuterProfile.Name == "Mining Blacksmithing 1 to 600") { ProfileName = "PB\\MB\\[PB]MB(Cava).xml"; }
+                                if (ProfileManager.CurrentOuterProfile.Name == "Mining Blacksmithing 1 to 300") { ProfileName = "Free_PB\\[PB]MB(Cava).xml"; }
+                                ProfileManager.LoadNew(NewProfilePath, false);
+                                TreeRoot.Start();
+                            }));
+                }
+            }
             if (Me.Race == WoWRace.Goblin && Me.HasAura("Near Death!") && Me.ZoneId == 4720 && MobDocZapnozzle.Count > 0)
             {
                 MobDocZapnozzle[0].Interact();
