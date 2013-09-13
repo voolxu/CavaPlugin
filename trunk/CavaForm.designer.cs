@@ -44,6 +44,11 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.button6 = new System.Windows.Forms.Button();
+            this.ProfessionsrichTextBox = new System.Windows.Forms.RichTextBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.MiningBlacksmithingProf = new System.Windows.Forms.RadioButton();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
@@ -117,7 +122,10 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.MiningBS_Checkbox = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.AllowSummonPet_Checkbox = new System.Windows.Forms.CheckBox();
             this.AutoShutDown_Checkbox = new System.Windows.Forms.CheckBox();
             this.AntiStuck_CheckBox = new System.Windows.Forms.CheckBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -129,6 +137,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.tabPage8.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -147,6 +158,7 @@
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.tabPage9.SuspendLayout();
+            this.groupBox11.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
@@ -296,12 +308,65 @@
             // 
             // tabPage8
             // 
+            this.tabPage8.Controls.Add(this.button6);
+            this.tabPage8.Controls.Add(this.ProfessionsrichTextBox);
+            this.tabPage8.Controls.Add(this.groupBox10);
+            this.tabPage8.Controls.Add(this.pictureBox8);
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Size = new System.Drawing.Size(811, 560);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "Professions";
             this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(618, 459);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(187, 69);
+            this.button6.TabIndex = 22;
+            this.button6.Text = "Start";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // ProfessionsrichTextBox
+            // 
+            this.ProfessionsrichTextBox.Location = new System.Drawing.Point(10, 448);
+            this.ProfessionsrichTextBox.Name = "ProfessionsrichTextBox";
+            this.ProfessionsrichTextBox.Size = new System.Drawing.Size(594, 102);
+            this.ProfessionsrichTextBox.TabIndex = 21;
+            this.ProfessionsrichTextBox.Text = "";
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.MiningBlacksmithingProf);
+            this.groupBox10.Location = new System.Drawing.Point(10, 132);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(794, 310);
+            this.groupBox10.TabIndex = 20;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Select One Profile From This List Then Press Start";
+            // 
+            // MiningBlacksmithingProf
+            // 
+            this.MiningBlacksmithingProf.AutoSize = true;
+            this.MiningBlacksmithingProf.Location = new System.Drawing.Point(6, 19);
+            this.MiningBlacksmithingProf.Name = "MiningBlacksmithingProf";
+            this.MiningBlacksmithingProf.Size = new System.Drawing.Size(188, 17);
+            this.MiningBlacksmithingProf.TabIndex = 7;
+            this.MiningBlacksmithingProf.TabStop = true;
+            this.MiningBlacksmithingProf.Text = "Mining And Blacksmithing 1 to 300";
+            this.MiningBlacksmithingProf.UseVisualStyleBackColor = true;
+            this.MiningBlacksmithingProf.CheckedChanged += new System.EventHandler(this.MiningBlacksmithingProf_CheckedChanged);
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Location = new System.Drawing.Point(3, 10);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(794, 115);
+            this.pictureBox8.TabIndex = 19;
+            this.pictureBox8.TabStop = false;
             // 
             // tabPage6
             // 
@@ -530,28 +595,27 @@
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(71, 72);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(102, 13);
+            this.label16.Size = new System.Drawing.Size(127, 13);
             this.label16.TabIndex = 4;
-            this.label16.Text = "Silverpine Forest";
-            this.label16.Visible = false;
+            this.label16.Text = "summom random pets";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(71, 57);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(154, 13);
+            this.label15.Size = new System.Drawing.Size(152, 13);
             this.label15.TabIndex = 3;
-            this.label15.Text = "Only for Testers/Donators";
+            this.label15.Text = "Can now enable option to";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(71, 25);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(127, 13);
+            this.label14.Size = new System.Drawing.Size(141, 13);
             this.label14.TabIndex = 2;
-            this.label14.Text = "Borean Tundra 70-72";
+            this.label14.Text = "Armageddoner members";
             // 
             // pictureBox6
             // 
@@ -665,9 +729,10 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            //this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Controls.Add(this.tabPage10);
             this.tabControl1.Controls.Add(this.tabPage9);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Location = new System.Drawing.Point(10, 11);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(819, 586);
@@ -1101,6 +1166,7 @@
             // 
             // tabPage9
             // 
+            this.tabPage9.Controls.Add(this.groupBox11);
             this.tabPage9.Controls.Add(this.groupBox4);
             this.tabPage9.Controls.Add(this.pictureBox5);
             this.tabPage9.Location = new System.Drawing.Point(4, 22);
@@ -1110,8 +1176,33 @@
             this.tabPage9.Text = "Armageddoner";
             this.tabPage9.UseVisualStyleBackColor = true;
             // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.MiningBS_Checkbox);
+            this.groupBox11.Location = new System.Drawing.Point(282, 148);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(250, 394);
+            this.groupBox11.TabIndex = 21;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Reserved for Profession Profiles Owners";
+            this.groupBox11.Visible = false;
+            // 
+            // MiningBS_Checkbox
+            // 
+            this.MiningBS_Checkbox.AutoSize = true;
+            this.MiningBS_Checkbox.Checked = true;
+            this.MiningBS_Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.MiningBS_Checkbox.Location = new System.Drawing.Point(6, 20);
+            this.MiningBS_Checkbox.Name = "MiningBS_Checkbox";
+            this.MiningBS_Checkbox.Size = new System.Drawing.Size(189, 17);
+            this.MiningBS_Checkbox.TabIndex = 0;
+            this.MiningBS_Checkbox.Text = "Mining And Blacksmithing 1 to 600";
+            this.MiningBS_Checkbox.UseVisualStyleBackColor = true;
+            this.MiningBS_Checkbox.CheckedChanged += new System.EventHandler(this.MiningBS_Checkbox_CheckedChanged);
+            // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.AllowSummonPet_Checkbox);
             this.groupBox4.Controls.Add(this.AutoShutDown_Checkbox);
             this.groupBox4.Controls.Add(this.AntiStuck_CheckBox);
             this.groupBox4.Controls.Add(this.label13);
@@ -1123,6 +1214,17 @@
             this.groupBox4.TabIndex = 20;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Reserved for Testers/Donators";
+            // 
+            // AllowSummonPet_Checkbox
+            // 
+            this.AllowSummonPet_Checkbox.AutoSize = true;
+            this.AllowSummonPet_Checkbox.Location = new System.Drawing.Point(6, 100);
+            this.AllowSummonPet_Checkbox.Name = "AllowSummonPet_Checkbox";
+            this.AllowSummonPet_Checkbox.Size = new System.Drawing.Size(170, 17);
+            this.AllowSummonPet_Checkbox.TabIndex = 24;
+            this.AllowSummonPet_Checkbox.Text = "Enable Summon Random Pets";
+            this.AllowSummonPet_Checkbox.UseVisualStyleBackColor = true;
+            this.AllowSummonPet_Checkbox.CheckedChanged += new System.EventHandler(this.CheckAllowSummonPet_CheckedChanged);
             // 
             // AutoShutDown_Checkbox
             // 
@@ -1205,6 +1307,10 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.tabPage8.ResumeLayout(false);
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -1231,6 +1337,8 @@
             this.groupBox7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.tabPage9.ResumeLayout(false);
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -1348,5 +1456,13 @@
         private System.Windows.Forms.RadioButton radioButton6;
         private System.Windows.Forms.CheckBox AntiStuck_CheckBox;
         private System.Windows.Forms.CheckBox AutoShutDown_Checkbox;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.RichTextBox ProfessionsrichTextBox;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.RadioButton MiningBlacksmithingProf;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.CheckBox MiningBS_Checkbox;
+        private System.Windows.Forms.CheckBox AllowSummonPet_Checkbox;
     }
 }
