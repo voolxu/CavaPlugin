@@ -34,29 +34,20 @@ namespace CavaPlugin
         public string pathToProfiles = Path.Combine(Utilities.AssemblyDirectory + @"\Default Profiles\Cava\Scripts\");
         public string profileToLoad = "";
         public string pathToDoYouKnow = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Settings\DYK.txt");
+        static int TortoiseExitCode;
         bool isRunningdepois;
-        bool BeenInitialized4;
         public CavaForm()
         {
             InitializeComponent();
         }
         static void Updater_Armageddoner(string f)
         {
-            //ProcessStartInfo startInfo = new ProcessStartInfo();
-            //startInfo.FileName = "TortoiseProc.exe";
-            //startInfo.Arguments = f;
-            //Process.Start(startInfo);
             Process p = new Process();
             p.StartInfo.FileName = "TortoiseProc.exe";
             p.StartInfo.Arguments = f;
             p.Start();
             p.WaitForExit();
-            if (p.ExitCode != 0)
-            {
-                CPGlobalSettings.Instance.Armageddoner = false;
-                CPGlobalSettings.Instance.AllowUpdate = false;
-                Directory.Delete(Path.Combine(Utilities.AssemblyDirectory + @"\Default Profiles\Cava\Scripts\Armageddoner"));
-            }
+            TortoiseExitCode = p.ExitCode;
         }
 
         private void CavaForm_Load(object sender, EventArgs e)
@@ -65,11 +56,10 @@ namespace CavaPlugin
             pictureBox2.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\quests.png");
             pictureBox3.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\about.png");
             pictureBox4.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\donate.png");
-            pictureBox5.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\about.png");
-            pictureBox6.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\new.gif");
-            pictureBox7.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\about.png");
-            pictureBox8.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\quests.png");
-            BeenInitialized4 = CavaPlugin.hasBeenInitialized4;
+            pictureBox5.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\main.png");
+            NewpictureBox.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\new.gif");
+            pictureBox7.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\main.png");
+            pictureBox6.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\main.png");
             UpdateStuff();
         }
 
@@ -82,48 +72,25 @@ namespace CavaPlugin
             AutoShutDown_Checkbox.Checked = CPGlobalSettings.Instance.AutoShutdownWhenUpdate;
             AllowSummonPet_Checkbox.Checked = CPGlobalSettings.Instance.CheckAllowSummonPet;
             MiningBS_Checkbox.Checked = CPGlobalSettings.Instance.PBMiningBlacksmithing;
-            if (CPGlobalSettings.Instance.AllowUpdate)
+            linkLabel29.Enabled = CPGlobalSettings.Instance.PBMiningBlacksmithing;
+            AllowDownloadCheckBox.Checked = CPGlobalSettings.Instance.AllowUpdate;
+            if (!CPGlobalSettings.Instance.AllowUpdate)
             {
-                checkBox1.Checked = true;
-            }
-            //if (CPGlobalSettings.Instance.Armageddoner)
-            //{
-            //    tabControl1.Controls.Add(tabPage9);//donators tab
-            //}
-            if (BeenInitialized4 == false)
-            {
-                listBox1.Enabled = false;
-                checkBox1.Checked = false;
-                groupBox6.Enabled = false;
-                linkLabel4.Enabled = false;
-                radioButton5.Enabled = false;
-                radioButton6.Enabled = false;
                 AntiStuck_CheckBox.Checked = false;
                 AntiStuck_CheckBox.Enabled = false;
                 AutoShutDown_Checkbox.Checked = false;
                 AutoShutDown_Checkbox.Enabled = false;
                 AllowSummonPet_Checkbox.Checked = false;
                 AllowSummonPet_Checkbox.Enabled = false;
-                CPGlobalSettings.Instance.Armageddoner = false;
+                radioButton5.Enabled = false;
+                groupBox6.Enabled = false;
+                linkLabel4.Enabled = false;
+                radioButton6.Enabled = false;
+                CPGlobalSettings.Instance.BotAllowUpdate = false;
+                CPGlobalSettings.Instance.AllowUpdate = false;
                 CPGlobalSettings.Instance.Save();
             }
-            tabControl1.Controls.Add(tabPage3);//ultima tab
             label4.Text = "There is no previus selected profile";
-            int allRows = File.ReadAllLines(pathToDoYouKnow).Length;
-            Random random = new Random();
-            int myLine = random.Next(0, allRows);
-            using (Stream stream = File.Open(pathToDoYouKnow, FileMode.Open))
-            {
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    string line = null;
-                    for (int i = 0; i < myLine; ++i)
-                    {
-                        line = reader.ReadLine();
-                    }
-                    richTextBox1.Text = line;
-                }
-            }
             if (lastUseProfile > 0)
             {
                 button1.Visible = true;
@@ -147,19 +114,21 @@ namespace CavaPlugin
             if (lastUseProfile == 4) { label4.Text = "Leveling 85 to 90 With Map Achievments"; }
             if (lastUseProfile == 5) { label4.Text = "ALLIANCE+HORDE- Leveling 65 to 72"; }
             if (lastUseProfile == 6) { label4.Text = "HORDE- Leveling 1 to 20 (WoW 5.3)"; }
-            if (!File.Exists(pathToProfiles + "PB\\MB\\[PB]MB(Cava).xml") && lastUseProfile == 7)
+            if (!File.Exists(pathToProfiles + "PB\\MB\\[PB]MB600(Cava).xml") && lastUseProfile == 7)
             {
                 lastUseProfile = 8;
             }
-            if (File.Exists(pathToProfiles + "PB\\MB\\[PB]MB(Cava).xml") && lastUseProfile == 8)
+            if (File.Exists(pathToProfiles + "PB\\MB\\[PB]MB600(Cava).xml") && lastUseProfile == 8)
             {
                 lastUseProfile = 7;
             }
-            if (lastUseProfile == 7) {
+            if (lastUseProfile == 7)
+            {
                 label4.Text = "Mining And Blacksmithing 1 to 600";
                 MiningBlacksmithingProf.Text = "Mining And Blacksmithing 1 to 600";
             }
-            if (lastUseProfile == 8) {
+            if (lastUseProfile == 8)
+            {
                 label4.Text = "Mining And Blacksmithing 1 to 300";
                 MiningBlacksmithingProf.Text = "Mining And Blacksmithing 1 to 300";
             }
@@ -326,26 +295,6 @@ namespace CavaPlugin
             nomeiaprofile();
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox1.Checked)
-            {
-                CPGlobalSettings.Instance.Armageddoner = true;
-                CPGlobalSettings.Instance.AllowUpdate = true;
-                if (!Directory.Exists(pathToProfiles + "/Armageddoner"))
-                {
-                    Directory.CreateDirectory(pathToProfiles + "Armageddoner");
-                    Updater_Armageddoner("/command:\"checkout\" /url:\"https://cava.repositoryhosting.com/svn/cava_armageddoner\" /path:\"" + pathToProfiles + "Armageddoner" + "\" /closeonend:1");
-                }
-                MessageBox.Show("Need restart HonorBuddy for this change take effect.", "RESTART REQUIRED", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Application.Exit();
-            }
-            else
-            {
-                CPGlobalSettings.Instance.AllowUpdate = false;
-            }
-            CPGlobalSettings.Instance.Save();
-        }
 
         private void button5_Click(object sender, EventArgs e)
         {
@@ -523,17 +472,38 @@ namespace CavaPlugin
         {
             if (MiningBS_Checkbox.Checked)
             {
-                CPGlobalSettings.Instance.PBMiningBlacksmithing = true;
-                if (!Directory.Exists(pathToProfiles + "/PB/MB"))
+                if (!CPGlobalSettings.Instance.BotPBMiningBlacksmithing)
                 {
-                    Directory.CreateDirectory(pathToProfiles + "PB/MB");
-                    Updater_Armageddoner("/command:\"checkout\" /url:\"https://cava.repositoryhosting.com/svn/cava_mining_blacksmithing\" /path:\"" + pathToProfiles + "PB/MB" + "\" /closeonend:1");
+                    if (!Directory.Exists(pathToProfiles + "/PB/MB"))
+                    {
+                        Directory.CreateDirectory(pathToProfiles + "/PB/MB");
+                        Updater_Armageddoner("/command:\"checkout\" /url:\"https://cava.repositoryhosting.com/svn/cava_mining_blacksmithing\" /path:\"" + pathToProfiles + "PB/MB" + "\" /closeonend:1");
+                    }
+                    else
+                    {
+                        Updater_Armageddoner("/command:\"update\" /url:\"https://cava.repositoryhosting.com/svn/cava_mining_blacksmithing\" /path:\"" + pathToProfiles + "PB/MB" + "\" /closeonend:1");
+                    }
+                    if (TortoiseExitCode != 0)
+                    {
+                        Directory.Delete(Path.Combine(Utilities.AssemblyDirectory + @"\Default Profiles\Cava\Scripts\PB\MB"));
+                        MiningBS_Checkbox.Checked = false;
+                        linkLabel29.Enabled = false;
+                        CPGlobalSettings.Instance.BotPBMiningBlacksmithing = false;
+                        CPGlobalSettings.Instance.PBMiningBlacksmithing = false;
+                    }
+                    else
+                    {
+                        linkLabel29.Enabled = true;
+                        CPGlobalSettings.Instance.BotPBMiningBlacksmithing = true;
+                        CPGlobalSettings.Instance.PBMiningBlacksmithing = true;
+                    }
                 }
-                MessageBox.Show("Need restart HonorBuddy for this change take effect.", "RESTART REQUIRED", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Application.Exit();
             }
             else
             {
+                MiningBS_Checkbox.Checked = false;
+                linkLabel29.Enabled = false;
+                CPGlobalSettings.Instance.BotPBMiningBlacksmithing = false;
                 CPGlobalSettings.Instance.PBMiningBlacksmithing = false;
             }
             CPGlobalSettings.Instance.Save();
@@ -542,7 +512,7 @@ namespace CavaPlugin
         private void MiningBlacksmithingProf_CheckedChanged(object sender, EventArgs e)
         {
             timer1.Enabled = false;
-            if (File.Exists(pathToProfiles + "PB\\MB\\[PB]MB(Cava).xml"))
+            if (File.Exists(pathToProfiles + "PB\\MB\\[PB]MB600(Cava).xml"))
             {
                 ProfessionsrichTextBox.Text = "This profile will level-up Mining and Blacksmithing Professions fron any level till level 600. \n Works for Alliance and Horde chars. \n Can start profile anywhere, after start profile bot will move your char to Main city (Stormwind or Orgrimmar)";
                 lastUseProfile = 7; //MB 1 to 600
@@ -552,6 +522,102 @@ namespace CavaPlugin
                 ProfessionsrichTextBox.Text = "This profile will level-up Mining and Blacksmithing Professions fron any level till level 300. \n Works for Alliance and Horde chars. \n Can start profile anywhere, after start profile bot will move your char to Main city (Stormwind or Orgrimmar)";
                 lastUseProfile = 8; //MB 1 to 300
             }
+        }
+
+        private void linkLabel29_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://cava.repositoryhosting.com/svn/cava_mining_blacksmithing");
+        }
+
+        private void tabPage2_Click_1(object sender, EventArgs e)
+        {
+            timer1.Enabled = false;
+        }
+
+        private void tabPage8_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = false;
+        }
+
+        private void tabPage9_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = false;
+        }
+
+        private void tabPage10_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = false;
+        }
+
+        private void tabPage3_Click_1(object sender, EventArgs e)
+        {
+            timer1.Enabled = false;
+        }
+
+        private void AllowDownloadCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (AllowDownloadCheckBox.Checked)
+            {
+                if (!CPGlobalSettings.Instance.BotAllowUpdate)
+                {
+                    if (!Directory.Exists(pathToProfiles + "/Armageddoner"))
+                    {
+                        Directory.CreateDirectory(pathToProfiles + "Armageddoner");
+                        Updater_Armageddoner("/command:\"checkout\" /url:\"https://cava.repositoryhosting.com/svn/cava_armageddoner\" /path:\"" + pathToProfiles + "Armageddoner" + "\" /closeonend:1");
+                    }
+                    else
+                    {
+                        Updater_Armageddoner("/command:\"update\" /url:\"https://cava.repositoryhosting.com/svn/cava_armageddoner\" /path:\"" + pathToProfiles + "Armageddoner" + "\" /closeonend:1");
+                    }
+                    if (TortoiseExitCode != 0)
+                    {
+                        Directory.Delete(Path.Combine(Utilities.AssemblyDirectory + @"\Default Profiles\Cava\Scripts\Armageddoner"));
+                        AllowDownloadCheckBox.Checked = false;
+                        AntiStuck_CheckBox.Checked = false;
+                        AntiStuck_CheckBox.Enabled = false;
+                        AutoShutDown_Checkbox.Checked = false;
+                        AutoShutDown_Checkbox.Enabled = false;
+                        AllowSummonPet_Checkbox.Checked = false;
+                        AllowSummonPet_Checkbox.Enabled = false;
+                        radioButton5.Enabled = false;
+                        groupBox6.Enabled = false;
+                        linkLabel4.Enabled = false;
+                        radioButton6.Enabled = false;
+                        CPGlobalSettings.Instance.BotAllowUpdate = false;
+                        CPGlobalSettings.Instance.AllowUpdate = false;
+                    }
+                    else
+                    {
+                        AllowDownloadCheckBox.Checked = true;
+                        AntiStuck_CheckBox.Enabled = true;
+                        AutoShutDown_Checkbox.Enabled = true;
+                        AllowSummonPet_Checkbox.Enabled = true;
+                        radioButton5.Enabled = true;
+                        groupBox6.Enabled = true;
+                        linkLabel4.Enabled = true;
+                        radioButton6.Enabled = true;
+                        CPGlobalSettings.Instance.BotAllowUpdate = true;
+                        CPGlobalSettings.Instance.AllowUpdate = true;
+                    }
+                }
+            }
+            else
+            {
+                AllowDownloadCheckBox.Checked = false;
+                AntiStuck_CheckBox.Checked = false;
+                AntiStuck_CheckBox.Enabled = false;
+                AutoShutDown_Checkbox.Checked = false;
+                AutoShutDown_Checkbox.Enabled = false;
+                AllowSummonPet_Checkbox.Checked = false;
+                AllowSummonPet_Checkbox.Enabled = false;
+                radioButton5.Enabled = false;
+                groupBox6.Enabled = false;
+                linkLabel4.Enabled = false;
+                radioButton6.Enabled = false;
+                CPGlobalSettings.Instance.BotAllowUpdate = false;
+                CPGlobalSettings.Instance.AllowUpdate = false;
+            }
+            CPGlobalSettings.Instance.Save();
         }
     }
     public class CPsettings : Settings
@@ -573,7 +639,7 @@ namespace CavaPlugin
         {
         }
         [Setting, DefaultValue(false)]
-        public bool Armageddoner { get; set; }
+        public bool BotAllowUpdate { get; set; }
         [Setting, DefaultValue(false)]
         public bool AllowUpdate { get; set; }
         [Setting, DefaultValue(false)]
@@ -588,6 +654,7 @@ namespace CavaPlugin
         public bool CheckAllowSummonPet { get; set; }
         [Setting, DefaultValue(false)]
         public bool PBMiningBlacksmithing { get; set; }
-
+        [Setting, DefaultValue(false)]
+        public bool BotPBMiningBlacksmithing { get; set; }
     }
 }
