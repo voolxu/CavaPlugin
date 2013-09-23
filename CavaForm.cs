@@ -71,6 +71,12 @@ namespace CavaPlugin
             AntiStuck_CheckBox.Checked = CPGlobalSettings.Instance.AntiStuckSystem;
             AutoShutDown_Checkbox.Checked = CPGlobalSettings.Instance.AutoShutdownWhenUpdate;
             AllowSummonPet_Checkbox.Checked = CPGlobalSettings.Instance.CheckAllowSummonPet;
+            if (!File.Exists(pathToProfiles + "PB\\MB\\Scripts\\[PB]MB600(Cava).txt"))
+            {
+                CPGlobalSettings.Instance.BotPBMiningBlacksmithing = false;
+                CPGlobalSettings.Instance.PBMiningBlacksmithing = false;
+                CPGlobalSettings.Instance.Save();
+            }
             MiningBS_Checkbox.Checked = CPGlobalSettings.Instance.PBMiningBlacksmithing;
             linkLabel29.Enabled = CPGlobalSettings.Instance.PBMiningBlacksmithing;
             AllowDownloadCheckBox.Checked = CPGlobalSettings.Instance.AllowUpdate;
@@ -114,11 +120,11 @@ namespace CavaPlugin
             if (lastUseProfile == 4) { label4.Text = "Leveling 85 to 90 With Map Achievments"; }
             if (lastUseProfile == 5) { label4.Text = "ALLIANCE+HORDE- Leveling 65 to 72"; }
             if (lastUseProfile == 6) { label4.Text = "HORDE- Leveling 1 to 20 (WoW 5.3)"; }
-            if (!File.Exists(pathToProfiles + "PB\\MB\\[PB]MB600(Cava).txt") && lastUseProfile == 7)
+            if (!File.Exists(pathToProfiles + "PB\\MB\\Scripts\\[PB]MB600(Cava).txt") && lastUseProfile == 7)
             {
                 lastUseProfile = 8;
             }
-            if (File.Exists(pathToProfiles + "PB\\MB\\[PB]MB600(Cava).txt") && lastUseProfile == 8)
+            if (File.Exists(pathToProfiles + "PB\\MB\\Scripts\\[PB]MB600(Cava).txt") && lastUseProfile == 8)
             {
                 lastUseProfile = 7;
             }
@@ -494,8 +500,19 @@ namespace CavaPlugin
                     else
                     {
                         linkLabel29.Enabled = true;
+                        MiningBlacksmithingProf.Text = "Mining And Blacksmithing 1 to 600";
                         CPGlobalSettings.Instance.BotPBMiningBlacksmithing = true;
                         CPGlobalSettings.Instance.PBMiningBlacksmithing = true;
+                        if (lastUseProfile == 8)
+                        {
+                            label4.Text = "Mining And Blacksmithing 1 to 600";
+                            lastUseProfile = 7;
+                        }
+                        if (MiningBlacksmithingProf.Checked)
+                        {
+                            ProfessionsrichTextBox.Text = "This profile will level-up Mining and Blacksmithing Professions fron any level till level 600. \n Works for Alliance and Horde chars. \n Can start profile anywhere, after start profile bot will move your char to Main city (Stormwind or Orgrimmar)";
+                            lastUseProfile = 7;
+                        }
                     }
                 }
             }
@@ -512,7 +529,7 @@ namespace CavaPlugin
         private void MiningBlacksmithingProf_CheckedChanged(object sender, EventArgs e)
         {
             timer1.Enabled = false;
-            if (File.Exists(pathToProfiles + "PB\\MB\\[PB]MB600(Cava).txt"))
+            if (File.Exists(pathToProfiles + "PB\\MB\\Scripts\\[PB]MB600(Cava).txt"))
             {
                 ProfessionsrichTextBox.Text = "This profile will level-up Mining and Blacksmithing Professions fron any level till level 600. \n Works for Alliance and Horde chars. \n Can start profile anywhere, after start profile bot will move your char to Main city (Stormwind or Orgrimmar)";
                 lastUseProfile = 7; //MB 1 to 600
