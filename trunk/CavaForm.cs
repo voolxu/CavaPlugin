@@ -80,6 +80,7 @@ namespace CavaPlugin
             MiningBS_Checkbox.Checked = CPGlobalSettings.Instance.PBMiningBlacksmithing;
             linkLabel29.Enabled = CPGlobalSettings.Instance.PBMiningBlacksmithing;
             AllowDownloadCheckBox.Checked = CPGlobalSettings.Instance.AllowUpdate;
+            ResscheckBox.Checked = CPGlobalSettings.Instance.RessAfterDie;
             if (!CPGlobalSettings.Instance.AllowUpdate)
             {
                 AntiStuck_CheckBox.Checked = false;
@@ -636,6 +637,11 @@ namespace CavaPlugin
             }
             CPGlobalSettings.Instance.Save();
         }
+
+        private void ResscheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            CPGlobalSettings.Instance.RessAfterDie = true;
+        }
     }
     public class CPsettings : Settings
     {
@@ -673,5 +679,7 @@ namespace CavaPlugin
         public bool PBMiningBlacksmithing { get; set; }
         [Setting, DefaultValue(false)]
         public bool BotPBMiningBlacksmithing { get; set; }
+        [Setting, DefaultValue(false)]
+        public bool RessAfterDie { get; set; }
     }
 }

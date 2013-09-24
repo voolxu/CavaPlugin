@@ -90,6 +90,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.ResscheckBox = new System.Windows.Forms.CheckBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.MiningBS_Checkbox = new System.Windows.Forms.CheckBox();
@@ -791,9 +792,8 @@
             this.ReservedTextBox.ReadOnly = true;
             this.ReservedTextBox.Size = new System.Drawing.Size(175, 94);
             this.ReservedTextBox.TabIndex = 3;
-            this.ReservedTextBox.Text = "Cavaplugin now disable himself if bot isnt using an Cava\'s profile\nArmageddoner u" +
-                "sers and pb profiles owners dont need restart bot, after enable the download opt" +
-                "ion";
+            this.ReservedTextBox.Text = "Cavaplugin now have an option to ressurection after die\nthis option its open to a" +
+                "ll users.";
             // 
             // label14
             // 
@@ -803,7 +803,7 @@
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(116, 13);
             this.label14.TabIndex = 2;
-            this.label14.Text = "CavaPlugin V 4.0.0";
+            this.label14.Text = "CavaPlugin V 4.0.3";
             // 
             // button4
             // 
@@ -911,6 +911,7 @@
             // tabPage9
             // 
             this.tabPage9.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.tabPage9.Controls.Add(this.ResscheckBox);
             this.tabPage9.Controls.Add(this.pictureBox5);
             this.tabPage9.Controls.Add(this.groupBox11);
             this.tabPage9.Controls.Add(this.groupBox4);
@@ -920,6 +921,19 @@
             this.tabPage9.TabIndex = 8;
             this.tabPage9.Text = "Armageddoner";
             this.tabPage9.Click += new System.EventHandler(this.tabPage9_Click);
+            // 
+            // ResscheckBox
+            // 
+            this.ResscheckBox.AutoSize = true;
+            this.ResscheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ResscheckBox.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ResscheckBox.Location = new System.Drawing.Point(572, 141);
+            this.ResscheckBox.Name = "ResscheckBox";
+            this.ResscheckBox.Size = new System.Drawing.Size(174, 21);
+            this.ResscheckBox.TabIndex = 26;
+            this.ResscheckBox.Text = "Ress/Release After Die";
+            this.ResscheckBox.UseVisualStyleBackColor = true;
+            this.ResscheckBox.CheckedChanged += new System.EventHandler(this.ResscheckBox_CheckedChanged);
             // 
             // pictureBox5
             // 
@@ -1600,6 +1614,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage9.ResumeLayout(false);
+            this.tabPage9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
@@ -1748,5 +1763,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox AllowDownloadCheckBox;
+        private System.Windows.Forms.CheckBox ResscheckBox;
     }
 }

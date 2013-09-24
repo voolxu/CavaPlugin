@@ -45,7 +45,7 @@ namespace CavaPlugin
         
         #region Overrides except pulse
         public override string Author { get { return "Cava"; } }
-        public override Version Version { get { return new Version(4, 0, 2); } }
+        public override Version Version { get { return new Version(4, 0, 3); } }
         public override string Name { get { return "CavaPlugin"; } }
         public override bool WantButton { get { return true; } }
         public override string ButtonText { get { return "Cava Profiles"; } }
@@ -349,6 +349,12 @@ namespace CavaPlugin
                                 TreeRoot.Start();
                             }));
                 }
+            }
+            if (Me.IsDead && !Me.HasAura(8326) && CPGlobalSettings.Instance.RessAfterDie)
+            {
+                Thread.Sleep(5000);
+                Logging.Write(@"[CavaPlugin] Anti-Bug Release System");
+                Lua.DoString("RunMacroText('/click StaticPopup1Button1')");
             }
             if (BotRunning)
             {
