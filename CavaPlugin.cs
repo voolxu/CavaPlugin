@@ -45,7 +45,7 @@ namespace CavaPlugin
         
         #region Overrides except pulse
         public override string Author { get { return "Cava"; } }
-        public override Version Version { get { return new Version(4, 0, 3); } }
+        public override Version Version { get { return new Version(4, 0, 4); } }
         public override string Name { get { return "CavaPlugin"; } }
         public override bool WantButton { get { return true; } }
         public override string ButtonText { get { return "Cava Profiles"; } }
@@ -310,6 +310,7 @@ namespace CavaPlugin
         #endregion
 
         #region Quests
+        public List<WoWUnit> MobKingGennGreymane { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 36332)).OrderBy(ret => ret.Distance).ToList(); } }
         public List<WoWUnit> MobDocZapnozzle { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 36608)).OrderBy(ret => ret.Distance).ToList(); } }
         public List<WoWUnit> MobArctanus { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 34292)).OrderBy(ret => ret.Distance).ToList(); } }
         public List<WoWUnit> MobTidecrusher { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 38750 && ret.IsAlive)).OrderBy(ret => ret.Distance).ToList(); } }
@@ -366,6 +367,12 @@ namespace CavaPlugin
                 if (Me.Race == WoWRace.Goblin && Me.HasAura("Near Death!") && Me.ZoneId == 4720 && MobDocZapnozzle.Count > 0)
                 {
                     MobDocZapnozzle[0].Interact();
+                    Thread.Sleep(1000);
+                    Lua.DoString("RunMacroText('/click QuestFrameCompleteQuestButton')");
+                }
+                if (Me.Race == WoWRace.Worgen && Me.HasAura(68631) && Me.ZoneId == 4714 && MobKingGennGreymane.Count > 0)
+                {
+                    MobKingGennGreymane[0].Interact();
                     Thread.Sleep(1000);
                     Lua.DoString("RunMacroText('/click QuestFrameCompleteQuestButton')");
                 }

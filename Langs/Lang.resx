@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+<!--
+example how to change language (only edit the value)
+
+change from English
+  <data name="do_not_change_data_name_they_are_ids" xml:space="preserve">
+    <value>Anti-Stuck System(Need Relogger)</value>
+  </data>
+
+to Portuguese
+  <data name="do_not_change_data_name_they_are_ids" xml:space="preserve">
+    <value>Sistema Anti-Stuck(Preciso dum Relogger)</value>
+  </data>
+-->
+
+
+
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="about" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="antistuck" xml:space="preserve">
+    <value>Anti-Stuck System(Need Relogger)</value>
+  </data>
+  <data name="armageddoner" xml:space="preserve">
+    <value>Armageddoner</value>
+  </data>
+  <data name="autodownload" xml:space="preserve">
+    <value>Auto Download Private Profiles</value>
+  </data>
+  <data name="autoshutdown" xml:space="preserve">
+    <value>Auto Shutdown After Update</value>
+  </data>
+  <data name="cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="cavaprofessions" xml:space="preserve">
+    <value>Cava Profession Profiles</value>
+  </data>
+  <data name="cavaweb" xml:space="preserve">
+    <value>Cava Web</value>
+  </data>
+  <data name="close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="dailies" xml:space="preserve">
+    <value>Dailies</value>
+  </data>
+  <data name="farming" xml:space="preserve">
+    <value>Farming</value>
+  </data>
+  <data name="goodtoknow" xml:space="preserve">
+    <value>Good To Know</value>
+  </data>
+  <data name="language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="lastusedprofile" xml:space="preserve">
+    <value>Last Used Profile:</value>
+  </data>
+  <data name="lastusedprofiletxtdef" xml:space="preserve">
+    <value>There is no previus selected profile</value>
+  </data>
+  <data name="level85to90" xml:space="preserve">
+    <value>Leveling 85 to 90 All Quests</value>
+  </data>
+  <data name="level85to90txt" xml:space="preserve">
+    <value>This profile will level-up any char class from level 85 till 90. his profiles are not AFK and its a work in progresss so far: Alliance can use it from level 85 til 90. Horde can use it from level 85 till 88 This profile runs for all quests and all Map Achievments</value>
+  </data>
+  <data name="leveling1to90" xml:space="preserve">
+    <value>Leveling 1 to 90</value>
+  </data>
+  <data name="leveling1to90txt" xml:space="preserve">
+    <value>This profile will level-up any char from any level till level 90. This is a work in progresss so far: Alliance can use it from level 1 til 67 and from 85 to 90. Horde can use it from level 1 till 67 and from 85 to 88. Can start profile anywhere, after start profile bot will move your char to right map</value>
+  </data>
+  <data name="levelingarmagessoner" xml:space="preserve">
+    <value>Alliance And Horde (67-74) (testers/donators only)</value>
+  </data>
+  <data name="levelingarmagessonertxt" xml:space="preserve">
+    <value>This profile will level-up any char from level 67 till level 74</value>
+  </data>
+  <data name="levelinggrind" xml:space="preserve">
+    <value>Leveling Grind</value>
+  </data>
+  <data name="levelingpandaally" xml:space="preserve">
+    <value>Leveling Pandaren 1 to 90 Alliance</value>
+  </data>
+  <data name="levelingpandaallytxt" xml:space="preserve">
+    <value>This profile will level-up Pandaren class char from level 1 till 12. Select Alliance side and continue with 1 to 90 profile</value>
+  </data>
+  <data name="levelingpandahorde" xml:space="preserve">
+    <value>Leveling Pandaren 1 to 90 Horde</value>
+  </data>
+  <data name="levelingpandahordetxt" xml:space="preserve">
+    <value>This profile will level-up Pandaren class char from level 1 till 12. Select Horde side and continue with 1 to 90 profile</value>
+  </data>
+  <data name="levelingquest" xml:space="preserve">
+    <value>Leveling Quest</value>
+  </data>
+  <data name="linksrelated" xml:space="preserve">
+    <value>Links Related With Usefull Helps / Tips</value>
+  </data>
+  <data name="linksrelatedplugins" xml:space="preserve">
+    <value>Links Related with Plugin/ Profiles</value>
+  </data>
+  <data name="main" xml:space="preserve">
+    <value>Main</value>
+  </data>
+  <data name="mbs1300txt" xml:space="preserve">
+    <value>This profile will level-up Mining and Blacksmithing Professions fron any level till level 300. Works for Alliance and Horde chars. Can start profile anywhere, after start profile bot will move your char to Main city (Stormwind or Orgrimmar)</value>
+  </data>
+  <data name="mbs1600txt" xml:space="preserve">
+    <value>This profile will level-up Mining and Blacksmithing Professions fron any level till level 600. Works for Alliance and Horde chars. Can start profile anywhere, after start profile bot will move your char to Main city (Stormwind or Orgrimmar)</value>
+  </data>
+  <data name="miningbs1300" xml:space="preserve">
+    <value>Mining And Blacksmithing 1 to 300</value>
+  </data>
+  <data name="miningbs1600" xml:space="preserve">
+    <value>Mining And Blacksmithing 1 to 600</value>
+  </data>
+  <data name="newtxt" xml:space="preserve">
+    <value>Cavaplugin now have localization languages, armagedonner users can change Language when using CavaPlugin.</value>
+  </data>
+  <data name="pbmbs" xml:space="preserve">
+    <value>Mining And Blacksmithing 1 to 600</value>
+  </data>
+  <data name="pbprofiles" xml:space="preserve">
+    <value>Profession Profiles Owners</value>
+  </data>
+  <data name="pressdonation" xml:space="preserve">
+    <value>Press Donation button and make a donation to support the Cava's Profiles Initiative.</value>
+  </data>
+  <data name="problemsconfiguring" xml:space="preserve">
+    <value>Problems CONFIGURING Honorbuddy...</value>
+  </data>
+  <data name="problemsquesting" xml:space="preserve">
+    <value>Problems with QUESTING / PROFILES...</value>
+  </data>
+  <data name="professions" xml:space="preserve">
+    <value>Professions</value>
+  </data>
+  <data name="reportabug" xml:space="preserve">
+    <value>Report A Bug Request Feature</value>
+  </data>
+  <data name="reputation" xml:space="preserve">
+    <value>Reputation</value>
+  </data>
+  <data name="reservedfortesters" xml:space="preserve">
+    <value>Reserved for Testers/Donators</value>
+  </data>
+  <data name="ressafterdie" xml:space="preserve">
+    <value>Ress/Release After Die</value>
+  </data>
+  <data name="secondstostart" xml:space="preserve">
+    <value>Seconds to auto start:</value>
+  </data>
+  <data name="selectoneprofile" xml:space="preserve">
+    <value>Select One Profile From This List Then Press Start</value>
+  </data>
+  <data name="showursupport" xml:space="preserve">
+    <value>Show Your Support</value>
+  </data>
+  <data name="specialthanks" xml:space="preserve">
+    <value>Special Thanks</value>
+  </data>
+  <data name="start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="summompets" xml:space="preserve">
+    <value>Enable Summon Random Pets</value>
+  </data>
+  <data name="usefulllinks" xml:space="preserve">
+    <value>Usefull Links</value>
+  </data>
+</root>

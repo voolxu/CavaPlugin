@@ -9,6 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using System.Reflection;
+using System.Resources;
+using System.Globalization;
 
 using Styx;
 using Styx.Common;
@@ -36,6 +39,16 @@ namespace CavaPlugin
         public string pathToDoYouKnow = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Settings\DYK.txt");
         static int TortoiseExitCode;
         bool isRunningdepois;
+        public string leveling1to90txt;
+        public string levelingpandahordetxt;
+        public string levelingpandaallytxt;
+        public string level85to90txt;
+        public string levelingarmagessonertxt;
+        public string mbs1300;
+        public string mbs1600;
+        public string mbs1300txt;
+        public string mbs1600txt;
+
         public CavaForm()
         {
             InitializeComponent();
@@ -48,6 +61,97 @@ namespace CavaPlugin
             p.Start();
             p.WaitForExit();
             TortoiseExitCode = p.ExitCode;
+        }
+        private void getRes(CultureInfo ci, ResourceManager rm)
+        {
+            tabPage3.Text = rm.GetString("about", ci);
+            tabPage9.Text = rm.GetString("armageddoner", ci);
+            button4.Text = rm.GetString("cancel", ci);
+            button3.Text = rm.GetString("close", ci);
+            tabPage6.Text = rm.GetString("dailies", ci);
+            tabPage5.Text = rm.GetString("farming", ci);
+            groupBox12.Text = rm.GetString("goodtoknow", ci);
+            label1.Text = rm.GetString("lastusedprofile", ci);
+            tabPage4.Text = rm.GetString("levelinggrind", ci);
+            tabPage2.Text = rm.GetString("levelingquest", ci);
+            tabPage1.Text = rm.GetString("main", ci);
+            ReservedTextBox.Text = rm.GetString("newtxt", ci);
+            tabPage8.Text = rm.GetString("professions", ci);
+            button5.Text = rm.GetString("reportabug", ci);
+            tabPage7.Text = rm.GetString("reputation", ci);
+            groupBox6.Text = rm.GetString("reservedfortesters", ci);
+            label3.Text = rm.GetString("secondstostart", ci);
+            button1.Text = rm.GetString("start", ci);
+            button2.Text = rm.GetString("start", ci);
+            button6.Text = rm.GetString("start", ci);
+            tabPage10.Text = rm.GetString("usefulllinks", ci);
+            groupBox1.Text = rm.GetString("selectoneprofile", ci);
+            groupBox10.Text = rm.GetString("selectoneprofile", ci);
+            radioButton1.Text = rm.GetString("leveling1to90", ci);
+            radioButton2.Text = rm.GetString("levelingpandahorde", ci);
+            radioButton3.Text = rm.GetString("levelingpandaally", ci);
+            radioButton4.Text = rm.GetString("level85to90", ci);
+            radioButton5.Text = rm.GetString("levelingarmagessoner", ci);
+            leveling1to90txt = rm.GetString("leveling1to90txt", ci);
+            levelingpandahordetxt = rm.GetString("levelingpandahordetxt", ci);
+            levelingpandaallytxt = rm.GetString("levelingpandaallytxt", ci);
+            level85to90txt = rm.GetString("level85to90txt", ci);
+            levelingarmagessonertxt = rm.GetString("levelingarmagessonertxt", ci);
+            mbs1300 = rm.GetString("miningbs1300", ci);
+            mbs1600 = rm.GetString("miningbs1600", ci);
+            mbs1300txt = rm.GetString("mbs1300txt", ci);
+            mbs1600txt = rm.GetString("mbs1600txt", ci);
+            groupBox4.Text = rm.GetString("reservedfortesters", ci);
+            label15.Text = rm.GetString("language", ci);
+            AllowDownloadCheckBox.Text = rm.GetString("autodownload", ci);
+            AntiStuck_CheckBox.Text = rm.GetString("antistuck", ci);
+            AutoShutDown_Checkbox.Text = rm.GetString("autoshutdown", ci);
+            AllowSummonPet_Checkbox.Text = rm.GetString("summompets", ci);
+            languageGroupBox.Text = rm.GetString("pbprofiles", ci);
+            MiningBS_Checkbox.Text = rm.GetString("pbmbs", ci);
+            ResscheckBox.Text = rm.GetString("ressafterdie", ci);
+            groupBox8.Text = rm.GetString("linksrelated", ci);
+            label17.Text = rm.GetString("problemsconfiguring", ci);
+            label19.Text = rm.GetString("problemsquesting", ci);
+            groupBox7.Text = rm.GetString("linksrelatedplugins", ci);
+            groupBox9.Text = rm.GetString("cavaweb", ci);
+            groupBox13.Text = rm.GetString("cavaprofessions", ci);
+            groupBox2.Text = rm.GetString("specialthanks", ci);
+            groupBox3.Text = rm.GetString("showursupport", ci);
+            richTextBox3.Text = rm.GetString("pressdonation", ci);
+            label4.Text = rm.GetString("lastusedprofiletxtdef", ci);
+            if (lastUseProfile == 1) { label4.Text = rm.GetString("leveling1to90", ci); }
+            if (lastUseProfile == 2) { label4.Text = rm.GetString("levelingpandahorde", ci); }
+            if (lastUseProfile == 3) { label4.Text = rm.GetString("levelingpandaally", ci); }
+            if (lastUseProfile == 4) { label4.Text = rm.GetString("level85to90", ci); }
+            if (lastUseProfile == 5) { label4.Text = rm.GetString("levelingarmagessoner", ci); }
+            if (File.Exists(pathToProfiles + "PB\\MB\\Scripts\\[PB]MB600(Cava).txt"))
+            {
+                MiningBlacksmithingProf.Text = rm.GetString("miningbs1600", ci);
+            }
+            if (!File.Exists(pathToProfiles + "PB\\MB\\Scripts\\[PB]MB600(Cava).txt"))
+            {
+                MiningBlacksmithingProf.Text = rm.GetString("miningbs1300", ci);
+            }
+
+            if (!File.Exists(pathToProfiles + "PB\\MB\\Scripts\\[PB]MB600(Cava).txt") && lastUseProfile == 7)
+            {
+                lastUseProfile = 8;
+            }
+            if (File.Exists(pathToProfiles + "PB\\MB\\Scripts\\[PB]MB600(Cava).txt") && lastUseProfile == 8)
+            {
+                lastUseProfile = 7;
+            }
+            if (lastUseProfile == 7)
+            {
+                label4.Text = rm.GetString("miningbs1600", ci);
+                MiningBlacksmithingProf.Text = rm.GetString("miningbs1600", ci);
+            }
+            if (lastUseProfile == 8)
+            {
+                label4.Text = rm.GetString("miningbs1300", ci);
+                MiningBlacksmithingProf.Text = rm.GetString("miningbs1300", ci);
+            }
         }
 
         private void CavaForm_Load(object sender, EventArgs e)
@@ -92,12 +196,34 @@ namespace CavaPlugin
                 radioButton5.Enabled = false;
                 groupBox6.Enabled = false;
                 linkLabel4.Enabled = false;
-                radioButton6.Enabled = false;
+
+                
+                comboBox1.Enabled = false;
+                CPGlobalSettings.Instance.language = 0;
                 CPGlobalSettings.Instance.BotAllowUpdate = false;
                 CPGlobalSettings.Instance.AllowUpdate = false;
                 CPGlobalSettings.Instance.Save();
             }
-            label4.Text = "There is no previus selected profile";
+            comboBox1.SelectedIndex = CPGlobalSettings.Instance.language;
+            if (comboBox1.SelectedIndex == 0)
+            {
+                CultureInfo ci = new CultureInfo("en-US");
+                string str = Assembly.GetExecutingAssembly().FullName;
+                str = str.Remove(str.IndexOf(','));
+                Assembly _assembly = Assembly.Load(str);
+                ResourceManager rm = new ResourceManager("Lang", _assembly);
+                getRes(ci, rm);
+            }
+            if (comboBox1.SelectedIndex == 1)
+            {
+                CultureInfo ci = new CultureInfo("pt-PT");
+                string str = Assembly.GetExecutingAssembly().FullName;
+                str = str.Remove(str.IndexOf(','));
+                Assembly _assembly = Assembly.Load(str);
+                ResourceManager rm = new ResourceManager("Lang.pt", _assembly);
+                getRes(ci, rm);
+            }
+            
             if (lastUseProfile > 0)
             {
                 button1.Visible = true;
@@ -113,46 +239,20 @@ namespace CavaPlugin
                 label6.Visible = false;
                 button4.Visible = false;
             }
-
-
-            if (lastUseProfile == 1) { label4.Text = "Leveling 1 to 90"; }
-            if (lastUseProfile == 2) { label4.Text = "Leveling Pandaren 1 to 90 Horde"; }
-            if (lastUseProfile == 3) { label4.Text = "Leveling Pandaren 1 to 90 Alliance"; }
-            if (lastUseProfile == 4) { label4.Text = "Leveling 85 to 90 With Map Achievments"; }
-            if (lastUseProfile == 5) { label4.Text = "ALLIANCE+HORDE- Leveling 65 to 72"; }
-            if (lastUseProfile == 6) { label4.Text = "HORDE- Leveling 1 to 20 (WoW 5.3)"; }
-            if (!File.Exists(pathToProfiles + "PB\\MB\\Scripts\\[PB]MB600(Cava).txt") && lastUseProfile == 7)
-            {
-                lastUseProfile = 8;
-            }
-            if (File.Exists(pathToProfiles + "PB\\MB\\Scripts\\[PB]MB600(Cava).txt") && lastUseProfile == 8)
-            {
-                lastUseProfile = 7;
-            }
-            if (lastUseProfile == 7)
-            {
-                label4.Text = "Mining And Blacksmithing 1 to 600";
-                MiningBlacksmithingProf.Text = "Mining And Blacksmithing 1 to 600";
-            }
-            if (lastUseProfile == 8)
-            {
-                label4.Text = "Mining And Blacksmithing 1 to 300";
-                MiningBlacksmithingProf.Text = "Mining And Blacksmithing 1 to 300";
-            }
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             timer1.Enabled = false;
             lastUseProfile = 1; //Leveling 1 to 90
-            richTextBox2.Text = "This profile will level-up any char from any level till level 90, \n This is a work in progresss so far: \n Alliance can use it from level 1 til 67 and from 85 to 90 \n Horde can use it from level 1 till 65 and from 85 to 88 \n Can start profile anywhere, after start profile bot will move your char to right map";
+            richTextBox2.Text = leveling1to90txt;
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             timer1.Enabled = false;
             lastUseProfile = 2; //Leveling Pandaren 1 to 90 Horde
-            richTextBox2.Text = "This profile will level-up Pandaren class char from level 1 till 12. \n Selecte Horde side \n and continue with 1 to 90 profile ";
+            richTextBox2.Text = levelingpandahordetxt;
 
         }
 
@@ -160,22 +260,21 @@ namespace CavaPlugin
         {
             timer1.Enabled = false;
             lastUseProfile = 3; //Leveling Pandaren 1 to 90 Alliance
-            richTextBox2.Text = "This profile will level-up Pandaren class char from level 1 till 12. \n Selecte Alliance side \n and continue with 1 to 90 profile ";
+            richTextBox2.Text = levelingpandaallytxt;
         }
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
             timer1.Enabled = false;
             lastUseProfile = 4; //Leveling 85 to 90 With Loot 
-            richTextBox2.Text = "This profile will level-up any char class from level 85 till 90. \n This profiles are not AFK and its a work in progresss so far: \n Alliance can use it from level 85 til 90 \n Horde can use it from level 85 till 88 \n This profile runs for all quests and all Map Achievments";
+            richTextBox2.Text = level85to90txt;
         }
-
 
         private void radioButton5_CheckedChanged(object sender, EventArgs e)
         {
             timer1.Enabled = false;
             lastUseProfile = 5; //test profiles
-            richTextBox2.Text = "This profile will level-up any char from level 65 till level 72";
+            richTextBox2.Text = levelingarmagessonertxt;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -443,13 +542,6 @@ namespace CavaPlugin
             System.Diagnostics.Process.Start("https://cava.repositoryhosting.com/trac/cava_profiles");
         }
 
-        private void radioButton6_CheckedChanged(object sender, EventArgs e)
-        {
-            timer1.Enabled = false;
-            lastUseProfile = 6; //HORDE- Leveling 1 to 20
-            richTextBox2.Text = "This profile will level-up any Horde char from level 1 till level 20 \n Via Tirisfal Glades and Silverpine Forest";
-        }
-
         private void AntiStuck_CheckBox_CheckedChanged(object sender, EventArgs e)
         {
             CPGlobalSettings.Instance.AntiStuckSystem = AntiStuck_CheckBox.Checked;
@@ -501,17 +593,17 @@ namespace CavaPlugin
                     else
                     {
                         linkLabel29.Enabled = true;
-                        MiningBlacksmithingProf.Text = "Mining And Blacksmithing 1 to 600";
+                        MiningBlacksmithingProf.Text = mbs1600;
                         CPGlobalSettings.Instance.BotPBMiningBlacksmithing = true;
                         CPGlobalSettings.Instance.PBMiningBlacksmithing = true;
                         if (lastUseProfile == 8)
                         {
-                            label4.Text = "Mining And Blacksmithing 1 to 600";
+                            label4.Text = mbs1600;
                             lastUseProfile = 7;
                         }
                         if (MiningBlacksmithingProf.Checked)
                         {
-                            ProfessionsrichTextBox.Text = "This profile will level-up Mining and Blacksmithing Professions fron any level till level 600. \n Works for Alliance and Horde chars. \n Can start profile anywhere, after start profile bot will move your char to Main city (Stormwind or Orgrimmar)";
+                            ProfessionsrichTextBox.Text = mbs1600txt;
                             lastUseProfile = 7;
                         }
                     }
@@ -532,12 +624,12 @@ namespace CavaPlugin
             timer1.Enabled = false;
             if (File.Exists(pathToProfiles + "PB\\MB\\Scripts\\[PB]MB600(Cava).txt"))
             {
-                ProfessionsrichTextBox.Text = "This profile will level-up Mining and Blacksmithing Professions fron any level till level 600. \n Works for Alliance and Horde chars. \n Can start profile anywhere, after start profile bot will move your char to Main city (Stormwind or Orgrimmar)";
+                ProfessionsrichTextBox.Text = mbs1600txt;
                 lastUseProfile = 7; //MB 1 to 600
             }
             else
             {
-                ProfessionsrichTextBox.Text = "This profile will level-up Mining and Blacksmithing Professions fron any level till level 300. \n Works for Alliance and Horde chars. \n Can start profile anywhere, after start profile bot will move your char to Main city (Stormwind or Orgrimmar)";
+                ProfessionsrichTextBox.Text = mbs1300txt;
                 lastUseProfile = 8; //MB 1 to 300
             }
         }
@@ -600,7 +692,6 @@ namespace CavaPlugin
                         radioButton5.Enabled = false;
                         groupBox6.Enabled = false;
                         linkLabel4.Enabled = false;
-                        radioButton6.Enabled = false;
                         CPGlobalSettings.Instance.BotAllowUpdate = false;
                         CPGlobalSettings.Instance.AllowUpdate = false;
                     }
@@ -613,7 +704,6 @@ namespace CavaPlugin
                         radioButton5.Enabled = true;
                         groupBox6.Enabled = true;
                         linkLabel4.Enabled = true;
-                        radioButton6.Enabled = true;
                         CPGlobalSettings.Instance.BotAllowUpdate = true;
                         CPGlobalSettings.Instance.AllowUpdate = true;
                     }
@@ -631,7 +721,6 @@ namespace CavaPlugin
                 radioButton5.Enabled = false;
                 groupBox6.Enabled = false;
                 linkLabel4.Enabled = false;
-                radioButton6.Enabled = false;
                 CPGlobalSettings.Instance.BotAllowUpdate = false;
                 CPGlobalSettings.Instance.AllowUpdate = false;
             }
@@ -642,6 +731,48 @@ namespace CavaPlugin
         {
             CPGlobalSettings.Instance.RessAfterDie = true;
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex == 0)
+            {
+                CultureInfo ci = new CultureInfo("en-US");
+                CPGlobalSettings.Instance.language = 0;
+                string str = Assembly.GetExecutingAssembly().FullName;
+                str = str.Remove(str.IndexOf(','));
+                Assembly _assembly = Assembly.Load(str);
+                ResourceManager rm = new ResourceManager("Lang", _assembly);
+                richTextBox1.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\GoodToKnow_en.rtf");
+                thanksRichText.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\Thanks_en.rtf");
+                getRes(ci,rm);
+            }
+            //if (comboBox1.SelectedIndex == 1)
+            //{
+            //    CultureInfo ci = new CultureInfo("de");
+            //    CPGlobalSettings.Instance.language = 1;
+            //    string str = Assembly.GetExecutingAssembly().FullName;
+            //    str = str.Remove(str.IndexOf(','));
+            //    Assembly _assembly = Assembly.Load(str);
+            //    ResourceManager rm = new ResourceManager("Lang.de", _assembly);
+            //    richTextBox1.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\GoodToKnow_de.rtf");
+            //    thanksRichText.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\Thanks_de.rtf");
+            //    getRes(ci, rm);
+            //}
+            if (comboBox1.SelectedIndex == 1)
+            {
+                CultureInfo ci = new CultureInfo("pt-PT");
+                CPGlobalSettings.Instance.language = 2;
+                string str = Assembly.GetExecutingAssembly().FullName;
+                str = str.Remove(str.IndexOf(','));
+                Assembly _assembly = Assembly.Load(str);
+                ResourceManager rm = new ResourceManager("Lang.pt", _assembly);
+                richTextBox1.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\GoodToKnow_pt.rtf");
+                thanksRichText.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\Thanks_pt.rtf");
+                getRes(ci, rm);
+            }
+        }
+
+  
     }
     public class CPsettings : Settings
     {
@@ -681,5 +812,8 @@ namespace CavaPlugin
         public bool BotPBMiningBlacksmithing { get; set; }
         [Setting, DefaultValue(false)]
         public bool RessAfterDie { get; set; }
+        [Setting, DefaultValue(0)]
+        public int language { get; set; }
+
     }
 }
