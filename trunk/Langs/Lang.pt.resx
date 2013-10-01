@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="about" xml:space="preserve">
+    <value>Acerca</value>
+  </data>
+  <data name="antistuck" xml:space="preserve">
+    <value>Sistema Anti-Stuck Requer Relogger</value>
+  </data>
+  <data name="armageddoner" xml:space="preserve">
+    <value>Armageddoner</value>
+  </data>
+  <data name="autodownload" xml:space="preserve">
+    <value>Auto-Download Profiles Privados</value>
+  </data>
+  <data name="autoshutdown" xml:space="preserve">
+    <value>Auto-Shutdown depois de Update</value>
+  </data>
+  <data name="cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="cavaprofessions" xml:space="preserve">
+    <value>Cava Profiles de 'Professions'</value>
+  </data>
+  <data name="cavaweb" xml:space="preserve">
+    <value>Cava Web</value>
+  </data>
+  <data name="close" xml:space="preserve">
+    <value>Fechar</value>
+  </data>
+  <data name="dailies" xml:space="preserve">
+    <value>Dailies</value>
+  </data>
+  <data name="farming" xml:space="preserve">
+    <value>Farming</value>
+  </data>
+  <data name="goodtoknow" xml:space="preserve">
+    <value>É bom saber</value>
+  </data>
+  <data name="language" xml:space="preserve">
+    <value>Linguagem</value>
+  </data>
+  <data name="lastusedprofile" xml:space="preserve">
+    <value>Ultimo Profile Usado:</value>
+  </data>
+  <data name="lastusedprofiletxtdef" xml:space="preserve">
+    <value>Não Existe Profile previamente Selecionado</value>
+  </data>
+  <data name="level85to90" xml:space="preserve">
+    <value>Levelar 85 a 90 Todas as Quests</value>
+  </data>
+  <data name="level85to90txt" xml:space="preserve">
+    <value>Este profile vai levelar qualquer char do level 85 a 90. Este profile não e AFK e não esta finalizado, ate agora: a Aliança pode ir de 85 a 90, a Horde de 85 a 88. Este profile faz todas as quests e todos os Map Achievments em Pandaria</value>
+  </data>
+  <data name="leveling1to90" xml:space="preserve">
+    <value>Levelar 1 a 90</value>
+  </data>
+  <data name="leveling1to90txt" xml:space="preserve">
+    <value>Este profile vai levelar qualquer char do level 1 a 90. Este profile não esta finalizado, ate agora pode ir de 1 a 67. Este profile pode ser iniciado em qualquer lugar, depois de iniciado o bot vai sempre mover-se para o mapa certo e começar a fazer as quests</value>
+  </data>
+  <data name="levelingarmagessoner" xml:space="preserve">
+    <value>Aliança e Horde (67-74) (testers/donators apenas)</value>
+  </data>
+  <data name="levelingarmagessonertxt" xml:space="preserve">
+    <value>Este profile vai levelar qualquer char de level 67 a 74</value>
+  </data>
+  <data name="levelinggrind" xml:space="preserve">
+    <value>Levelar em Grind</value>
+  </data>
+  <data name="levelingpandaally" xml:space="preserve">
+    <value>Levelar Pandaren char de 1 a 90 Aliança</value>
+  </data>
+  <data name="levelingpandaallytxt" xml:space="preserve">
+    <value>Este profile vai levelar um char de classe Pandaren, seleciona o lado Aliança e continua com o profile normal de 1 a 90.</value>
+  </data>
+  <data name="levelingpandahorde" xml:space="preserve">
+    <value>Levelar Pandaren char de 1 a 90 Horde</value>
+  </data>
+  <data name="levelingpandahordetxt" xml:space="preserve">
+    <value>Este profile vai levelar um char de classe Pandaren, seleciona o lado Horde e continua com o profile normal de 1 a 90.</value>
+  </data>
+  <data name="levelingquest" xml:space="preserve">
+    <value>Levelar com Quests</value>
+  </data>
+  <data name="linksrelated" xml:space="preserve">
+    <value>Links Relacionados com ajudas úteis / Dicas</value>
+  </data>
+  <data name="linksrelatedplugins" xml:space="preserve">
+    <value>Links Relacionados com Plugin/ Profiles</value>
+  </data>
+  <data name="main" xml:space="preserve">
+    <value>Principal</value>
+  </data>
+  <data name="mbs1300txt" xml:space="preserve">
+    <value>Este profile vai levelar as profissões de Mining e Blacksmithing desde qualquer level até 300. Funciona para ambos Alliance e Horde. O profile pode ser iniciado, em qualquer ponto do mapa, o bot vai sempre se deslocar para a main city (Stormwind ou Orgrimmar)</value>
+  </data>
+  <data name="mbs1600txt" xml:space="preserve">
+    <value>Este profile vai levelar as profissões de Mining e Blacksmithing desde qualquer level até 600. Funciona para ambos Alliance e Horde. O profile pode ser iniciado, em qualquer ponto do mapa, o bot vai sempre se deslocar para a main city (Stormwind ou Orgrimmar)</value>
+  </data>
+  <data name="miningbs1300" xml:space="preserve">
+    <value>Mining e Blacksmithing 1 a 300</value>
+  </data>
+  <data name="miningbs1600" xml:space="preserve">
+    <value>Mining e Blacksmithing 1 a 600</value>
+  </data>
+  <data name="newtxt" xml:space="preserve">
+    <value>Cavaplugin agora permite a escolha da linguagem, usuários 'Armageddoner' podem agora selecionar qual a linguagem que desejam usar no CavaPlugin.</value>
+  </data>
+  <data name="pbmbs" xml:space="preserve">
+    <value>Mining e Blacksmithing 1 a 600</value>
+  </data>
+  <data name="pbprofiles" xml:space="preserve">
+    <value>Donos de Profiles de Profissões</value>
+  </data>
+  <data name="pressdonation" xml:space="preserve">
+    <value>Clica no Botão 'Donation' e faz um donativo para apoiar a iniciativa Profiles do Cava.</value>
+  </data>
+  <data name="problemsconfiguring" xml:space="preserve">
+    <value>Problemas CONFIGURANDO Honorbuddy...</value>
+  </data>
+  <data name="problemsquesting" xml:space="preserve">
+    <value>Problemas com QUESTS / PROFILES...</value>
+  </data>
+  <data name="professions" xml:space="preserve">
+    <value>Profissões</value>
+  </data>
+  <data name="reportabug" xml:space="preserve">
+    <value>Reporta Um Erro Solicita Algo</value>
+  </data>
+  <data name="reputation" xml:space="preserve">
+    <value>Reputacao</value>
+  </data>
+  <data name="reservedfortesters" xml:space="preserve">
+    <value>Reservado a Testers /Donators</value>
+  </data>
+  <data name="ressafterdie" xml:space="preserve">
+    <value>Ress/Release Depois do Char Morrer</value>
+  </data>
+  <data name="secondstostart" xml:space="preserve">
+    <value>Segundos para inicio automatico:</value>
+  </data>
+  <data name="selectoneprofile" xml:space="preserve">
+    <value>Seleciona um profile desta lista e clica em Iniciar</value>
+  </data>
+  <data name="showursupport" xml:space="preserve">
+    <value>Demonstra O Teu Suporte</value>
+  </data>
+  <data name="specialthanks" xml:space="preserve">
+    <value>Agradecimentos Especiais</value>
+  </data>
+  <data name="start" xml:space="preserve">
+    <value>Iniciar</value>
+  </data>
+  <data name="summompets" xml:space="preserve">
+    <value>Activar Summon de Pets Aleatorios</value>
+  </data>
+  <data name="usefulllinks" xml:space="preserve">
+    <value>Links Úteis</value>
+  </data>
+</root>
