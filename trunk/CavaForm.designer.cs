@@ -408,6 +408,7 @@
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "Leveling 85 to 90 All Quests";
             this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
             // 
             // radioButton2
             // 
@@ -1137,7 +1138,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(6, 2);
+            this.label19.Location = new System.Drawing.Point(6, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(262, 17);
             this.label19.TabIndex = 0;
@@ -1215,7 +1216,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(6, 2);
+            this.label18.Location = new System.Drawing.Point(6, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(145, 17);
             this.label18.TabIndex = 0;

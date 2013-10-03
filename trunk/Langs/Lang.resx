@@ -117,58 +117,58 @@ to Portuguese
     <value>Last Used Profile:</value>
   </data>
   <data name="lastusedprofiletxtdef" xml:space="preserve">
-    <value>There is no previus selected profile</value>
+    <value>There is no previusly selected profile</value>
   </data>
   <data name="level85to90" xml:space="preserve">
-    <value>Leveling 85 to 90 All Quests</value>
+    <value>Level 85 to 90 All Quests</value>
   </data>
   <data name="level85to90txt" xml:space="preserve">
-    <value>This profile will level-up any char class from level 85 till 90. his profiles are not AFK and its a work in progresss so far: Alliance can use it from level 85 til 90. Horde can use it from level 85 till 88 This profile runs for all quests and all Map Achievments</value>
+    <value>This profile will level any Alliance character from 85 to 90 and Horde 85 to 88. This profile is not AFK friendly so please report any issues.</value>
   </data>
   <data name="leveling1to90" xml:space="preserve">
-    <value>Leveling 1 to 90</value>
+    <value>Level 1 to 90</value>
   </data>
   <data name="leveling1to90txt" xml:space="preserve">
-    <value>This profile will level-up any char from any level till level 90. This is a work in progresss so far: Alliance can use it from level 1 til 67 and from 85 to 90. Horde can use it from level 1 till 67 and from 85 to 88. Can start profile anywhere, after start profile bot will move your char to right map</value>
+    <value>This profile will level any character from any level to 90. This is a work in progress so far. Alliance works from 1 to 67 and 85 to 90. Horde works from 1 to 67 and 85 to 88.</value>
   </data>
   <data name="levelingarmagessoner" xml:space="preserve">
     <value>Alliance And Horde (67-74) (testers/donators only)</value>
   </data>
   <data name="levelingarmagessonertxt" xml:space="preserve">
-    <value>This profile will level-up any char from level 67 till level 74</value>
+    <value>This profile will level any character from 67 to 74</value>
   </data>
   <data name="levelinggrind" xml:space="preserve">
-    <value>Leveling Grind</value>
+    <value>Level Grinding</value>
   </data>
   <data name="levelingpandaally" xml:space="preserve">
-    <value>Leveling Pandaren 1 to 90 Alliance</value>
+    <value>Level Pandaren 1 to 90 Alliance</value>
   </data>
   <data name="levelingpandaallytxt" xml:space="preserve">
-    <value>This profile will level-up Pandaren class char from level 1 till 12. Select Alliance side and continue with 1 to 90 profile</value>
+    <value>This profile will level a Alliance Pandaren character from 1 to 12. Select the 1 to 90 Alliance profile to continue after level 12.</value>
   </data>
   <data name="levelingpandahorde" xml:space="preserve">
-    <value>Leveling Pandaren 1 to 90 Horde</value>
+    <value>Level Pandaren 1 to 90 Horde</value>
   </data>
   <data name="levelingpandahordetxt" xml:space="preserve">
-    <value>This profile will level-up Pandaren class char from level 1 till 12. Select Horde side and continue with 1 to 90 profile</value>
+    <value>This profile will level a Horde Pandaren character from 1 to 12. Select the 1 to 90 Horde profile to continue after level 12.</value>
   </data>
   <data name="levelingquest" xml:space="preserve">
-    <value>Leveling Quest</value>
+    <value>Leveling Quests</value>
   </data>
   <data name="linksrelated" xml:space="preserve">
-    <value>Links Related With Usefull Helps / Tips</value>
+    <value>Helpful Links</value>
   </data>
   <data name="linksrelatedplugins" xml:space="preserve">
-    <value>Links Related with Plugin/ Profiles</value>
+    <value>Related Links</value>
   </data>
   <data name="main" xml:space="preserve">
     <value>Main</value>
   </data>
   <data name="mbs1300txt" xml:space="preserve">
-    <value>This profile will level-up Mining and Blacksmithing Professions fron any level till level 300. Works for Alliance and Horde chars. Can start profile anywhere, after start profile bot will move your char to Main city (Stormwind or Orgrimmar)</value>
+    <value>This profile will level Mining and Blacksmithing from any level to 300. Works for both Alliance and Horde. Start profile anywhere, the Cava Plugin will move the character to the required locations.</value>
   </data>
   <data name="mbs1600txt" xml:space="preserve">
-    <value>This profile will level-up Mining and Blacksmithing Professions fron any level till level 600. Works for Alliance and Horde chars. Can start profile anywhere, after start profile bot will move your char to Main city (Stormwind or Orgrimmar)</value>
+    <value>This profile will level Mining and Blacksmithing from any level to 600. Works for both Alliance and Horde. Start profile anywhere, the Cava Plugin will move the character to the required locations.</value>
   </data>
   <data name="miningbs1300" xml:space="preserve">
     <value>Mining And Blacksmithing 1 to 300</value>
@@ -177,7 +177,7 @@ to Portuguese
     <value>Mining And Blacksmithing 1 to 600</value>
   </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Cavaplugin now have localization languages, armagedonner users can change Language when using CavaPlugin.</value>
+    <value>Refined the English Language and removed some typos.</value>
   </data>
   <data name="pbmbs" xml:space="preserve">
     <value>Mining And Blacksmithing 1 to 600</value>
@@ -186,34 +186,34 @@ to Portuguese
     <value>Profession Profiles Owners</value>
   </data>
   <data name="pressdonation" xml:space="preserve">
-    <value>Press Donation button and make a donation to support the Cava's Profiles Initiative.</value>
+    <value>Press Donate to help support the Cava Cause.</value>
   </data>
   <data name="problemsconfiguring" xml:space="preserve">
-    <value>Problems CONFIGURING Honorbuddy...</value>
+    <value>Problems Configuring Honorbuddy...</value>
   </data>
   <data name="problemsquesting" xml:space="preserve">
-    <value>Problems with QUESTING / PROFILES...</value>
+    <value>Problems with Questing / Profiles...</value>
   </data>
   <data name="professions" xml:space="preserve">
     <value>Professions</value>
   </data>
   <data name="reportabug" xml:space="preserve">
-    <value>Report A Bug Request Feature</value>
+    <value>Report A Bug / Request Feature</value>
   </data>
   <data name="reputation" xml:space="preserve">
     <value>Reputation</value>
   </data>
   <data name="reservedfortesters" xml:space="preserve">
-    <value>Reserved for Testers/Donators</value>
+    <value>Reserved for Testers / Donators</value>
   </data>
   <data name="ressafterdie" xml:space="preserve">
-    <value>Ress/Release After Die</value>
+    <value>Release After Death</value>
   </data>
   <data name="secondstostart" xml:space="preserve">
     <value>Seconds to auto start:</value>
   </data>
   <data name="selectoneprofile" xml:space="preserve">
-    <value>Select One Profile From This List Then Press Start</value>
+    <value>Select A Profile From The List and Press Start</value>
   </data>
   <data name="showursupport" xml:space="preserve">
     <value>Show Your Support</value>
@@ -229,5 +229,8 @@ to Portuguese
   </data>
   <data name="usefulllinks" xml:space="preserve">
     <value>Usefull Links</value>
+  </data>
+  <data name="usinghonorbuddy" xml:space="preserve">
+    <value>Using Honorbuddy ...</value>
   </data>
 </root>
