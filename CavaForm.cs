@@ -42,7 +42,7 @@ namespace CavaPlugin
         public string leveling1to90txt;
         public string levelingpandahordetxt;
         public string levelingpandaallytxt;
-        public string level85to90txt;
+        public string level85to90boxtxt;
         public string levelingarmagessonertxt;
         public string mbs1300;
         public string mbs1600;
@@ -95,7 +95,7 @@ namespace CavaPlugin
             leveling1to90txt = rm.GetString("leveling1to90txt", ci);
             levelingpandahordetxt = rm.GetString("levelingpandahordetxt", ci);
             levelingpandaallytxt = rm.GetString("levelingpandaallytxt", ci);
-            level85to90txt = rm.GetString("level85to90txt", ci);
+            level85to90boxtxt = rm.GetString("level85to90txt", ci);
             levelingarmagessonertxt = rm.GetString("levelingarmagessonertxt", ci);
             mbs1300 = rm.GetString("miningbs1300", ci);
             mbs1600 = rm.GetString("miningbs1600", ci);
@@ -120,6 +120,7 @@ namespace CavaPlugin
             groupBox3.Text = rm.GetString("showursupport", ci);
             richTextBox3.Text = rm.GetString("pressdonation", ci);
             label4.Text = rm.GetString("lastusedprofiletxtdef", ci);
+            label18.Text = rm.GetString("usinghonorbuddy", ci);
             if (lastUseProfile == 1) { label4.Text = rm.GetString("leveling1to90", ci); }
             if (lastUseProfile == 2) { label4.Text = rm.GetString("levelingpandahorde", ci); }
             if (lastUseProfile == 3) { label4.Text = rm.GetString("levelingpandaally", ci); }
@@ -267,7 +268,7 @@ namespace CavaPlugin
         {
             timer1.Enabled = false;
             lastUseProfile = 4; //Leveling 85 to 90 With Loot 
-            richTextBox2.Text = level85to90txt;
+            richTextBox2.Text = level85to90boxtxt;
         }
 
         private void radioButton5_CheckedChanged(object sender, EventArgs e)

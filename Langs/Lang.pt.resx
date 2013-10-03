@@ -220,7 +220,7 @@
     <value>Mining e Blacksmithing 1 a 600</value>
   </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Cavaplugin agora permite a escolha da linguagem, usuários 'Armageddoner' podem agora selecionar qual a linguagem que desejam usar no CavaPlugin.</value>
+    <value>Refinada a Linguagem Inglesa e removidos alguns erros de escrita.</value>
   </data>
   <data name="pbmbs" xml:space="preserve">
     <value>Mining e Blacksmithing 1 a 600</value>
@@ -272,5 +272,8 @@
   </data>
   <data name="usefulllinks" xml:space="preserve">
     <value>Links Úteis</value>
+  </data>
+  <data name="usinghonorbuddy" xml:space="preserve">
+    <value>Usando Honorbuddy ...</value>
   </data>
 </root>
