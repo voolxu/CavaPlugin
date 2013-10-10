@@ -219,9 +219,6 @@
   <data name="miningbs1600" xml:space="preserve">
     <value>Mining e Blacksmithing 1 a 600</value>
   </data>
-  <data name="newtxt" xml:space="preserve">
-    <value>Refinada a Linguagem Inglesa e removidos alguns erros de escrita.</value>
-  </data>
   <data name="pbmbs" xml:space="preserve">
     <value>Mining e Blacksmithing 1 a 600</value>
   </data>
@@ -268,12 +265,36 @@
     <value>Iniciar</value>
   </data>
   <data name="summompets" xml:space="preserve">
-    <value>Activar Summon de Pets Aleatorios</value>
+    <value>Ativar Summon de Pets Aleatorios</value>
   </data>
   <data name="usefulllinks" xml:space="preserve">
     <value>Links Úteis</value>
   </data>
-  <data name="usinghonorbuddy" xml:space="preserve">
-    <value>Usando Honorbuddy ...</value>
+  <data name="guildInvitescheckBox" xml:space="preserve">
+    <value>Aceitar invite de guild lvl 25</value>
+  </data>
+  <data name="refuseGuildCheckBox" xml:space="preserve">
+    <value>Recusar Invites Para Guilds</value>
+  </data>
+  <data name="refusePartyCheckBox" xml:space="preserve">
+    <value>Recusar Invites Para grupos</value>
+  </data>
+  <data name="refuseTradesCheckBox" xml:space="preserve">
+    <value>Recusar Invites de Trades</value>
+  </data>
+  <data name="refuseDuelCheckBox" xml:space="preserve">
+    <value>Recusar Invites de Duelos</value>
+  </data>
+  <data name="newtxt" xml:space="preserve">
+    <value>Refinada a Linguagem Inglesa e removidos alguns erros de escrita.</value>
+  </data>
+  <data name="newtxt" xml:space="preserve">
+    <value>Refinada a Linguagem Inglesa e removidos alguns erros de escrita. Adicionada a linguagem alemã. Adicionado sistema de recusa de invites. Adicionado sistema de aceitar guild invites se a guild for de level 25</value>
+  </data>
+  <data name="globalsettings" xml:space="preserve">
+    <value>Defenições Globais</value>
+  </data>
+  <data name="charsettings" xml:space="preserve">
+    <value>Defenições do Boneco</value>
   </data>
 </root>

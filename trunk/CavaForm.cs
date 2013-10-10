@@ -32,7 +32,7 @@ namespace CavaPlugin
         public bool ArmaguedonerAllow = false;
         public int seconds = 15; // Segundos do countdown.
         public int numberBotBase;
-        public string pathToCharSettings = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Settings\Char" + StyxWoW.Me.Name + ".xml");
+        public string pathToCharSettings = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Settings\" + Lua.GetReturnVal<string>("return GetRealmName()", 0) + @"\" + StyxWoW.Me.Name + ".xml");
         public string pathToSettings = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Settings\Main-Settings.xml");
         public string pathToProfiles = Path.Combine(Utilities.AssemblyDirectory + @"\Default Profiles\Cava\Scripts\");
         public string profileToLoad = "";
@@ -121,6 +121,14 @@ namespace CavaPlugin
             richTextBox3.Text = rm.GetString("pressdonation", ci);
             label4.Text = rm.GetString("lastusedprofiletxtdef", ci);
             label18.Text = rm.GetString("usinghonorbuddy", ci);
+            guildInvitescheckBox.Text = rm.GetString("guildInvitescheckBox", ci);
+            refuseGuildCheckBox.Text = rm.GetString("refuseGuildCheckBox", ci);
+            refusePartyCheckBox.Text = rm.GetString("refusePartyCheckBox", ci);
+            refuseTradesCheckBox.Text = rm.GetString("refuseTradesCheckBox", ci);
+            refuseDuelCheckBox.Text = rm.GetString("refuseDuelCheckBox", ci);
+            globalsetgroupBox.Text = rm.GetString("globalsettings", ci);
+            charsetgroupBox.Text = rm.GetString("charsettings", ci);
+
             if (lastUseProfile == 1) { label4.Text = rm.GetString("leveling1to90", ci); }
             if (lastUseProfile == 2) { label4.Text = rm.GetString("levelingpandahorde", ci); }
             if (lastUseProfile == 3) { label4.Text = rm.GetString("levelingpandaally", ci); }
@@ -173,9 +181,10 @@ namespace CavaPlugin
             CPsettings.Instance.Load();
             CPGlobalSettings.Instance.Load();
             lastUseProfile = CPsettings.Instance.lastUsedPath;
-            AntiStuck_CheckBox.Checked = CPGlobalSettings.Instance.AntiStuckSystem;
+            guildInvitescheckBox.Checked = CPsettings.Instance.guildInvitescheck;
+            AntiStuck_CheckBox.Checked = CPsettings.Instance.AntiStuckSystem;
             AutoShutDown_Checkbox.Checked = CPGlobalSettings.Instance.AutoShutdownWhenUpdate;
-            AllowSummonPet_Checkbox.Checked = CPGlobalSettings.Instance.CheckAllowSummonPet;
+            AllowSummonPet_Checkbox.Checked = CPsettings.Instance.CheckAllowSummonPet;
             if (!File.Exists(pathToProfiles + "PB\\MB\\Scripts\\[PB]MB600(Cava).txt"))
             {
                 CPGlobalSettings.Instance.BotPBMiningBlacksmithing = false;
@@ -186,6 +195,10 @@ namespace CavaPlugin
             linkLabel29.Enabled = CPGlobalSettings.Instance.PBMiningBlacksmithing;
             AllowDownloadCheckBox.Checked = CPGlobalSettings.Instance.AllowUpdate;
             ResscheckBox.Checked = CPGlobalSettings.Instance.RessAfterDie;
+            refuseGuildCheckBox.Checked = CPsettings.Instance.refuseguildInvitescheck;
+            refusePartyCheckBox.Checked = CPsettings.Instance.refusepartyInvitescheck;
+            refuseTradesCheckBox.Checked = CPsettings.Instance.refusetradeInvitescheck;
+            refuseDuelCheckBox.Checked = CPsettings.Instance.refuseduelInvitescheck;
             if (!CPGlobalSettings.Instance.AllowUpdate)
             {
                 AntiStuck_CheckBox.Checked = false;
@@ -197,8 +210,16 @@ namespace CavaPlugin
                 radioButton5.Enabled = false;
                 groupBox6.Enabled = false;
                 linkLabel4.Enabled = false;
-
-                
+                guildInvitescheckBox.Checked = false;
+                guildInvitescheckBox.Enabled = false;
+                refuseGuildCheckBox.Checked = false;
+                refuseGuildCheckBox.Enabled = false;
+                refusePartyCheckBox.Checked = false;
+                refusePartyCheckBox.Enabled = false;
+                refuseTradesCheckBox.Checked = false;
+                refuseTradesCheckBox.Enabled = false;
+                refuseDuelCheckBox.Checked = false;
+                refuseDuelCheckBox.Enabled = false;
                 comboBox1.Enabled = false;
                 CPGlobalSettings.Instance.language = 0;
                 CPGlobalSettings.Instance.BotAllowUpdate = false;
@@ -217,6 +238,15 @@ namespace CavaPlugin
             }
             if (comboBox1.SelectedIndex == 1)
             {
+                CultureInfo ci = new CultureInfo("de");
+                string str = Assembly.GetExecutingAssembly().FullName;
+                str = str.Remove(str.IndexOf(','));
+                Assembly _assembly = Assembly.Load(str);
+                ResourceManager rm = new ResourceManager("Lang.de", _assembly);
+                getRes(ci, rm);
+            }
+            if (comboBox1.SelectedIndex == 2)
+            {
                 CultureInfo ci = new CultureInfo("pt-PT");
                 string str = Assembly.GetExecutingAssembly().FullName;
                 str = str.Remove(str.IndexOf(','));
@@ -224,7 +254,6 @@ namespace CavaPlugin
                 ResourceManager rm = new ResourceManager("Lang.pt", _assembly);
                 getRes(ci, rm);
             }
-            
             if (lastUseProfile > 0)
             {
                 button1.Visible = true;
@@ -545,7 +574,7 @@ namespace CavaPlugin
 
         private void AntiStuck_CheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            CPGlobalSettings.Instance.AntiStuckSystem = AntiStuck_CheckBox.Checked;
+            CPsettings.Instance.AntiStuckSystem = AntiStuck_CheckBox.Checked;
         }
 
         private void AutoShutDown_Checkbox_CheckedChanged(object sender, EventArgs e)
@@ -565,7 +594,7 @@ namespace CavaPlugin
 
         private void CheckAllowSummonPet_CheckedChanged(object sender, EventArgs e)
         {
-            CPGlobalSettings.Instance.CheckAllowSummonPet = AllowSummonPet_Checkbox.Checked;
+            CPsettings.Instance.CheckAllowSummonPet = AllowSummonPet_Checkbox.Checked;
         }
 
         private void MiningBS_Checkbox_CheckedChanged(object sender, EventArgs e)
@@ -693,6 +722,19 @@ namespace CavaPlugin
                         radioButton5.Enabled = false;
                         groupBox6.Enabled = false;
                         linkLabel4.Enabled = false;
+                        guildInvitescheckBox.Enabled = false;
+                        refuseGuildCheckBox.Enabled = false;
+                        refusePartyCheckBox.Enabled = false;
+                        refuseTradesCheckBox.Enabled = false;
+                        refuseDuelCheckBox.Enabled = false;
+                        guildInvitescheckBox.Checked = false;
+                        refuseGuildCheckBox.Checked = false;
+                        refusePartyCheckBox.Checked = false;
+                        refuseTradesCheckBox.Checked = false;
+                        refuseDuelCheckBox.Checked = false;
+                        comboBox1.Enabled = false;
+                        comboBox1.SelectedIndex = 0;
+                        CPGlobalSettings.Instance.language = 0;
                         CPGlobalSettings.Instance.BotAllowUpdate = false;
                         CPGlobalSettings.Instance.AllowUpdate = false;
                     }
@@ -705,6 +747,12 @@ namespace CavaPlugin
                         radioButton5.Enabled = true;
                         groupBox6.Enabled = true;
                         linkLabel4.Enabled = true;
+                        guildInvitescheckBox.Enabled = true;
+                        refuseGuildCheckBox.Enabled = true;
+                        refusePartyCheckBox.Enabled = true;
+                        refuseTradesCheckBox.Enabled = true;
+                        refuseDuelCheckBox.Enabled = true;
+                        comboBox1.Enabled = true;
                         CPGlobalSettings.Instance.BotAllowUpdate = true;
                         CPGlobalSettings.Instance.AllowUpdate = true;
                     }
@@ -722,6 +770,19 @@ namespace CavaPlugin
                 radioButton5.Enabled = false;
                 groupBox6.Enabled = false;
                 linkLabel4.Enabled = false;
+                guildInvitescheckBox.Enabled = false;
+                refuseGuildCheckBox.Enabled = false;
+                refusePartyCheckBox.Enabled = false;
+                refuseTradesCheckBox.Enabled = false;
+                refuseDuelCheckBox.Enabled = false;
+                guildInvitescheckBox.Checked = false;
+                refuseGuildCheckBox.Checked = false;
+                refusePartyCheckBox.Checked = false;
+                refuseTradesCheckBox.Checked = false;
+                refuseDuelCheckBox.Checked = false;
+                comboBox1.Enabled = false;
+                comboBox1.SelectedIndex = 0;
+                CPGlobalSettings.Instance.language = 0;
                 CPGlobalSettings.Instance.BotAllowUpdate = false;
                 CPGlobalSettings.Instance.AllowUpdate = false;
             }
@@ -747,19 +808,19 @@ namespace CavaPlugin
                 thanksRichText.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\Thanks_en.rtf");
                 getRes(ci,rm);
             }
-            //if (comboBox1.SelectedIndex == 1)
-            //{
-            //    CultureInfo ci = new CultureInfo("de");
-            //    CPGlobalSettings.Instance.language = 1;
-            //    string str = Assembly.GetExecutingAssembly().FullName;
-            //    str = str.Remove(str.IndexOf(','));
-            //    Assembly _assembly = Assembly.Load(str);
-            //    ResourceManager rm = new ResourceManager("Lang.de", _assembly);
-            //    richTextBox1.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\GoodToKnow_de.rtf");
-            //    thanksRichText.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\Thanks_de.rtf");
-            //    getRes(ci, rm);
-            //}
             if (comboBox1.SelectedIndex == 1)
+            {
+                CultureInfo ci = new CultureInfo("de");
+                CPGlobalSettings.Instance.language = 1;
+                string str = Assembly.GetExecutingAssembly().FullName;
+                str = str.Remove(str.IndexOf(','));
+                Assembly _assembly = Assembly.Load(str);
+                ResourceManager rm = new ResourceManager("Lang.de", _assembly);
+                richTextBox1.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\GoodToKnow_de.rtf");
+                thanksRichText.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\Thanks_de.rtf");
+                getRes(ci, rm);
+            }
+            if (comboBox1.SelectedIndex == 2)
             {
                 CultureInfo ci = new CultureInfo("pt-PT");
                 CPGlobalSettings.Instance.language = 2;
@@ -773,24 +834,66 @@ namespace CavaPlugin
             }
         }
 
+        private void guildInvitescheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            refuseGuildCheckBox.Checked = false;
+            CPsettings.Instance.refuseguildInvitescheck = refuseGuildCheckBox.Checked;
+            CPsettings.Instance.guildInvitescheck = guildInvitescheckBox.Checked;
+        }
+
+        private void refuseGuildCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            guildInvitescheckBox.Checked = false;
+            CPsettings.Instance.guildInvitescheck = guildInvitescheckBox.Checked;
+            CPsettings.Instance.refuseguildInvitescheck = refuseGuildCheckBox.Checked;
+        }
+
+        private void refusePartyCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            CPsettings.Instance.refusepartyInvitescheck = refusePartyCheckBox.Checked;
+        }
+
+        private void refuseTradesCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            CPsettings.Instance.refusetradeInvitescheck = refuseTradesCheckBox.Checked;
+        }
+
+        private void refuseDuelCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            CPsettings.Instance.refuseduelInvitescheck = refuseDuelCheckBox.Checked;
+        }
   
     }
     public class CPsettings : Settings
     {
         public static readonly CPsettings Instance = new CPsettings();
         public CPsettings()
-            : base(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Format(@"Plugins\CavaPlugin\Settings\Char-Settings-{0}.xml", StyxWoW.Me.Name)))
+            : base(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Format(@"Settings\CavaPlugin\{0}\{1}.xml",Lua.GetReturnVal<string>("return GetRealmName()", 0), StyxWoW.Me.Name)))
         {
         }
         [Setting, DefaultValue(0)]
         public int lastUsedPath { get; set; }
+        [Setting, DefaultValue(false)]
+        public bool AntiStuckSystem { get; set; }
+        [Setting, DefaultValue(false)]
+        public bool CheckAllowSummonPet { get; set; }
+        [Setting, DefaultValue(false)]
+        public bool guildInvitescheck { get; set; }
+        [Setting, DefaultValue(false)]
+        public bool refuseguildInvitescheck { get; set; }
+        [Setting, DefaultValue(false)]
+        public bool refusepartyInvitescheck { get; set; }
+        [Setting, DefaultValue(false)]
+        public bool refusetradeInvitescheck { get; set; }
+        [Setting, DefaultValue(false)]
+        public bool refuseduelInvitescheck { get; set; }
     }
 
     public class CPGlobalSettings : Settings 
     {
         public static readonly CPGlobalSettings Instance = new CPGlobalSettings();
         public CPGlobalSettings()
-            : base(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Format(@"Plugins\CavaPlugin\Settings\Main-Settings.xml")))
+            : base(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Format(@"Settings\CavaPlugin\Main-Settings.xml")))
         {
         }
         [Setting, DefaultValue(false)]
@@ -802,11 +905,7 @@ namespace CavaPlugin
         [Setting, DefaultValue(0)]
         public int BaseProfileToLunch { get; set; }
         [Setting, DefaultValue(false)]
-        public bool AntiStuckSystem { get; set; }
-        [Setting, DefaultValue(false)]
         public bool AutoShutdownWhenUpdate { get; set; }
-        [Setting, DefaultValue(false)]
-        public bool CheckAllowSummonPet { get; set; }
         [Setting, DefaultValue(false)]
         public bool PBMiningBlacksmithing { get; set; }
         [Setting, DefaultValue(false)]
@@ -815,6 +914,5 @@ namespace CavaPlugin
         public bool RessAfterDie { get; set; }
         [Setting, DefaultValue(0)]
         public int language { get; set; }
-
     }
 }

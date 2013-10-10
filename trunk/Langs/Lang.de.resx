@@ -5,7 +5,12 @@ example how to change language (only edit the value)
 
 change from English
   <data name="do_not_change_data_name_they_are_ids" xml:space="preserve">
-    <value>Anti-Stuck System(Need Relogger)</value>
+    <value>Anti-Stuck System(Benötigt einen Relogger (ARelog/HBRelog))</value>
+  </data>
+
+change from English
+  <data name="do_not_change_data_name_they_are_ids" xml:space="preserve">
+    <value>Anti-Stuck System(needs a Relogger)</value>
   </data>
 
 to Portuguese
@@ -78,178 +83,175 @@ to Portuguese
     <value>About</value>
   </data>
   <data name="antistuck" xml:space="preserve">
-    <value>Anti-Stuck System(Need Relogger)</value>
+    <value>Anti-Stuck System(benötigt Relogger)</value>
   </data>
   <data name="armageddoner" xml:space="preserve">
     <value>Armageddoner</value>
   </data>
   <data name="autodownload" xml:space="preserve">
-    <value>Auto Download Private Profiles</value>
+    <value>Auto. Herunterladen von Privat-Profilen</value>
   </data>
   <data name="autoshutdown" xml:space="preserve">
-    <value>Auto Shutdown After Update</value>
+    <value>Auto. beenden nach dem Update</value>
   </data>
   <data name="cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Abbrechen</value>
   </data>
   <data name="cavaprofessions" xml:space="preserve">
-    <value>Cava Profession Profiles</value>
+    <value>Cava Beruf Profile</value>
   </data>
   <data name="cavaweb" xml:space="preserve">
     <value>Cava Web</value>
   </data>
   <data name="close" xml:space="preserve">
-    <value>Close</value>
+    <value>Schliessen</value>
   </data>
   <data name="dailies" xml:space="preserve">
-    <value>Dailies</value>
+    <value>Tägliche Quests</value>
   </data>
   <data name="farming" xml:space="preserve">
-    <value>Farming</value>
+    <value>Farmen</value>
   </data>
   <data name="goodtoknow" xml:space="preserve">
-    <value>Good To Know</value>
+    <value>Wissenswertes</value>
   </data>
   <data name="language" xml:space="preserve">
-    <value>Language</value>
+    <value>Sprache</value>
   </data>
   <data name="lastusedprofile" xml:space="preserve">
-    <value>Last Used Profile:</value>
+    <value>Letztes benutztes Profil:</value>
   </data>
   <data name="lastusedprofiletxtdef" xml:space="preserve">
-    <value>There is no previusly selected profile</value>
+    <value>Kein zuletzt benutztes Profil verfügbar</value>
   </data>
   <data name="level85to90" xml:space="preserve">
-    <value>Level 85 to 90 All Quests</value>
+    <value>Level 85 bis 90 alle Quests</value>
   </data>
   <data name="level85to90txt" xml:space="preserve">
-    <value>This profile will level any Alliance character from 85 to 90 and Horde 85 to 88. This profile is not AFK friendly so please report any issues.</value>
+    <value>Profil für Allianz von 85 bis 90 und Horde 95 bis 88. Dieses Profil sollte nicht ohne Aufsicht laufen gelassen werden. Bitte mir alle Fehler melden.</value>
   </data>
   <data name="leveling1to90" xml:space="preserve">
-    <value>Level 1 to 90</value>
+    <value>Level 1 bis 90</value>
   </data>
   <data name="leveling1to90txt" xml:space="preserve">
-    <value>This profile will level any character from any level to 90. This is a work in progress so far. Alliance works from 1 to 67 and 85 to 90. Horde works from 1 to 67 and 85 to 88.</value>
+    <value>Diese Profil ist für alle Charakter egal von welchem Level bis 90. Dieses Profil ist weiterhin in Arbeit. Allianz ist von 1 bis 67 und 85 bis 90. Horde ist von 1 bis 67 und 85 bis 88.</value>
   </data>
   <data name="levelingarmagessoner" xml:space="preserve">
-    <value>Alliance And Horde (67-74) (testers/donators only)</value>
+    <value>Allianz und Horde (67-74) (Nur für Tester/Käufer)</value>
   </data>
   <data name="levelingarmagessonertxt" xml:space="preserve">
-    <value>This profile will level any character from 67 to 74</value>
+    <value>Dieses Profil ist für alle Charakter von 67 bis 74</value>
   </data>
   <data name="levelinggrind" xml:space="preserve">
     <value>Level Grinding</value>
   </data>
   <data name="levelingpandaally" xml:space="preserve">
-    <value>Level Pandaren 1 to 90 Alliance</value>
+    <value>Level Pandaren 1 bis 90 Allianz</value>
   </data>
   <data name="levelingpandaallytxt" xml:space="preserve">
-    <value>This profile will level a Alliance Pandaren character from 1 to 12. Select the 1 to 90 Alliance profile to continue after level 12.</value>
+    <value>Diese Profil levelt einen Allianz Pandaran Charakter von 1 bis 12. Wähle das Profil 1 bis 90 aus um nach Level 12 weiter zu machen.</value>
   </data>
   <data name="levelingpandahorde" xml:space="preserve">
-    <value>Level Pandaren 1 to 90 Horde</value>
+    <value>Level Pandaren 1 bis 90 Horde</value>
   </data>
   <data name="levelingpandahordetxt" xml:space="preserve">
-    <value>This profile will level a Horde Pandaren character from 1 to 12. Select the 1 to 90 Horde profile to continue after level 12.</value>
+    <value>Diese Profil levelt einen Horde Pandaran Charakter von 1 bis 12. Wähle das Profil 1 bis 90 aus um nach Level 12 weiter zu machen.</value>
   </data>
   <data name="levelingquest" xml:space="preserve">
-    <value>Leveling Quests</value>
+    <value>Level Quests</value>
   </data>
   <data name="linksrelated" xml:space="preserve">
-    <value>Helpful Links</value>
+    <value>Hilfreiche Links</value>
   </data>
   <data name="linksrelatedplugins" xml:space="preserve">
-    <value>Related Links</value>
+    <value>Wichtige Links</value>
   </data>
   <data name="main" xml:space="preserve">
-    <value>Main</value>
+    <value>Hauptmenü</value>
   </data>
   <data name="mbs1300txt" xml:space="preserve">
-    <value>This profile will level Mining and Blacksmithing from any level to 300. Works for both Alliance and Horde. Start profile anywhere, the Cava Plugin will move the character to the required locations.</value>
+    <value>Dieses Profil levelt den Beruf Bergbau und Schmiedekunst bis 300. Funktioniert für beide Fraktionen, Allianz und Horde. Starte das Profil irgendwo in der Welt, dass Cava Plugin wird der Charakter zum benötigten Platz führen</value>
   </data>
   <data name="mbs1600txt" xml:space="preserve">
-    <value>This profile will level Mining and Blacksmithing from any level to 600. Works for both Alliance and Horde. Start profile anywhere, the Cava Plugin will move the character to the required locations.</value>
+    <value>Dieses Profil levelt den Beruf Bergbau und Schmiedekunst bis 600. Funktioniert für beide Fraktionen, Allianz und Horde. Starte das Profil irgendwo in der Welt, dass Cava Plugin wird der Charakter zum benötigten Platz führen</value>
   </data>
   <data name="miningbs1300" xml:space="preserve">
-    <value>Mining And Blacksmithing 1 to 300</value>
+    <value>Bergbau und Schmiedekunst 1 bis 300</value>
   </data>
   <data name="miningbs1600" xml:space="preserve">
-    <value>Mining And Blacksmithing 1 to 600</value>
+    <value>Bergbau und Schmiedekunst 1 bis 600</value>
+  </data>
+  <data name="newtxt" xml:space="preserve">
+    <value>Fehler bei der Übersetzung? Dann schreibt mir.</value>
   </data>
   <data name="pbmbs" xml:space="preserve">
-    <value>Mining And Blacksmithing 1 to 600</value>
+    <value>Bergbau und Schmiedekunst 1 bis 600</value>
   </data>
   <data name="pbprofiles" xml:space="preserve">
-    <value>Profession Profiles Owners</value>
+    <value>Berufs Profile (Käufer)</value>
   </data>
   <data name="pressdonation" xml:space="preserve">
-    <value>Press Donate to help support the Cava Cause.</value>
+    <value>Drücke Donate um mir zu Helfen das Profile weiter zu verbessern.</value>
   </data>
   <data name="problemsconfiguring" xml:space="preserve">
-    <value>Problems Configuring Honorbuddy...</value>
+    <value>Probleme und Konfigurieren von Honorbuddy...</value>
   </data>
   <data name="problemsquesting" xml:space="preserve">
-    <value>Problems with Questing / Profiles...</value>
+    <value>Probleme mit Questing / Profilen...</value>
   </data>
   <data name="professions" xml:space="preserve">
-    <value>Professions</value>
+    <value>Berufe</value>
   </data>
   <data name="reportabug" xml:space="preserve">
-    <value>Report A Bug / Request Feature</value>
+    <value>Melde einen Fehler / Verbesserungs wünsche</value>
   </data>
   <data name="reputation" xml:space="preserve">
-    <value>Reputation</value>
+    <value>Ruf</value>
   </data>
   <data name="reservedfortesters" xml:space="preserve">
-    <value>Reserved for Testers / Donators</value>
+    <value>Reserviert für Tester / Käufer</value>
   </data>
   <data name="ressafterdie" xml:space="preserve">
-    <value>Release After Death</value>
+    <value>Automatisches Geist freilassen</value>
   </data>
   <data name="secondstostart" xml:space="preserve">
-    <value>Seconds to auto start:</value>
+    <value>Sekunden bis zum Autostart:</value>
   </data>
   <data name="selectoneprofile" xml:space="preserve">
-    <value>Select A Profile From The List and Press Start</value>
+    <value>Wähle ein Profil von der Liste und drücke Start</value>
   </data>
   <data name="showursupport" xml:space="preserve">
-    <value>Show Your Support</value>
+    <value>Support</value>
   </data>
   <data name="specialthanks" xml:space="preserve">
-    <value>Special Thanks</value>
+    <value>Danksagungen</value>
   </data>
   <data name="start" xml:space="preserve">
     <value>Start</value>
   </data>
   <data name="summompets" xml:space="preserve">
-    <value>Enable Summon Random Pets</value>
+    <value>Beschwören von Haustieren im Spiel</value>
   </data>
   <data name="usefulllinks" xml:space="preserve">
-    <value>Usefull Links</value>
+    <value>Nützliche Links</value>
   </data>
   <data name="usinghonorbuddy" xml:space="preserve">
-    <value>Using Honorbuddy ...</value>
+    <value>Umgang mit Honorbuddy ...</value>
   </data>
   <data name="guildInvitescheckBox" xml:space="preserve">
-    <value>Accept Lvl 25 Guild Invites</value>
+    <value>Akzeptiere Lvl.25 Gilden einladungen</value>
   </data>
   <data name="refuseGuildCheckBox" xml:space="preserve">
-    <value>Refuse Guild Invites</value>
+    <value>Verweigere Guilden anfragen</value>
   </data>
   <data name="refusePartyCheckBox" xml:space="preserve">
-    <value>Refuse Party Invites</value>
+    <value>Verweigere Gruppen anfragen</value>
   </data>
   <data name="refuseTradesCheckBox" xml:space="preserve">
-    <value>Refuse Trade Invites</value>
+    <value>Verweigere Handels anfragen</value>
   </data>
   <data name="refuseDuelCheckBox" xml:space="preserve">
-    <value>Refuse Duel Invites</value>
-  </data>
-  <data name="newtxt" xml:space="preserve">
-    <value>Refined the English Language and removed some typos. Added German language. Added auto-refuse invites. Added auto-accept guild invites if guild is level 25</value>
-  </data>
-  <data name="newtxt" xml:space="preserve">
-    <value>Refined the English Language and removed some typos. Added German language. Added auto-refuse invites. Added auto-accept guild invites if guild is level 25</value>
+    <value>Verweigere Duell/PVP anfragen</value>
   </data>
   <data name="globalsettings" xml:space="preserve">
     <value>Global Settings</value>
