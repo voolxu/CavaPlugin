@@ -36,16 +36,25 @@ namespace CavaPlugin
         public bool hasBeenInitialized3 = false;
         public bool cavaupdated = false;
         public bool BotRunning = true;
-        private WoWPoint UltimoLocal;
+        public bool gotGuildInvite = false;
+        public bool gotPartyInvite = false;
+        public bool gotTradeinvite = false;
+        public bool gotDuelinvite = false;
+        private int NVezesBotUnstuck;
+        private static Thread Recomecar;
         private Stopwatch UltimoSemStuck;
         private Stopwatch summonpettime;
-        private static Thread Recomecar;
-        private int NVezesBotUnstuck;
         private Stopwatch MountedTime;
-        
+        private Stopwatch refuseguildtimer = new Stopwatch();
+        private Stopwatch refusepartytimer = new Stopwatch();
+        private Stopwatch refusetradetimer = new Stopwatch();
+        private Stopwatch refusedueltimer = new Stopwatch();
+        public int refusetime = 0;
+        private WoWPoint UltimoLocal;
+        private bool onbotstart = true;
         #region Overrides except pulse
         public override string Author { get { return "Cava"; } }
-        public override Version Version { get { return new Version(4, 0, 5); } }
+        public override Version Version { get { return new Version(4, 0, 6); } }
         public override string Name { get { return "CavaPlugin"; } }
         public override bool WantButton { get { return true; } }
         public override string ButtonText { get { return "Cava Profiles"; } }
@@ -67,8 +76,6 @@ namespace CavaPlugin
         private Cava_Profile_Updater UpdaterProfile;
         public string pathToCavaArmageddoner = Path.Combine(Utilities.AssemblyDirectory + @"\Default Profiles\Cava\Scripts\Armageddoner\");
         public string pathToPBMiningBS = Path.Combine(Utilities.AssemblyDirectory + @"\Default Profiles\Cava\Scripts\PB\MB\");
-        public bool ASSystem = CPGlobalSettings.Instance.AntiStuckSystem;
-        public bool CallRandomPets = CPGlobalSettings.Instance.CheckAllowSummonPet;
 
         static void UpdaterArmageddoner(string f)
         {
@@ -100,6 +107,12 @@ namespace CavaPlugin
             Styx.CommonBot.BotEvents.OnBotStart += _OnBotStart;
             if (!hasBeenInitialized)
             {
+                if (!File.Exists(Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Cava_Plugin_V3_Updater.ver")) ||
+                    !File.Exists(Path.Combine(Utilities.AssemblyDirectory + @"\Quest Behaviors\Cava\CavaLoader.cs")))
+                {
+                    MessageBox.Show("Cava plugin is not instaled properly, please download and install CavaPlugin from zip file", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 Logging.Write(Colors.Teal, "Please Wait While [Cava Plugin] Check For Updates, This Can Take Several Minutes");
                 System.Threading.Thread.Sleep(2000); 
                 hasBeenInitialized = true;
@@ -167,7 +180,6 @@ namespace CavaPlugin
                         if (UpdaterProfile.Update())
                         {
                             Logging.Write("[Cava Profile Updater] is now up to date!");
-                            cavaupdated = true;
                         }
                         else
                         {
@@ -184,15 +196,13 @@ namespace CavaPlugin
                     Logging.Write(Colors.Teal,"Unable to run [Cava Profile Updater] update process");
                     Logging.Write(LogLevel.Diagnostic, "[Cava Profile Updater]: Exception " + ex.Message);
                 }
-             
+                CPGlobalSettings.Instance.Load();
                 if (cavaupdated && CPGlobalSettings.Instance.AutoShutdownWhenUpdate)
                 {
                     Logging.Write("[Cava Plugin] Auto-Shutdown in progress at " + DateTime.Now.ToString());
                     System.Threading.Thread.Sleep(5000);
                     Environment.Exit(0); 
                 }
-
-                CPGlobalSettings.Instance.Load();
                 if (CPGlobalSettings.Instance.BotAllowUpdate && CPGlobalSettings.Instance.AllowUpdate)
                 {
                     UpdaterArmageddoner("/command:\"update\" /path:\"" + pathToCavaArmageddoner + "\" /closeonend:1");
@@ -224,44 +234,183 @@ namespace CavaPlugin
         {
             Styx.CommonBot.BotEvents.OnBotStart -= _OnBotStart;
             Logging.Write(Colors.Teal, "CavaPlugin Disposed");
+            if (BotRunning)
+            {
+                if (CPsettings.Instance.guildInvitescheck || CPsettings.Instance.refuseguildInvitescheck)
+                {
+                    Lua.Events.DetachEvent("GUILD_INVITE_REQUEST", RotinaGuildInvites);
+                }
+                if (CPsettings.Instance.refusepartyInvitescheck)
+                {
+                    Lua.Events.DetachEvent("PARTY_INVITE_REQUEST", RotinaPartyInvites);  
+                }
+                if (CPsettings.Instance.refusetradeInvitescheck)
+                {
+                    Lua.Events.DetachEvent("TRADE_SHOW", RotinaTradeInvites);
+                }
+                if (CPsettings.Instance.refuseduelInvitescheck)
+                {
+                    Lua.Events.DetachEvent("DUEL_REQUESTED", RotinaDuelInvites);
+                }
+            }
         }
 
         private void _OnBotStart(EventArgs args)
         {
-            if (ProfileManager.CurrentProfile.Name.Contains("[Cava]") && !BotRunning)
+            if (onbotstart)
             {
-                BotRunning = true;
-                Logging.Write(@"[CavaPlugin] Is now ENABLED");
+                CPsettings.Instance.Load();
+                if (ProfileManager.CurrentProfile.Name.Contains("[Cava]") && !BotRunning)
+                {
+                    BotRunning = true;
+                    Logging.Write(@"[CavaPlugin] Is now ENABLED");
 
+                }
+                if (!ProfileManager.CurrentProfile.Name.Contains("[Cava]") && BotRunning)
+                {
+                    BotRunning = false;
+                    Logging.Write(@"[CavaPlugin] Is now DISABLED");
+                }
+                if (BotRunning)
+                {
+                    if (CPsettings.Instance.AntiStuckSystem)
+                    {
+                        Logging.Write(Colors.Teal, "[CavaPlugin - System Anti-Stuck Started]");
+                    }
+                    UltimoLocal = StyxWoW.Me.Location;
+                    if (NVezesBotUnstuck == 0)
+                    {
+                        UltimoSemStuck.Restart();
+                    }
+                    if (Me.Mounted)
+                    {
+                        MountedTime.Restart();
+                    }
+                    Recomecar = new Thread(new ThreadStart(_Recomecar));
+                    if (CPsettings.Instance.CheckAllowSummonPet)
+                    {
+                        Logging.Write(Colors.Teal, "[CavaPlugin - Summon Random Pet Enabled]");
+                        Lua.DoString("RunMacroText('/randompet')");
+                        summonpettime.Restart();
+                    }
+                    else
+                    {
+                        Logging.Write(Colors.Teal, "[CavaPlugin - Summon Random Pet Disabled]");
+                    }
+
+                    if (CPsettings.Instance.guildInvitescheck || CPsettings.Instance.refuseguildInvitescheck)
+                    {
+                        if (CPsettings.Instance.guildInvitescheck)
+                        {
+                            Logging.Write(Colors.Teal, "[CavaPlugin - Accept lvl 25 guild invite Enabled]");
+                        }
+                        if (CPsettings.Instance.refuseguildInvitescheck)
+                        {
+                            Logging.Write(Colors.Teal, "[CavaPlugin - Refuse guild invites Enabled]");
+                        }
+                        Lua.Events.AttachEvent("GUILD_INVITE_REQUEST", RotinaGuildInvites);
+                    }
+                    if (!CPsettings.Instance.guildInvitescheck || !CPsettings.Instance.refuseguildInvitescheck)
+                    {
+                        if (!CPsettings.Instance.guildInvitescheck)
+                        {
+                            Logging.Write(Colors.Teal, "[CavaPlugin - Accept lvl 25 guild invite Disabled]");
+                        }
+                        if (!CPsettings.Instance.refuseguildInvitescheck)
+                        {
+                            Logging.Write(Colors.Teal, "[CavaPlugin - Refuse guild invites Disabled]");
+                        }
+
+                    }
+
+                    if (CPsettings.Instance.refusepartyInvitescheck)
+                    {
+                        Logging.Write(Colors.Teal, "[CavaPlugin - Refuse party invites Enabled]");
+                        Lua.Events.AttachEvent("PARTY_INVITE_REQUEST", RotinaPartyInvites);
+                    }
+                    else
+                    {
+                        Logging.Write(Colors.Teal, "[CavaPlugin - Refuse party invites Disabled]");
+                    }
+
+                    if (CPsettings.Instance.refusetradeInvitescheck)
+                    {
+                        Logging.Write(Colors.Teal, "[CavaPlugin - Refuse trade invites Enabled]");
+                        Lua.Events.AttachEvent("TRADE_SHOW", RotinaTradeInvites);
+                    }
+                    else
+                    {
+                        Logging.Write(Colors.Teal, "[CavaPlugin - Refuse trade invites Disabled]");
+                    }
+
+                    if (CPsettings.Instance.refuseduelInvitescheck)
+                    {
+                        Logging.Write(Colors.Teal, "[CavaPlugin - Refuse duel invites Enabled]");
+                        Lua.Events.AttachEvent("DUEL_REQUESTED", RotinaDuelInvites);
+                    }
+                    else
+                    {
+                        Logging.Write(Colors.Teal, "[CavaPlugin - Refuse duel invites Disabled]");
+                    }
+                }
+                onbotstart = false;
             }
-            if (!ProfileManager.CurrentProfile.Name.Contains("[Cava]") && BotRunning)
+            else
+            { onbotstart = true; }
+        }
+
+        private int RandomNumber(int min, int max)
+        {
+            Random random = new Random();
+            return random.Next(min, max);
+        }
+        private void RotinaGuildInvites(object sender, LuaEventArgs e)
+        {
+            string GuildName = e.Args[1].ToString();
+            int GuildLevel = Convert.ToInt32(e.Args[2]);
+            if (CPsettings.Instance.guildInvitescheck && GuildLevel >= 25)
             {
-                BotRunning = false;
-                Logging.Write(@"[CavaPlugin] Is now DISABLED");
+                Logging.Write(Colors.Teal, "[CavaPlugin - Accepting guild invite from {0}", GuildName);
+                Lua.DoString("AcceptGuild()");
+                Lua.DoString("StaticPopup_Hide(\"GUILD_INVITE_REQUEST\")");
             }
-            if (BotRunning)
+            if (CPsettings.Instance.refuseguildInvitescheck || GuildLevel < 25)
             {
-                if (ASSystem)
-                {
-                    Logging.Write(Colors.Teal, "[CavaPlugin - System Anti-Stuck Started]");
-                }
-                UltimoLocal = StyxWoW.Me.Location;
-                if (NVezesBotUnstuck == 0)
-                {
-                    UltimoSemStuck.Restart();
-                }
-                if (Me.Mounted)
-                {
-                    MountedTime.Restart();
-                }
-                Recomecar = new Thread(new ThreadStart(_Recomecar));
-                if (CallRandomPets)
-                {
-                    Lua.DoString("RunMacroText('/randompet')");
-                    summonpettime.Restart();
-                }
+                refuseguildtimer.Reset();
+                refuseguildtimer.Start();
+                refusetime = RandomNumber(3000, 8000);
+                gotGuildInvite = true;
+                Logging.Write(Colors.Teal, "[CavaPlugin - Declining guild invite from {0} lvl {1} in " + refusetime / 1000 + " seconds", GuildName, GuildLevel);
             }
-            
+        }
+
+        private void RotinaPartyInvites(object sender, LuaEventArgs e)
+        {
+            string UserInviter = e.Args[1].ToString();
+            refusepartytimer.Reset();
+            refusepartytimer.Start();
+            refusetime = RandomNumber(3000, 8000);
+            gotPartyInvite = true;
+            Logging.Write(Colors.Teal, "[CavaPlugin - Declining party invite from {0} in " + refusetime / 1000 + " seconds", UserInviter);
+        }
+
+        private void RotinaTradeInvites(object sender, LuaEventArgs e)
+        {
+            refusetradetimer.Reset();
+            refusetradetimer.Start();
+            refusetime = RandomNumber(3000, 8000);
+            gotTradeinvite = true;
+            Logging.Write(Colors.Teal, "[CavaPlugin - Declining trade in " + refusetime / 1000 + " seconds");
+        }
+
+        private void RotinaDuelInvites(object sender, LuaEventArgs e)
+        {
+            string UserInviter = e.Args[1].ToString();
+            refusedueltimer.Reset();
+            refusedueltimer.Start();
+            refusetime = RandomNumber(3000, 8000);
+            gotDuelinvite = true;
+            Logging.Write(Colors.Teal, "[CavaPlugin - Declining duel invite from {0} in " + refusetime / 1000 + " seconds", UserInviter);
         }
 
         private static void _Recomecar()
@@ -359,11 +508,39 @@ namespace CavaPlugin
             }
             if (BotRunning)
             {
-                if (CallRandomPets && summonpettime.Elapsed.TotalMinutes > 30)
+                if (gotGuildInvite && refuseguildtimer.ElapsedMilliseconds >= refusetime)
+                {
+                    Lua.DoString("DeclineGuild()");
+                    Lua.DoString("StaticPopup_Hide(\"GUILD_INVITE\")");
+                    gotGuildInvite = false;
+                }
+
+                if (gotPartyInvite && refusepartytimer.ElapsedMilliseconds >= refusetime)
+                {
+                    Lua.DoString("DeclineGroup()");
+                    Lua.DoString("StaticPopup_Hide(\"PARTY_INVITE\")");
+                    gotPartyInvite = false;
+                }
+
+                if (gotTradeinvite && refusetradetimer.ElapsedMilliseconds >= refusetime)
+                {
+                    Lua.DoString("CancelTrade()");
+                    gotTradeinvite = false;
+                }
+
+                if (gotDuelinvite && refusedueltimer.ElapsedMilliseconds >= refusetime)
+                {
+                    Lua.DoString("CancelDuel()");
+                    Lua.DoString("StaticPopup_Hide(\"DUEL_REQUESTED\")");
+                    gotDuelinvite = false;
+                }
+
+                if (CPsettings.Instance.CheckAllowSummonPet && summonpettime.Elapsed.TotalMinutes > 30)
                 {
                     Lua.DoString("RunMacroText('/randompet')");
                     summonpettime.Restart();
                 }
+
                 if (Me.Race == WoWRace.Goblin && Me.HasAura("Near Death!") && Me.ZoneId == 4720 && MobDocZapnozzle.Count > 0)
                 {
                     MobDocZapnozzle[0].Interact();
@@ -448,7 +625,7 @@ namespace CavaPlugin
                     Lua.DoString("UseItemByName(35125)");
                     Thread.Sleep(500);
                 }
-                if (ASSystem)
+                if (CPsettings.Instance.AntiStuckSystem)
                 {
                     if (!Me.Mounted || Me.OnTaxi)
                     {

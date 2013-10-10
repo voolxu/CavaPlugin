@@ -1,9 +1,0 @@
-If Honorbuddy is equipping the wrong type of weapon to your toon  or if you got spam messages about AutoEquip2! You must enable/ configure the AutoEquip2 plugin:  -> Settings Tools -> Plugins -> AutoEquip2 -> Configuration -> choose your Weapon(s)
-Cava's profiles follow Zygor Guides but sometimes need skip some quests/zones!!!
-Cava's profiles Don't run for Loremaster Title they change zone/map when your toon hit specific level!!!
-Cava's profiles from times to times sell all itens in bags. Don't panic toon will not sell Heirllooms or epics But still is always good idea define an alt to receive mails.
-If you see log spam with Downloading Mesh... Don't interrupt bot, dont stop, just wait, bot is downloading Mesh (Maps) to know where to go/travel.
-If there is a (Bliz quest bug) that prevent you progress with a Quest profile : Cava's Profiles have the solution:(Only for Horde) just start [Grind-Quest]1to90By[Cava] Bot will grind, change to next map and load next quest profile.
-Cava's profiles have all settings selected by profiles foods/drinks/wich mount/pull distance etc.etc.!!! EXCEPT LOOT
-
-

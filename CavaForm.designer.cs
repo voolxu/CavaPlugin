@@ -77,16 +77,23 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.ResscheckBox = new System.Windows.Forms.CheckBox();
+            this.globalsetgroupBox = new System.Windows.Forms.GroupBox();
+            this.AutoShutDown_Checkbox = new System.Windows.Forms.CheckBox();
+            this.AllowDownloadCheckBox = new System.Windows.Forms.CheckBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.languageGroupBox = new System.Windows.Forms.GroupBox();
             this.MiningBS_Checkbox = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.AllowDownloadCheckBox = new System.Windows.Forms.CheckBox();
-            this.AllowSummonPet_Checkbox = new System.Windows.Forms.CheckBox();
-            this.AutoShutDown_Checkbox = new System.Windows.Forms.CheckBox();
+            this.charsetgroupBox = new System.Windows.Forms.GroupBox();
             this.AntiStuck_CheckBox = new System.Windows.Forms.CheckBox();
+            this.refuseDuelCheckBox = new System.Windows.Forms.CheckBox();
+            this.AllowSummonPet_Checkbox = new System.Windows.Forms.CheckBox();
+            this.refuseTradesCheckBox = new System.Windows.Forms.CheckBox();
+            this.refusePartyCheckBox = new System.Windows.Forms.CheckBox();
+            this.guildInvitescheckBox = new System.Windows.Forms.CheckBox();
+            this.refuseGuildCheckBox = new System.Windows.Forms.CheckBox();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.linkLabel29 = new System.Windows.Forms.LinkLabel();
@@ -146,9 +153,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage9.SuspendLayout();
+            this.globalsetgroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.languageGroupBox.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.charsetgroupBox.SuspendLayout();
             this.tabPage10.SuspendLayout();
             this.groupBox13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -162,7 +171,7 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.tabPage3.BackColor = System.Drawing.Color.CornflowerBlue;
             this.tabPage3.Controls.Add(this.pictureBox3);
             this.tabPage3.Controls.Add(this.groupBox3);
             this.tabPage3.Controls.Add(this.groupBox2);
@@ -175,7 +184,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.pictureBox3.BackColor = System.Drawing.Color.CornflowerBlue;
             this.pictureBox3.Location = new System.Drawing.Point(0, 0);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(840, 115);
@@ -198,7 +207,7 @@
             // 
             // richTextBox3
             // 
-            this.richTextBox3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.richTextBox3.BackColor = System.Drawing.Color.CornflowerBlue;
             this.richTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox3.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -233,7 +242,7 @@
             // 
             // thanksRichText
             // 
-            this.thanksRichText.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.thanksRichText.BackColor = System.Drawing.Color.CornflowerBlue;
             this.thanksRichText.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.thanksRichText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.thanksRichText.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -253,7 +262,7 @@
             // 
             // tabPage8
             // 
-            this.tabPage8.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.tabPage8.BackColor = System.Drawing.Color.CornflowerBlue;
             this.tabPage8.Controls.Add(this.ProfessionsrichTextBox);
             this.tabPage8.Controls.Add(this.pictureBox6);
             this.tabPage8.Controls.Add(this.button6);
@@ -267,7 +276,7 @@
             // 
             // ProfessionsrichTextBox
             // 
-            this.ProfessionsrichTextBox.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.ProfessionsrichTextBox.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ProfessionsrichTextBox.Location = new System.Drawing.Point(10, 507);
             this.ProfessionsrichTextBox.Name = "ProfessionsrichTextBox";
             this.ProfessionsrichTextBox.Size = new System.Drawing.Size(619, 66);
@@ -276,7 +285,7 @@
             // 
             // pictureBox6
             // 
-            this.pictureBox6.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.pictureBox6.BackColor = System.Drawing.Color.CornflowerBlue;
             this.pictureBox6.Location = new System.Drawing.Point(0, 0);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(840, 115);
@@ -297,6 +306,7 @@
             // 
             // groupBox10
             // 
+            this.groupBox10.BackColor = System.Drawing.Color.CornflowerBlue;
             this.groupBox10.Controls.Add(this.MiningBlacksmithingProf);
             this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox10.ForeColor = System.Drawing.Color.Gold;
@@ -358,7 +368,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.tabPage2.BackColor = System.Drawing.Color.CornflowerBlue;
             this.tabPage2.Controls.Add(this.pictureBox2);
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Controls.Add(this.richTextBox2);
@@ -373,7 +383,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.pictureBox2.BackColor = System.Drawing.Color.CornflowerBlue;
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(840, 115);
@@ -383,6 +393,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.CornflowerBlue;
             this.groupBox1.Controls.Add(this.radioButton4);
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
@@ -464,7 +475,7 @@
             // 
             // richTextBox2
             // 
-            this.richTextBox2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.richTextBox2.BackColor = System.Drawing.Color.CornflowerBlue;
             this.richTextBox2.Location = new System.Drawing.Point(10, 507);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.Size = new System.Drawing.Size(619, 66);
@@ -484,7 +495,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.tabPage1.BackColor = System.Drawing.Color.CornflowerBlue;
             this.tabPage1.Controls.Add(this.groupBox12);
             this.tabPage1.Controls.Add(this.groupBox6);
             this.tabPage1.Controls.Add(this.groupBox5);
@@ -506,6 +517,7 @@
             // 
             // groupBox12
             // 
+            this.groupBox12.BackColor = System.Drawing.Color.CornflowerBlue;
             this.groupBox12.Controls.Add(this.richTextBox1);
             this.groupBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox12.ForeColor = System.Drawing.Color.Gold;
@@ -518,14 +530,14 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.richTextBox1.BackColor = System.Drawing.Color.CornflowerBlue;
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.richTextBox1.Location = new System.Drawing.Point(6, 30);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.richTextBox1.Size = new System.Drawing.Size(611, 314);
             this.richTextBox1.TabIndex = 4;
             this.richTextBox1.TabStop = false;
@@ -577,7 +589,7 @@
             // 
             // ReservedTextBox
             // 
-            this.ReservedTextBox.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.ReservedTextBox.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ReservedTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ReservedTextBox.ForeColor = System.Drawing.SystemColors.ControlText;
             this.ReservedTextBox.Location = new System.Drawing.Point(6, 39);
@@ -592,15 +604,15 @@
             // 
             this.label14.AutoSize = true;
             this.label14.ForeColor = System.Drawing.Color.Gold;
-            this.label14.Location = new System.Drawing.Point(51, 14);
+            this.label14.Location = new System.Drawing.Point(52, 14);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(116, 13);
             this.label14.TabIndex = 2;
-            this.label14.Text = "CavaPlugin V 4.0.4";
+            this.label14.Text = "CavaPlugin V 4.0.6";
             // 
             // button4
             // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.Location = new System.Drawing.Point(635, 355);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(187, 46);
@@ -611,7 +623,7 @@
             // 
             // button3
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Location = new System.Drawing.Point(635, 421);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(187, 46);
@@ -624,7 +636,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(774, 484);
+            this.label6.Location = new System.Drawing.Point(788, 484);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(19, 13);
             this.label6.TabIndex = 10;
@@ -644,7 +656,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.pictureBox1.BackColor = System.Drawing.Color.CornflowerBlue;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(840, 115);
@@ -657,7 +669,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Gold;
-            this.label3.Location = new System.Drawing.Point(657, 484);
+            this.label3.Location = new System.Drawing.Point(643, 484);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(111, 13);
             this.label3.TabIndex = 6;
@@ -703,8 +715,9 @@
             // 
             // tabPage9
             // 
-            this.tabPage9.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.tabPage9.BackColor = System.Drawing.Color.CornflowerBlue;
             this.tabPage9.Controls.Add(this.ResscheckBox);
+            this.tabPage9.Controls.Add(this.globalsetgroupBox);
             this.tabPage9.Controls.Add(this.pictureBox5);
             this.tabPage9.Controls.Add(this.languageGroupBox);
             this.tabPage9.Controls.Add(this.groupBox4);
@@ -728,9 +741,78 @@
             this.ResscheckBox.UseVisualStyleBackColor = true;
             this.ResscheckBox.CheckedChanged += new System.EventHandler(this.ResscheckBox_CheckedChanged);
             // 
+            // globalsetgroupBox
+            // 
+            this.globalsetgroupBox.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.globalsetgroupBox.Controls.Add(this.AutoShutDown_Checkbox);
+            this.globalsetgroupBox.Controls.Add(this.AllowDownloadCheckBox);
+            this.globalsetgroupBox.Controls.Add(this.label15);
+            this.globalsetgroupBox.Controls.Add(this.comboBox1);
+            this.globalsetgroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.globalsetgroupBox.ForeColor = System.Drawing.Color.Gold;
+            this.globalsetgroupBox.Location = new System.Drawing.Point(12, 142);
+            this.globalsetgroupBox.Name = "globalsetgroupBox";
+            this.globalsetgroupBox.Size = new System.Drawing.Size(251, 93);
+            this.globalsetgroupBox.TabIndex = 36;
+            this.globalsetgroupBox.TabStop = false;
+            this.globalsetgroupBox.Text = "Global Settings";
+            // 
+            // AutoShutDown_Checkbox
+            // 
+            this.AutoShutDown_Checkbox.AutoSize = true;
+            this.AutoShutDown_Checkbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AutoShutDown_Checkbox.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.AutoShutDown_Checkbox.Location = new System.Drawing.Point(2, 65);
+            this.AutoShutDown_Checkbox.Name = "AutoShutDown_Checkbox";
+            this.AutoShutDown_Checkbox.Size = new System.Drawing.Size(178, 19);
+            this.AutoShutDown_Checkbox.TabIndex = 23;
+            this.AutoShutDown_Checkbox.Text = "Auto Shutdown After Update";
+            this.AutoShutDown_Checkbox.UseVisualStyleBackColor = true;
+            this.AutoShutDown_Checkbox.CheckedChanged += new System.EventHandler(this.AutoShutDown_Checkbox_CheckedChanged);
+            // 
+            // AllowDownloadCheckBox
+            // 
+            this.AllowDownloadCheckBox.AutoSize = true;
+            this.AllowDownloadCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AllowDownloadCheckBox.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.AllowDownloadCheckBox.Location = new System.Drawing.Point(2, 45);
+            this.AllowDownloadCheckBox.Name = "AllowDownloadCheckBox";
+            this.AllowDownloadCheckBox.Size = new System.Drawing.Size(193, 19);
+            this.AllowDownloadCheckBox.TabIndex = 25;
+            this.AllowDownloadCheckBox.Text = "Auto Download Private Profiles";
+            this.AllowDownloadCheckBox.UseVisualStyleBackColor = true;
+            this.AllowDownloadCheckBox.CheckedChanged += new System.EventHandler(this.AllowDownloadCheckBox_CheckedChanged);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label15.Location = new System.Drawing.Point(160, 25);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(63, 15);
+            this.label15.TabIndex = 27;
+            this.label15.Text = "Language";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "English",
+            "Deutsch",
+            "Português"});
+            this.comboBox1.Location = new System.Drawing.Point(2, 20);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(148, 23);
+            this.comboBox1.TabIndex = 29;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // pictureBox5
             // 
-            this.pictureBox5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.pictureBox5.BackColor = System.Drawing.Color.CornflowerBlue;
             this.pictureBox5.Location = new System.Drawing.Point(0, 0);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(840, 115);
@@ -740,6 +822,7 @@
             // 
             // languageGroupBox
             // 
+            this.languageGroupBox.BackColor = System.Drawing.Color.CornflowerBlue;
             this.languageGroupBox.Controls.Add(this.MiningBS_Checkbox);
             this.languageGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.languageGroupBox.ForeColor = System.Drawing.Color.Gold;
@@ -765,12 +848,8 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.comboBox1);
-            this.groupBox4.Controls.Add(this.label15);
-            this.groupBox4.Controls.Add(this.AllowDownloadCheckBox);
-            this.groupBox4.Controls.Add(this.AllowSummonPet_Checkbox);
-            this.groupBox4.Controls.Add(this.AutoShutDown_Checkbox);
-            this.groupBox4.Controls.Add(this.AntiStuck_CheckBox);
+            this.groupBox4.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.groupBox4.Controls.Add(this.charsetgroupBox);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.Color.Gold;
             this.groupBox4.Location = new System.Drawing.Point(10, 121);
@@ -780,77 +859,31 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Reserved for Testers/Donators";
             // 
-            // comboBox1
+            // charsetgroupBox
             // 
-            this.comboBox1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "English",
-            "Português"});
-            this.comboBox1.Location = new System.Drawing.Point(6, 20);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(148, 23);
-            this.comboBox1.TabIndex = 29;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label15.Location = new System.Drawing.Point(160, 23);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(63, 15);
-            this.label15.TabIndex = 27;
-            this.label15.Text = "Language";
-            // 
-            // AllowDownloadCheckBox
-            // 
-            this.AllowDownloadCheckBox.AutoSize = true;
-            this.AllowDownloadCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AllowDownloadCheckBox.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.AllowDownloadCheckBox.Location = new System.Drawing.Point(6, 45);
-            this.AllowDownloadCheckBox.Name = "AllowDownloadCheckBox";
-            this.AllowDownloadCheckBox.Size = new System.Drawing.Size(193, 19);
-            this.AllowDownloadCheckBox.TabIndex = 25;
-            this.AllowDownloadCheckBox.Text = "Auto Download Private Profiles";
-            this.AllowDownloadCheckBox.UseVisualStyleBackColor = true;
-            this.AllowDownloadCheckBox.CheckedChanged += new System.EventHandler(this.AllowDownloadCheckBox_CheckedChanged);
-            // 
-            // AllowSummonPet_Checkbox
-            // 
-            this.AllowSummonPet_Checkbox.AutoSize = true;
-            this.AllowSummonPet_Checkbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AllowSummonPet_Checkbox.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.AllowSummonPet_Checkbox.Location = new System.Drawing.Point(6, 105);
-            this.AllowSummonPet_Checkbox.Name = "AllowSummonPet_Checkbox";
-            this.AllowSummonPet_Checkbox.Size = new System.Drawing.Size(197, 19);
-            this.AllowSummonPet_Checkbox.TabIndex = 24;
-            this.AllowSummonPet_Checkbox.Text = "Enable Summon Random Pets";
-            this.AllowSummonPet_Checkbox.UseVisualStyleBackColor = true;
-            this.AllowSummonPet_Checkbox.CheckedChanged += new System.EventHandler(this.CheckAllowSummonPet_CheckedChanged);
-            // 
-            // AutoShutDown_Checkbox
-            // 
-            this.AutoShutDown_Checkbox.AutoSize = true;
-            this.AutoShutDown_Checkbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AutoShutDown_Checkbox.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.AutoShutDown_Checkbox.Location = new System.Drawing.Point(6, 85);
-            this.AutoShutDown_Checkbox.Name = "AutoShutDown_Checkbox";
-            this.AutoShutDown_Checkbox.Size = new System.Drawing.Size(178, 19);
-            this.AutoShutDown_Checkbox.TabIndex = 23;
-            this.AutoShutDown_Checkbox.Text = "Auto Shutdown After Update";
-            this.AutoShutDown_Checkbox.UseVisualStyleBackColor = true;
-            this.AutoShutDown_Checkbox.CheckedChanged += new System.EventHandler(this.AutoShutDown_Checkbox_CheckedChanged);
+            this.charsetgroupBox.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.charsetgroupBox.Controls.Add(this.AntiStuck_CheckBox);
+            this.charsetgroupBox.Controls.Add(this.refuseDuelCheckBox);
+            this.charsetgroupBox.Controls.Add(this.AllowSummonPet_Checkbox);
+            this.charsetgroupBox.Controls.Add(this.refuseTradesCheckBox);
+            this.charsetgroupBox.Controls.Add(this.refusePartyCheckBox);
+            this.charsetgroupBox.Controls.Add(this.guildInvitescheckBox);
+            this.charsetgroupBox.Controls.Add(this.refuseGuildCheckBox);
+            this.charsetgroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.charsetgroupBox.ForeColor = System.Drawing.Color.Gold;
+            this.charsetgroupBox.Location = new System.Drawing.Point(2, 116);
+            this.charsetgroupBox.Name = "charsetgroupBox";
+            this.charsetgroupBox.Size = new System.Drawing.Size(251, 173);
+            this.charsetgroupBox.TabIndex = 37;
+            this.charsetgroupBox.TabStop = false;
+            this.charsetgroupBox.Text = "Character Settings";
             // 
             // AntiStuck_CheckBox
             // 
             this.AntiStuck_CheckBox.AutoSize = true;
             this.AntiStuck_CheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AntiStuck_CheckBox.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.AntiStuck_CheckBox.Location = new System.Drawing.Point(6, 65);
+            this.AntiStuck_CheckBox.Location = new System.Drawing.Point(2, 20);
             this.AntiStuck_CheckBox.Name = "AntiStuck_CheckBox";
             this.AntiStuck_CheckBox.Size = new System.Drawing.Size(215, 19);
             this.AntiStuck_CheckBox.TabIndex = 22;
@@ -858,9 +891,87 @@
             this.AntiStuck_CheckBox.UseVisualStyleBackColor = true;
             this.AntiStuck_CheckBox.CheckedChanged += new System.EventHandler(this.AntiStuck_CheckBox_CheckedChanged);
             // 
+            // refuseDuelCheckBox
+            // 
+            this.refuseDuelCheckBox.AutoSize = true;
+            this.refuseDuelCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refuseDuelCheckBox.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.refuseDuelCheckBox.Location = new System.Drawing.Point(2, 140);
+            this.refuseDuelCheckBox.Name = "refuseDuelCheckBox";
+            this.refuseDuelCheckBox.Size = new System.Drawing.Size(131, 19);
+            this.refuseDuelCheckBox.TabIndex = 34;
+            this.refuseDuelCheckBox.Text = "Refuse Duel Invites";
+            this.refuseDuelCheckBox.UseVisualStyleBackColor = true;
+            this.refuseDuelCheckBox.CheckedChanged += new System.EventHandler(this.refuseDuelCheckBox_CheckedChanged);
+            // 
+            // AllowSummonPet_Checkbox
+            // 
+            this.AllowSummonPet_Checkbox.AutoSize = true;
+            this.AllowSummonPet_Checkbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AllowSummonPet_Checkbox.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.AllowSummonPet_Checkbox.Location = new System.Drawing.Point(2, 40);
+            this.AllowSummonPet_Checkbox.Name = "AllowSummonPet_Checkbox";
+            this.AllowSummonPet_Checkbox.Size = new System.Drawing.Size(197, 19);
+            this.AllowSummonPet_Checkbox.TabIndex = 24;
+            this.AllowSummonPet_Checkbox.Text = "Enable Summon Random Pets";
+            this.AllowSummonPet_Checkbox.UseVisualStyleBackColor = true;
+            this.AllowSummonPet_Checkbox.CheckedChanged += new System.EventHandler(this.CheckAllowSummonPet_CheckedChanged);
+            // 
+            // refuseTradesCheckBox
+            // 
+            this.refuseTradesCheckBox.AutoSize = true;
+            this.refuseTradesCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refuseTradesCheckBox.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.refuseTradesCheckBox.Location = new System.Drawing.Point(2, 120);
+            this.refuseTradesCheckBox.Name = "refuseTradesCheckBox";
+            this.refuseTradesCheckBox.Size = new System.Drawing.Size(137, 19);
+            this.refuseTradesCheckBox.TabIndex = 31;
+            this.refuseTradesCheckBox.Text = "Refuse Trade Invites";
+            this.refuseTradesCheckBox.UseVisualStyleBackColor = true;
+            this.refuseTradesCheckBox.CheckedChanged += new System.EventHandler(this.refuseTradesCheckBox_CheckedChanged);
+            // 
+            // refusePartyCheckBox
+            // 
+            this.refusePartyCheckBox.AutoSize = true;
+            this.refusePartyCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refusePartyCheckBox.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.refusePartyCheckBox.Location = new System.Drawing.Point(2, 100);
+            this.refusePartyCheckBox.Name = "refusePartyCheckBox";
+            this.refusePartyCheckBox.Size = new System.Drawing.Size(132, 19);
+            this.refusePartyCheckBox.TabIndex = 33;
+            this.refusePartyCheckBox.Text = "Refuse Party Invites";
+            this.refusePartyCheckBox.UseVisualStyleBackColor = true;
+            this.refusePartyCheckBox.CheckedChanged += new System.EventHandler(this.refusePartyCheckBox_CheckedChanged);
+            // 
+            // guildInvitescheckBox
+            // 
+            this.guildInvitescheckBox.AutoSize = true;
+            this.guildInvitescheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guildInvitescheckBox.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.guildInvitescheckBox.Location = new System.Drawing.Point(2, 60);
+            this.guildInvitescheckBox.Name = "guildInvitescheckBox";
+            this.guildInvitescheckBox.Size = new System.Drawing.Size(166, 19);
+            this.guildInvitescheckBox.TabIndex = 30;
+            this.guildInvitescheckBox.Text = "Accept Lvl 25 Guild Invites";
+            this.guildInvitescheckBox.UseVisualStyleBackColor = true;
+            this.guildInvitescheckBox.CheckedChanged += new System.EventHandler(this.guildInvitescheckBox_CheckedChanged);
+            // 
+            // refuseGuildCheckBox
+            // 
+            this.refuseGuildCheckBox.AutoSize = true;
+            this.refuseGuildCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refuseGuildCheckBox.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.refuseGuildCheckBox.Location = new System.Drawing.Point(2, 80);
+            this.refuseGuildCheckBox.Name = "refuseGuildCheckBox";
+            this.refuseGuildCheckBox.Size = new System.Drawing.Size(134, 19);
+            this.refuseGuildCheckBox.TabIndex = 32;
+            this.refuseGuildCheckBox.Text = "Refuse Guild Invites";
+            this.refuseGuildCheckBox.UseVisualStyleBackColor = true;
+            this.refuseGuildCheckBox.CheckedChanged += new System.EventHandler(this.refuseGuildCheckBox_CheckedChanged);
+            // 
             // tabPage10
             // 
-            this.tabPage10.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.tabPage10.BackColor = System.Drawing.Color.CornflowerBlue;
             this.tabPage10.Controls.Add(this.groupBox13);
             this.tabPage10.Controls.Add(this.pictureBox7);
             this.tabPage10.Controls.Add(this.groupBox9);
@@ -900,7 +1011,7 @@
             // 
             // pictureBox7
             // 
-            this.pictureBox7.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.pictureBox7.BackColor = System.Drawing.Color.CornflowerBlue;
             this.pictureBox7.Location = new System.Drawing.Point(0, 0);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(840, 115);
@@ -910,6 +1021,7 @@
             // 
             // groupBox9
             // 
+            this.groupBox9.BackColor = System.Drawing.Color.CornflowerBlue;
             this.groupBox9.Controls.Add(this.linkLabel27);
             this.groupBox9.Controls.Add(this.linkLabel26);
             this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -937,6 +1049,7 @@
             // linkLabel26
             // 
             this.linkLabel26.AutoSize = true;
+            this.linkLabel26.BackColor = System.Drawing.Color.CornflowerBlue;
             this.linkLabel26.LinkColor = System.Drawing.Color.Black;
             this.linkLabel26.Location = new System.Drawing.Point(6, 25);
             this.linkLabel26.Name = "linkLabel26";
@@ -1332,6 +1445,7 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.BackColor = System.Drawing.Color.CornflowerBlue;
             this.groupBox7.Controls.Add(this.linkLabel4);
             this.groupBox7.Controls.Add(this.linkLabel3);
             this.groupBox7.Controls.Add(this.linkLabel2);
@@ -1401,7 +1515,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(842, 610);
             this.ControlBox = false;
             this.Controls.Add(this.tabControl1);
@@ -1435,11 +1549,14 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage9.ResumeLayout(false);
             this.tabPage9.PerformLayout();
+            this.globalsetgroupBox.ResumeLayout(false);
+            this.globalsetgroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.languageGroupBox.ResumeLayout(false);
             this.languageGroupBox.PerformLayout();
             this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.charsetgroupBox.ResumeLayout(false);
+            this.charsetgroupBox.PerformLayout();
             this.tabPage10.ResumeLayout(false);
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
@@ -1572,5 +1689,12 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.RichTextBox thanksRichText;
+        private System.Windows.Forms.CheckBox guildInvitescheckBox;
+        private System.Windows.Forms.CheckBox refuseDuelCheckBox;
+        private System.Windows.Forms.CheckBox refusePartyCheckBox;
+        private System.Windows.Forms.CheckBox refuseGuildCheckBox;
+        private System.Windows.Forms.CheckBox refuseTradesCheckBox;
+        private System.Windows.Forms.GroupBox globalsetgroupBox;
+        private System.Windows.Forms.GroupBox charsetgroupBox;
     }
 }
