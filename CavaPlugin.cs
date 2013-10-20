@@ -54,7 +54,7 @@ namespace CavaPlugin
         private bool onbotstart = true;
         #region Overrides except pulse
         public override string Author { get { return "Cava"; } }
-        public override Version Version { get { return new Version(4, 0, 6); } }
+        public override Version Version { get { return new Version(4, 0, 7); } }
         public override string Name { get { return "CavaPlugin"; } }
         public override bool WantButton { get { return true; } }
         public override string ButtonText { get { return "Cava Profiles"; } }
@@ -69,6 +69,7 @@ namespace CavaPlugin
             else
             {
                 abreJanela();
+                //MessageBox.Show("To Start CavaPlugin load profile Cava_Starter_Profiles.xml", "WELCOME TO CAVAPLUGIN", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         private Cava_Plugin_Updater UpdaterPlugin;
@@ -107,6 +108,7 @@ namespace CavaPlugin
             Styx.CommonBot.BotEvents.OnBotStart += _OnBotStart;
             if (!hasBeenInitialized)
             {
+                Logging.Write(Colors.Teal, "Loading CavaPlugin V:" + Version.ToString());
                 if (!File.Exists(Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Cava_Plugin_V3_Updater.ver")) ||
                     !File.Exists(Path.Combine(Utilities.AssemblyDirectory + @"\Quest Behaviors\Cava\CavaLoader.cs")))
                 {

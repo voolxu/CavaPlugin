@@ -53,6 +53,7 @@ namespace CavaPlugin
         {
             InitializeComponent();
         }
+
         static void Updater_Armageddoner(string f)
         {
             Process p = new Process();
@@ -238,6 +239,15 @@ namespace CavaPlugin
             }
             if (comboBox1.SelectedIndex == 1)
             {
+                CultureInfo ci = new CultureInfo("da");
+                string str = Assembly.GetExecutingAssembly().FullName;
+                str = str.Remove(str.IndexOf(','));
+                Assembly _assembly = Assembly.Load(str);
+                ResourceManager rm = new ResourceManager("Lang.da", _assembly);
+                getRes(ci, rm);
+            }
+            if (comboBox1.SelectedIndex == 2)
+            {
                 CultureInfo ci = new CultureInfo("de");
                 string str = Assembly.GetExecutingAssembly().FullName;
                 str = str.Remove(str.IndexOf(','));
@@ -245,7 +255,7 @@ namespace CavaPlugin
                 ResourceManager rm = new ResourceManager("Lang.de", _assembly);
                 getRes(ci, rm);
             }
-            if (comboBox1.SelectedIndex == 2)
+            if (comboBox1.SelectedIndex == 3)
             {
                 CultureInfo ci = new CultureInfo("pt-PT");
                 string str = Assembly.GetExecutingAssembly().FullName;
@@ -254,7 +264,7 @@ namespace CavaPlugin
                 ResourceManager rm = new ResourceManager("Lang.pt", _assembly);
                 getRes(ci, rm);
             }
-            if (lastUseProfile > 0)
+           if (lastUseProfile > 0)
             {
                 button1.Visible = true;
                 label3.Visible = true;
@@ -810,8 +820,20 @@ namespace CavaPlugin
             }
             if (comboBox1.SelectedIndex == 1)
             {
-                CultureInfo ci = new CultureInfo("de");
+                CultureInfo ci = new CultureInfo("da");
                 CPGlobalSettings.Instance.language = 1;
+                string str = Assembly.GetExecutingAssembly().FullName;
+                str = str.Remove(str.IndexOf(','));
+                Assembly _assembly = Assembly.Load(str);
+                ResourceManager rm = new ResourceManager("Lang.da", _assembly);
+                richTextBox1.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\GoodToKnow_da.rtf");
+                thanksRichText.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\Thanks_da.rtf");
+                getRes(ci, rm);
+            }
+            if (comboBox1.SelectedIndex == 2)
+            {
+                CultureInfo ci = new CultureInfo("de");
+                CPGlobalSettings.Instance.language = 2;
                 string str = Assembly.GetExecutingAssembly().FullName;
                 str = str.Remove(str.IndexOf(','));
                 Assembly _assembly = Assembly.Load(str);
@@ -820,10 +842,10 @@ namespace CavaPlugin
                 thanksRichText.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\Thanks_de.rtf");
                 getRes(ci, rm);
             }
-            if (comboBox1.SelectedIndex == 2)
+            if (comboBox1.SelectedIndex == 3)
             {
                 CultureInfo ci = new CultureInfo("pt-PT");
-                CPGlobalSettings.Instance.language = 2;
+                CPGlobalSettings.Instance.language = 3;
                 string str = Assembly.GetExecutingAssembly().FullName;
                 str = str.Remove(str.IndexOf(','));
                 Assembly _assembly = Assembly.Load(str);

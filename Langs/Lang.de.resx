@@ -80,7 +80,7 @@ to Portuguese
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="about" xml:space="preserve">
-    <value>About</value>
+    <value>Über</value>
   </data>
   <data name="antistuck" xml:space="preserve">
     <value>Anti-Stuck System(benötigt Relogger)</value>
@@ -181,9 +181,6 @@ to Portuguese
   <data name="miningbs1600" xml:space="preserve">
     <value>Bergbau und Schmiedekunst 1 bis 600</value>
   </data>
-  <data name="newtxt" xml:space="preserve">
-    <value>Fehler bei der Übersetzung? Dann schreibt mir.</value>
-  </data>
   <data name="pbmbs" xml:space="preserve">
     <value>Bergbau und Schmiedekunst 1 bis 600</value>
   </data>
@@ -254,9 +251,12 @@ to Portuguese
     <value>Verweigere Duell/PVP anfragen</value>
   </data>
   <data name="globalsettings" xml:space="preserve">
-    <value>Global Settings</value>
+    <value>Allgemeine Einstellungen</value>
   </data>
   <data name="charsettings" xml:space="preserve">
-    <value>Character Settings</value>
+    <value>Spieler Einstellungen</value>
+  </data>
+  <data name="newtxt" xml:space="preserve">
+    <value>Sprache Dänisch hinzugefügt.</value>
   </data>
 </root>

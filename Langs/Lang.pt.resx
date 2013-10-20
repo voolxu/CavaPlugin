@@ -285,16 +285,14 @@
   <data name="refuseDuelCheckBox" xml:space="preserve">
     <value>Recusar Invites de Duelos</value>
   </data>
-  <data name="newtxt" xml:space="preserve">
-    <value>Refinada a Linguagem Inglesa e removidos alguns erros de escrita.</value>
-  </data>
-  <data name="newtxt" xml:space="preserve">
-    <value>Refinada a Linguagem Inglesa e removidos alguns erros de escrita. Adicionada a linguagem alemã. Adicionado sistema de recusa de invites. Adicionado sistema de aceitar guild invites se a guild for de level 25</value>
-  </data>
   <data name="globalsettings" xml:space="preserve">
     <value>Defenições Globais</value>
   </data>
   <data name="charsettings" xml:space="preserve">
     <value>Defenições do Boneco</value>
   </data>
+  <data name="newtxt" xml:space="preserve">
+    <value>Adicionada Linguagem Dinamarquesa.</value>
+  </data>
+
 </root>
