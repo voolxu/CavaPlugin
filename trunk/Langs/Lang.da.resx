@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
 <!--
-example how to change language (only edit the value)
+example how to change language (only edit  value)
 
-change from English
-  <data name="do_not_change_data_name_they_are_ids" xml:space="preserve">
+change fra English
+  <data name="do_not_change_data_name_y_are_ids" xml:space="preserve">
     <value>Anti-Stuck System(Need Relogger)</value>
   </data>
 
 to Portuguese
-  <data name="do_not_change_data_name_they_are_ids" xml:space="preserve">
+  <data name="do_not_change_data_name_y_are_ids" xml:space="preserve">
     <value>Sistema Anti-Stuck(Preciso dum Relogger)</value>
   </data>
 -->
@@ -26,7 +26,7 @@ to Portuguese
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="name" use="krævet" type="xsd:string" />
               <xsd:attribute name="type" type="xsd:string" />
               <xsd:attribute name="mimetype" type="xsd:string" />
               <xsd:attribute ref="xml:space" />
@@ -44,7 +44,7 @@ to Portuguese
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" use="krævet" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
               <xsd:attribute ref="xml:space" />
@@ -55,7 +55,7 @@ to Portuguese
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="krævet" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -72,10 +72,10 @@ to Portuguese
     <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyTokenken=b77a5c561934e089</value>
   </resheader>
   <data name="about" xml:space="preserve">
-    <value>About</value>
+    <value>Om</value>
   </data>
   <data name="antistuck" xml:space="preserve">
     <value>Anti-Stuck System(Need Relogger)</value>
@@ -84,22 +84,22 @@ to Portuguese
     <value>Armageddoner</value>
   </data>
   <data name="autodownload" xml:space="preserve">
-    <value>Auto Download Private Profiles</value>
+    <value>automatisk downloader profiler</value>
   </data>
   <data name="autoshutdown" xml:space="preserve">
-    <value>Auto Shutdown After Update</value>
+    <value>auto slukning efter opdate</value>
   </data>
   <data name="cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Aflys</value>
   </data>
   <data name="cavaprofessions" xml:space="preserve">
-    <value>Cava Profession Profiles</value>
+    <value>Cava Profession Profiler</value>
   </data>
   <data name="cavaweb" xml:space="preserve">
     <value>Cava Web</value>
   </data>
   <data name="close" xml:space="preserve">
-    <value>Close</value>
+    <value>Luk</value>
   </data>
   <data name="dailies" xml:space="preserve">
     <value>Dailies</value>
@@ -108,150 +108,156 @@ to Portuguese
     <value>Farming</value>
   </data>
   <data name="goodtoknow" xml:space="preserve">
-    <value>Good To Know</value>
+    <value>Godt At Vide</value>
   </data>
   <data name="language" xml:space="preserve">
-    <value>Language</value>
+    <value>Sprog</value>
   </data>
   <data name="lastusedprofile" xml:space="preserve">
-    <value>Last Used Profile:</value>
+    <value>Sidst Brugt Profil:</value>
   </data>
   <data name="lastusedprofiletxtdef" xml:space="preserve">
-    <value>There is no previusly selected profile</value>
+    <value>Der er ikke nogen tidligere valgt profil</value>
   </data>
   <data name="level85to90" xml:space="preserve">
-    <value>Level 85 to 90 All Quests</value>
+    <value>Level 85 Til 90 Alle Quests</value>
   </data>
   <data name="level85to90txt" xml:space="preserve">
-    <value>This profile will level any Alliance character from 85 to 90 and Horde 85 to 88. This profile is not AFK friendly so please report any issues.</value>
+    <value>Denne Profil vil level hvilken som helst Alliance Karakter fra 85 til 90 og Horde 85 til 88. Denne profil er ikke AFK venlig så venlist reporter enhver problem.</value>
   </data>
   <data name="leveling1to90" xml:space="preserve">
-    <value>Level 1 to 90</value>
+    <value>Level 1 til 90</value>
   </data>
   <data name="leveling1to90txt" xml:space="preserve">
-    <value>This profile will level any character from any level to 90. This is a work in progress so far. Alliance works from 1 to 67 and 85 to 90. Horde works from 1 to 67 and 85 to 88.</value>
+    <value>Denne profil vil level enhver karakter fra hvilket som helst level til 90. Denne er et project under arbejde indtil vidre. Alliance virker fra 1 Fra 67 og 85 til 90. Horde Virker fra 1 til 67 og 85 til 88.</value>
   </data>
   <data name="levelingarmagessoner" xml:space="preserve">
-    <value>Alliance And Horde (67-74) (testers/donators only)</value>
+    <value>Alliance og Horde (67-74) (tester/donaters only)</value>
   </data>
   <data name="levelingarmagessonertxt" xml:space="preserve">
-    <value>This profile will level any character from 67 to 74</value>
+    <value>Denne profil vil level enhver karakter fra 67 til 74</value>
   </data>
   <data name="levelinggrind" xml:space="preserve">
     <value>Level Grinding</value>
   </data>
   <data name="levelingpandaally" xml:space="preserve">
-    <value>Level Pandaren 1 to 90 Alliance</value>
+    <value>Level Pandaren 1 til 90 Alliance</value>
   </data>
   <data name="levelingpandaallytxt" xml:space="preserve">
-    <value>This profile will level a Alliance Pandaren character from 1 to 12. Select the 1 to 90 Alliance profile to continue after level 12.</value>
+    <value>Denne profil vil level en Alliance Pandaren karakter fra 1 til 12. Vælg 1 til 90 Alliance profil for at fortsætte efter level 12.</value>
   </data>
   <data name="levelingpandahorde" xml:space="preserve">
-    <value>Level Pandaren 1 to 90 Horde</value>
+    <value>Level Pandaren 1 til 90 Horde</value>
   </data>
   <data name="levelingpandahordetxt" xml:space="preserve">
-    <value>This profile will level a Horde Pandaren character from 1 to 12. Select the 1 to 90 Horde profile to continue after level 12.</value>
+    <value>Denne profil vil level en Horde Pandaren character fra 1 til 12. vælg  1 til 90 Horde profil til fortsætte efter level 12.</value>
   </data>
   <data name="levelingquest" xml:space="preserve">
-    <value>Leveling Quests</value>
+    <value>Level Quests</value>
   </data>
   <data name="linksrelated" xml:space="preserve">
-    <value>Helpful Links</value>
+    <value>Hjælpsomme Links</value>
   </data>
   <data name="linksrelatedplugins" xml:space="preserve">
-    <value>Related Links</value>
+    <value>ralaterede Links</value>
   </data>
   <data name="main" xml:space="preserve">
     <value>Main</value>
   </data>
   <data name="mbs1300txt" xml:space="preserve">
-    <value>This profile will level Mining and Blacksmithing from any level to 300. Works for both Alliance and Horde. Start profile anywhere, the Cava Plugin will move the character to the required locations.</value>
+    <value>Denne profil vil level Mining og Blacksmithing fra enhver level til 300. Virker for både Alliance og Horde. Start profil hvor some helst, Cava Plugin vil rykke karakteren til  krævet sted.</value>
   </data>
   <data name="mbs1600txt" xml:space="preserve">
-    <value>This profile will level Mining and Blacksmithing from any level to 600. Works for both Alliance and Horde. Start profile anywhere, the Cava Plugin will move the character to the required locations.</value>
+    <value>This profile vil level Mining og Blacksmithing fra enhver level til 600. Virker for både Alliance og Horde. Start profile hvor som helst,  Cava Plugin vil rykke  karakter til  krævet sted.</value>
   </data>
   <data name="miningbs1300" xml:space="preserve">
-    <value>Mining And Blacksmithing 1 to 300</value>
+    <value>Mining og Blacksmithing 1 til 300</value>
   </data>
   <data name="miningbs1600" xml:space="preserve">
-    <value>Mining And Blacksmithing 1 to 600</value>
+    <value>Mining og Blacksmithing 1 til 600</value>
   </data>
   <data name="pbmbs" xml:space="preserve">
-    <value>Mining And Blacksmithing 1 to 600</value>
+    <value>Mining og Blacksmithing 1 til 600</value>
   </data>
   <data name="pbprofiles" xml:space="preserve">
-    <value>Profession Profiles Owners</value>
+    <value>Profession Profil ejer</value>
   </data>
   <data name="pressdonation" xml:space="preserve">
-    <value>Press Donate to help support the Cava Cause.</value>
+    <value>Press Donate for at støtte Cava Cause.</value>
   </data>
   <data name="problemsconfiguring" xml:space="preserve">
-    <value>Problems Configuring Honorbuddy...</value>
+    <value>Problemer Configurere Honorbuddy...</value>
   </data>
   <data name="problemsquesting" xml:space="preserve">
-    <value>Problems with Questing / Profiles...</value>
+    <value>Problems med Questing / Profil...</value>
   </data>
   <data name="professions" xml:space="preserve">
-    <value>Professions</value>
+    <value>Profession</value>
   </data>
   <data name="reportabug" xml:space="preserve">
-    <value>Report A Bug / Request Feature</value>
+    <value>Reporter en Bug / Anmod Funktion</value>
   </data>
   <data name="reputation" xml:space="preserve">
-    <value>Reputation</value>
+    <value>Omdømme</value>
   </data>
   <data name="reservedfortesters" xml:space="preserve">
-    <value>Reserved for Testers / Donators</value>
+    <value>Reseveret for Testere / Donators</value>
   </data>
   <data name="ressafterdie" xml:space="preserve">
-    <value>Release After Death</value>
+    <value>Release efter død</value>
   </data>
   <data name="secondstostart" xml:space="preserve">
-    <value>Seconds to auto start:</value>
+    <value>Sekunder til auto start:</value>
   </data>
   <data name="selectoneprofile" xml:space="preserve">
-    <value>Select A Profile From The List and Press Start</value>
+    <value>Vælg en Profil fra Listen og tryk Start</value>
   </data>
   <data name="showursupport" xml:space="preserve">
-    <value>Show Your Support</value>
+    <value>Vis Din Støtte</value>
   </data>
   <data name="specialthanks" xml:space="preserve">
-    <value>Special Thanks</value>
+    <value>Special Tak</value>
   </data>
   <data name="start" xml:space="preserve">
     <value>Start</value>
   </data>
   <data name="summompets" xml:space="preserve">
-    <value>Enable Summon Random Pets</value>
+    <value>Aktiver Indkald Tilfældige Pets</value>
   </data>
   <data name="usefulllinks" xml:space="preserve">
-    <value>Usefull Links</value>
+    <value>Nyttige Links</value>
   </data>
   <data name="usinghonorbuddy" xml:space="preserve">
-    <value>Using Honorbuddy ...</value>
+    <value>Bruger Honorbuddy ...</value>
   </data>
   <data name="guildInvitescheckBox" xml:space="preserve">
-    <value>Accept Lvl 25 Guild Invites</value>
+    <value>Accepter Lvl 25 Guild Invitationer</value>
   </data>
   <data name="refuseGuildCheckBox" xml:space="preserve">
-    <value>Refuse Guild Invites</value>
+    <value>Benægt Guild Invitationer</value>
   </data>
   <data name="refusePartyCheckBox" xml:space="preserve">
-    <value>Refuse Party Invites</value>
+    <value>Benægt Party Invitation</value>
   </data>
   <data name="refuseTradesCheckBox" xml:space="preserve">
-    <value>Refuse Trade Invites</value>
+    <value>Benægt Bytte Invitation</value>
   </data>
   <data name="refuseDuelCheckBox" xml:space="preserve">
-    <value>Refuse Duel Invites</value>
-  </data>
-  <data name="globalsettings" xml:space="preserve">
-    <value>Global Settings</value>
-  </data>
-  <data name="charsettings" xml:space="preserve">
-    <value>Character Settings</value>
+    <value>Benægt Duel Invitation</value>
   </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Added Danish Language.</value>
+    <value>Raffineret  Engelsk Sprog og fjernet nogle typos. Added Tysk sprog. Added auto-benægt Invitation. Added auto-accept guild Invitation hvis guild is level 25</value>
+  </data>
+  <data name="newtxt" xml:space="preserve">
+    <value>Raffineret  Engelsk Sprog og fjernet nogle typos. Added Tysk sprog. Added auto-benægt Invitation. Added auto-accept guild Invitation hvis guild is level 25</value>
+  </data>
+  <data name="globalsettings" xml:space="preserve">
+    <value>Global Settinger</value>
+  </data>
+  <data name="charsettings" xml:space="preserve">
+    <value>Character Settinger</value>
+  </data>
+  <data name="newtxt" xml:space="preserve">
+    <value>Tilsat Dansk Sprog.</value>
   </data>
 </root>

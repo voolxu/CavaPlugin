@@ -608,7 +608,7 @@
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(116, 13);
             this.label14.TabIndex = 2;
-            this.label14.Text = "CavaPlugin V 4.0.6";
+            this.label14.Text = "CavaPlugin V 4.0.7";
             // 
             // button4
             // 
@@ -802,6 +802,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "English",
+            "Dansk",
             "Deutsch",
             "Português"});
             this.comboBox1.Location = new System.Drawing.Point(2, 20);
