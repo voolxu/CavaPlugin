@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Media;
-
+using Microsoft.Win32;
 using Styx;
 using Styx.Helpers;
 using Styx.Loaders;
@@ -52,6 +52,7 @@ namespace CavaPlugin
         public int refusetime = 0;
         private WoWPoint UltimoLocal;
         private bool onbotstart = true;
+ 
         #region Overrides except pulse
         public override string Author { get { return "Cava"; } }
         public override Version Version { get { return new Version(4, 0, 7); } }
@@ -113,6 +114,11 @@ namespace CavaPlugin
                     !File.Exists(Path.Combine(Utilities.AssemblyDirectory + @"\Quest Behaviors\Cava\CavaLoader.cs")))
                 {
                     MessageBox.Show("Cava plugin is not instaled properly, please download and install CavaPlugin from zip file", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (!IsApplictionInstalled("TortoiseSVN"))
+                {
+                    MessageBox.Show("Don't have TortoiseSVN installed, this plugin need it to download profile updates, please install it and restart CavaPlugin", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 Logging.Write(Colors.Teal, "Please Wait While [Cava Plugin] Check For Updates, This Can Take Several Minutes");
@@ -231,7 +237,7 @@ namespace CavaPlugin
             }
             abreJanela();
         }
-
+ 
         public override void Dispose()
         {
             Styx.CommonBot.BotEvents.OnBotStart -= _OnBotStart;
@@ -443,6 +449,86 @@ namespace CavaPlugin
         }
         public String ProfileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Format(@"Plugins\CavaPlugin\Settings\Main-Settings.xml"));
 
+        #endregion
+
+        #region Logging
+        public static void Log(string format, params object[] args)
+        {
+            Log(Colors.SkyBlue, format, args);
+        }
+
+        public static void Log(Color color, string format, params object[] args)
+        {
+            Logging.Write(color, "[CavaPlugin]:" + format, args);
+        }
+        public static void Debug(string format, params object[] args)
+        {
+            Debug(Colors.Teal, format, args);
+        }
+
+        public static void Debug(Color color, string format, params object[] args)
+        {
+            Logging.Write(color, "[CavaPlugin]" + format, args);
+        }
+        public static void Err(string format, params object[] args)
+        {
+            Err(Colors.Red, format, args);
+        }
+
+        public static void Err(Color color, string format, params object[] args)
+        {
+            Logging.Write(color, "Err: " + format, args);
+        }
+        #endregion
+
+        #region Utils
+        public static bool IsApplictionInstalled(string p_name)
+        {
+            string keyName;
+            // search in: CurrentUser
+            keyName = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall";
+            if (ExistsInSubKey(Registry.CurrentUser, keyName, "Publisher", p_name) == true)
+            {
+                return true;
+            }
+            // search in: LocalMachine_32
+            keyName = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall";
+            if (ExistsInSubKey(Registry.LocalMachine, keyName, "Publisher", p_name) == true)
+            {
+                return true;
+            }
+            // search in: LocalMachine_64
+            keyName = @"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall";
+            if (ExistsInSubKey(Registry.LocalMachine, keyName, "Publisher", p_name) == true)
+            {
+                return true;
+            }
+            return false;
+        }
+        private static bool ExistsInSubKey(RegistryKey p_root, string p_subKeyName, string p_attributeName, string p_name)
+        {
+            RegistryKey subkey;
+            string displayName;
+
+            using (RegistryKey key = p_root.OpenSubKey(p_subKeyName))
+            {
+                if (key != null)
+                {
+                    foreach (string kn in key.GetSubKeyNames())
+                    {
+                        using (subkey = key.OpenSubKey(kn))
+                        {
+                            displayName = subkey.GetValue(p_attributeName) as string;
+                            if (p_name.Equals(displayName, StringComparison.OrdinalIgnoreCase) == true)
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+            return false;
+        }
         #endregion
 
         #region Privates/Publics

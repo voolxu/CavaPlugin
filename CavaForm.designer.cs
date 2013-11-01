@@ -557,11 +557,11 @@
             // 
             // button5
             // 
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button5.Location = new System.Drawing.Point(16, 22);
+            this.button5.Location = new System.Drawing.Point(7, 22);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(155, 59);
+            this.button5.Size = new System.Drawing.Size(173, 59);
             this.button5.TabIndex = 0;
             this.button5.Text = "Report A Bug Request Feature ";
             this.button5.UseVisualStyleBackColor = true;
@@ -804,7 +804,8 @@
             "English",
             "Dansk",
             "Deutsch",
-            "Português"});
+            "Português",
+            "Русский"});
             this.comboBox1.Location = new System.Drawing.Point(2, 20);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(148, 23);

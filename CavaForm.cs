@@ -264,7 +264,16 @@ namespace CavaPlugin
                 ResourceManager rm = new ResourceManager("Lang.pt", _assembly);
                 getRes(ci, rm);
             }
-           if (lastUseProfile > 0)
+            if (comboBox1.SelectedIndex == 4)
+            {
+                CultureInfo ci = new CultureInfo("ru-RU");
+                string str = Assembly.GetExecutingAssembly().FullName;
+                str = str.Remove(str.IndexOf(','));
+                Assembly _assembly = Assembly.Load(str);
+                ResourceManager rm = new ResourceManager("Lang.ru", _assembly);
+                getRes(ci, rm);
+            }
+            if (lastUseProfile > 0)
             {
                 button1.Visible = true;
                 label3.Visible = true;
@@ -852,6 +861,18 @@ namespace CavaPlugin
                 ResourceManager rm = new ResourceManager("Lang.pt", _assembly);
                 richTextBox1.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\GoodToKnow_pt.rtf");
                 thanksRichText.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\Thanks_pt.rtf");
+                getRes(ci, rm);
+            }
+            if (comboBox1.SelectedIndex == 4)
+            {
+                CultureInfo ci = new CultureInfo("ru-RU");
+                CPGlobalSettings.Instance.language = 4;
+                string str = Assembly.GetExecutingAssembly().FullName;
+                str = str.Remove(str.IndexOf(','));
+                Assembly _assembly = Assembly.Load(str);
+                ResourceManager rm = new ResourceManager("Lang.ru", _assembly);
+                richTextBox1.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\GoodToKnow_ru.rtf");
+                thanksRichText.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\Thanks_ru.rtf");
                 getRes(ci, rm);
             }
         }
