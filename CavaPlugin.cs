@@ -1,4 +1,4 @@
-﻿using System;
+ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -116,11 +116,11 @@ namespace CavaPlugin
                     MessageBox.Show("Cava plugin is not instaled properly, please download and install CavaPlugin from zip file", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (!IsApplictionInstalled("TortoiseSVN"))
-                {
-                    MessageBox.Show("Don't have TortoiseSVN installed, this plugin need it to download profile updates, please install it and restart CavaPlugin", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                //if (!IsApplictionInstalled("TortoiseSVN"))
+                //{
+                //    MessageBox.Show("Don't have TortoiseSVN installed, this plugin need it to download profile updates, please install it and restart CavaPlugin", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    return;
+                //}
                 Logging.Write(Colors.Teal, "Please Wait While [Cava Plugin] Check For Updates, This Can Take Several Minutes");
                 System.Threading.Thread.Sleep(2000); 
                 hasBeenInitialized = true;
