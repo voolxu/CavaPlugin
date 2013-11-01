@@ -132,10 +132,10 @@ to Portuguese
     <value>Denne profil vil level enhver karakter fra hvilket som helst level til 90. Denne er et project under arbejde indtil vidre. Alliance virker fra 1 Fra 67 og 85 til 90. Horde Virker fra 1 til 67 og 85 til 88.</value>
   </data>
   <data name="levelingarmagessoner" xml:space="preserve">
-    <value>Alliance og Horde (67-74) (tester/donaters only)</value>
+    <value>Alliance og Horde (67-75) (tester/donaters only)</value>
   </data>
   <data name="levelingarmagessonertxt" xml:space="preserve">
-    <value>Denne profil vil level enhver karakter fra 67 til 74</value>
+    <value>Denne profil vil level enhver karakter fra 67 til 75</value>
   </data>
   <data name="levelinggrind" xml:space="preserve">
     <value>Level Grinding</value>
@@ -258,6 +258,6 @@ to Portuguese
     <value>Character Settinger</value>
   </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Tilsat Dansk Sprog.</value>
+    <value>Added Russisk Sprog. Added Profil for Grizzly Hills, Level 74 til 75 (Reserveret for testere)</value>
   </data>
 </root>
