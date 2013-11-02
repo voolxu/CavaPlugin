@@ -1,4 +1,4 @@
- using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Media;
-using Microsoft.Win32;
+
 using Styx;
 using Styx.Helpers;
 using Styx.Loaders;
@@ -52,7 +52,6 @@ namespace CavaPlugin
         public int refusetime = 0;
         private WoWPoint UltimoLocal;
         private bool onbotstart = true;
- 
         #region Overrides except pulse
         public override string Author { get { return "Cava"; } }
         public override Version Version { get { return new Version(4, 0, 7); } }
@@ -116,13 +115,15 @@ namespace CavaPlugin
                     MessageBox.Show("Cava plugin is not instaled properly, please download and install CavaPlugin from zip file", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                //if (!IsApplictionInstalled("TortoiseSVN"))
-                //{
-                //    MessageBox.Show("Don't have TortoiseSVN installed, this plugin need it to download profile updates, please install it and restart CavaPlugin", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //    return;
-                //}
+                /*
+                if (!IsApplictionInstalled("TortoiseSVN"))
+                {
+                    MessageBox.Show("Don't have TortoiseSVN installed, this plugin need it to download profile updates, please install it and restart CavaPlugin", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                */
                 Logging.Write(Colors.Teal, "Please Wait While [Cava Plugin] Check For Updates, This Can Take Several Minutes");
-                System.Threading.Thread.Sleep(2000); 
+                System.Threading.Thread.Sleep(2000);
                 hasBeenInitialized = true;
                 try
                 {
@@ -209,7 +210,7 @@ namespace CavaPlugin
                 {
                     Logging.Write("[Cava Plugin] Auto-Shutdown in progress at " + DateTime.Now.ToString());
                     System.Threading.Thread.Sleep(5000);
-                    Environment.Exit(0); 
+                    Environment.Exit(0);
                 }
                 if (CPGlobalSettings.Instance.BotAllowUpdate && CPGlobalSettings.Instance.AllowUpdate)
                 {
@@ -224,7 +225,7 @@ namespace CavaPlugin
                 summonpettime = new Stopwatch();
                 NVezesBotUnstuck = 0;
               }
-            //duplo ignore, bot corre 2 vezes o Initialize 
+            //duplo ignore, bot corre 2 vezes o Initialize
             if (!hasBeenInitialized2)
             {
                 hasBeenInitialized2 = true;
@@ -237,7 +238,7 @@ namespace CavaPlugin
             }
             abreJanela();
         }
- 
+
         public override void Dispose()
         {
             Styx.CommonBot.BotEvents.OnBotStart -= _OnBotStart;
@@ -250,7 +251,7 @@ namespace CavaPlugin
                 }
                 if (CPsettings.Instance.refusepartyInvitescheck)
                 {
-                    Lua.Events.DetachEvent("PARTY_INVITE_REQUEST", RotinaPartyInvites);  
+                    Lua.Events.DetachEvent("PARTY_INVITE_REQUEST", RotinaPartyInvites);
                 }
                 if (CPsettings.Instance.refusetradeInvitescheck)
                 {
@@ -448,10 +449,10 @@ namespace CavaPlugin
             }
         }
         public String ProfileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Format(@"Plugins\CavaPlugin\Settings\Main-Settings.xml"));
-
         #endregion
 
         #region Logging
+        /*
         public static void Log(string format, params object[] args)
         {
             Log(Colors.SkyBlue, format, args);
@@ -479,9 +480,12 @@ namespace CavaPlugin
         {
             Logging.Write(color, "Err: " + format, args);
         }
+        */
         #endregion
 
+
         #region Utils
+        /*
         public static bool IsApplictionInstalled(string p_name)
         {
             string keyName;
@@ -489,7 +493,7 @@ namespace CavaPlugin
             keyName = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall";
             if (ExistsInSubKey(Registry.CurrentUser, keyName, "Publisher", p_name) == true)
             {
-                return true;
+                //return true;
             }
             // search in: LocalMachine_32
             keyName = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall";
@@ -529,6 +533,7 @@ namespace CavaPlugin
             }
             return false;
         }
+        */
         #endregion
 
         #region Privates/Publics
