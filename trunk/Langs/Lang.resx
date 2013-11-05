@@ -129,13 +129,13 @@ to Portuguese
     <value>Level 1 to 90</value>
   </data>
   <data name="leveling1to90txt" xml:space="preserve">
-    <value>This profile will level any character from any level to 90. This is a work in progress so far. Alliance works from 1 to 67 and 85 to 90. Horde works from 1 to 67 and 85 to 88.</value>
+    <value>This profile will level any character from any level to 90. This is a work in progress so far. Alliance works from 1 to 68 and 85 to 90. Horde works from 1 to 68 and 85 to 88.</value>
   </data>
   <data name="levelingarmagessoner" xml:space="preserve">
-    <value>Alliance And Horde (67-75) (testers/donators only)</value>
+    <value>Alliance And Horde (68-75) (testers/donators only)</value>
   </data>
   <data name="levelingarmagessonertxt" xml:space="preserve">
-    <value>This profile will level any character from 67 to 75</value>
+    <value>This profile will level any character from 68 to 75</value>
   </data>
   <data name="levelinggrind" xml:space="preserve">
     <value>Level Grinding</value>
@@ -252,6 +252,6 @@ to Portuguese
     <value>Character Settings</value>
   </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Added Russian language. Added Profile for Grizzly Hills, Levels 74 till 75 (Reserved for testers)</value>
+    <value>Added Profile for Blade's Edge Mountains, Levels 67 to 68.</value>
   </data>
 </root>

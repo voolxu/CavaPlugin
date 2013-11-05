@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
 <!--
 example how to change language (only edit the value)
@@ -129,13 +129,13 @@ to Portuguese
     <value>Прокачка с 1 до 90</value>
   </data>
   <data name="leveling1to90txt" xml:space="preserve">
-    <value>Этот профиль для прокачки с любого уровня до 90. Профиль еще в  разработке. Для альянса работает с 1 по 67-й уровень и с 85 по 90. Для орды с 1 по 67-й уровень и с 85 по 88.</value>
+    <value>Этот профиль для прокачки с любого уровня до 90. Профиль еще в  разработке. Для альянса работает с 1 по 68-й уровень и с 85 по 90. Для орды с 1 по 68-й уровень и с 85 по 88.</value>
   </data>
   <data name="levelingarmagessoner" xml:space="preserve">
-    <value>Прокачка Альянса и Орды (67-75) (только для тестеров/донаторов)</value>
+    <value>Прокачка Альянса и Орды (68-75) (только для тестеров/донаторов)</value>
   </data>
   <data name="levelingarmagessonertxt" xml:space="preserve">
-    <value>Этот профиль для прокачки любых персонажей с 67 по 75-й уровень.</value>
+    <value>Этот профиль для прокачки любых персонажей с 68 по 75-й уровень.</value>
   </data>
   <data name="levelinggrind" xml:space="preserve">
     <value>Прокачка гриндом</value>
@@ -252,6 +252,6 @@ to Portuguese
     <value>Настройки персонажа</value>
   </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Добавлен русский язык. Добавлены профили для Седых Холмов, прокачки с 74 по 75й уровень (зарезервировано для тестеров)</value>
+    <value>Добавлены профили для Острогорья, уровни с 67 по 68й.</value>
   </data>
 </root>

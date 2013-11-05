@@ -172,13 +172,13 @@
     <value>Levelar 1 a 90</value>
   </data>
   <data name="leveling1to90txt" xml:space="preserve">
-    <value>Este profile vai levelar qualquer char do level 1 a 90. Este profile não esta finalizado, ate agora pode ir de 1 a 67. Este profile pode ser iniciado em qualquer lugar, depois de iniciado o bot vai sempre mover-se para o mapa certo e começar a fazer as quests</value>
+    <value>Este profile vai levelar qualquer char do level 1 a 90. Este profile não esta finalizado, ate agora pode ir de 1 a 68. Este profile pode ser iniciado em qualquer lugar, depois de iniciado o bot vai sempre mover-se para o mapa certo e começar a fazer as quests</value>
   </data>
   <data name="levelingarmagessoner" xml:space="preserve">
-    <value>Aliança e Horde (67-75) (testers/donators apenas)</value>
+    <value>Aliança e Horde (68-75) (testers/donators apenas)</value>
   </data>
   <data name="levelingarmagessonertxt" xml:space="preserve">
-    <value>Este profile vai levelar qualquer char de level 67 a 75</value>
+    <value>Este profile vai levelar qualquer char de level 68 a 75</value>
   </data>
   <data name="levelinggrind" xml:space="preserve">
     <value>Levelar em Grind</value>
@@ -292,6 +292,6 @@
     <value>Defenições do Boneco</value>
   </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Adicionada Linguagem Russa. Adicionado profile para Grizzly Hills, Niveis 74 até 75 (Reservado para testers)</value>
+    <value>Adicionado profile para Blade's Edge Mountains, Niveis 67 a 68.</value>
   </data>
 </root>
