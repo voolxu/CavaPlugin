@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
+//using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Media;
@@ -54,7 +54,7 @@ namespace CavaPlugin
         private bool onbotstart = true;
         #region Overrides except pulse
         public override string Author { get { return "Cava"; } }
-        public override Version Version { get { return new Version(4, 0, 7); } }
+        public override Version Version { get { return new Version(4, 0, 8); } }
         public override string Name { get { return "CavaPlugin"; } }
         public override bool WantButton { get { return true; } }
         public override string ButtonText { get { return "Cava Profiles"; } }
@@ -115,19 +115,17 @@ namespace CavaPlugin
                     MessageBox.Show("Cava plugin is not instaled properly, please download and install CavaPlugin from zip file", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                /*
-                if (!IsApplictionInstalled("TortoiseSVN"))
+                if (!CPGlobalSettings.Instance.FirstTimeLaunch)
                 {
-                    MessageBox.Show("Don't have TortoiseSVN installed, this plugin need it to download profile updates, please install it and restart CavaPlugin", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    MessageBox.Show("Cava plugin soon, will use TortoiseSVN to download profiles, Make sure you have it installed", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                */
                 Logging.Write(Colors.Teal, "Please Wait While [Cava Plugin] Check For Updates, This Can Take Several Minutes");
                 System.Threading.Thread.Sleep(2000);
                 hasBeenInitialized = true;
                 try
                 {
                     UpdaterPlugin = new Cava_Plugin_Updater("http://cavaplugin.googlecode.com/svn/trunk/", "CavaPlugin");
+
                     if (UpdaterPlugin.UpdateAvailable())
                     {
                         Logging.Write("[Cava Plugin] Update to $" + UpdaterPlugin.GetNewestRev().ToString() + " is available! You are on $" + UpdaterPlugin.CurrentRev.ToString());
@@ -483,57 +481,7 @@ namespace CavaPlugin
         */
         #endregion
 
-
         #region Utils
-        /*
-        public static bool IsApplictionInstalled(string p_name)
-        {
-            string keyName;
-            // search in: CurrentUser
-            keyName = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall";
-            if (ExistsInSubKey(Registry.CurrentUser, keyName, "Publisher", p_name) == true)
-            {
-                //return true;
-            }
-            // search in: LocalMachine_32
-            keyName = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall";
-            if (ExistsInSubKey(Registry.LocalMachine, keyName, "Publisher", p_name) == true)
-            {
-                return true;
-            }
-            // search in: LocalMachine_64
-            keyName = @"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall";
-            if (ExistsInSubKey(Registry.LocalMachine, keyName, "Publisher", p_name) == true)
-            {
-                return true;
-            }
-            return false;
-        }
-        private static bool ExistsInSubKey(RegistryKey p_root, string p_subKeyName, string p_attributeName, string p_name)
-        {
-            RegistryKey subkey;
-            string displayName;
-
-            using (RegistryKey key = p_root.OpenSubKey(p_subKeyName))
-            {
-                if (key != null)
-                {
-                    foreach (string kn in key.GetSubKeyNames())
-                    {
-                        using (subkey = key.OpenSubKey(kn))
-                        {
-                            displayName = subkey.GetValue(p_attributeName) as string;
-                            if (p_name.Equals(displayName, StringComparison.OrdinalIgnoreCase) == true)
-                            {
-                                return true;
-                            }
-                        }
-                    }
-                }
-            }
-            return false;
-        }
-        */
         #endregion
 
         #region Privates/Publics
@@ -552,6 +500,7 @@ namespace CavaPlugin
         #endregion
 
         #region Quests
+
         public List<WoWUnit> MobKingGennGreymane { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 36332)).OrderBy(ret => ret.Distance).ToList(); } }
         public List<WoWUnit> MobDocZapnozzle { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 36608)).OrderBy(ret => ret.Distance).ToList(); } }
         public List<WoWUnit> MobArctanus { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 34292)).OrderBy(ret => ret.Distance).ToList(); } }

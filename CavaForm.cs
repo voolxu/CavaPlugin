@@ -181,6 +181,10 @@ namespace CavaPlugin
         {
             CPsettings.Instance.Load();
             CPGlobalSettings.Instance.Load();
+            if (!CPGlobalSettings.Instance.FirstTimeLaunch)
+            {
+                CPGlobalSettings.Instance.FirstTimeLaunch = true;
+            }
             lastUseProfile = CPsettings.Instance.lastUsedPath;
             guildInvitescheckBox.Checked = CPsettings.Instance.guildInvitescheck;
             AntiStuck_CheckBox.Checked = CPsettings.Instance.AntiStuckSystem;
@@ -957,5 +961,7 @@ namespace CavaPlugin
         public bool RessAfterDie { get; set; }
         [Setting, DefaultValue(0)]
         public int language { get; set; }
+        [Setting, DefaultValue(false)]
+        public bool FirstTimeLaunch { get; set; }
     }
 }

@@ -134,13 +134,13 @@ to Portuguese
     <value>Level 1 bis 90</value>
   </data>
   <data name="leveling1to90txt" xml:space="preserve">
-    <value>Diese Profil ist für alle Charakter egal von welchem Level bis 90. Dieses Profil ist weiterhin in Arbeit. Allianz ist von 1 bis 67 und 85 bis 90. Horde ist von 1 bis 67 und 85 bis 88.</value>
+    <value>Diese Profil ist für alle Charakter egal von welchem Level bis 90. Dieses Profil ist weiterhin in Arbeit. Allianz ist von 1 bis 68 und 85 bis 90. Horde ist von 1 bis 68 und 85 bis 88.</value>
   </data>
   <data name="levelingarmagessoner" xml:space="preserve">
-    <value>Allianz und Horde (67-75) (Nur für Tester/Käufer)</value>
+    <value>Allianz und Horde (68-75) (Nur für Tester/Käufer)</value>
   </data>
   <data name="levelingarmagessonertxt" xml:space="preserve">
-    <value>Dieses Profil ist für alle Charakter von 67 bis 75</value>
+    <value>Dieses Profil ist für alle Charakter von 68 bis 75</value>
   </data>
   <data name="levelinggrind" xml:space="preserve">
     <value>Level Grinding</value>
@@ -257,6 +257,6 @@ to Portuguese
     <value>Spieler Einstellungen</value>
   </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Russische Sprache hinzugefügt. Grizzly Hills, Level 74 bis 75 hinzugefügt (nur für Tester)</value>
+    <value>Neues Profil hinzugefügt: Blade's Edge Mountains, Level 67 bis 68.</value>
   </data>
 </root>
