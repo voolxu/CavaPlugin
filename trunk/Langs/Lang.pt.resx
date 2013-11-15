@@ -292,6 +292,6 @@
     <value>Defenições do Boneco</value>
   </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Adicionado profile para Blade's Edge Mountains, Niveis 67 a 68.</value>
+    <value>Adicionado Profile para Zul'Drak, Niveis level 75 a 77 (reservedo a testers). CavaPlugin agora usa TortoiseSVN para fazer os updates.</value>
   </data>
 </root>

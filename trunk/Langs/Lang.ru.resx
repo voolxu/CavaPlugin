@@ -252,6 +252,6 @@ to Portuguese
     <value>Настройки персонажа</value>
   </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Добавлены профили для Острогорья, уровни с 67 по 68й.</value>
+    <value>Добавлен профиль для Зул'Драка, уровни с  75 по 77( зарезервировано для тестеров ). CavaPlugin использует TortoiseSVN для обновления файлов</value>
   </data>
 </root>

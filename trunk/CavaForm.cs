@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -32,7 +33,7 @@ namespace CavaPlugin
         public bool ArmaguedonerAllow = false;
         public int seconds = 15; // Segundos do countdown.
         public int numberBotBase;
-        public string pathToCharSettings = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Settings\" + Lua.GetReturnVal<string>("return GetRealmName()", 0) + @"\" + StyxWoW.Me.Name + ".xml");
+        public string PathToCavaPlugin = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\");
         public string pathToSettings = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Settings\Main-Settings.xml");
         public string pathToProfiles = Path.Combine(Utilities.AssemblyDirectory + @"\Default Profiles\Cava\Scripts\");
         public string profileToLoad = "";
@@ -48,6 +49,7 @@ namespace CavaPlugin
         public string mbs1600;
         public string mbs1300txt;
         public string mbs1600txt;
+        static SoundPlayer player = new SoundPlayer();
 
         public CavaForm()
         {
@@ -166,6 +168,8 @@ namespace CavaPlugin
 
         private void CavaForm_Load(object sender, EventArgs e)
         {
+            player.SoundLocation = PathToCavaPlugin + "Sounds\\Open.wav";
+            player.Play();
             pictureBox1.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\main.png");
             pictureBox2.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\quests.png");
             pictureBox3.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\about.png");
@@ -296,6 +300,7 @@ namespace CavaPlugin
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
+            button_Click();
             timer1.Enabled = false;
             lastUseProfile = 1; //Leveling 1 to 90
             richTextBox2.Text = leveling1to90txt;
@@ -303,6 +308,7 @@ namespace CavaPlugin
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
+            button_Click();
             timer1.Enabled = false;
             lastUseProfile = 2; //Leveling Pandaren 1 to 90 Horde
             richTextBox2.Text = levelingpandahordetxt;
@@ -311,6 +317,7 @@ namespace CavaPlugin
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
+            button_Click();
             timer1.Enabled = false;
             lastUseProfile = 3; //Leveling Pandaren 1 to 90 Alliance
             richTextBox2.Text = levelingpandaallytxt;
@@ -318,6 +325,7 @@ namespace CavaPlugin
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
+            button_Click();
             timer1.Enabled = false;
             lastUseProfile = 4; //Leveling 85 to 90 With Loot 
             richTextBox2.Text = level85to90boxtxt;
@@ -325,6 +333,7 @@ namespace CavaPlugin
 
         private void radioButton5_CheckedChanged(object sender, EventArgs e)
         {
+            button_Click();
             timer1.Enabled = false;
             lastUseProfile = 5; //test profiles
             richTextBox2.Text = levelingarmagessonertxt;
@@ -332,6 +341,7 @@ namespace CavaPlugin
 
         private void button2_Click(object sender, EventArgs e)
         {
+            button_Click();
             timer1.Enabled = false;
             timer1.Dispose();
             CPsettings.Instance.lastUsedPath = lastUseProfile;
@@ -426,6 +436,7 @@ namespace CavaPlugin
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
+            button_Click();
             ProcessStartInfo sInfo = new ProcessStartInfo("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6MCR3XWLP273A");
             Process.Start(sInfo);
         }
@@ -433,10 +444,12 @@ namespace CavaPlugin
         private void button4_Click(object sender, EventArgs e)
         {
             timer1.Enabled = false;
+            button_Click();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            button_Click();
             CPsettings.Instance.Save();
             CPGlobalSettings.Instance.Save();
             timer1.Dispose();
@@ -447,6 +460,7 @@ namespace CavaPlugin
 
         private void button1_Click(object sender, EventArgs e)
         {
+            button_Click();
             CPsettings.Instance.Save();
             CPGlobalSettings.Instance.Save();
             timer1.Enabled = false;
@@ -454,10 +468,21 @@ namespace CavaPlugin
             nomeiaprofile();
         }
 
+        private void button_MouseEnter(object sender, EventArgs e)
+        {
+            player.SoundLocation = PathToCavaPlugin + "Sounds\\Over.wav";
+            player.Play();
+        }
+        private void button_Click()
+        {
+            player.SoundLocation = PathToCavaPlugin + "Sounds\\Click.wav";
+            player.Play();
+        }
 
         private void button5_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://cava.repositoryhosting.com/trac/cava_profiles/wiki");
+            button_Click();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -597,11 +622,13 @@ namespace CavaPlugin
 
         private void AntiStuck_CheckBox_CheckedChanged(object sender, EventArgs e)
         {
+            button_Click();
             CPsettings.Instance.AntiStuckSystem = AntiStuck_CheckBox.Checked;
         }
 
         private void AutoShutDown_Checkbox_CheckedChanged(object sender, EventArgs e)
         {
+            button_Click();
             CPGlobalSettings.Instance.AutoShutdownWhenUpdate = AutoShutDown_Checkbox.Checked;
         }
 
@@ -617,11 +644,13 @@ namespace CavaPlugin
 
         private void CheckAllowSummonPet_CheckedChanged(object sender, EventArgs e)
         {
+            button_Click();
             CPsettings.Instance.CheckAllowSummonPet = AllowSummonPet_Checkbox.Checked;
         }
 
         private void MiningBS_Checkbox_CheckedChanged(object sender, EventArgs e)
         {
+            button_Click();
             if (MiningBS_Checkbox.Checked)
             {
                 if (!CPGlobalSettings.Instance.BotPBMiningBlacksmithing)
@@ -674,6 +703,7 @@ namespace CavaPlugin
 
         private void MiningBlacksmithingProf_CheckedChanged(object sender, EventArgs e)
         {
+            button_Click();
             timer1.Enabled = false;
             if (File.Exists(pathToProfiles + "PB\\MB\\Scripts\\[PB]MB600(Cava).txt"))
             {
@@ -719,6 +749,7 @@ namespace CavaPlugin
 
         private void AllowDownloadCheckBox_CheckedChanged(object sender, EventArgs e)
         {
+            button_Click();
             if (AllowDownloadCheckBox.Checked)
             {
                 if (!CPGlobalSettings.Instance.BotAllowUpdate)
@@ -814,11 +845,13 @@ namespace CavaPlugin
 
         private void ResscheckBox_CheckedChanged(object sender, EventArgs e)
         {
+            button_Click();
             CPGlobalSettings.Instance.RessAfterDie = true;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            button_Click();
             if (comboBox1.SelectedIndex == 0)
             {
                 CultureInfo ci = new CultureInfo("en-US");
@@ -883,6 +916,7 @@ namespace CavaPlugin
 
         private void guildInvitescheckBox_CheckedChanged(object sender, EventArgs e)
         {
+            button_Click();
             refuseGuildCheckBox.Checked = false;
             CPsettings.Instance.refuseguildInvitescheck = refuseGuildCheckBox.Checked;
             CPsettings.Instance.guildInvitescheck = guildInvitescheckBox.Checked;
@@ -890,6 +924,7 @@ namespace CavaPlugin
 
         private void refuseGuildCheckBox_CheckedChanged(object sender, EventArgs e)
         {
+            button_Click();
             guildInvitescheckBox.Checked = false;
             CPsettings.Instance.guildInvitescheck = guildInvitescheckBox.Checked;
             CPsettings.Instance.refuseguildInvitescheck = refuseGuildCheckBox.Checked;
@@ -897,16 +932,19 @@ namespace CavaPlugin
 
         private void refusePartyCheckBox_CheckedChanged(object sender, EventArgs e)
         {
+            button_Click();
             CPsettings.Instance.refusepartyInvitescheck = refusePartyCheckBox.Checked;
         }
 
         private void refuseTradesCheckBox_CheckedChanged(object sender, EventArgs e)
         {
+            button_Click();
             CPsettings.Instance.refusetradeInvitescheck = refuseTradesCheckBox.Checked;
         }
 
         private void refuseDuelCheckBox_CheckedChanged(object sender, EventArgs e)
         {
+            button_Click();
             CPsettings.Instance.refuseduelInvitescheck = refuseDuelCheckBox.Checked;
         }
   

@@ -257,6 +257,6 @@ to Portuguese
     <value>Spieler Einstellungen</value>
   </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Neues Profil hinzugefügt: Blade's Edge Mountains, Level 67 bis 68.</value>
+    <value>Zul'Drak Profile hinzugefügt, Level 75 bis 77(nur für Tester). CavaPlugin benutzt nun TortoiseSVN zum Updaten der Dateien.</value>
   </data>
 </root>

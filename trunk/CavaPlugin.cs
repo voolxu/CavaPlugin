@@ -1,16 +1,18 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 //using System.Text;
+using System.Media;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Media;
 
 using Styx;
 using Styx.Helpers;
-using Styx.Loaders;
+//using Styx.Loaders;
 using Styx.Patchables;
 using Styx.Plugins;
 using Styx.Common;
@@ -23,15 +25,12 @@ using Styx.WoWInternals.World;
 using Styx.WoWInternals.WoWCache;
 using Styx.WoWInternals.WoWObjects;
 
-using CavaHPlugin;
-using CavaHProfile;
-using CavaHQB;
 
 namespace CavaPlugin
 {
     public class CavaPlugin : HBPlugin
     {
-        public bool hasBeenInitialized = false;
+        private bool _hasBeenInitialized;
         public bool hasBeenInitialized2 = false;
         public bool hasBeenInitialized3 = false;
         public bool cavaupdated = false;
@@ -53,8 +52,11 @@ namespace CavaPlugin
         private WoWPoint UltimoLocal;
         private bool onbotstart = true;
         #region Overrides except pulse
+
+        static SoundPlayer player = new SoundPlayer();
+
         public override string Author { get { return "Cava"; } }
-        public override Version Version { get { return new Version(4, 0, 8); } }
+        public override Version Version { get { return new Version(4, 0, 9); } }
         public override string Name { get { return "CavaPlugin"; } }
         public override bool WantButton { get { return true; } }
         public override string ButtonText { get { return "Cava Profiles"; } }
@@ -64,165 +66,196 @@ namespace CavaPlugin
             if (isRunningantes)
             {
                 MessageBox.Show("Bot is running, stop bot before initiate Cava Plugin", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                player.SoundLocation = PathToCavaPlugin + "Sounds\\Error.wav";
+                player.Play();
                 return;
             }
             else
             {
                 abreJanela();
+                player.SoundLocation = PathToCavaPlugin + "Sounds\\Close.wav";
+                player.Play();
                 //MessageBox.Show("To Start CavaPlugin load profile Cava_Starter_Profiles.xml", "WELCOME TO CAVAPLUGIN", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private Cava_Plugin_Updater UpdaterPlugin;
-        private Cava_QB_Updater UpdaterQB;
-        private Cava_Profile_Updater UpdaterProfile;
-        public string pathToCavaArmageddoner = Path.Combine(Utilities.AssemblyDirectory + @"\Default Profiles\Cava\Scripts\Armageddoner\");
-        public string pathToPBMiningBS = Path.Combine(Utilities.AssemblyDirectory + @"\Default Profiles\Cava\Scripts\PB\MB\");
 
-        static void UpdaterArmageddoner(string f)
+        private readonly string _pathToCavaArmageddoner = Path.Combine(Utilities.AssemblyDirectory + @"\Default Profiles\Cava\Scripts\Armageddoner\");
+        private readonly string _pathToPbMiningBs = Path.Combine(Utilities.AssemblyDirectory + @"\Default Profiles\Cava\Scripts\PB\MB\");
+        private static readonly string PathToCavaPlugin = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\");
+        private static readonly string PathToCavaProfiles = Path.Combine(Utilities.AssemblyDirectory + @"\Default Profiles\Cava\");
+        private static readonly string PathToCavaQBs = Path.Combine(Utilities.AssemblyDirectory + @"\Quest Behaviors\Cava\");
+        static bool UpdaterCava(string f, string stuff)
         {
-            Process p = new Process();
-            p.StartInfo.FileName = "TortoiseProc.exe";
-            p.StartInfo.Arguments = f;
-            p.Start();
-            p.WaitForExit();
-            if (p.ExitCode == 0)
+            var p = new Process {StartInfo = {FileName = "TortoiseProc.exe", Arguments = f}};
+            try
             {
-                CPGlobalSettings.Instance.AllowUpdate = false;
+                p.Start();
+                p.WaitForExit();
+                if (p.ExitCode == 0)
+                {
+                    return true;
+                }
+                switch (stuff)
+                {
+                    case "AllowUpdate":
+                        CPGlobalSettings.Instance.AllowUpdate = false;
+                        break;
+                    case "PBMiningBlacksmithing":
+                        CPGlobalSettings.Instance.PBMiningBlacksmithing = false;
+                        break;
+                }
             }
-        }
-        static void UpdaterMiningBS(string f)
-        {
-            Process p = new Process();
-            p.StartInfo.FileName = "TortoiseProc.exe";
-            p.StartInfo.Arguments = f;
-            p.Start();
-            p.WaitForExit();
-            if (p.ExitCode == 0)
+            catch (Exception ex)
             {
-                CPGlobalSettings.Instance.PBMiningBlacksmithing = false;
+                Err("Unable to run TortoiseSVN");
+                Err("Exception " + ex.Message);
             }
+            return false;
         }
 
         public override void Initialize()
         {
-            Styx.CommonBot.BotEvents.OnBotStart += _OnBotStart;
-            if (!hasBeenInitialized)
+            BotEvents.OnBotStart += _OnBotStart;
+            if (!_hasBeenInitialized)
             {
-                Logging.Write(Colors.Teal, "Loading CavaPlugin V:" + Version.ToString());
-                if (!File.Exists(Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Cava_Plugin_V3_Updater.ver")) ||
-                    !File.Exists(Path.Combine(Utilities.AssemblyDirectory + @"\Quest Behaviors\Cava\CavaLoader.cs")))
-                {
-                    MessageBox.Show("Cava plugin is not instaled properly, please download and install CavaPlugin from zip file", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                Debug("Loading CavaPlugin");
                 if (!CPGlobalSettings.Instance.FirstTimeLaunch)
                 {
-                    MessageBox.Show("Cava plugin soon, will use TortoiseSVN to download profiles, Make sure you have it installed", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Cava plugin use TortoiseSVN to download profiles, Make sure you have it installed", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    player.SoundLocation = PathToCavaPlugin + "Sounds\\Information.wav";
+                    player.Play();
                 }
-                Logging.Write(Colors.Teal, "Please Wait While [Cava Plugin] Check For Updates, This Can Take Several Minutes");
-                System.Threading.Thread.Sleep(2000);
-                hasBeenInitialized = true;
-                try
+                if (!File.Exists(Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\CavaPlugin.ver")))
                 {
-                    UpdaterPlugin = new Cava_Plugin_Updater("http://cavaplugin.googlecode.com/svn/trunk/", "CavaPlugin");
+                    MessageBox.Show("Cava plugin use now TortoiseSVN for updates, please do a clean installation for HB and reinstall CavaPlugin from new ZIP file", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    player.SoundLocation = PathToCavaPlugin + "Sounds\\Error.wav";
+                    player.Play();
+                    //return;
+                }
+                Debug("Please Wait While [Cava Plugin] Check For Updates");
+                //update Plugin
+                if (CavaPluginUpdater.UpdateAvailable("http://cavaplugin.googlecode.com/svn/trunk/", "CavaPlugin.ver"))
+                {
+                    var newrev = CavaPluginUpdater.GetNewestRev("http://cavaplugin.googlecode.com/svn/trunk/").ToString(CultureInfo.InvariantCulture);
+                    Debug("Quest Behavior Update to ${0} is available! You are on ${1}", newrev, CavaPluginUpdater.GetCurrentRev("CavaPlugin.ver").ToString(CultureInfo.InvariantCulture));
+                    Debug("Starting update process");
+                    if (UpdaterCava("/command:\"update\" /path:\"" + PathToCavaPlugin + "\" /closeonend:1", ""))
+                    {
+                        cavaupdated = true;
+                        CavaPluginUpdater.WriteNewRevFile("CavaPlugin.ver", newrev);
+                        Debug("is at Rev ${0} and up to date!", newrev);
+                    }
+                    else
+                    {
+                        Err("There is a problem updating CavaPlugin.");
+                    }
+                }
+                
+                //Mudar pastas ao inicio
+                if (Directory.Exists(PathToCavaPlugin + "\\Extra1"))
+                {
+                    if (Directory.Exists(PathToCavaQBs))
+                    {
+                        MessageBox.Show("Cava plugin use now TortoiseSVN for updates, please do a clean installation for HB and reinstall CavaPlugin from new ZIP file", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        player.SoundLocation = PathToCavaPlugin + "Sounds\\Error.wav";
+                        player.Play();
+                    }
+                    Directory.Move(PathToCavaPlugin + "\\Extra1", PathToCavaQBs);
+                }
+                if (Directory.Exists(PathToCavaPlugin + "\\Extra2"))
+                {
+                    if (Directory.Exists(PathToCavaProfiles))
+                    {
+                        MessageBox.Show("Cava plugin use now TortoiseSVN for updates, please do a clean installation for HB and reinstall CavaPlugin from new ZIP file", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        player.SoundLocation = PathToCavaPlugin + "Sounds\\Error.wav";
+                        player.Play();
+                    }
+                    Directory.Move(PathToCavaPlugin + "\\Extra2", PathToCavaProfiles);
+                }
+                if (!Directory.Exists(PathToCavaProfiles) || !Directory.Exists(PathToCavaQBs))
+                {
+                    MessageBox.Show("Theres an error creating and/or updating Cava folders for Cava Quest Behaviors and/or Cava profiles", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    player.SoundLocation = PathToCavaPlugin + "Sounds\\Information.wav";
+                    player.Play();
+                }
 
-                    if (UpdaterPlugin.UpdateAvailable())
+                //fazer update de quest behaviors
+                if (CavaPluginUpdater.UpdateAvailable("http://cavaqbs.googlecode.com/svn/trunk/Cava/", "QuestBehaviors.ver"))
+                {
+                    var newrev = CavaPluginUpdater.GetNewestRev("http://cavaqbs.googlecode.com/svn/trunk/Cava/").ToString(CultureInfo.InvariantCulture);
+                    Debug("Quest Behavior Update to ${0} is available! You are on ${1}", newrev, CavaPluginUpdater.GetCurrentRev("QuestBehaviors.ver").ToString(CultureInfo.InvariantCulture));
+                    Debug("Starting update process");
+                    if (UpdaterCava("/command:\"update\" /path:\"" + PathToCavaQBs + "\" /closeonend:1", ""))
                     {
-                        Logging.Write("[Cava Plugin] Update to $" + UpdaterPlugin.GetNewestRev().ToString() + " is available! You are on $" + UpdaterPlugin.CurrentRev.ToString());
-                        Logging.Write("[Cava Plugin] Starting update process");
-                        if (UpdaterPlugin.Update())
-                        {
-                            Logging.Write("[Cava Plugin] is now up to date! Please reload HB");
-                            cavaupdated = true;
-                        }
-                        else
-                        {
-                            Logging.Write("[Cava Plugin] Encountered an error trying to auto-update. Please update manually");
-                        }
+                        cavaupdated = true;
+                        CavaPluginUpdater.WriteNewRevFile("QuestBehaviors.ver", newrev);
+                        Debug("Quest Behaviors are at Rev ${0} and up to date!", newrev);
                     }
                     else
                     {
-                        Logging.Write("[Cava Plugin] is at Rev $" + UpdaterPlugin.CurrentRev.ToString() + " and up to date!");
+                        Err("There is a problem updating Cava Quest Behaviors.");
                     }
                 }
-                catch (Exception ex)
+                
+                //fazer update de profiles
+                if (CavaPluginUpdater.UpdateAvailable("http://cavaprofiles.googlecode.com/svn/trunk/", "CavaProfiles.ver"))
                 {
-                    Logging.Write(Colors.Teal, "Unable to run [Cava Plugin] update process");
-                    Logging.Write(LogLevel.Diagnostic, "[Cava Plugin]: Exception " + ex.Message);
-                }
-                try
-                {
-                    UpdaterQB = new Cava_QB_Updater("http://cavaqbs.googlecode.com/svn/trunk/", "");
-                    if (UpdaterQB.UpdateAvailable())
+                    var newrev = CavaPluginUpdater.GetNewestRev("http://cavaprofiles.googlecode.com/svn/trunk/").ToString(CultureInfo.InvariantCulture);
+                    Debug("Quest Behavior Update to ${0} is available! You are on ${1}", newrev, CavaPluginUpdater.GetCurrentRev("CavaProfiles.ver").ToString(CultureInfo.InvariantCulture));
+                    Debug("Starting update process");
+                    if (UpdaterCava("/command:\"update\" /path:\"" + PathToCavaProfiles + "\" /closeonend:1", ""))
                     {
-                        Logging.Write("[Cava QB Updater] Update to $" + UpdaterQB.GetNewestRev().ToString() + " is available! You are on $" + UpdaterQB.CurrentRev.ToString());
-                        Logging.Write("[Cava QB Updater] Starting update process");
-                        if (UpdaterQB.Update())
-                        {
-                            Logging.Write("[Cava QB Updater] is now up to date! Please reload HB");
-                            cavaupdated = true;
-                        }
-                        else
-                        {
-                            Logging.Write("[Cava QB Updater] Encountered an error trying to auto-update. Please update manually");
-                        }
+                        cavaupdated = true;
+                        CavaPluginUpdater.WriteNewRevFile("CavaProfiles.ver", newrev);
+                        Debug("Cava Profiles are at Rev ${0} and up to date!", newrev);
                     }
                     else
                     {
-                        Logging.Write("[Cava QB Updater] is at Rev $" + UpdaterQB.CurrentRev.ToString() + " and up to date!");
+                        Err("There is a problem updating Cava Profiles.");
                     }
-                }
-                catch (Exception ex)
-                {
-                    Logging.Write(Colors.Teal, "Unable to run [Cava QB Updater] update process");
-                    Logging.Write(LogLevel.Diagnostic, "[Cava QB Updater]: Exception " + ex.Message);
-                }
-                try
-                {
-                    UpdaterProfile = new Cava_Profile_Updater("http://cavaprofiles.googlecode.com/svn/trunk/", "");
-                    if (UpdaterProfile.UpdateAvailable())
-                    {
-                        Logging.Write("[Cava Profile Updater] Update to $" + UpdaterProfile.GetNewestRev().ToString() + " is available! You are on $" + UpdaterProfile.CurrentRev.ToString());
-                        Logging.Write("[Cava Profile Updater] Starting update process");
-                        if (UpdaterProfile.Update())
-                        {
-                            Logging.Write("[Cava Profile Updater] is now up to date!");
-                        }
-                        else
-                        {
-                            Logging.Write("[Cava Profile Updater] Encountered an error trying to auto-update. Please update manually");
-                        }
-                    }
-                    else
-                    {
-                        Logging.Write("[Cava Profile Updater] is at Rev $" + UpdaterProfile.CurrentRev.ToString() + " and up to date!");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Logging.Write(Colors.Teal,"Unable to run [Cava Profile Updater] update process");
-                    Logging.Write(LogLevel.Diagnostic, "[Cava Profile Updater]: Exception " + ex.Message);
                 }
                 CPGlobalSettings.Instance.Load();
-                if (cavaupdated && CPGlobalSettings.Instance.AutoShutdownWhenUpdate)
+                //fazer update de Armageddoner
+                if (CPGlobalSettings.Instance.BotAllowUpdate && CPGlobalSettings.Instance.AllowUpdate )
                 {
-                    Logging.Write("[Cava Plugin] Auto-Shutdown in progress at " + DateTime.Now.ToString());
-                    System.Threading.Thread.Sleep(5000);
-                    Environment.Exit(0);
+                    if (UpdaterCava("/command:\"update\" /path:\"" + _pathToCavaArmageddoner + "\" /closeonend:1",
+                                    "AllowUpdate"))
+                    {
+                        Debug("Armageddoner is up to date!");
+                    }
+                    else
+                    {
+                        Err("There is a problem updating Armageddoner.");
+                    }
                 }
-                if (CPGlobalSettings.Instance.BotAllowUpdate && CPGlobalSettings.Instance.AllowUpdate)
+                //fazer update de PBs
+               if (CPGlobalSettings.Instance.BotPBMiningBlacksmithing && 
+                   CPGlobalSettings.Instance.PBMiningBlacksmithing )
                 {
-                    UpdaterArmageddoner("/command:\"update\" /path:\"" + pathToCavaArmageddoner + "\" /closeonend:1");
+                    if (UpdaterCava("/command:\"update\" /path:\"" + _pathToPbMiningBs + "\" /closeonend:1",
+                                    "AllowUpdate"))
+                    {
+                        Debug("Mining and Blacksmithing 1 to 600 are up to date!");
+                    }
+                    else
+                    {
+                        Err("There is a problem updating Mining Blacksmithing 1 to 600.");
+                    }
                 }
-                if (CPGlobalSettings.Instance.BotPBMiningBlacksmithing && CPGlobalSettings.Instance.PBMiningBlacksmithing)
+                Debug(cavaupdated ? "is now up to date! Please reload HB" : "is up to date and ready");
+                _hasBeenInitialized = true;
+                 if (cavaupdated && CPGlobalSettings.Instance.AutoShutdownWhenUpdate)
                 {
-                    UpdaterMiningBS("/command:\"update\" /path:\"" + pathToPBMiningBS + "\" /closeonend:1");
+                    Debug("Auto-Shutdown in progress at " + DateTime.Now.ToString(CultureInfo.InvariantCulture));
+                    Thread.Sleep(5000);
+                    //Environment.Exit(0);
+                    System.Windows.Application.Current.Shutdown();
                 }
                 UltimoSemStuck = new Stopwatch();
                 MountedTime = new Stopwatch();
                 summonpettime = new Stopwatch();
                 NVezesBotUnstuck = 0;
-              }
+            }
             //duplo ignore, bot corre 2 vezes o Initialize
             if (!hasBeenInitialized2)
             {
@@ -449,38 +482,39 @@ namespace CavaPlugin
         public String ProfileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Format(@"Plugins\CavaPlugin\Settings\Main-Settings.xml"));
         #endregion
 
+
         #region Logging
-        /*
         public static void Log(string format, params object[] args)
         {
             Log(Colors.SkyBlue, format, args);
         }
-
         public static void Log(Color color, string format, params object[] args)
         {
             Logging.Write(color, "[CavaPlugin]:" + format, args);
         }
-        public static void Debug(string format, params object[] args)
+
+        public void Debug(string format, params object[] args)
         {
             Debug(Colors.Teal, format, args);
         }
-
-        public static void Debug(Color color, string format, params object[] args)
+        public void Debug(Color color, string format, params object[] args)
         {
-            Logging.Write(color, "[CavaPlugin]" + format, args);
+            Logging.Write(color, "[CavaPlugin]" + Version.ToString() + ": " + format, args);
         }
+ 
         public static void Err(string format, params object[] args)
         {
             Err(Colors.Red, format, args);
         }
-
         public static void Err(Color color, string format, params object[] args)
         {
             Logging.Write(color, "Err: " + format, args);
-        }
-        */
-        #endregion
+            player.SoundLocation = PathToCavaPlugin + "Sounds\\Error2.wav";
+            player.Play();
 
+        }
+        #endregion
+        
         #region Utils
         #endregion
 
@@ -490,6 +524,8 @@ namespace CavaPlugin
             if (cavaupdated)
             {
                 MessageBox.Show("Cava Plugin/Quest Behaviors has been updated a restart is required.", "RESTART REQUIRED", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                player.SoundLocation = PathToCavaPlugin + "Sounds\\notify.wav";
+                player.Play();
                 Environment.Exit(0);
             }
             var mainCavaForm = new CavaForm();
@@ -667,6 +703,7 @@ namespace CavaPlugin
                     Lua.DoString("UseItemByName(35125)");
                     Thread.Sleep(500);
                 }
+ 
                 if (CPsettings.Instance.AntiStuckSystem)
                 {
                     if (!Me.Mounted || Me.OnTaxi)
