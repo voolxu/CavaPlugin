@@ -258,6 +258,6 @@ to Portuguese
     <value>Character Settinger</value>
   </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Added Profil for Blade's Edge Mountains, Level 67 til 68.</value>
+    <value>Tilføjet Zul'Drak map profil, level 75 til 77(reserveret til testere). CavaPlugin bruger nu TortoiseSVN til at opdatere filer.</value>
   </data>
 </root>

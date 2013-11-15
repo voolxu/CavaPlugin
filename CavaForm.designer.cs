@@ -175,6 +175,7 @@
             this.tabPage3.Controls.Add(this.pictureBox3);
             this.tabPage3.Controls.Add(this.groupBox3);
             this.tabPage3.Controls.Add(this.groupBox2);
+            this.tabPage3.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(834, 586);
@@ -221,12 +222,14 @@
             // 
             // pictureBox4
             // 
+            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox4.Location = new System.Drawing.Point(24, 36);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(160, 64);
             this.pictureBox4.TabIndex = 0;
             this.pictureBox4.TabStop = false;
             this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+            this.pictureBox4.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
             // groupBox2
             // 
@@ -267,6 +270,7 @@
             this.tabPage8.Controls.Add(this.pictureBox6);
             this.tabPage8.Controls.Add(this.button6);
             this.tabPage8.Controls.Add(this.groupBox10);
+            this.tabPage8.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Size = new System.Drawing.Size(834, 586);
@@ -295,6 +299,7 @@
             // 
             // button6
             // 
+            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.Location = new System.Drawing.Point(635, 507);
             this.button6.Name = "button6";
@@ -303,6 +308,7 @@
             this.button6.Text = "Start";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.button6.MouseHover += new System.EventHandler(this.button_MouseEnter);
             // 
             // groupBox10
             // 
@@ -329,6 +335,7 @@
             this.MiningBlacksmithingProf.Text = "Mining And Blacksmithing 1 to 300";
             this.MiningBlacksmithingProf.UseVisualStyleBackColor = true;
             this.MiningBlacksmithingProf.CheckedChanged += new System.EventHandler(this.MiningBlacksmithingProf_CheckedChanged);
+            this.MiningBlacksmithingProf.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
             // tabPage6
             // 
@@ -373,6 +380,7 @@
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Controls.Add(this.richTextBox2);
             this.tabPage2.Controls.Add(this.button2);
+            this.tabPage2.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -420,6 +428,7 @@
             this.radioButton4.Text = "Leveling 85 to 90 All Quests";
             this.radioButton4.UseVisualStyleBackColor = true;
             this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            this.radioButton4.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
             // radioButton2
             // 
@@ -433,6 +442,7 @@
             this.radioButton2.Text = "Leveling Pandaren 1 to 90 Horde";
             this.radioButton2.UseVisualStyleBackColor = true;
             this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.radioButton2.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
             // radioButton1
             // 
@@ -446,6 +456,7 @@
             this.radioButton1.Text = "Leveling 1 to 90";
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.radioButton1.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
             // radioButton5
             // 
@@ -459,6 +470,7 @@
             this.radioButton5.Text = "Alliance And Horde (65-72) (testers/donators only)";
             this.radioButton5.UseVisualStyleBackColor = true;
             this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
+            this.radioButton5.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
             // radioButton3
             // 
@@ -472,6 +484,7 @@
             this.radioButton3.Text = "Leveling Pandaren 1 to 90 Alliance";
             this.radioButton3.UseVisualStyleBackColor = true;
             this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            this.radioButton3.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
             // richTextBox2
             // 
@@ -484,6 +497,7 @@
             // 
             // button2
             // 
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(635, 507);
             this.button2.Name = "button2";
@@ -492,6 +506,7 @@
             this.button2.Text = "Start";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
             // tabPage1
             // 
@@ -507,6 +522,7 @@
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -557,6 +573,7 @@
             // 
             // button5
             // 
+            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button5.Location = new System.Drawing.Point(7, 22);
@@ -608,10 +625,11 @@
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(116, 13);
             this.label14.TabIndex = 2;
-            this.label14.Text = "CavaPlugin V 4.0.8";
+            this.label14.Text = "CavaPlugin V 4.0.9";
             // 
             // button4
             // 
+            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.Location = new System.Drawing.Point(635, 355);
             this.button4.Name = "button4";
@@ -620,9 +638,11 @@
             this.button4.Text = "Cancel";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
             // button3
             // 
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Location = new System.Drawing.Point(635, 421);
             this.button3.Name = "button3";
@@ -631,6 +651,7 @@
             this.button3.Text = "Close";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
             // label6
             // 
@@ -677,6 +698,7 @@
             // 
             // button1
             // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(635, 507);
             this.button1.Name = "button1";
@@ -685,6 +707,7 @@
             this.button1.Text = "Start";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
             // label1
             // 
@@ -721,6 +744,7 @@
             this.tabPage9.Controls.Add(this.pictureBox5);
             this.tabPage9.Controls.Add(this.languageGroupBox);
             this.tabPage9.Controls.Add(this.groupBox4);
+            this.tabPage9.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabPage9.Location = new System.Drawing.Point(4, 22);
             this.tabPage9.Name = "tabPage9";
             this.tabPage9.Size = new System.Drawing.Size(834, 586);
@@ -731,6 +755,7 @@
             // ResscheckBox
             // 
             this.ResscheckBox.AutoSize = true;
+            this.ResscheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ResscheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ResscheckBox.ForeColor = System.Drawing.SystemColors.ControlText;
             this.ResscheckBox.Location = new System.Drawing.Point(572, 141);
@@ -740,6 +765,7 @@
             this.ResscheckBox.Text = "Ress/Release After Die";
             this.ResscheckBox.UseVisualStyleBackColor = true;
             this.ResscheckBox.CheckedChanged += new System.EventHandler(this.ResscheckBox_CheckedChanged);
+            this.ResscheckBox.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
             // globalsetgroupBox
             // 
@@ -769,6 +795,7 @@
             this.AutoShutDown_Checkbox.Text = "Auto Shutdown After Update";
             this.AutoShutDown_Checkbox.UseVisualStyleBackColor = true;
             this.AutoShutDown_Checkbox.CheckedChanged += new System.EventHandler(this.AutoShutDown_Checkbox_CheckedChanged);
+            this.AutoShutDown_Checkbox.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
             // AllowDownloadCheckBox
             // 
@@ -782,6 +809,7 @@
             this.AllowDownloadCheckBox.Text = "Auto Download Private Profiles";
             this.AllowDownloadCheckBox.UseVisualStyleBackColor = true;
             this.AllowDownloadCheckBox.CheckedChanged += new System.EventHandler(this.AllowDownloadCheckBox_CheckedChanged);
+            this.AllowDownloadCheckBox.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
             // label15
             // 
@@ -811,6 +839,7 @@
             this.comboBox1.Size = new System.Drawing.Size(148, 23);
             this.comboBox1.TabIndex = 29;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox1.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
             // pictureBox5
             // 
@@ -838,6 +867,7 @@
             // MiningBS_Checkbox
             // 
             this.MiningBS_Checkbox.AutoSize = true;
+            this.MiningBS_Checkbox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.MiningBS_Checkbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MiningBS_Checkbox.ForeColor = System.Drawing.SystemColors.ControlText;
             this.MiningBS_Checkbox.Location = new System.Drawing.Point(6, 20);
@@ -847,6 +877,7 @@
             this.MiningBS_Checkbox.Text = "Mining And Blacksmithing 1 to 600";
             this.MiningBS_Checkbox.UseVisualStyleBackColor = true;
             this.MiningBS_Checkbox.CheckedChanged += new System.EventHandler(this.MiningBS_Checkbox_CheckedChanged);
+            this.MiningBS_Checkbox.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
             // groupBox4
             // 
@@ -892,6 +923,7 @@
             this.AntiStuck_CheckBox.Text = "Anti-Stuck System(Need Relogger)";
             this.AntiStuck_CheckBox.UseVisualStyleBackColor = true;
             this.AntiStuck_CheckBox.CheckedChanged += new System.EventHandler(this.AntiStuck_CheckBox_CheckedChanged);
+            this.AntiStuck_CheckBox.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
             // refuseDuelCheckBox
             // 
@@ -905,6 +937,7 @@
             this.refuseDuelCheckBox.Text = "Refuse Duel Invites";
             this.refuseDuelCheckBox.UseVisualStyleBackColor = true;
             this.refuseDuelCheckBox.CheckedChanged += new System.EventHandler(this.refuseDuelCheckBox_CheckedChanged);
+            this.refuseDuelCheckBox.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
             // AllowSummonPet_Checkbox
             // 
@@ -918,6 +951,7 @@
             this.AllowSummonPet_Checkbox.Text = "Enable Summon Random Pets";
             this.AllowSummonPet_Checkbox.UseVisualStyleBackColor = true;
             this.AllowSummonPet_Checkbox.CheckedChanged += new System.EventHandler(this.CheckAllowSummonPet_CheckedChanged);
+            this.AllowSummonPet_Checkbox.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
             // refuseTradesCheckBox
             // 
@@ -931,6 +965,7 @@
             this.refuseTradesCheckBox.Text = "Refuse Trade Invites";
             this.refuseTradesCheckBox.UseVisualStyleBackColor = true;
             this.refuseTradesCheckBox.CheckedChanged += new System.EventHandler(this.refuseTradesCheckBox_CheckedChanged);
+            this.refuseTradesCheckBox.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
             // refusePartyCheckBox
             // 
@@ -944,6 +979,7 @@
             this.refusePartyCheckBox.Text = "Refuse Party Invites";
             this.refusePartyCheckBox.UseVisualStyleBackColor = true;
             this.refusePartyCheckBox.CheckedChanged += new System.EventHandler(this.refusePartyCheckBox_CheckedChanged);
+            this.refusePartyCheckBox.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
             // guildInvitescheckBox
             // 
@@ -957,6 +993,7 @@
             this.guildInvitescheckBox.Text = "Accept Lvl 25 Guild Invites";
             this.guildInvitescheckBox.UseVisualStyleBackColor = true;
             this.guildInvitescheckBox.CheckedChanged += new System.EventHandler(this.guildInvitescheckBox_CheckedChanged);
+            this.guildInvitescheckBox.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
             // refuseGuildCheckBox
             // 
@@ -970,6 +1007,7 @@
             this.refuseGuildCheckBox.Text = "Refuse Guild Invites";
             this.refuseGuildCheckBox.UseVisualStyleBackColor = true;
             this.refuseGuildCheckBox.CheckedChanged += new System.EventHandler(this.refuseGuildCheckBox_CheckedChanged);
+            this.refuseGuildCheckBox.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
             // tabPage10
             // 
@@ -979,6 +1017,7 @@
             this.tabPage10.Controls.Add(this.groupBox9);
             this.tabPage10.Controls.Add(this.groupBox8);
             this.tabPage10.Controls.Add(this.groupBox7);
+            this.tabPage10.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabPage10.Location = new System.Drawing.Point(4, 22);
             this.tabPage10.Name = "tabPage10";
             this.tabPage10.Size = new System.Drawing.Size(834, 586);
@@ -1001,6 +1040,7 @@
             // linkLabel29
             // 
             this.linkLabel29.AutoSize = true;
+            this.linkLabel29.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel29.LinkColor = System.Drawing.Color.Black;
             this.linkLabel29.Location = new System.Drawing.Point(6, 25);
             this.linkLabel29.Name = "linkLabel29";
@@ -1038,6 +1078,7 @@
             // linkLabel27
             // 
             this.linkLabel27.AutoSize = true;
+            this.linkLabel27.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel27.LinkColor = System.Drawing.Color.Black;
             this.linkLabel27.Location = new System.Drawing.Point(6, 50);
             this.linkLabel27.Name = "linkLabel27";
@@ -1052,6 +1093,7 @@
             // 
             this.linkLabel26.AutoSize = true;
             this.linkLabel26.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.linkLabel26.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel26.LinkColor = System.Drawing.Color.Black;
             this.linkLabel26.Location = new System.Drawing.Point(6, 25);
             this.linkLabel26.Name = "linkLabel26";
@@ -1098,6 +1140,7 @@
             // linkLabel25
             // 
             this.linkLabel25.AutoSize = true;
+            this.linkLabel25.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel25.LinkColor = System.Drawing.Color.Black;
             this.linkLabel25.Location = new System.Drawing.Point(10, 166);
@@ -1112,6 +1155,7 @@
             // linkLabel24
             // 
             this.linkLabel24.AutoSize = true;
+            this.linkLabel24.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel24.LinkColor = System.Drawing.Color.Black;
             this.linkLabel24.Location = new System.Drawing.Point(10, 151);
@@ -1126,6 +1170,7 @@
             // linkLabel23
             // 
             this.linkLabel23.AutoSize = true;
+            this.linkLabel23.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel23.LinkColor = System.Drawing.Color.Black;
             this.linkLabel23.Location = new System.Drawing.Point(10, 136);
@@ -1140,6 +1185,7 @@
             // linkLabel22
             // 
             this.linkLabel22.AutoSize = true;
+            this.linkLabel22.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel22.LinkColor = System.Drawing.Color.Black;
             this.linkLabel22.Location = new System.Drawing.Point(10, 121);
@@ -1154,6 +1200,7 @@
             // linkLabel21
             // 
             this.linkLabel21.AutoSize = true;
+            this.linkLabel21.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel21.LinkColor = System.Drawing.Color.Black;
             this.linkLabel21.Location = new System.Drawing.Point(10, 106);
@@ -1168,6 +1215,7 @@
             // linkLabel20
             // 
             this.linkLabel20.AutoSize = true;
+            this.linkLabel20.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel20.LinkColor = System.Drawing.Color.Black;
             this.linkLabel20.Location = new System.Drawing.Point(10, 91);
@@ -1182,6 +1230,7 @@
             // linkLabel19
             // 
             this.linkLabel19.AutoSize = true;
+            this.linkLabel19.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel19.LinkColor = System.Drawing.Color.Black;
             this.linkLabel19.Location = new System.Drawing.Point(10, 76);
@@ -1196,6 +1245,7 @@
             // linkLabel18
             // 
             this.linkLabel18.AutoSize = true;
+            this.linkLabel18.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel18.LinkColor = System.Drawing.Color.Black;
             this.linkLabel18.Location = new System.Drawing.Point(10, 61);
@@ -1210,6 +1260,7 @@
             // linkLabel17
             // 
             this.linkLabel17.AutoSize = true;
+            this.linkLabel17.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel17.LinkColor = System.Drawing.Color.Black;
             this.linkLabel17.Location = new System.Drawing.Point(10, 46);
@@ -1224,6 +1275,7 @@
             // linkLabel16
             // 
             this.linkLabel16.AutoSize = true;
+            this.linkLabel16.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel16.LinkColor = System.Drawing.Color.Black;
             this.linkLabel16.Location = new System.Drawing.Point(10, 31);
@@ -1238,6 +1290,7 @@
             // linkLabel15
             // 
             this.linkLabel15.AutoSize = true;
+            this.linkLabel15.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel15.LinkColor = System.Drawing.Color.Black;
             this.linkLabel15.Location = new System.Drawing.Point(10, 16);
@@ -1274,6 +1327,7 @@
             // linkLabel14
             // 
             this.linkLabel14.AutoSize = true;
+            this.linkLabel14.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel14.LinkColor = System.Drawing.Color.Black;
             this.linkLabel14.Location = new System.Drawing.Point(10, 61);
@@ -1288,6 +1342,7 @@
             // linkLabel13
             // 
             this.linkLabel13.AutoSize = true;
+            this.linkLabel13.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel13.LinkColor = System.Drawing.Color.Black;
             this.linkLabel13.Location = new System.Drawing.Point(10, 46);
@@ -1302,6 +1357,7 @@
             // linkLabel12
             // 
             this.linkLabel12.AutoSize = true;
+            this.linkLabel12.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel12.LinkColor = System.Drawing.Color.Black;
             this.linkLabel12.Location = new System.Drawing.Point(10, 31);
@@ -1316,6 +1372,7 @@
             // linkLabel11
             // 
             this.linkLabel11.AutoSize = true;
+            this.linkLabel11.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel11.LinkColor = System.Drawing.Color.Black;
             this.linkLabel11.Location = new System.Drawing.Point(10, 16);
@@ -1364,6 +1421,7 @@
             // linkLabel10
             // 
             this.linkLabel10.AutoSize = true;
+            this.linkLabel10.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel10.LinkColor = System.Drawing.Color.Black;
             this.linkLabel10.Location = new System.Drawing.Point(10, 91);
@@ -1378,6 +1436,7 @@
             // linkLabel5
             // 
             this.linkLabel5.AutoSize = true;
+            this.linkLabel5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel5.LinkColor = System.Drawing.Color.Black;
             this.linkLabel5.Location = new System.Drawing.Point(10, 16);
@@ -1392,6 +1451,7 @@
             // linkLabel9
             // 
             this.linkLabel9.AutoSize = true;
+            this.linkLabel9.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel9.LinkColor = System.Drawing.Color.Black;
             this.linkLabel9.Location = new System.Drawing.Point(10, 76);
@@ -1406,6 +1466,7 @@
             // linkLabel6
             // 
             this.linkLabel6.AutoSize = true;
+            this.linkLabel6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel6.LinkColor = System.Drawing.Color.Black;
             this.linkLabel6.Location = new System.Drawing.Point(10, 31);
@@ -1420,6 +1481,7 @@
             // linkLabel8
             // 
             this.linkLabel8.AutoSize = true;
+            this.linkLabel8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel8.LinkColor = System.Drawing.Color.Black;
             this.linkLabel8.Location = new System.Drawing.Point(10, 61);
@@ -1434,6 +1496,7 @@
             // linkLabel7
             // 
             this.linkLabel7.AutoSize = true;
+            this.linkLabel7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel7.LinkColor = System.Drawing.Color.Black;
             this.linkLabel7.Location = new System.Drawing.Point(10, 46);
@@ -1464,6 +1527,7 @@
             // linkLabel4
             // 
             this.linkLabel4.AutoSize = true;
+            this.linkLabel4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel4.LinkColor = System.Drawing.Color.Black;
             this.linkLabel4.Location = new System.Drawing.Point(6, 100);
             this.linkLabel4.Name = "linkLabel4";
@@ -1477,6 +1541,7 @@
             // linkLabel3
             // 
             this.linkLabel3.AutoSize = true;
+            this.linkLabel3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel3.LinkColor = System.Drawing.Color.Black;
             this.linkLabel3.Location = new System.Drawing.Point(6, 75);
             this.linkLabel3.Name = "linkLabel3";
@@ -1490,6 +1555,7 @@
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel2.LinkColor = System.Drawing.Color.Black;
             this.linkLabel2.Location = new System.Drawing.Point(6, 50);
             this.linkLabel2.Name = "linkLabel2";
@@ -1503,6 +1569,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel1.LinkColor = System.Drawing.Color.Black;
             this.linkLabel1.Location = new System.Drawing.Point(6, 25);
             this.linkLabel1.Name = "linkLabel1";
