@@ -56,7 +56,7 @@ namespace CavaPlugin
         static SoundPlayer player = new SoundPlayer();
 
         public override string Author { get { return "Cava"; } }
-        public override Version Version { get { return new Version(4, 0, 9); } }
+        public override Version Version { get { return new Version(4, 0, 10); } }
         public override string Name { get { return "CavaPlugin"; } }
         public override bool WantButton { get { return true; } }
         public override string ButtonText { get { return "Cava Profiles"; } }
