@@ -693,6 +693,7 @@ namespace CavaPlugin
         public List<WoWUnit> MobKoiKoiSpirit { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 22226 && ret.IsAlive)).OrderBy(ret => ret.Distance).ToList(); } }
         public List<WoWUnit> MobWitheredCorpse { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 20561 && ret.Distance < 16 && ret.HasAura(31261))).OrderBy(ret => ret.Distance).ToList(); } }
         public List<WoWUnit> MobGlacierIce { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 49233 && ret.IsAlive)).OrderBy(ret => ret.Distance).ToList(); } }
+        private WoWItem ItemCelebrationPack { get { return (StyxWoW.Me.CarriedItems.FirstOrDefault(i => i.Entry == 90918)); } }
 
         #endregion
 
@@ -847,7 +848,15 @@ namespace CavaPlugin
                     Lua.DoString("UseItemByName(35125)");
                     Thread.Sleep(500);
                 }
- 
+
+                if (Me.IsAlive && !Me.HasAura(132700) && !Me.IsOnTransport && !Me.OnTaxi && !Me.Mounted && !Me.IsCasting && !Me.Combat && ItemCelebrationPack != null)
+                {
+                    Log("Using Celebration Package 9Th Aniversary at " + DateTime.Now.ToString(CultureInfo.InvariantCulture));
+                    WoWMovement.MoveStop();
+                    Lua.DoString("UseItemByName(90918)");
+                    Thread.Sleep(500);
+                }
+                
                 if (CPsettings.Instance.AntiStuckSystem)
                 {
                     if (!Me.Mounted || Me.OnTaxi)
@@ -856,7 +865,7 @@ namespace CavaPlugin
                     }
                     if (Me.IsAlive && Me.Mounted && !Me.OnTaxi && MountedTime.ElapsedMilliseconds > 600000)
                     {
-                        Logging.Write(@"[CavaPlugin-AntiStuck] Char is Mounted for more than 10 min : Forcing Dismount..." + DateTime.Now.ToString());
+                        Log("[AntiStuck] Char is Mounted for more than 10 min : Forcing Dismount..." + DateTime.Now.ToString());
                         Mount.Dismount();
                         Thread.Sleep(2000);
                         Lua.DoString("Dismount()");
