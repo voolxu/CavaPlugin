@@ -129,13 +129,13 @@ to Portuguese
     <value>Level 1 til 90</value>
   </data>
   <data name="leveling1to90txt" xml:space="preserve">
-    <value>Denne profil vil level enhver karakter fra hvilket som helst level til 90. Denne er et project under arbejde indtil vidre. Alliance virker fra 1 Fra 68 og 85 til 90. Horde Virker fra 1 til 68 og 85 til 88.</value>
+    <value>Denne profil vil level enhver karakter fra hvilket som helst level til 90. Denne er et project under arbejde indtil vidre. Alliance virker fra 1 Fra 70 og 85 til 90. Horde Virker fra 1 til 68 og 85 til 88.</value>
   </data>
   <data name="levelingarmagessoner" xml:space="preserve">
-    <value>Alliance og Horde (68-75) (tester/donaters only)</value>
+    <value>Alliance og Horde (70-78) (tester/donaters only)</value>
   </data>
   <data name="levelingarmagessonertxt" xml:space="preserve">
-    <value>Denne profil vil level enhver karakter fra 68 til 75</value>
+    <value>Denne profil vil level enhver karakter fra 70 til 78</value>
   </data>
   <data name="levelinggrind" xml:space="preserve">
     <value>Level Grinding</value>
@@ -246,10 +246,10 @@ to Portuguese
     <value>Benægt Duel Invitation</value>
   </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Raffineret  Engelsk Sprog og fjernet nogle typos. Added Tysk sprog. Added auto-benægt Invitation. Added auto-accept guild Invitation hvis guild is level 25</value>
+    <value>Raffineret  Engelsk Sprog og fjernet nogle typos. Tilføjet Tysk sprog. Added auto-benægt Invitation. Tilføjet auto-accept guild Invitation hvis guild er level 25</value>
   </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Raffineret  Engelsk Sprog og fjernet nogle typos. Added Tysk sprog. Added auto-benægt Invitation. Added auto-accept guild Invitation hvis guild is level 25</value>
+    <value>Raffineret  Engelsk Sprog og fjernet nogle typos. Tilføjet Tysk sprog. Added auto-benægt Invitation. Tilføjet auto-accept guild Invitation hvis guild er level 25</value>
   </data>
   <data name="globalsettings" xml:space="preserve">
     <value>Global Settinger</value>
@@ -257,7 +257,143 @@ to Portuguese
   <data name="charsettings" xml:space="preserve">
     <value>Character Settinger</value>
   </data>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="Bot_is_running_stop_bot_before_initiate_Cava_Plugin" xml:space="preserve">
+    <value>Botten køre, stop botten før du starter Cava Plugin.</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value>ERROR</value>
+  </data>
+  <data name="Unable_to_run_TortoiseSVN" xml:space="preserve">
+    <value>Kan ikke køre TortoiseSVN</value>
+  </data>
+  <data name="Welcome_to_CavaPlugin" xml:space="preserve">
+    <value>Velkommen til CavaPlugin</value>
+  </data>
+  <data name="Please_download_and_update_your_version_to_latest_one" xml:space="preserve">
+    <value>Download og opdater din version til den nyeste</value>
+  </data>
+  <data name="This_version_have_some_problems_with_TortoiseSVN" xml:space="preserve">
+    <value>Denne version har nongle problemer med TortoiseSVN</value>
+  </data>
+  <data name="Download_latest_version_from_HB_Forum" xml:space="preserve">
+    <value>Download seneste version fra HB Forum</value>
+  </data>
+  <data name="information" xml:space="preserve">
+    <value>INFORMATION</value>
+  </data>
+  <data name="Loading_CavaPlugin" xml:space="preserve">
+    <value>Loader CavaPlugin</value>
+  </data>
+  <data name="CavaPlugin_use_TortoiseSVN_to_download_files_Make_sure_you_have_it" xml:space="preserve">
+    <value>CavaPlugin bruger TortoiseSVN for at downloade filer, tjek at du har det installeret</value>
+  </data>
+  <data name="CavaPlugin_will_now_auto_install_required_files_to_work" xml:space="preserve">
+    <value>CavaPlugin vil nu auto installere nødvendige filer til at fungere</value>
+  </data>
+  <data name="Remove_Previus_Cava_Behaviors_or_Cava_Profiles_before_continue" xml:space="preserve">
+    <value>Fjern Tidligere Cava Behaviors eller Cava Profiles før du fortsætter.</value>
+  </data>
+  <data name="Press_Yes_OK_when_prompt_by_TortoiseSVN_windows" xml:space="preserve">
+    <value>Tryk "Yes/OK" når prompt med TortoiseSVN vindue</value>
+  </data>
+  <data name="Press_OK_to_continue" xml:space="preserve">
+    <value>Tryk OK til at fortsætte</value>
+  </data>
+  <data name="There_is_an_old_folder_from_previus_instalation_remove" xml:space="preserve">
+    <value>Der er en gammel folder fra tidligere installation, fjern den venligst.</value>
+  </data>
+  <data name="before_continue" xml:space="preserve">
+    <value>Før fortsættelse</value>
+  </data>
+  <data name="Cava_Plugin_sucefull_checkout" xml:space="preserve">
+    <value>Cava Plugin vellykket checkout</value>
+  </data>
+  <data name="There_is_a_problem_with_checkout_Cava_Plugin" xml:space="preserve">
+    <value>Der er et problem med checkout Cava Plugin.</value>
+  </data>
+  <data name="Congratulations_Cava_Plugin_Sucefully_checkout" xml:space="preserve">
+    <value>Tillykke. Cava Plugin vellykket checkout.</value>
+  </data>
+  <data name="Failed_to_Create_Cava_Quest_Behavior_Folder" xml:space="preserve">
+    <value>fejlede til at skabe Cava Quest Behavior folder.</value>
+  </data>
+  <data name="Cava_Quest_Behavior_sucefull_checkout" xml:space="preserve">
+    <value>Cava Quest Behavior vellykket checkout.</value>
+  </data>
+  <data name="There_is_a_problem_with_checkout_Cava_Quest_Behaviors" xml:space="preserve">
+    <value>der er et problem med checkout Cava Quest Behaviors.</value>
+  </data>
+  <data name="Congratulations_Cava_Quest_Behaviors_Sucefully_Created_and_checkout" xml:space="preserve">
+    <value>Tillykke. Cava Quest Behaviors vellykket skabt, og checkout.</value>
+  </data>
+  <data name="Failed_to_Create_Cava_Profiles_Folder" xml:space="preserve">
+    <value>Fejlede med at skabe Cava Profiles Folder.</value>
+  </data>
+  <data name="Cava_Profiles_sucefull_checkout" xml:space="preserve">
+    <value>Cava Profiles vellykket checkout.</value>
+  </data>
+  <data name="There_is_a_problem_with_checkout_Cava_Profiles" xml:space="preserve">
+    <value>Der er et problem med checkout Cava Profiles.</value>
+  </data>
+  <data name="Congratulations_Cava_Profiles_Sucefully_Created_and_checkout" xml:space="preserve">
+    <value>Tillykke. Cava Profiles blev rigtigt skabt, og klar.</value>
+  </data>
+  <data name="Please_Wait_While_CavaPlugin_Check_For_Updates" xml:space="preserve">
+    <value>Vent venligst mens CavaPlugin kigger for opdateringer.</value>
+  </data>
+  <data name="Cava_Plugin_Update_to_0_is_available_You_are_on_1" xml:space="preserve">
+    <value>Cava Plugin opdate til ${0} er mulig! Du er på ${1}.</value>
+  </data>
+  <data name="Starting_update_process" xml:space="preserve">
+    <value>starter opdatering process.</value>
+  </data>
+  <data name="is_at_Rev_0_and_up_to_date" xml:space="preserve">
+    <value>er på Rev ${0} og er opdateret.</value>
+  </data>
+  <data name="There_is_a_problem_updating" xml:space="preserve">
+    <value>Der er et problem med at opdatere</value>
+  </data>
+  <data name="Theres_an_error_with_Cava_Quest_Behaviors_or_Cava_profiles" xml:space="preserve">
+    <value>Der er en fejl med Cava Quest Behaviors eller Cava profiles.</value>
+  </data>
+  <data name="Update_to_0_are_available_You_are_on_1" xml:space="preserve">
+    <value>opdatering til ${0} er mulig! du er på ${1}.</value>
+  </data>
+  <data name="are_at_Rev_0_and_up_to_date" xml:space="preserve">
+    <value>er på Rev ${0} og er opdateret.</value>
+  </data>
+  <data name="Armageddoner_are_up_to_date" xml:space="preserve">
+    <value>Armageddoner er opdateret!</value>
+  </data>
+  <data name="Mining_and_Blacksmithing_1_to_600_are_up_to_date" xml:space="preserve">
+    <value>Mining og Blacksmithing 1 til 600 er opdateret!</value>
+  </data>
+  <data name="There_is_a_problem_updating_Mining_Blacksmithing_1_to_600" xml:space="preserve">
+    <value>Der er et problem opdatere Mining og Blacksmithing 1 til 600.</value>
+  </data>
+  <data name="is_now_up_to_date_Please_reload_HB" xml:space="preserve">
+    <value>Er nu updateret! Genstart venligst HB.</value>
+  </data>
+  <data name="is_up_to_date_and_ready" xml:space="preserve">
+    <value>er updateret og klar.</value>
+  </data>
+  <data name="Auto_Shutdown_in_progress_at" xml:space="preserve">
+    <value>Auto-Shutdown sat igang </value>
+  </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Tilføjet Zul'Drak map profil, level 75 til 77(reserveret til testere). CavaPlugin bruger nu TortoiseSVN til at opdatere filer.</value>
+    <value>Tilføj Netherstorm kort profil, level 68 til 70, Tilføj Sholazar Basin level 77 til 78 (reseveret for testere). Tilføjet "Unstuck" routine (kig på Forum). </value>
   </data>
 </root>

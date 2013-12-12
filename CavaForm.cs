@@ -34,12 +34,18 @@ namespace CavaPlugin
         public int seconds = 15; // Segundos do countdown.
         public int numberBotBase;
         public string PathToCavaPlugin = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\");
-        public string pathToSettings = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Settings\Main-Settings.xml");
+
+        public string pathToSettings =
+            Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Settings\Main-Settings.xml");
+
         public string pathToProfiles = Path.Combine(Utilities.AssemblyDirectory + @"\Default Profiles\Cava\Scripts\");
         public string profileToLoad = "";
-        public string pathToDoYouKnow = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Settings\DYK.txt");
-        static int TortoiseExitCode;
-        bool isRunningdepois;
+
+        public string pathToDoYouKnow =
+            Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Settings\DYK.txt");
+
+        private static int TortoiseExitCode;
+        private bool isRunningdepois;
         public string leveling1to90txt;
         public string levelingpandahordetxt;
         public string levelingpandaallytxt;
@@ -49,14 +55,14 @@ namespace CavaPlugin
         public string mbs1600;
         public string mbs1300txt;
         public string mbs1600txt;
-        static SoundPlayer player = new SoundPlayer();
+        private static SoundPlayer player = new SoundPlayer();
 
         public CavaForm()
         {
             InitializeComponent();
         }
 
-        static void Updater_Armageddoner(string f)
+        private static void Updater_Armageddoner(string f)
         {
             Process p = new Process();
             p.StartInfo.FileName = "TortoiseProc.exe";
@@ -65,8 +71,10 @@ namespace CavaPlugin
             p.WaitForExit();
             TortoiseExitCode = p.ExitCode;
         }
+
         private void getRes(CultureInfo ci, ResourceManager rm)
         {
+            // ReSharper disable ResourceItemNotResolved
             tabPage3.Text = rm.GetString("about", ci);
             tabPage9.Text = rm.GetString("armageddoner", ci);
             button4.Text = rm.GetString("cancel", ci);
@@ -131,12 +139,26 @@ namespace CavaPlugin
             refuseDuelCheckBox.Text = rm.GetString("refuseDuelCheckBox", ci);
             globalsetgroupBox.Text = rm.GetString("globalsettings", ci);
             charsetgroupBox.Text = rm.GetString("charsettings", ci);
-
-            if (lastUseProfile == 1) { label4.Text = rm.GetString("leveling1to90", ci); }
-            if (lastUseProfile == 2) { label4.Text = rm.GetString("levelingpandahorde", ci); }
-            if (lastUseProfile == 3) { label4.Text = rm.GetString("levelingpandaally", ci); }
-            if (lastUseProfile == 4) { label4.Text = rm.GetString("level85to90", ci); }
-            if (lastUseProfile == 5) { label4.Text = rm.GetString("levelingarmagessoner", ci); }
+            if (lastUseProfile == 1)
+            {
+                label4.Text = rm.GetString("leveling1to90", ci);
+            }
+            if (lastUseProfile == 2)
+            {
+                label4.Text = rm.GetString("levelingpandahorde", ci);
+            }
+            if (lastUseProfile == 3)
+            {
+                label4.Text = rm.GetString("levelingpandaally", ci);
+            }
+            if (lastUseProfile == 4)
+            {
+                label4.Text = rm.GetString("level85to90", ci);
+            }
+            if (lastUseProfile == 5)
+            {
+                label4.Text = rm.GetString("levelingarmagessoner", ci);
+            }
             if (File.Exists(pathToProfiles + "PB\\MB\\Scripts\\[PB]MB600(Cava).txt"))
             {
                 MiningBlacksmithingProf.Text = rm.GetString("miningbs1600", ci);
@@ -164,7 +186,9 @@ namespace CavaPlugin
                 label4.Text = rm.GetString("miningbs1300", ci);
                 MiningBlacksmithingProf.Text = rm.GetString("miningbs1300", ci);
             }
+            // ReSharper restore ResourceItemNotResolved   
         }
+
 
         private void CavaForm_Load(object sender, EventArgs e)
         {
@@ -225,8 +249,8 @@ namespace CavaPlugin
                 refuseTradesCheckBox.Enabled = false;
                 refuseDuelCheckBox.Checked = false;
                 refuseDuelCheckBox.Enabled = false;
-                comboBox1.Enabled = false;
-                CPGlobalSettings.Instance.language = 0;
+                //comboBox1.Enabled = false;
+                //CPGlobalSettings.Instance.language = 0;
                 CPGlobalSettings.Instance.BotAllowUpdate = false;
                 CPGlobalSettings.Instance.AllowUpdate = false;
                 CPGlobalSettings.Instance.Save();
@@ -782,9 +806,9 @@ namespace CavaPlugin
                         refusePartyCheckBox.Checked = false;
                         refuseTradesCheckBox.Checked = false;
                         refuseDuelCheckBox.Checked = false;
-                        comboBox1.Enabled = false;
-                        comboBox1.SelectedIndex = 0;
-                        CPGlobalSettings.Instance.language = 0;
+                        //comboBox1.Enabled = false;
+                        //comboBox1.SelectedIndex = 0;
+                        //CPGlobalSettings.Instance.language = 0;
                         CPGlobalSettings.Instance.BotAllowUpdate = false;
                         CPGlobalSettings.Instance.AllowUpdate = false;
                     }
@@ -802,7 +826,7 @@ namespace CavaPlugin
                         refusePartyCheckBox.Enabled = true;
                         refuseTradesCheckBox.Enabled = true;
                         refuseDuelCheckBox.Enabled = true;
-                        comboBox1.Enabled = true;
+                        //comboBox1.Enabled = true;
                         CPGlobalSettings.Instance.BotAllowUpdate = true;
                         CPGlobalSettings.Instance.AllowUpdate = true;
                     }
@@ -830,9 +854,9 @@ namespace CavaPlugin
                 refusePartyCheckBox.Checked = false;
                 refuseTradesCheckBox.Checked = false;
                 refuseDuelCheckBox.Checked = false;
-                comboBox1.Enabled = false;
-                comboBox1.SelectedIndex = 0;
-                CPGlobalSettings.Instance.language = 0;
+                //comboBox1.Enabled = false;
+                //comboBox1.SelectedIndex = 0;
+                //CPGlobalSettings.Instance.language = 0;
                 CPGlobalSettings.Instance.BotAllowUpdate = false;
                 CPGlobalSettings.Instance.AllowUpdate = false;
             }
@@ -995,5 +1019,8 @@ namespace CavaPlugin
         public bool RessAfterDie { get; set; }
         [Setting, DefaultValue(0)]
         public int language { get; set; }
+        [Setting, DefaultValue(false)]
+        public bool languageselected { get; set; }
+
     }
 }

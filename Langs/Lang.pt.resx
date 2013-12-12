@@ -172,13 +172,13 @@
     <value>Levelar 1 a 90</value>
   </data>
   <data name="leveling1to90txt" xml:space="preserve">
-    <value>Este profile vai levelar qualquer char do level 1 a 90. Este profile não esta finalizado, ate agora pode ir de 1 a 68. Este profile pode ser iniciado em qualquer lugar, depois de iniciado o bot vai sempre mover-se para o mapa certo e começar a fazer as quests</value>
+    <value>Este profile vai levelar qualquer char do level 1 a 90. Este profile não esta finalizado, ate agora pode ir de 1 a 70. Este profile pode ser iniciado em qualquer lugar, depois de iniciado o bot vai sempre mover-se para o mapa certo e começar a fazer as quests</value>
   </data>
   <data name="levelingarmagessoner" xml:space="preserve">
-    <value>Aliança e Horde (68-75) (testers/donators apenas)</value>
+    <value>Aliança e Horde (70-78) (testers/donators apenas)</value>
   </data>
   <data name="levelingarmagessonertxt" xml:space="preserve">
-    <value>Este profile vai levelar qualquer char de level 68 a 75</value>
+    <value>Este profile vai levelar qualquer char de level 70 a 78</value>
   </data>
   <data name="levelinggrind" xml:space="preserve">
     <value>Levelar em Grind</value>
@@ -291,7 +291,144 @@
   <data name="charsettings" xml:space="preserve">
     <value>Defenições do Boneco</value>
   </data>
-  <data name="newtxt" xml:space="preserve">
-    <value>Adicionado Profile para Zul'Drak, Niveis level 75 a 77 (reservedo a testers). CavaPlugin agora usa TortoiseSVN para fazer os updates.</value>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="Bot_is_running_stop_bot_before_initiate_Cava_Plugin" xml:space="preserve">
+    <value>Bot em execução, pare o bot antes de iniciar o CavaPlugin.</value>
   </data>
+  <data name="error" xml:space="preserve">
+    <value>ERRO</value>
+  </data>
+  <data name="Unable_to_run_TortoiseSVN" xml:space="preserve">
+    <value>Não é possivel executar o TortoiseSVN</value>
+  </data>
+  <data name="Welcome_to_CavaPlugin" xml:space="preserve">
+    <value>Bem vindo ao CavaPlugin</value>
+  </data>
+  <data name="Please_download_and_update_your_version_to_latest_one" xml:space="preserve">
+    <value>Por favor faça o download e update para a ultima versão disponivel</value>
+  </data>
+  <data name="This_version_have_some_problems_with_TortoiseSVN" xml:space="preserve">
+    <value>Esta versão tem alguns problemas com o TortoiseSVN</value>
+  </data>
+  <data name="Download_latest_version_from_HB_Forum" xml:space="preserve">
+    <value>Download da ultima versão do forum de HB</value>
+  </data>
+  <data name="information" xml:space="preserve">
+    <value>INFORMAÇÃO</value>
+  </data>
+  <data name="Loading_CavaPlugin" xml:space="preserve">
+    <value>Descarregando CavaPlugin</value>
+  </data>
+  <data name="CavaPlugin_use_TortoiseSVN_to_download_files_Make_sure_you_have_it" xml:space="preserve">
+    <value>CavaPlugin usa o TortoiseSVN para descarregar os ficheiros, certefique-se que o tem instalado</value>
+  </data>
+  <data name="CavaPlugin_will_now_auto_install_required_files_to_work" xml:space="preserve">
+    <value>CavaPlugin vai agora auto instalar os ficheiros necessários para trabalhar</value>
+  </data>
+  <data name="Remove_Previus_Cava_Behaviors_or_Cava_Profiles_before_continue" xml:space="preserve">
+    <value>Remova as pastas antigas de Cava Behaviors ou Cava Profiles antes de continuar.</value>
+  </data>
+  <data name="Press_Yes_OK_when_prompt_by_TortoiseSVN_windows" xml:space="preserve">
+    <value>Clique Sim/Não quando solicitado pelo TortoiseSVN</value>
+  </data>
+  <data name="Press_OK_to_continue" xml:space="preserve">
+    <value>Clique OK para continuar</value>
+  </data>
+  <data name="There_is_an_old_folder_from_previus_instalation_remove" xml:space="preserve">
+    <value>Existe uma pasta duma instalação antiga, remova</value>
+  </data>
+  <data name="before_continue" xml:space="preserve">
+    <value>antes de continuar</value>
+  </data>
+  <data name="Cava_Plugin_sucefull_checkout" xml:space="preserve">
+    <value>criada a pasta Cava Plugin com sucesso</value>
+  </data>
+  <data name="There_is_a_problem_with_checkout_Cava_Plugin" xml:space="preserve">
+    <value>Houve um problema na criação  da pasta Cava Plugin.</value>
+  </data>
+  <data name="Congratulations_Cava_Plugin_Sucefully_checkout" xml:space="preserve">
+    <value>Parebens. A pasta Cava Plugin foi actualizada com sucesso.</value>
+  </data>
+  <data name="Failed_to_Create_Cava_Quest_Behavior_Folder" xml:space="preserve">
+    <value>Falha em criar a pasta Cava Quest Behavior.</value>
+  </data>
+  <data name="Cava_Quest_Behavior_sucefull_checkout" xml:space="preserve">
+    <value>Pasta Cava Quest Behavior criada com sucesso.</value>
+  </data>
+  <data name="There_is_a_problem_with_checkout_Cava_Quest_Behaviors" xml:space="preserve">
+    <value>Foi detectado um problema com o update da pasta Cava Quest Behaviors.</value>
+  </data>
+  <data name="Congratulations_Cava_Quest_Behaviors_Sucefully_Created_and_checkout" xml:space="preserve">
+    <value>Parabéns. Pasta Cava Quest Behaviors foi actalizada com sucesso.</value>
+  </data>
+  <data name="Failed_to_Create_Cava_Profiles_Folder" xml:space="preserve">
+    <value>Falha em criar a pasta Cava Profiles.</value>
+  </data>
+  <data name="Cava_Profiles_sucefull_checkout" xml:space="preserve">
+    <value>Pasta Cava Profiles criada com sucesso.</value>
+  </data>
+  <data name="There_is_a_problem_with_checkout_Cava_Profiles" xml:space="preserve">
+    <value>Foi detectado um problema com o update da pasta Cava Profiles.</value>
+  </data>
+  <data name="Congratulations_Cava_Profiles_Sucefully_Created_and_checkout" xml:space="preserve">
+    <value>Parabéns. Pasta Cava Profiles foi actualizada com sucesso.</value>
+  </data>
+  <data name="Please_Wait_While_CavaPlugin_Check_For_Updates" xml:space="preserve">
+    <value>Por favor aguarde enquando o CavaPlugin verifica se existem actualizações.</value>
+  </data>
+  <data name="Cava_Plugin_Update_to_0_is_available_You_are_on_1" xml:space="preserve">
+    <value>Existe uma actualização do Cava Plugin para versão ${0}! Actualmente está a usar a versão ${1}.</value>
+  </data>
+  <data name="Starting_update_process" xml:space="preserve">
+    <value>Iniciado o processo de actualização.</value>
+  </data>
+  <data name="is_at_Rev_0_and_up_to_date" xml:space="preserve">
+    <value>está agora na versão ${0} e actualizado.</value>
+  </data>
+  <data name="There_is_a_problem_updating" xml:space="preserve">
+    <value>Foi emcontrado um problama actalizando</value>
+  </data>
+  <data name="Theres_an_error_with_Cava_Quest_Behaviors_or_Cava_profiles" xml:space="preserve">
+    <value>Existe um erro com Cava Quest Behaviors ou Cava profiles.</value>
+  </data>
+  <data name="Update_to_0_are_available_You_are_on_1" xml:space="preserve">
+    <value>Existe uma actualização para versão ${0}! Actualmente está a usar a versão ${1}.</value>
+  </data>
+  <data name="are_at_Rev_0_and_up_to_date" xml:space="preserve">
+    <value>estão agora na versão ${0} e actualizados.</value>
+  </data>
+  <data name="Armageddoner_are_up_to_date" xml:space="preserve">
+    <value>Armageddoner está agora actualizado!</value>
+  </data>
+  <data name="Mining_and_Blacksmithing_1_to_600_are_up_to_date" xml:space="preserve">
+    <value>Mining e Blacksmithing 1 a 600 está agora actualizado!</value>
+  </data>
+  <data name="There_is_a_problem_updating_Mining_Blacksmithing_1_to_600" xml:space="preserve">
+    <value>Foi detectado um problema com a actualização de Mining Blacksmithing 1 a 600.</value>
+  </data>
+  <data name="is_now_up_to_date_Please_reload_HB" xml:space="preserve">
+    <value>está agora aactualizado! Por favor reinicie o HonorBuddy.</value>
+  </data>
+  <data name="is_up_to_date_and_ready" xml:space="preserve">
+    <value>está agora actualizado e pronto.</value>
+  </data>
+  <data name="Auto_Shutdown_in_progress_at" xml:space="preserve">
+    <value>Auto-Shutdown em progresso ás</value>
+  </data>
+  <data name="newtxt" xml:space="preserve">
+    <value>Adicionado o mapa Netherstorm, niveis 68 a 70, adicionado o mapa Sholazar Basin niveis 77 a 78 (reservado a testers). Adicionada uma rotina de desbloqueio (verifique no forum). </value>
+  </data>
+
 </root>
