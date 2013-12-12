@@ -61,7 +61,6 @@ namespace CavaPlugin
         private static readonly string Str = Assembly.GetExecutingAssembly().FullName.Remove(Assembly.GetExecutingAssembly().FullName.IndexOf(','));
         private readonly Assembly _assembly = Assembly.Load(Str);
         private static ResourceManager _rm;
-        //_rm.GetString("frase", _ci) 
         #region Overrides except pulse
         static readonly SoundPlayer Player = new SoundPlayer();
         public override string Author { get { return "Cava"; } }
