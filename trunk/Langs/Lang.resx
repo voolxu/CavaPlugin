@@ -129,13 +129,13 @@ to Portuguese
     <value>Level 1 to 90</value>
   </data>
   <data name="leveling1to90txt" xml:space="preserve">
-    <value>This profile will level any character from any level to 90. This is a work in progress so far. Alliance works from 1 to 68 and 85 to 90. Horde works from 1 to 68 and 85 to 88.</value>
+    <value>This profile will level any character from any level to 90. This is a work in progress so far. Alliance works from 1 to 70 and 85 to 90. Horde works from 1 to 68 and 85 to 88.</value>
   </data>
   <data name="levelingarmagessoner" xml:space="preserve">
-    <value>Alliance And Horde (68-75) (testers/donators only)</value>
+    <value>Alliance And Horde (70-78) (testers/donators only)</value>
   </data>
   <data name="levelingarmagessonertxt" xml:space="preserve">
-    <value>This profile will level any character from 68 to 75</value>
+    <value>This profile will level any character from 70 to 78</value>
   </data>
   <data name="levelinggrind" xml:space="preserve">
     <value>Level Grinding</value>
@@ -251,7 +251,130 @@ to Portuguese
   <data name="charsettings" xml:space="preserve">
     <value>Character Settings</value>
   </data>
+  <data name="Bot_is_running_stop_bot_before_initiate_Cava_Plugin" xml:space="preserve">
+    <value>Bot is running, stop bot before initiating the Cava Plugin.</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value>ERROR</value>
+  </data>
+  <data name="Unable_to_run_TortoiseSVN" xml:space="preserve">
+    <value>Unable to run TortoiseSVN</value>
+  </data>
+  <data name="Welcome_to_CavaPlugin" xml:space="preserve">
+    <value>Welcome to the CavaPlugin</value>
+  </data>
+  <data name="Please_download_and_update_your_version_to_latest_one" xml:space="preserve">
+    <value>Please download and update your version to latest release</value>
+  </data>
+  <data name="This_version_have_some_problems_with_TortoiseSVN" xml:space="preserve">
+    <value>This version has some problems with TortoiseSVN</value>
+  </data>
+  <data name="Download_latest_version_from_HB_Forum" xml:space="preserve">
+    <value>Download the latest version from HonorBuddy Forums</value>
+  </data>
+  <data name="information" xml:space="preserve">
+    <value>INFORMATION</value>
+  </data>
+  <data name="Loading_CavaPlugin" xml:space="preserve">
+    <value>Loading CavaPlugin</value>
+  </data>
+  <data name="CavaPlugin_use_TortoiseSVN_to_download_files_Make_sure_you_have_it" xml:space="preserve">
+    <value>CavaPlugin uses TortoiseSVN to download files. Please make sure you have it installed</value>
+  </data>
+  <data name="CavaPlugin_will_now_auto_install_required_files_to_work" xml:space="preserve">
+    <value>CavaPlugin will now auto install the required files</value>
+  </data>
+  <data name="Remove_Previus_Cava_Behaviors_or_Cava_Profiles_before_continue" xml:space="preserve">
+    <value>Remove previous Cava Behaviors or Cava Profiles before continuing</value>
+  </data>
+  <data name="Press_Yes_OK_when_prompt_by_TortoiseSVN_windows" xml:space="preserve">
+    <value>Please select a response when prompted to by TortoiseSVN windows</value>
+  </data>
+  <data name="Press_OK_to_continue" xml:space="preserve">
+    <value>Press OK to continue</value>
+  </data>
+  <data name="There_is_an_old_folder_from_previus_instalation_remove" xml:space="preserve">
+    <value>There is an old folder from previous installation,  please remove it before proceeding</value>
+  </data>
+  <data name="before_continue" xml:space="preserve">
+    <value>before continuing</value>
+  </data>
+  <data name="Cava_Plugin_sucefull_checkout" xml:space="preserve">
+    <value>CavaPlugin successfully installed.</value>
+  </data>
+  <data name="There_is_a_problem_with_checkout_Cava_Plugin" xml:space="preserve">
+    <value>There is a problem with installing the CavaPlugin.</value>
+  </data>
+  <data name="Congratulations_Cava_Plugin_Sucefully_checkout" xml:space="preserve">
+    <value>Congratulations. The CavaPlugin was successfully installed.</value>
+  </data>
+  <data name="Failed_to_Create_Cava_Quest_Behavior_Folder" xml:space="preserve">
+    <value>Failed to Create the Cava quest behaviour Folder.</value>
+  </data>
+  <data name="Cava_Quest_Behavior_sucefull_checkout" xml:space="preserve">
+    <value>Cava quest behaviours successfully installed.</value>
+  </data>
+  <data name="There_is_a_problem_with_checkout_Cava_Quest_Behaviors" xml:space="preserve">
+    <value>There is a problem with installing the Cava quest behaviours.</value>
+  </data>
+  <data name="Congratulations_Cava_Quest_Behaviors_Sucefully_Created_and_checkout" xml:space="preserve">
+    <value>Congratulations. The Cava quest behaviours was successfully installed.</value>
+  </data>
+  <data name="Failed_to_Create_Cava_Profiles_Folder" xml:space="preserve">
+    <value>Failed to create the Cava profiles folder.</value>
+  </data>
+  <data name="Cava_Profiles_sucefull_checkout" xml:space="preserve">
+    <value>the Cava profiles were successfully updated.</value>
+  </data>
+  <data name="There_is_a_problem_with_checkout_Cava_Profiles" xml:space="preserve">
+    <value>There is a problem with updating the Cava profiles.</value>
+  </data>
+  <data name="Congratulations_Cava_Profiles_Sucefully_Created_and_checkout" xml:space="preserve">
+    <value>Congratulations. Cava profiles were successfully installed.</value>
+  </data>
+  <data name="Please_Wait_While_CavaPlugin_Check_For_Updates" xml:space="preserve">
+    <value>Please wait while the CavaPlugin checks for updates.</value>
+  </data>
+  <data name="Cava_Plugin_Update_to_0_is_available_You_are_on_1" xml:space="preserve">
+    <value>CavaPlugin update ${0} is available! You are on ${1}.</value>
+  </data>
+  <data name="Starting_update_process" xml:space="preserve">
+    <value>Starting the update process.</value>
+  </data>
+  <data name="is_at_Rev_0_and_up_to_date" xml:space="preserve">
+    <value>is at Rev ${0} and up to date.</value>
+  </data>
+  <data name="There_is_a_problem_updating" xml:space="preserve">
+    <value>There was a problem updating</value>
+  </data>
+  <data name="Theres_an_error_with_Cava_Quest_Behaviors_or_Cava_profiles" xml:space="preserve">
+    <value>There is an error with the Cava quest behaviors or profiles.</value>
+  </data>
+  <data name="Update_to_0_are_available_You_are_on_1" xml:space="preserve">
+    <value>CavaPlugin update ${0} is available! You are on ${1}.</value>
+  </data>
+  <data name="are_at_Rev_0_and_up_to_date" xml:space="preserve">
+    <value>is at Rev ${0} and up to date.</value>
+  </data>
+  <data name="Armageddoner_are_up_to_date" xml:space="preserve">
+    <value>Armageddoner is up to date!</value>
+  </data>
+  <data name="Mining_and_Blacksmithing_1_to_600_are_up_to_date" xml:space="preserve">
+    <value>Mining and Blacksmithing 1 to 600 are up to date!</value>
+  </data>
+  <data name="There_is_a_problem_updating_Mining_Blacksmithing_1_to_600" xml:space="preserve">
+    <value>There is a problem updating the Mining and Blacksmithing 1 to 600 profiles.</value>
+  </data>
+  <data name="is_now_up_to_date_Please_reload_HB" xml:space="preserve">
+    <value>is now up to date! Please reload HonorBuddy.</value>
+  </data>
+  <data name="is_up_to_date_and_ready" xml:space="preserve">
+    <value>is up to date and ready to use.</value>
+  </data>
+  <data name="Auto_Shutdown_in_progress_at" xml:space="preserve">
+    <value>Auto Shut-down in progress at</value>
+  </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Added Zul'Drak profile, level 75 to 77 (reserved for testers). CavaPlugin now uses TortoiseSVN to update files.</value>
+    <value>Added Netherstorm map profile, levels 68 to 70. Added Sholazar Basin levels 77 to 78 (reserved for testers). Added Unstuck routine (check Forum for information).</value>
   </data>
 </root>
