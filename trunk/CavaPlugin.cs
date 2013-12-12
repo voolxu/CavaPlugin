@@ -21,7 +21,6 @@ using Styx.CommonBot.Profiles;
 using Styx.WoWInternals;
 using Styx.WoWInternals.WoWObjects;
 
-
 namespace CavaPlugin
 {
     // ReSharper disable UnusedMember.Global
