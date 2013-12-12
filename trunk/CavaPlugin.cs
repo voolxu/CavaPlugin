@@ -13,18 +13,12 @@ using System.Windows.Media;
 
 using Styx;
 using Styx.Helpers;
-//using Styx.Loaders;
-//using Styx.Patchables;
 using Styx.Plugins;
 using Styx.Common;
 using Styx.CommonBot;
 using Styx.CommonBot.POI;
 using Styx.CommonBot.Profiles;
-//using Styx.Pathing;
 using Styx.WoWInternals;
-//using Styx.WoWInternals.Misc;
-//using Styx.WoWInternals.World;
-//using Styx.WoWInternals.WoWCache;
 using Styx.WoWInternals.WoWObjects;
 
 
