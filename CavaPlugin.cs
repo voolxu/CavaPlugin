@@ -64,7 +64,7 @@ namespace CavaPlugin
         #region Overrides except pulse
         static readonly SoundPlayer Player = new SoundPlayer();
         public override string Author { get { return "Cava"; } }
-        public override Version Version { get { return new Version(4, 1, 1); } }
+        public override Version Version { get { return new Version(4, 1, 2); } }
         public override string Name { get { return "CavaPlugin"; } }
         public override bool WantButton { get { return true; } }
         public override string ButtonText { get { return "Cava Profiles"; } }
@@ -125,7 +125,7 @@ namespace CavaPlugin
             return false;
         }
 
-        public override void Initialize()
+        public override void OnEnable()
         {
             CPGlobalSettings.Instance.Load();
             if (!CPGlobalSettings.Instance.languageselected)
@@ -133,7 +133,7 @@ namespace CavaPlugin
                 Form getlanguage = new Language(); 
                 getlanguage.ShowDialog();
             }
-            /*switch (CPGlobalSettings.Instance.language)
+            switch (CPGlobalSettings.Instance.language)
             {
                 default:
                     _ci = new CultureInfo("en-US");
@@ -160,10 +160,10 @@ namespace CavaPlugin
                     _rm = new ResourceManager("Lang.ru", _assembly);
                     break;
             }
-             * */
-            _ci = new CultureInfo("en-US");
-            _rm = new ResourceManager("Lang", _assembly);
-            BotEvents.OnBotStart += _OnBotStart;
+            
+            //_ci = new CultureInfo("en-US");
+            //_rm = new ResourceManager("Lang", _assembly);
+            BotEvents.OnBotStartRequested += _OnBotStart;
             if (!_hasBeenInitialized)
             {
                 if (File.Exists(PathToCavaPlugin + "CavaPlugin.ver") || File.Exists(PathToCavaPlugin + "Cava_Plugin_V3_Updater.ver"))
@@ -464,9 +464,9 @@ namespace CavaPlugin
             AbreJanela();
         }
 
-        public override void Dispose()
+        public override void OnDisable()
         {
-            BotEvents.OnBotStart -= _OnBotStart;
+            BotEvents.OnBotStartRequested -= _OnBotStart;
             Log("CavaPlugin Disposed");
             if (_botRunning)
             {
@@ -722,7 +722,9 @@ namespace CavaPlugin
         {
             if (_cavaupdated)
             {
+                // ReSharper disable LocalizableElement
                 MessageBox.Show("Cava Plugin/Quest Behaviors has been updated a restart is required.", "RESTART REQUIRED", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // ReSharper restore LocalizableElement
                 Player.SoundLocation = PathToCavaPlugin + "Sounds\\notify.wav";
                 Player.Play();
                 Environment.Exit(0);
@@ -765,7 +767,7 @@ namespace CavaPlugin
                 BotManager.Instance.Bots.TryGetValue("ProfessionBuddy", out pbBotBase);
                 if (pbBotBase != null && BotManager.Current != pbBotBase)
                 {
-                    System.Windows.Application.Current.Dispatcher.Invoke(
+                    System.Windows.Application.Current.Dispatcher.BeginInvoke(
                         new Action(
                             () =>
                             {
