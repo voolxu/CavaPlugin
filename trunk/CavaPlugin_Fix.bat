@@ -6,6 +6,9 @@ PAUSE
 CLS
 ECHO Removing Honorbuddy Cache Folder.
 rmdir /s/q "..\..\Cache"
+ECHO Removing CavaPlugin Possible Incompatible Files.
+del *.cs
+del Langs\*.cs
 ECHO ...
 ECHO ...
 ECHO ...
