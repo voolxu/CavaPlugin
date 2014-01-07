@@ -139,6 +139,8 @@ namespace CavaPlugin
             refuseDuelCheckBox.Text = rm.GetString("refuseDuelCheckBox", ci);
             globalsetgroupBox.Text = rm.GetString("globalsettings", ci);
             charsetgroupBox.Text = rm.GetString("charsettings", ci);
+            groupBox11.Text = rm.GetString("settings", ci);
+            suport_pb_label.Text = rm.GetString("Support_Profession_Profile_Iniciative", ci);
             if (lastUseProfile == 1)
             {
                 label4.Text = rm.GetString("leveling1to90", ci);
@@ -202,6 +204,7 @@ namespace CavaPlugin
             NewpictureBox.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\new.gif");
             pictureBox7.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\main.png");
             pictureBox6.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\main.png");
+            pictureBox8.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\donate2.gif");
             UpdateStuff();
         }
 
@@ -285,6 +288,15 @@ namespace CavaPlugin
             }
             if (comboBox1.SelectedIndex == 3)
             {
+                CultureInfo ci = new CultureInfo("nl");
+                string str = Assembly.GetExecutingAssembly().FullName;
+                str = str.Remove(str.IndexOf(','));
+                Assembly _assembly = Assembly.Load(str);
+                ResourceManager rm = new ResourceManager("Lang.nl", _assembly);
+                getRes(ci, rm);
+            }
+            if (comboBox1.SelectedIndex == 4)
+            {
                 CultureInfo ci = new CultureInfo("pt-PT");
                 string str = Assembly.GetExecutingAssembly().FullName;
                 str = str.Remove(str.IndexOf(','));
@@ -292,7 +304,7 @@ namespace CavaPlugin
                 ResourceManager rm = new ResourceManager("Lang.pt", _assembly);
                 getRes(ci, rm);
             }
-            if (comboBox1.SelectedIndex == 4)
+            if (comboBox1.SelectedIndex == 5)
             {
                 CultureInfo ci = new CultureInfo("ru-RU");
                 string str = Assembly.GetExecutingAssembly().FullName;
@@ -460,7 +472,7 @@ namespace CavaPlugin
             ProcessStartInfo sInfo = new ProcessStartInfo("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6MCR3XWLP273A");
             Process.Start(sInfo);
         }
-
+ 
         private void button4_Click(object sender, EventArgs e)
         {
             timer1.Enabled = false;
@@ -910,6 +922,18 @@ namespace CavaPlugin
             }
             if (comboBox1.SelectedIndex == 3)
             {
+                CultureInfo ci = new CultureInfo("nl");
+                CPGlobalSettings.Instance.language = 3;
+                string str = Assembly.GetExecutingAssembly().FullName;
+                str = str.Remove(str.IndexOf(','));
+                Assembly _assembly = Assembly.Load(str);
+                ResourceManager rm = new ResourceManager("Lang.nl", _assembly);
+                richTextBox1.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\GoodToKnow_nl.rtf");
+                thanksRichText.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\Thanks_nl.rtf");
+                getRes(ci, rm);
+            }
+            if (comboBox1.SelectedIndex == 4)
+            {
                 CultureInfo ci = new CultureInfo("pt-PT");
                 CPGlobalSettings.Instance.language = 3;
                 string str = Assembly.GetExecutingAssembly().FullName;
@@ -920,7 +944,7 @@ namespace CavaPlugin
                 thanksRichText.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\Thanks_pt.rtf");
                 getRes(ci, rm);
             }
-            if (comboBox1.SelectedIndex == 4)
+            if (comboBox1.SelectedIndex == 5)
             {
                 CultureInfo ci = new CultureInfo("ru-RU");
                 CPGlobalSettings.Instance.language = 4;
@@ -967,7 +991,13 @@ namespace CavaPlugin
             button_Click();
             CPsettings.Instance.refuseduelInvitescheck = refuseDuelCheckBox.Checked;
         }
-  
+
+        private void pictureBox8_Click(object sender, EventArgs e)
+        {
+            button_Click();
+            ProcessStartInfo sInfo = new ProcessStartInfo("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HRL83MGPQWJ9W");
+            Process.Start(sInfo);
+        }
     }
     public class CPsettings : Settings
     {
