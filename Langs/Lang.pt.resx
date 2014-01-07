@@ -291,19 +291,6 @@
   <data name="charsettings" xml:space="preserve">
     <value>Defenições do Boneco</value>
   </data>
-
-
-
-
-
-
-
-
-
-
-
-
-
   <data name="Bot_is_running_stop_bot_before_initiate_Cava_Plugin" xml:space="preserve">
     <value>Bot em execução, pare o bot antes de iniciar o CavaPlugin.</value>
   </data>
@@ -427,8 +414,67 @@
   <data name="Auto_Shutdown_in_progress_at" xml:space="preserve">
     <value>Auto-Shutdown em progresso ás</value>
   </data>
-  <data name="newtxt" xml:space="preserve">
-    <value>Adicionado o mapa Netherstorm, niveis 68 a 70, adicionado o mapa Sholazar Basin niveis 77 a 78 (reservado a testers). Adicionada uma rotina de desbloqueio (verifique no forum). </value>
+  <data name="settings" xml:space="preserve">
+    <value>Settings</value>
   </data>
-
+  <data name="Support_Profession_Profile_Iniciative" xml:space="preserve">
+    <value>Suporta a iniciativa Profiles de Profissão</value>
+  </data>
+  <data name="CavaPlugin_Disposed" xml:space="preserve">
+    <value>CavaPlugin Desativado</value>
+  </data>
+  <data name="Is_now_ENABLED" xml:space="preserve">
+    <value>Está agora ATIVO</value>
+  </data>
+  <data name="Is_now_DISABLED" xml:space="preserve">
+    <value>Está agora inativo</value>
+  </data>
+  <data name="System_Anti-Stuck_Enabled" xml:space="preserve">
+    <value>[Sistema Anti-Stuck ativo]</value>
+  </data>
+  <data name="System_Anti-Stuck_Disabled" xml:space="preserve">
+    <value>[Sistema Anti-Stuck Inátivo]</value>
+  </data>
+  <data name="Summon_Random_Pet_Enabled" xml:space="preserve">
+    <value>[Fazer summom de pets aleatório Ativo]</value>
+  </data>
+  <data name="Dont_have_any_Pet_to_summom_disabling_Summon_Random_Pet" xml:space="preserve">
+    <value>Não tenho qualquer pet para poder fazer summom , desativando o sistema de fazer summom a pets</value>
+  </data>
+  <data name="Summon_Random_Pet_Disabled" xml:space="preserve">
+    <value>[Fazer summom de pets aleatório Inativo]</value>
+  </data>
+  <data name="Accept_lvl_25_guild_invite_Enabled" xml:space="preserve">
+    <value>[Aceitar invites de guilds de nivel 25 Ativo]</value>
+  </data>
+  <data name="Refuse_guild_invites_Enabled" xml:space="preserve">
+    <value>[Recusar invites de guilds Ativo]</value>
+  </data>
+  <data name="Accept_lvl_25_guild_invite_Disabled" xml:space="preserve">
+    <value>[Recusar invites de guilds nivel 25 Inativo]</value>
+  </data>
+  <data name="Refuse_guild_invites_Disabled" xml:space="preserve">
+    <value>[Recusar invites de guilds desativo]</value>
+  </data>
+  <data name="Refuse_party_invites_Enabled" xml:space="preserve">
+    <value>[Recusar invites de Grupo Ativo]</value>
+  </data>
+  <data name="Refuse_party_invites_Disabled" xml:space="preserve">
+    <value>[Recusar invites de Grupo Inativo]</value>
+  </data>
+  <data name="Refuse_trade_invites_Enabled" xml:space="preserve">
+    <value>[Recusar invites de Trade Ativo]</value>
+  </data>
+  <data name="Refuse_trade_invites_Disabled" xml:space="preserve">
+    <value>[Recusar invites de Trade Inativo]</value>
+  </data>
+  <data name="Refuse_duel_invites_Enabled" xml:space="preserve">
+    <value>[Recusar invites de Duelo Ativo]</value>
+  </data>
+  <data name="Refuse_duel_invites_Disabled" xml:space="preserve">
+    <value>[Recusar invites de Duelo Inativo]</value>
+  </data>
+  <data name="newtxt" xml:space="preserve">
+    <value>Adicionado profile do mapa de Borean Tundra, niveis 70 a 72. Adicionado profile do mapa de The StormPeaks niveis 78 a 80 (reservado a testes). Adicionado novo instalador de cavaplugin (confirma no forum a informação).</value>
+  </data>
 </root>

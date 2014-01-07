@@ -76,15 +76,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage9 = new System.Windows.Forms.TabPage();
-            this.ResscheckBox = new System.Windows.Forms.CheckBox();
-            this.globalsetgroupBox = new System.Windows.Forms.GroupBox();
-            this.AutoShutDown_Checkbox = new System.Windows.Forms.CheckBox();
-            this.AllowDownloadCheckBox = new System.Windows.Forms.CheckBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.ResscheckBox = new System.Windows.Forms.CheckBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.languageGroupBox = new System.Windows.Forms.GroupBox();
             this.MiningBS_Checkbox = new System.Windows.Forms.CheckBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.suport_pb_label = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.charsetgroupBox = new System.Windows.Forms.GroupBox();
             this.AntiStuck_CheckBox = new System.Windows.Forms.CheckBox();
@@ -94,6 +94,9 @@
             this.refusePartyCheckBox = new System.Windows.Forms.CheckBox();
             this.guildInvitescheckBox = new System.Windows.Forms.CheckBox();
             this.refuseGuildCheckBox = new System.Windows.Forms.CheckBox();
+            this.globalsetgroupBox = new System.Windows.Forms.GroupBox();
+            this.AutoShutDown_Checkbox = new System.Windows.Forms.CheckBox();
+            this.AllowDownloadCheckBox = new System.Windows.Forms.CheckBox();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.linkLabel29 = new System.Windows.Forms.LinkLabel();
@@ -153,11 +156,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage9.SuspendLayout();
-            this.globalsetgroupBox.SuspendLayout();
+            this.groupBox11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.languageGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.charsetgroupBox.SuspendLayout();
+            this.globalsetgroupBox.SuspendLayout();
             this.tabPage10.SuspendLayout();
             this.groupBox13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -625,7 +630,7 @@
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(116, 13);
             this.label14.TabIndex = 2;
-            this.label14.Text = "CavaPlugin V 4.1.2";
+            this.label14.Text = "CavaPlugin V 4.1.3";
             // 
             // button4
             // 
@@ -739,8 +744,7 @@
             // tabPage9
             // 
             this.tabPage9.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.tabPage9.Controls.Add(this.ResscheckBox);
-            this.tabPage9.Controls.Add(this.globalsetgroupBox);
+            this.tabPage9.Controls.Add(this.groupBox11);
             this.tabPage9.Controls.Add(this.pictureBox5);
             this.tabPage9.Controls.Add(this.languageGroupBox);
             this.tabPage9.Controls.Add(this.groupBox4);
@@ -752,75 +756,20 @@
             this.tabPage9.Text = "Armageddoner";
             this.tabPage9.Click += new System.EventHandler(this.tabPage9_Click);
             // 
-            // ResscheckBox
+            // groupBox11
             // 
-            this.ResscheckBox.AutoSize = true;
-            this.ResscheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ResscheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ResscheckBox.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.ResscheckBox.Location = new System.Drawing.Point(572, 141);
-            this.ResscheckBox.Name = "ResscheckBox";
-            this.ResscheckBox.Size = new System.Drawing.Size(152, 19);
-            this.ResscheckBox.TabIndex = 26;
-            this.ResscheckBox.Text = "Ress/Release After Die";
-            this.ResscheckBox.UseVisualStyleBackColor = true;
-            this.ResscheckBox.CheckedChanged += new System.EventHandler(this.ResscheckBox_CheckedChanged);
-            this.ResscheckBox.MouseEnter += new System.EventHandler(this.button_MouseEnter);
-            // 
-            // globalsetgroupBox
-            // 
-            this.globalsetgroupBox.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.globalsetgroupBox.Controls.Add(this.AutoShutDown_Checkbox);
-            this.globalsetgroupBox.Controls.Add(this.AllowDownloadCheckBox);
-            this.globalsetgroupBox.Controls.Add(this.label15);
-            this.globalsetgroupBox.Controls.Add(this.comboBox1);
-            this.globalsetgroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.globalsetgroupBox.ForeColor = System.Drawing.Color.Gold;
-            this.globalsetgroupBox.Location = new System.Drawing.Point(12, 142);
-            this.globalsetgroupBox.Name = "globalsetgroupBox";
-            this.globalsetgroupBox.Size = new System.Drawing.Size(251, 93);
-            this.globalsetgroupBox.TabIndex = 36;
-            this.globalsetgroupBox.TabStop = false;
-            this.globalsetgroupBox.Text = "Global Settings";
-            // 
-            // AutoShutDown_Checkbox
-            // 
-            this.AutoShutDown_Checkbox.AutoSize = true;
-            this.AutoShutDown_Checkbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AutoShutDown_Checkbox.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.AutoShutDown_Checkbox.Location = new System.Drawing.Point(2, 65);
-            this.AutoShutDown_Checkbox.Name = "AutoShutDown_Checkbox";
-            this.AutoShutDown_Checkbox.Size = new System.Drawing.Size(178, 19);
-            this.AutoShutDown_Checkbox.TabIndex = 23;
-            this.AutoShutDown_Checkbox.Text = "Auto Shutdown After Update";
-            this.AutoShutDown_Checkbox.UseVisualStyleBackColor = true;
-            this.AutoShutDown_Checkbox.CheckedChanged += new System.EventHandler(this.AutoShutDown_Checkbox_CheckedChanged);
-            this.AutoShutDown_Checkbox.MouseEnter += new System.EventHandler(this.button_MouseEnter);
-            // 
-            // AllowDownloadCheckBox
-            // 
-            this.AllowDownloadCheckBox.AutoSize = true;
-            this.AllowDownloadCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AllowDownloadCheckBox.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.AllowDownloadCheckBox.Location = new System.Drawing.Point(2, 45);
-            this.AllowDownloadCheckBox.Name = "AllowDownloadCheckBox";
-            this.AllowDownloadCheckBox.Size = new System.Drawing.Size(193, 19);
-            this.AllowDownloadCheckBox.TabIndex = 25;
-            this.AllowDownloadCheckBox.Text = "Auto Download Private Profiles";
-            this.AllowDownloadCheckBox.UseVisualStyleBackColor = true;
-            this.AllowDownloadCheckBox.CheckedChanged += new System.EventHandler(this.AllowDownloadCheckBox_CheckedChanged);
-            this.AllowDownloadCheckBox.MouseEnter += new System.EventHandler(this.button_MouseEnter);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label15.Location = new System.Drawing.Point(160, 25);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(63, 15);
-            this.label15.TabIndex = 27;
-            this.label15.Text = "Language";
+            this.groupBox11.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.groupBox11.Controls.Add(this.comboBox1);
+            this.groupBox11.Controls.Add(this.ResscheckBox);
+            this.groupBox11.Controls.Add(this.label15);
+            this.groupBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox11.ForeColor = System.Drawing.Color.Gold;
+            this.groupBox11.Location = new System.Drawing.Point(8, 121);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(255, 125);
+            this.groupBox11.TabIndex = 27;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Settings";
             // 
             // comboBox1
             // 
@@ -832,6 +781,7 @@
             "English",
             "Dansk",
             "Deutsch",
+            "Nederlands",
             "Português",
             "Русский"});
             this.comboBox1.Location = new System.Drawing.Point(2, 20);
@@ -840,6 +790,32 @@
             this.comboBox1.TabIndex = 29;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             this.comboBox1.MouseEnter += new System.EventHandler(this.button_MouseEnter);
+            // 
+            // ResscheckBox
+            // 
+            this.ResscheckBox.AutoSize = true;
+            this.ResscheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ResscheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ResscheckBox.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ResscheckBox.Location = new System.Drawing.Point(2, 45);
+            this.ResscheckBox.Name = "ResscheckBox";
+            this.ResscheckBox.Size = new System.Drawing.Size(152, 19);
+            this.ResscheckBox.TabIndex = 26;
+            this.ResscheckBox.Text = "Ress/Release After Die";
+            this.ResscheckBox.UseVisualStyleBackColor = true;
+            this.ResscheckBox.CheckedChanged += new System.EventHandler(this.ResscheckBox_CheckedChanged);
+            this.ResscheckBox.MouseEnter += new System.EventHandler(this.button_MouseEnter);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label15.Location = new System.Drawing.Point(160, 25);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(63, 15);
+            this.label15.TabIndex = 27;
+            this.label15.Text = "Language";
             // 
             // pictureBox5
             // 
@@ -855,11 +831,13 @@
             // 
             this.languageGroupBox.BackColor = System.Drawing.Color.CornflowerBlue;
             this.languageGroupBox.Controls.Add(this.MiningBS_Checkbox);
+            this.languageGroupBox.Controls.Add(this.pictureBox8);
+            this.languageGroupBox.Controls.Add(this.suport_pb_label);
             this.languageGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.languageGroupBox.ForeColor = System.Drawing.Color.Gold;
             this.languageGroupBox.Location = new System.Drawing.Point(282, 121);
             this.languageGroupBox.Name = "languageGroupBox";
-            this.languageGroupBox.Size = new System.Drawing.Size(255, 455);
+            this.languageGroupBox.Size = new System.Drawing.Size(480, 455);
             this.languageGroupBox.TabIndex = 21;
             this.languageGroupBox.TabStop = false;
             this.languageGroupBox.Text = "Profession Profiles Owners";
@@ -870,7 +848,7 @@
             this.MiningBS_Checkbox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.MiningBS_Checkbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MiningBS_Checkbox.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.MiningBS_Checkbox.Location = new System.Drawing.Point(6, 20);
+            this.MiningBS_Checkbox.Location = new System.Drawing.Point(2, 38);
             this.MiningBS_Checkbox.Name = "MiningBS_Checkbox";
             this.MiningBS_Checkbox.Size = new System.Drawing.Size(215, 19);
             this.MiningBS_Checkbox.TabIndex = 0;
@@ -879,15 +857,38 @@
             this.MiningBS_Checkbox.CheckedChanged += new System.EventHandler(this.MiningBS_Checkbox_CheckedChanged);
             this.MiningBS_Checkbox.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox8.Location = new System.Drawing.Point(295, 37);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(112, 25);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox8.TabIndex = 2;
+            this.pictureBox8.TabStop = false;
+            this.pictureBox8.Click += new System.EventHandler(this.pictureBox8_Click);
+            this.pictureBox8.MouseEnter += new System.EventHandler(this.button_MouseEnter);
+            // 
+            // suport_pb_label
+            // 
+            this.suport_pb_label.AutoSize = true;
+            this.suport_pb_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.suport_pb_label.Location = new System.Drawing.Point(242, 18);
+            this.suport_pb_label.Name = "suport_pb_label";
+            this.suport_pb_label.Size = new System.Drawing.Size(231, 17);
+            this.suport_pb_label.TabIndex = 1;
+            this.suport_pb_label.Text = "Support Profession Profile Iniciative\r\n";
+            // 
             // groupBox4
             // 
             this.groupBox4.BackColor = System.Drawing.Color.CornflowerBlue;
             this.groupBox4.Controls.Add(this.charsetgroupBox);
+            this.groupBox4.Controls.Add(this.globalsetgroupBox);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.Color.Gold;
-            this.groupBox4.Location = new System.Drawing.Point(10, 121);
+            this.groupBox4.Location = new System.Drawing.Point(8, 250);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(255, 455);
+            this.groupBox4.Size = new System.Drawing.Size(255, 326);
             this.groupBox4.TabIndex = 20;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Reserved for Testers/Donators";
@@ -1008,6 +1009,48 @@
             this.refuseGuildCheckBox.UseVisualStyleBackColor = true;
             this.refuseGuildCheckBox.CheckedChanged += new System.EventHandler(this.refuseGuildCheckBox_CheckedChanged);
             this.refuseGuildCheckBox.MouseEnter += new System.EventHandler(this.button_MouseEnter);
+            // 
+            // globalsetgroupBox
+            // 
+            this.globalsetgroupBox.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.globalsetgroupBox.Controls.Add(this.AutoShutDown_Checkbox);
+            this.globalsetgroupBox.Controls.Add(this.AllowDownloadCheckBox);
+            this.globalsetgroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.globalsetgroupBox.ForeColor = System.Drawing.Color.Gold;
+            this.globalsetgroupBox.Location = new System.Drawing.Point(2, 20);
+            this.globalsetgroupBox.Name = "globalsetgroupBox";
+            this.globalsetgroupBox.Size = new System.Drawing.Size(251, 79);
+            this.globalsetgroupBox.TabIndex = 36;
+            this.globalsetgroupBox.TabStop = false;
+            this.globalsetgroupBox.Text = "Global Settings";
+            // 
+            // AutoShutDown_Checkbox
+            // 
+            this.AutoShutDown_Checkbox.AutoSize = true;
+            this.AutoShutDown_Checkbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AutoShutDown_Checkbox.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.AutoShutDown_Checkbox.Location = new System.Drawing.Point(2, 40);
+            this.AutoShutDown_Checkbox.Name = "AutoShutDown_Checkbox";
+            this.AutoShutDown_Checkbox.Size = new System.Drawing.Size(178, 19);
+            this.AutoShutDown_Checkbox.TabIndex = 23;
+            this.AutoShutDown_Checkbox.Text = "Auto Shutdown After Update";
+            this.AutoShutDown_Checkbox.UseVisualStyleBackColor = true;
+            this.AutoShutDown_Checkbox.CheckedChanged += new System.EventHandler(this.AutoShutDown_Checkbox_CheckedChanged);
+            this.AutoShutDown_Checkbox.MouseEnter += new System.EventHandler(this.button_MouseEnter);
+            // 
+            // AllowDownloadCheckBox
+            // 
+            this.AllowDownloadCheckBox.AutoSize = true;
+            this.AllowDownloadCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AllowDownloadCheckBox.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.AllowDownloadCheckBox.Location = new System.Drawing.Point(2, 20);
+            this.AllowDownloadCheckBox.Name = "AllowDownloadCheckBox";
+            this.AllowDownloadCheckBox.Size = new System.Drawing.Size(193, 19);
+            this.AllowDownloadCheckBox.TabIndex = 25;
+            this.AllowDownloadCheckBox.Text = "Auto Download Private Profiles";
+            this.AllowDownloadCheckBox.UseVisualStyleBackColor = true;
+            this.AllowDownloadCheckBox.CheckedChanged += new System.EventHandler(this.AllowDownloadCheckBox_CheckedChanged);
+            this.AllowDownloadCheckBox.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
             // tabPage10
             // 
@@ -1617,15 +1660,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage9.ResumeLayout(false);
-            this.tabPage9.PerformLayout();
-            this.globalsetgroupBox.ResumeLayout(false);
-            this.globalsetgroupBox.PerformLayout();
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.languageGroupBox.ResumeLayout(false);
             this.languageGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.charsetgroupBox.ResumeLayout(false);
             this.charsetgroupBox.PerformLayout();
+            this.globalsetgroupBox.ResumeLayout(false);
+            this.globalsetgroupBox.PerformLayout();
             this.tabPage10.ResumeLayout(false);
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
@@ -1765,5 +1810,8 @@
         private System.Windows.Forms.CheckBox refuseTradesCheckBox;
         private System.Windows.Forms.GroupBox globalsetgroupBox;
         private System.Windows.Forms.GroupBox charsetgroupBox;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.Label suport_pb_label;
     }
 }

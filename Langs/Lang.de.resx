@@ -256,22 +256,6 @@ to Portuguese
   <data name="charsettings" xml:space="preserve">
     <value>Spieler Einstellungen</value>
   </data>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <data name="Bot_is_running_stop_bot_before_initiate_Cava_Plugin" xml:space="preserve">
     <value>Bot läuft gerade, stoppe den Bot bevor du das Cava Plugin aktivieren möchtest.</value>
   </data>
@@ -395,11 +379,67 @@ to Portuguese
   <data name="Auto_Shutdown_in_progress_at" xml:space="preserve">
     <value>Auto-Shutdown wird ausgeführt</value>
   </data>
-  <data name="newtxt" xml:space="preserve">
-    <value>Nethersotrm Profil hinzugefügt, Level 68 bis 70. Sholaza Basin Level 77 bis 78 (für Tester). Unstuck-Routine hinzugefügt (weitere Informationen im Forum). </value>
+  <data name="settings" xml:space="preserve">
+    <value>Settings</value>
   </data>
-
-
-
-
+  <data name="Support_Profession_Profile_Iniciative" xml:space="preserve">
+    <value>Support Profession Profile Iniciative</value>
+  </data>
+  <data name="CavaPlugin_Disposed" xml:space="preserve">
+    <value>CavaPlugin Disposed</value>
+  </data>
+  <data name="Is_now_ENABLED" xml:space="preserve">
+    <value>Ist nun Aktiv</value>
+  </data>
+  <data name="Is_now_DISABLED" xml:space="preserve">
+    <value>Ist nun Inaktiv</value>
+  </data>
+  <data name="System_Anti-Stuck_Enabled" xml:space="preserve">
+    <value>[System Anti-Stuck aktiv]</value>
+  </data>
+  <data name="System_Anti-Stuck_Disabled" xml:space="preserve">
+    <value>[System Anti-Stuck inaktiv]</value>
+  </data>
+  <data name="Summon_Random_Pet_Enabled" xml:space="preserve">
+    <value>[Beschwören eines zufälligen Haustiers aktiv]</value>
+  </data>
+  <data name="Dont_have_any_Pet_to_summom_disabling_Summon_Random_Pet" xml:space="preserve">
+    <value>Du hast kein Haustier zum beschwören, diese Option nun inaktiv</value>
+  </data>
+  <data name="Summon_Random_Pet_Disabled" xml:space="preserve">
+    <value>[Beschwören eines zufälligen Haustiers inaktiv]</value>
+  </data>
+  <data name="Accept_lvl_25_guild_invite_Enabled" xml:space="preserve">
+    <value>[Annehmen von Level 25 Gilden Einladungen, aktiv]</value>
+  </data>
+  <data name="Refuse_guild_invites_Enabled" xml:space="preserve">
+    <value>[Ablehnen von Level 25 Gilen Einladungen, aktiv]</value>
+  </data>
+  <data name="Accept_lvl_25_guild_invite_Disabled" xml:space="preserve">
+    <value>[Annehmen von Level 25 Gilden Einladungen, inaktiv]</value>
+  </data>
+  <data name="Refuse_guild_invites_Disabled" xml:space="preserve">
+    <value>[Ablehnen von Level 25 Gilen Einladungen, inaktiv]</value>
+  </data>
+  <data name="Refuse_party_invites_Enabled" xml:space="preserve">
+    <value>[Ablehnen von Party Einladungen, aktiv]</value>
+  </data>
+  <data name="Refuse_party_invites_Disabled" xml:space="preserve">
+    <value>[Ablehnen von Party Einladungen, inaktiv]</value>
+  </data>
+  <data name="Refuse_trade_invites_Enabled" xml:space="preserve">
+    <value>[Ablehnen von Tausch Einladungen, aktiv]</value>
+  </data>
+  <data name="Refuse_trade_invites_Disabled" xml:space="preserve">
+    <value>[Ablehnen von Tausch Einladungen, inaktiv]</value>
+  </data>
+  <data name="Refuse_duel_invites_Enabled" xml:space="preserve">
+    <value>[Ablehnen von Duell Einladungen, aktiv]</value>
+  </data>
+  <data name="Refuse_duel_invites_Disabled" xml:space="preserve">
+    <value>[Ablehnen von Duell Einladungen, inaktiv]</value>
+  </data>
+  <data name="newtxt" xml:space="preserve">
+    <value>Borean Tundra Profil hinzugefügt, levels 70 bis 72. StormPeaks Profil hinzugefügt, levels 78 bis 80 (nur für Tester). Neue CavaPlugin Installationsroutine hinzugefügt (prüfe das Forum für weitere Informationen).</value>
+  </data>
 </root>

@@ -1,13 +1,14 @@
 using System;
 using System.Net;
 using System.IO;
-//using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace CavaPlugin
 {
+    // ReSharper disable ClassNeverInstantiated.Global
     class CavaPluginUpdater
+    // ReSharper restore ClassNeverInstantiated.Global
     {
         private static readonly String SubPluginDir = Application.StartupPath + "\\Plugins\\CavaPlugin\\";
         private static WebClient _client;

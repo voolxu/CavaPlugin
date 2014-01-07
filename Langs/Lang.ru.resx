@@ -387,7 +387,81 @@ to Portuguese
   <data name="Auto_Shutdown_in_progress_at" xml:space="preserve">
     <value>Авто-закрытие через : </value>
   </data>
-  <data name="newtxt" xml:space="preserve">
-    <value>Добавлен профиль Пустоверти, уровни с 68 по 70, Добавлена  низина Шолозар с 77 по 78 уровень (зарезервировано для тестеров). Добавлено анти-застревание (Проверьте на форуме). </value>
+
+
+
+
+
+
+
+  <data name="settings" xml:space="preserve">
+    <value>Settings</value>
   </data>
+  <data name="Support_Profession_Profile_Iniciative" xml:space="preserve">
+    <value>Support Profession Profile Iniciative</value>
+  </data>
+  <data name="CavaPlugin_Disposed" xml:space="preserve">
+    <value>CavaPlugin Disposed</value>
+  </data>
+  <data name="Is_now_ENABLED" xml:space="preserve">
+    <value>Is now ENABLED</value>
+  </data>
+  <data name="Is_now_DISABLED" xml:space="preserve">
+    <value>Is now DISABLED</value>
+  </data>
+  <data name="System_Anti-Stuck_Enabled" xml:space="preserve">
+    <value>[System Anti-Stuck Enabled]</value>
+  </data>
+  <data name="System_Anti-Stuck_Disabled" xml:space="preserve">
+    <value>[System Anti-Stuck Disabled]</value>
+  </data>
+  <data name="Summon_Random_Pet_Enabled" xml:space="preserve">
+    <value>[Summon Random Pet Enabled]</value>
+  </data>
+  <data name="Dont_have_any_Pet_to_summom_disabling_Summon_Random_Pet" xml:space="preserve">
+    <value>Dont have any Pet to summom, disabling Summon Random Pet</value>
+  </data>
+  <data name="Summon_Random_Pet_Disabled" xml:space="preserve">
+    <value>[Summon Random Pet Disabled]</value>
+  </data>
+  <data name="Accept_lvl_25_guild_invite_Enabled" xml:space="preserve">
+    <value>[Accept lvl 25 guild invite Enabled]</value>
+  </data>
+  <data name="Refuse_guild_invites_Enabled" xml:space="preserve">
+    <value>[Refuse guild invites Enabled]</value>
+  </data>
+  <data name="Accept_lvl_25_guild_invite_Disabled" xml:space="preserve">
+    <value>[Accept lvl 25 guild invite Disabled]</value>
+  </data>
+  <data name="Refuse_guild_invites_Disabled" xml:space="preserve">
+    <value>[Refuse guild invites Disabled]</value>
+  </data>
+  <data name="Refuse_party_invites_Enabled" xml:space="preserve">
+    <value>[Refuse party invites Enabled]</value>
+  </data>
+  <data name="Refuse_party_invites_Disabled" xml:space="preserve">
+    <value>[Refuse party invites Disabled]</value>
+  </data>
+  <data name="Refuse_trade_invites_Enabled" xml:space="preserve">
+    <value>[Refuse trade invites Enabled]</value>
+  </data>
+  <data name="Refuse_trade_invites_Disabled" xml:space="preserve">
+    <value>[Refuse trade invites Disabled]</value>
+  </data>
+  <data name="Refuse_duel_invites_Enabled" xml:space="preserve">
+    <value>[Refuse duel invites Enabled]</value>
+  </data>
+  <data name="Refuse_duel_invites_Disabled" xml:space="preserve">
+    <value>[Refuse duel invites Disabled]</value>
+  </data>
+  <data name="newtxt" xml:space="preserve">
+    <value>Added Borean Tundra map profile, levels 70 to 72. Added The StormPeaks levels 78 to 80 (reserved for testers). Added New CavaPlugin installer (check Forum for information).</value>
+  </data>
+
+
+
+
+
+
+
 </root>

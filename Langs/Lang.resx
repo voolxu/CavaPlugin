@@ -78,7 +78,7 @@ to Portuguese
     <value>About</value>
   </data>
   <data name="antistuck" xml:space="preserve">
-    <value>Anti-Stuck System(Need Relogger)</value>
+    <value>Anti-Stuck System(Need to Restart WoW)</value>
   </data>
   <data name="armageddoner" xml:space="preserve">
     <value>Armageddoner</value>
@@ -87,7 +87,7 @@ to Portuguese
     <value>Auto Download Private Profiles</value>
   </data>
   <data name="autoshutdown" xml:space="preserve">
-    <value>Auto Shutdown After Update</value>
+    <value>Auto Shut-down After Update</value>
   </data>
   <data name="cancel" xml:space="preserve">
     <value>Cancel</value>
@@ -117,7 +117,7 @@ to Portuguese
     <value>Last Used Profile:</value>
   </data>
   <data name="lastusedprofiletxtdef" xml:space="preserve">
-    <value>There is no previusly selected profile</value>
+    <value>There is no previously selected profile</value>
   </data>
   <data name="level85to90" xml:space="preserve">
     <value>Level 85 to 90 All Quests</value>
@@ -225,13 +225,13 @@ to Portuguese
     <value>Enable Summon Random Pets</value>
   </data>
   <data name="usefulllinks" xml:space="preserve">
-    <value>Usefull Links</value>
+    <value>Useful Links</value>
   </data>
   <data name="usinghonorbuddy" xml:space="preserve">
     <value>Using Honorbuddy ...</value>
   </data>
   <data name="guildInvitescheckBox" xml:space="preserve">
-    <value>Accept Lvl 25 Guild Invites</value>
+    <value>Accept Level 25 Guild Invites</value>
   </data>
   <data name="refuseGuildCheckBox" xml:space="preserve">
     <value>Refuse Guild Invites</value>
@@ -252,7 +252,7 @@ to Portuguese
     <value>Character Settings</value>
   </data>
   <data name="Bot_is_running_stop_bot_before_initiate_Cava_Plugin" xml:space="preserve">
-    <value>Bot is running, stop bot before initiating the Cava Plugin.</value>
+    <value>Bot is running, stop bot before initiating the CavaPlugin.</value>
   </data>
   <data name="error" xml:space="preserve">
     <value>ERROR</value>
@@ -267,7 +267,7 @@ to Portuguese
     <value>Please download and update your version to latest release</value>
   </data>
   <data name="This_version_have_some_problems_with_TortoiseSVN" xml:space="preserve">
-    <value>This version has some problems with TortoiseSVN</value>
+    <value>This version of CavaPlugin has some problems with TortoiseSVN</value>
   </data>
   <data name="Download_latest_version_from_HB_Forum" xml:space="preserve">
     <value>Download the latest version from HonorBuddy Forums</value>
@@ -309,31 +309,31 @@ to Portuguese
     <value>Congratulations. The CavaPlugin was successfully installed.</value>
   </data>
   <data name="Failed_to_Create_Cava_Quest_Behavior_Folder" xml:space="preserve">
-    <value>Failed to Create the Cava quest behaviour Folder.</value>
+    <value>Failed to Create the Cava Quest Behaviour folder.</value>
   </data>
   <data name="Cava_Quest_Behavior_sucefull_checkout" xml:space="preserve">
-    <value>Cava quest behaviours successfully installed.</value>
+    <value>Cava Quest Behaviours successfully installed.</value>
   </data>
   <data name="There_is_a_problem_with_checkout_Cava_Quest_Behaviors" xml:space="preserve">
-    <value>There is a problem with installing the Cava quest behaviours.</value>
+    <value>There is a problem with installing the Cava Quest Behaviours.</value>
   </data>
   <data name="Congratulations_Cava_Quest_Behaviors_Sucefully_Created_and_checkout" xml:space="preserve">
-    <value>Congratulations. The Cava quest behaviours was successfully installed.</value>
+    <value>Congratulations. The Cava Quest Behaviours were successfully installed.</value>
   </data>
   <data name="Failed_to_Create_Cava_Profiles_Folder" xml:space="preserve">
-    <value>Failed to create the Cava profiles folder.</value>
+    <value>Failed to create the Cava Profiles folder.</value>
   </data>
   <data name="Cava_Profiles_sucefull_checkout" xml:space="preserve">
-    <value>the Cava profiles were successfully updated.</value>
+    <value>the Cava Profiles were successfully updated.</value>
   </data>
   <data name="There_is_a_problem_with_checkout_Cava_Profiles" xml:space="preserve">
-    <value>There is a problem with updating the Cava profiles.</value>
+    <value>There is a problem with updating the Cava Profiles.</value>
   </data>
   <data name="Congratulations_Cava_Profiles_Sucefully_Created_and_checkout" xml:space="preserve">
     <value>Congratulations. Cava profiles were successfully installed.</value>
   </data>
   <data name="Please_Wait_While_CavaPlugin_Check_For_Updates" xml:space="preserve">
-    <value>Please wait while the CavaPlugin checks for updates.</value>
+    <value>Please wait while the Cava Plugin checks for updates.</value>
   </data>
   <data name="Cava_Plugin_Update_to_0_is_available_You_are_on_1" xml:space="preserve">
     <value>CavaPlugin update ${0} is available! You are on ${1}.</value>
@@ -348,7 +348,7 @@ to Portuguese
     <value>There was a problem updating</value>
   </data>
   <data name="Theres_an_error_with_Cava_Quest_Behaviors_or_Cava_profiles" xml:space="preserve">
-    <value>There is an error with the Cava quest behaviors or profiles.</value>
+    <value>There is an error with the Cava Quest Behaviors or Profiles.</value>
   </data>
   <data name="Update_to_0_are_available_You_are_on_1" xml:space="preserve">
     <value>CavaPlugin update ${0} is available! You are on ${1}.</value>
@@ -363,7 +363,7 @@ to Portuguese
     <value>Mining and Blacksmithing 1 to 600 are up to date!</value>
   </data>
   <data name="There_is_a_problem_updating_Mining_Blacksmithing_1_to_600" xml:space="preserve">
-    <value>There is a problem updating the Mining and Blacksmithing 1 to 600 profiles.</value>
+    <value>There is a problem updating the Mining and Blacksmithing 1 to 600 profile.</value>
   </data>
   <data name="is_now_up_to_date_Please_reload_HB" xml:space="preserve">
     <value>is now up to date! Please reload HonorBuddy.</value>
@@ -374,7 +374,67 @@ to Portuguese
   <data name="Auto_Shutdown_in_progress_at" xml:space="preserve">
     <value>Auto Shut-down in progress at</value>
   </data>
+  <data name="settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Support_Profession_Profile_Iniciative" xml:space="preserve">
+    <value>Support Profession Profile Initiative</value>
+  </data>
+  <data name="CavaPlugin_Disposed" xml:space="preserve">
+    <value>CavaPlugin Disposed</value>
+  </data>
+  <data name="Is_now_ENABLED" xml:space="preserve">
+    <value>Is now ENABLED</value>
+  </data>
+  <data name="Is_now_DISABLED" xml:space="preserve">
+    <value>Is now DISABLED</value>
+  </data>
+  <data name="System_Anti-Stuck_Enabled" xml:space="preserve">
+    <value>[System Anti-Stuck: Enabled]</value>
+  </data>
+  <data name="System_Anti-Stuck_Disabled" xml:space="preserve">
+    <value>[System Anti-Stuck: Disabled]</value>
+  </data>
+  <data name="Summon_Random_Pet_Enabled" xml:space="preserve">
+    <value>[Summon Random Pet: Enabled]</value>
+  </data>
+  <data name="Dont_have_any_Pet_to_summom_disabling_Summon_Random_Pet" xml:space="preserve">
+    <value>Don't have any pet to summon, disabling Summon Random Pet</value>
+  </data>
+  <data name="Summon_Random_Pet_Disabled" xml:space="preserve">
+    <value>[Summon Random Pet: Disabled]</value>
+  </data>
+  <data name="Accept_lvl_25_guild_invite_Enabled" xml:space="preserve">
+    <value>[Accept Level 25 Guild Invite: Enabled]</value>
+  </data>
+  <data name="Refuse_guild_invites_Enabled" xml:space="preserve">
+    <value>[Refuse Guild Invites: Enabled]</value>
+  </data>
+  <data name="Accept_lvl_25_guild_invite_Disabled" xml:space="preserve">
+    <value>[Accept Level 25 Guild Invites: Disabled]</value>
+  </data>
+  <data name="Refuse_guild_invites_Disabled" xml:space="preserve">
+    <value>[Refuse Guild Invites: Disabled]</value>
+  </data>
+  <data name="Refuse_party_invites_Enabled" xml:space="preserve">
+    <value>[Refuse Party Invites: Enabled]</value>
+  </data>
+  <data name="Refuse_party_invites_Disabled" xml:space="preserve">
+    <value>[Refuse Party Invites: Disabled]</value>
+  </data>
+  <data name="Refuse_trade_invites_Enabled" xml:space="preserve">
+    <value>[Refuse Trade Invites: Enabled]</value>
+  </data>
+  <data name="Refuse_trade_invites_Disabled" xml:space="preserve">
+    <value>[Refuse Trade Invites: Disabled]</value>
+  </data>
+  <data name="Refuse_duel_invites_Enabled" xml:space="preserve">
+    <value>[Refuse Duel Invites: Enabled]</value>
+  </data>
+  <data name="Refuse_duel_invites_Disabled" xml:space="preserve">
+    <value>[Refuse Duel Invites: Disabled]</value>
+  </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Added Netherstorm map profile, levels 68 to 70. Added Sholazar Basin levels 77 to 78 (reserved for testers). Added Unstuck routine (check Forum for information).</value>
+    <value>Added Borean Tundra map profile, levels 70 to 72. Added The StormPeaks levels 78 to 80 (reserved for testers). Added New CavaPlugin installer (check forum for information).</value>
   </data>
 </root>

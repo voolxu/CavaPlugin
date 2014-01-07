@@ -78,13 +78,13 @@ to Portuguese
     <value>Om</value>
   </data>
   <data name="antistuck" xml:space="preserve">
-    <value>Anti-Stuck System(Need Relogger)</value>
+    <value>Anti-Stuck System(Kræver Genstart)</value>
   </data>
   <data name="armageddoner" xml:space="preserve">
     <value>Armageddoner</value>
   </data>
   <data name="autodownload" xml:space="preserve">
-    <value>automatisk downloader profiler</value>
+    <value>automatisk download profiler</value>
   </data>
   <data name="autoshutdown" xml:space="preserve">
     <value>auto slukning efter opdate</value>
@@ -257,19 +257,6 @@ to Portuguese
   <data name="charsettings" xml:space="preserve">
     <value>Character Settinger</value>
   </data>
-
-
-
-
-
-
-
-
-
-
-
-
-
   <data name="Bot_is_running_stop_bot_before_initiate_Cava_Plugin" xml:space="preserve">
     <value>Botten køre, stop botten før du starter Cava Plugin.</value>
   </data>
@@ -393,7 +380,67 @@ to Portuguese
   <data name="Auto_Shutdown_in_progress_at" xml:space="preserve">
     <value>Auto-Shutdown sat igang </value>
   </data>
+  <data name="settings" xml:space="preserve">
+    <value>Instillinger</value>
+  </data>
+  <data name="Support_Profession_Profile_Iniciative" xml:space="preserve">
+    <value>Support Profession Profil Iniciative</value>
+  </data>
+  <data name="CavaPlugin_Disposed" xml:space="preserve">
+    <value>CavaPlugin Disposed</value>
+  </data>
+  <data name="Is_now_ENABLED" xml:space="preserve">
+    <value>Er nu ENABLED</value>
+  </data>
+  <data name="Is_now_DISABLED" xml:space="preserve">
+    <value>Er nu DISABLED</value>
+  </data>
+  <data name="System_Anti-Stuck_Enabled" xml:space="preserve">
+    <value>[System Anti-Stuck Enabled]</value>
+  </data>
+  <data name="System_Anti-Stuck_Disabled" xml:space="preserve">
+    <value>[System Anti-Stuck Disabled]</value>
+  </data>
+  <data name="Summon_Random_Pet_Enabled" xml:space="preserve">
+    <value>[Fremkald tilfældig Pet Enabled]</value>
+  </data>
+  <data name="Dont_have_any_Pet_to_summom_disabling_Summon_Random_Pet" xml:space="preserve">
+    <value>Du har ingen pet at fremkalde, slukker Fremkald tilfældig Pet</value>
+  </data>
+  <data name="Summon_Random_Pet_Disabled" xml:space="preserve">
+    <value>[Fremkald tilfældig Pet Disabled]</value>
+  </data>
+  <data name="Accept_lvl_25_guild_invite_Enabled" xml:space="preserve">
+    <value>[Accepter lvl 25 guild invitation Enabled]</value>
+  </data>
+  <data name="Refuse_guild_invites_Enabled" xml:space="preserve">
+    <value>[Afvis guild invitationer Enabled]</value>
+  </data>
+  <data name="Accept_lvl_25_guild_invite_Disabled" xml:space="preserve">
+    <value>[Accepter lvl 25 guild invitationer Disabled]</value>
+  </data>
+  <data name="Refuse_guild_invites_Disabled" xml:space="preserve">
+    <value>[Afvis guild invitationer Disabled]</value>
+  </data>
+  <data name="Refuse_party_invites_Enabled" xml:space="preserve">
+    <value>[Afvis gruppe invitationer Enabled]</value>
+  </data>
+  <data name="Refuse_party_invites_Disabled" xml:space="preserve">
+    <value>[Afvis gruppe invitationer Disabled]</value>
+  </data>
+  <data name="Refuse_trade_invites_Enabled" xml:space="preserve">
+    <value>[Afvis bytte invitationer Enabled]</value>
+  </data>
+  <data name="Refuse_trade_invites_Disabled" xml:space="preserve">
+    <value>[Afvis bytte invitationer Disabled]</value>
+  </data>
+  <data name="Refuse_duel_invites_Enabled" xml:space="preserve">
+    <value>[Afvis duel invitationer Enabled]</value>
+  </data>
+  <data name="Refuse_duel_invites_Disabled" xml:space="preserve">
+    <value>[Afvis duel invitation Disabled]</value>
+  </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Tilføj Netherstorm kort profil, level 68 til 70, Tilføj Sholazar Basin level 77 til 78 (reseveret for testere). Tilføjet "Unstuck" routine (kig på Forum). </value>
+    <value>Added Borean Tundra map profil, level 70 til 72. Added The StormPeaks level 78 til 80 (reseveret for testere). Added Ny CavaPlugin installer (Kig på Forumet for information).</value>
   </data>
 </root>
