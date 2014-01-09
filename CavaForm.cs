@@ -286,7 +286,7 @@ namespace CavaPlugin
                 ResourceManager rm = new ResourceManager("Lang.de", _assembly);
                 getRes(ci, rm);
             }
-            if (comboBox1.SelectedIndex == 3)
+            /*if (comboBox1.SelectedIndex == 3)
             {
                 CultureInfo ci = new CultureInfo("nl");
                 string str = Assembly.GetExecutingAssembly().FullName;
@@ -294,8 +294,8 @@ namespace CavaPlugin
                 Assembly _assembly = Assembly.Load(str);
                 ResourceManager rm = new ResourceManager("Lang.nl", _assembly);
                 getRes(ci, rm);
-            }
-            if (comboBox1.SelectedIndex == 4)
+            }*/
+            if (comboBox1.SelectedIndex == 3)
             {
                 CultureInfo ci = new CultureInfo("pt-PT");
                 string str = Assembly.GetExecutingAssembly().FullName;
@@ -304,7 +304,7 @@ namespace CavaPlugin
                 ResourceManager rm = new ResourceManager("Lang.pt", _assembly);
                 getRes(ci, rm);
             }
-            if (comboBox1.SelectedIndex == 5)
+            if (comboBox1.SelectedIndex == 4)
             {
                 CultureInfo ci = new CultureInfo("ru-RU");
                 string str = Assembly.GetExecutingAssembly().FullName;
@@ -920,7 +920,7 @@ namespace CavaPlugin
                 thanksRichText.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\Thanks_de.rtf");
                 getRes(ci, rm);
             }
-            if (comboBox1.SelectedIndex == 3)
+            /*if (comboBox1.SelectedIndex == 3)
             {
                 CultureInfo ci = new CultureInfo("nl");
                 CPGlobalSettings.Instance.language = 3;
@@ -931,8 +931,8 @@ namespace CavaPlugin
                 richTextBox1.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\GoodToKnow_nl.rtf");
                 thanksRichText.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\Thanks_nl.rtf");
                 getRes(ci, rm);
-            }
-            if (comboBox1.SelectedIndex == 4)
+            }*/
+            if (comboBox1.SelectedIndex == 3)
             {
                 CultureInfo ci = new CultureInfo("pt-PT");
                 CPGlobalSettings.Instance.language = 3;
@@ -944,7 +944,7 @@ namespace CavaPlugin
                 thanksRichText.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\Thanks_pt.rtf");
                 getRes(ci, rm);
             }
-            if (comboBox1.SelectedIndex == 5)
+            if (comboBox1.SelectedIndex == 4)
             {
                 CultureInfo ci = new CultureInfo("ru-RU");
                 CPGlobalSettings.Instance.language = 4;
