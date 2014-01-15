@@ -62,7 +62,7 @@ namespace CavaPlugin
         #region Overrides except pulse
         static readonly SoundPlayer Player = new SoundPlayer();
         public override string Author { get { return "Cava"; } }
-        public override Version Version { get { return new Version(4, 1, 4); } }
+        public override Version Version { get { return new Version(4, 1, 5); } }
         public override string Name { get { return "CavaPlugin"; } }
         public override bool WantButton { get { return true; } }
         public override string ButtonText { get { return "Cava Profiles"; } }
@@ -433,7 +433,7 @@ namespace CavaPlugin
                  if (_cavaupdated && CPGlobalSettings.Instance.AutoShutdownWhenUpdate)
                 {
                     Debug(_rm.GetString("Auto_Shutdown_in_progress_at", _ci) + " " + DateTime.Now.ToString(CultureInfo.InvariantCulture));
-                    Thread.Sleep(5000);
+                    StyxWoW.Sleep(5000);
                     Environment.Exit(0);
                 }
                 _mountedTime = new Stopwatch();
@@ -504,7 +504,8 @@ namespace CavaPlugin
 
                     if (CPsettings.Instance.CheckAllowSummonPet)
                     {
-                        var numMinipets = Lua.GetReturnVal<int>("return C_PetBattles.GetNumPets(1)", 0);
+                        //var numMinipets = Lua.GetReturnVal<int>("return C_PetBattles.GetNumPets(1)", 0);
+                        var numMinipets = Lua.GetReturnVal<int>("return GetNumCompanions('CRITTER')", 0);
                         if (numMinipets > 0)
                         {
                             Log(_rm.GetString("Summon_Random_Pet_Enabled", _ci));
@@ -642,7 +643,7 @@ namespace CavaPlugin
         private static void _Recomecar()
         {
             TreeRoot.Stop();
-            Thread.Sleep(2000);
+            StyxWoW.Sleep(2000);
             TreeRoot.Start();
         }
 
@@ -743,6 +744,7 @@ namespace CavaPlugin
         private static List<WoWUnit> MobGlacierIce { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 49233 && ret.IsAlive)).OrderBy(ret => ret.Distance).ToList(); } }
         private static WoWItem ItemCelebrationPack { get { return (StyxWoW.Me.CarriedItems.FirstOrDefault(i => i.Entry == 90918)); } }
         //private static WoWItem ItemHs { get { return (StyxWoW.Me.CarriedItems.FirstOrDefault(i => i.Entry == 6948)); } }
+        private static WoWItem ItemThisShiv { get { return (StyxWoW.Me.CarriedItems.FirstOrDefault(i => i.Entry == 55883)); } }
 
         #endregion
 
@@ -753,7 +755,7 @@ namespace CavaPlugin
                 ProfileManager.CurrentOuterProfile.Name == "Mining Blacksmithing 1 to 600 by Cava")
             {
                 Log("Loading '{0}'", ProfileManager.CurrentOuterProfile.Name);
-                Thread.Sleep(3000);
+                StyxWoW.Sleep(3000);
                 BotBase pbBotBase;
                 BotManager.Instance.Bots.TryGetValue("ProfessionBuddy", out pbBotBase);
                 if (pbBotBase != null && BotManager.Current != pbBotBase)
@@ -764,7 +766,7 @@ namespace CavaPlugin
                             {
                                 TreeRoot.Stop();
                                 BotManager.Instance.SetCurrent(pbBotBase);
-                                Thread.Sleep(2000);
+                                StyxWoW.Sleep(2000);
                                 if (ProfileManager.CurrentOuterProfile.Name == "Mining Blacksmithing 1 to 600 by Cava") { _profileName = "PB\\MB\\[PB]MB(Cava).xml"; }
                                 if (ProfileManager.CurrentOuterProfile.Name == "Mining Blacksmithing 1 to 300 by Cava") { _profileName = "Free_PB\\[PB]MB(Cava).xml"; }
                                 ProfileManager.LoadNew(NewProfilePath, false);
@@ -774,7 +776,7 @@ namespace CavaPlugin
             }
             if (Me.IsDead && !Me.HasAura(8326) && CPGlobalSettings.Instance.RessAfterDie)
             {
-                Thread.Sleep(5000);
+                StyxWoW.Sleep(5000);
                 Log("Anti-Bug Release System");
                 Lua.DoString("RunMacroText('/click StaticPopup1Button1')");
             }
@@ -817,19 +819,19 @@ namespace CavaPlugin
                 if (Me.Race == WoWRace.Goblin && Me.HasAura("Near Death!") && Me.ZoneId == 4720 && MobDocZapnozzle.Count > 0)
                 {
                     MobDocZapnozzle[0].Interact();
-                    Thread.Sleep(1000);
+                    StyxWoW.Sleep(1000);
                     Lua.DoString("RunMacroText('/click QuestFrameCompleteQuestButton')");
                 }
                 if (Me.Race == WoWRace.Worgen && Me.HasAura(68631) && Me.ZoneId == 4714 && MobKingGennGreymane.Count > 0)
                 {
                     MobKingGennGreymane[0].Interact();
-                    Thread.Sleep(1000);
+                    StyxWoW.Sleep(1000);
                     Lua.DoString("RunMacroText('/click QuestFrameCompleteQuestButton')");
                 }
                 if (Me.QuestLog.GetQuestById(13884) != null && !Me.QuestLog.GetQuestById(13884).IsCompleted && !Me.HasAura(65178) && MobArctanus.Count > 0)
                 {
                     MobArctanus[0].Interact();
-                    Thread.Sleep(1000);
+                    StyxWoW.Sleep(1000);
                 }
                 if (Me.QuestLog.GetQuestById(24950) != null && !Me.QuestLog.GetQuestById(24950).IsCompleted && MobTidecrusher.Count > 0)
                 {
@@ -842,35 +844,35 @@ namespace CavaPlugin
                     MobElectromental[0].Interact();
                     MobElectromental[0].Face();
                     Lua.DoString("UseItemByName(30656)");
-                    Thread.Sleep(4000);
+                    StyxWoW.Sleep(4000);
                 }
                 if (Me.QuestLog.GetQuestById(10609) != null && !Me.QuestLog.GetQuestById(10609).IsCompleted && MobNetherWhelp.Count > 0)
                 {
                     MobNetherWhelp[0].Interact();
                     MobNetherWhelp[0].Face();
                     Lua.DoString("UseItemByName(30742)");
-                    Thread.Sleep(4000);
+                    StyxWoW.Sleep(4000);
                 }
                 if (Me.QuestLog.GetQuestById(10609) != null && !Me.QuestLog.GetQuestById(10609).IsCompleted && IsObjectiveComplete(1, 10609) && MobProtoNetherDrake.Count > 0)
                 {
                     MobProtoNetherDrake[0].Interact();
                     MobProtoNetherDrake[0].Face();
                     Lua.DoString("UseItemByName(30742)");
-                    Thread.Sleep(4000);
+                    StyxWoW.Sleep(4000);
                 }
                 if (Me.QuestLog.GetQuestById(10609) != null && !Me.QuestLog.GetQuestById(10609).IsCompleted && IsObjectiveComplete(2, 10609) && MobAdolescentNetherDrake.Count > 0)
                 {
                     MobAdolescentNetherDrake[0].Interact();
                     MobAdolescentNetherDrake[0].Face();
                     Lua.DoString("UseItemByName(30742)");
-                    Thread.Sleep(4000);
+                    StyxWoW.Sleep(4000);
                 }
                 if (Me.QuestLog.GetQuestById(10609) != null && !Me.QuestLog.GetQuestById(10609).IsCompleted && IsObjectiveComplete(3, 10609) && MobMatureNetherDrake.Count > 0)
                 {
                     MobMatureNetherDrake[0].Interact();
                     MobMatureNetherDrake[0].Face();
                     Lua.DoString("UseItemByName(30742)");
-                    Thread.Sleep(4000);
+                    StyxWoW.Sleep(4000);
                 }
                 if (Me.QuestLog.GetQuestById(10830) != null && !Me.QuestLog.GetQuestById(10830).IsCompleted && MobKoiKoiSpirit.Count > 0)
                 {
@@ -882,7 +884,7 @@ namespace CavaPlugin
                 {
                     WoWMovement.MoveStop();
                     Lua.DoString("UseItemByName(29473)");
-                    Thread.Sleep(500);
+                    StyxWoW.Sleep(500);
                 }
                 if (Me.QuestLog.GetQuestById(28632) != null && !Me.QuestLog.GetQuestById(28632).IsCompleted && !Me.Combat && MobGlacierIce.Count > 0)
                 {
@@ -892,14 +894,27 @@ namespace CavaPlugin
                 {
                     WoWMovement.MoveStop();
                     Lua.DoString("UseItemByName(35125)");
-                    Thread.Sleep(500);
+                    StyxWoW.Sleep(500);
+                }
+                if (Me.ZoneId == 616 && Me.CurrentTarget != null && Me.CurrentTarget.Entry == 41031)
+                {
+                    if (ItemThisShiv != null)
+                    {
+                        WoWMovement.MoveStop();
+                        Lua.DoString("UseItemByName(55883)");
+                        StyxWoW.Sleep(500);
+                    }
+                    else
+                    {
+                         Blacklist.Add(Me.CurrentTarget, BlacklistFlags.Combat, TimeSpan.FromSeconds(120));
+                    }
                 }
                 if (Me.IsAlive && !Me.HasAura(132700) && !Me.IsOnTransport && !Me.OnTaxi && !Me.Mounted && !Me.IsCasting && !Me.Combat && ItemCelebrationPack != null)
                 {
                     Log("Using Celebration Package 9Th Aniversary at " + DateTime.Now.ToString(CultureInfo.InvariantCulture));
                     WoWMovement.MoveStop();
                     Lua.DoString("UseItemByName(90918)");
-                    Thread.Sleep(500);
+                    StyxWoW.Sleep(500);
                 }
                 
                 if (CPsettings.Instance.AntiStuckSystem )
@@ -919,7 +934,7 @@ namespace CavaPlugin
                     {  //movimento menor que 35 nos ultimos 6 segundos, mounted mais de 30 segundos,a mais de 10 do objectivo
                         Log("[AntiStuck] Char is Mounted for more than 6 secs and stuck : Forcing Dismount..." + DateTime.Now.ToString(CultureInfo.InvariantCulture));
                         Mount.Dismount();
-                        Thread.Sleep(2000);
+                        StyxWoW.Sleep(2000);
                         Lua.DoString("Dismount()");
                         _mountedTime.Restart();
                         _asLastSavedPositionTrigger = true;
@@ -928,7 +943,7 @@ namespace CavaPlugin
                     {
                         Log("[AntiStuck] Char is Mounted for more than 10 min : Forcing Dismount..." + DateTime.Now.ToString(CultureInfo.InvariantCulture));
                         Mount.Dismount();
-                        Thread.Sleep(2000);
+                        StyxWoW.Sleep(2000);
                         Lua.DoString("Dismount()");
                         _mountedTime.Restart();
                     }
@@ -949,15 +964,15 @@ namespace CavaPlugin
                     {
                         Log("[CavaPlugin-AntiStuck] I'm AFK flagged, Anti-Afking at " + DateTime.Now.ToString(CultureInfo.InvariantCulture));
                         WoWMovement.Move(WoWMovement.MovementDirection.JumpAscend, TimeSpan.FromMilliseconds(100));
-                        Thread.Sleep(2000);
+                        StyxWoW.Sleep(2000);
                         KeyboardManager.KeyUpDown((char)KeyboardManager.eVirtualKeyMessages.VK_SPACE);
-                        Thread.Sleep(2000);
+                        StyxWoW.Sleep(2000);
                         KeyboardManager.AntiAfk();
-                        Thread.Sleep(2000);
+                        StyxWoW.Sleep(2000);
                         Mount.Dismount();
-                        Thread.Sleep(2000);
+                        StyxWoW.Sleep(2000);
                         Lua.DoString("Dismount()");
-                        Thread.Sleep(2000);
+                        StyxWoW.Sleep(2000);
                         StyxWoW.ResetAfk();
                         _nVezesBotUnstuck++;
                     }
@@ -976,7 +991,7 @@ namespace CavaPlugin
                     {
                         Log("[CavaPlugin-AntiStuck] not moving last 5 min : Forcing Dismount..." + DateTime.Now.ToString(CultureInfo.InvariantCulture));
                         Mount.Dismount();
-                        Thread.Sleep(2000);
+                        StyxWoW.Sleep(2000);
                         Lua.DoString("Dismount()");
                         _nVezesBotUnstuck++;
                     }

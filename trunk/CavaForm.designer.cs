@@ -630,7 +630,7 @@
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(116, 13);
             this.label14.TabIndex = 2;
-            this.label14.Text = "CavaPlugin V 4.1.4";
+            this.label14.Text = "CavaPlugin V 4.1.5";
             // 
             // button4
             // 
