@@ -900,9 +900,12 @@ namespace CavaPlugin
                 {
                     if (ItemThisShiv != null)
                     {
-                        WoWMovement.MoveStop();
-                        Lua.DoString("UseItemByName(55883)");
-                        StyxWoW.Sleep(500);
+                        if(Me.CurrentTarget.Distance < 6)
+                        {
+                            WoWMovement.MoveStop();
+                            Lua.DoString("UseItemByName(55883)");
+                            StyxWoW.Sleep(500);
+                        }
                     }
                     else
                     {
