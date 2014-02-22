@@ -131,9 +131,6 @@ to Portuguese
   <data name="leveling1to90txt" xml:space="preserve">
     <value>This profile will level any character from any level to 90. This is a work in progress so far. Alliance works from 1 to 70 and 85 to 90. Horde works from 1 to 68 and 85 to 88.</value>
   </data>
-  <data name="levelingarmagessoner" xml:space="preserve">
-    <value>Alliance And Horde (70-78) (testers/donators only)</value>
-  </data>
   <data name="levelingarmagessonertxt" xml:space="preserve">
     <value>This profile will level any character from 70 to 78</value>
   </data>
@@ -434,7 +431,35 @@ to Portuguese
   <data name="Refuse_duel_invites_Disabled" xml:space="preserve">
     <value>[Refuse Duel Invites: Disabled]</value>
   </data>
-  <data name="newtxt" xml:space="preserve">
-    <value>Added Borean Tundra map profile, levels 70 to 72. Added The StormPeaks levels 78 to 80 (reserved for testers). Added New CavaPlugin installer (check forum for information).</value>
+
+
+
+  <data name="Accepting_guild_invite_from" xml:space="preserve">
+    <value>Accepting guild invite from {0}</value>
   </data>
+  <data name="Declining_guild_invite_from" xml:space="preserve">
+    <value>Declining guild invite from {0} lvl {1} in </value>
+  </data>
+  <data name="Declining_party_invite_from" xml:space="preserve">
+    <value>Declining party invite from {0} in </value>
+  </data>
+  <data name="Declining_trade_in" xml:space="preserve">
+    <value>Declining trade in </value>
+  </data>
+  <data name="Declining_duel_invite_from" xml:space="preserve">
+    <value>Declining duel invite from {0} in </value>
+  </data>
+  <data name="CavaPlugin_has_been_updated_restart_required" xml:space="preserve">
+    <value>Cava Plugin/Quest Behaviors has been updated a restart is required.</value>
+  </data>
+  <data name="RESTART_REQUIRED" xml:space="preserve">
+    <value>RESTART REQUIRED</value>
+  </data>
+  <data name="newtxt" xml:space="preserve">
+    <value>Added map profiles, levels 72 to 77. Added map levels 77 to 83 (reserved for Armageddoners).</value>
+  </data>
+  <data name="levelingarmagessoner" xml:space="preserve">
+    <value>Alliance And Horde (77-83) (testers/donators only)</value>
+  </data>
+
 </root>

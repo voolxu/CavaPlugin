@@ -454,14 +454,28 @@ to Portuguese
   <data name="Refuse_duel_invites_Disabled" xml:space="preserve">
     <value>[Refuse duel invites Disabled]</value>
   </data>
-  <data name="newtxt" xml:space="preserve">
-    <value>Added Borean Tundra map profile, levels 70 to 72. Added The StormPeaks levels 78 to 80 (reserved for testers). Added New CavaPlugin installer (check Forum for information).</value>
+  <data name="Accepting_guild_invite_from" xml:space="preserve">
+    <value>Accepting guild invite from {0}</value>
   </data>
-
-
-
-
-
-
-
+  <data name="Declining_guild_invite_from" xml:space="preserve">
+    <value>Declining guild invite from {0} lvl {1} in </value>
+  </data>
+  <data name="Declining_party_invite_from" xml:space="preserve">
+    <value>Declining party invite from {0} in </value>
+  </data>
+  <data name="Declining_trade_in" xml:space="preserve">
+    <value>Declining trade in </value>
+  </data>
+  <data name="Declining_duel_invite_from" xml:space="preserve">
+    <value>Declining duel invite from {0} in </value>
+  </data>
+  <data name="CavaPlugin_has_been_updated_restart_required" xml:space="preserve">
+    <value>Cava Plugin/Quest Behaviors has been updated a restart is required.</value>
+  </data>
+  <data name="RESTART_REQUIRED" xml:space="preserve">
+    <value>RESTART REQUIRED</value>
+  </data>
+  <data name="newtxt" xml:space="preserve">
+    <value>Added Dragonblight map profile, levels 72 to 74. Added The Mount Hyjal map levels 80 to 82 (reserved for testers).</value>
+  </data>
 </root>
