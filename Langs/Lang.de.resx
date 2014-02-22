@@ -439,7 +439,28 @@ to Portuguese
   <data name="Refuse_duel_invites_Disabled" xml:space="preserve">
     <value>[Ablehnen von Duell Einladungen, inaktiv]</value>
   </data>
+  <data name="Accepting_guild_invite_from" xml:space="preserve">
+    <value>Gildeneinladung angenommen von {0}</value>
+  </data>
+  <data name="Declining_guild_invite_from" xml:space="preserve">
+    <value>Gildeneinladung abgelehnt von {0} lvl {1} in </value>
+  </data>
+  <data name="Declining_party_invite_from" xml:space="preserve">
+    <value>Gruppeneinladung abgelehn von {0}</value>
+  </data>
+  <data name="Declining_trade_in" xml:space="preserve">
+    <value>Handeln abgelehnt</value>
+  </data>
+  <data name="Declining_duel_invite_from" xml:space="preserve">
+    <value>Einladung zum Duell abgelehnt {0} in </value>
+  </data>
+  <data name="CavaPlugin_has_been_updated_restart_required" xml:space="preserve">
+    <value>Cava Plugin/Quest Behaviors wurde Upgedated und benötigt einen neustart.</value>
+  </data>
+  <data name="RESTART_REQUIRED" xml:space="preserve">
+    <value>NEUSTART BENÖTIGT</value>
+  </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Borean Tundra Profil hinzugefügt, levels 70 bis 72. StormPeaks Profil hinzugefügt, levels 78 bis 80 (nur für Tester). Neue CavaPlugin Installationsroutine hinzugefügt (prüfe das Forum für weitere Informationen).</value>
+    <value>Dragonblight hinzugefügt, Level 72 bis 74. Mount Hyjal Level 80 bis 82 hinzugefügt (für Tester).</value>
   </data>
 </root>
