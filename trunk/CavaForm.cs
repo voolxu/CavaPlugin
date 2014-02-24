@@ -824,7 +824,7 @@ namespace CavaPlugin
         private void pictureBox9_Click(object sender, EventArgs e)
         {
             button_Click();
-            ProcessStartInfo sInfo = new ProcessStartInfo("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9A7GNEUY8JZMU");
+            ProcessStartInfo sInfo = new ProcessStartInfo("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5S8G78PRDGUFG");
             Process.Start(sInfo);
         }
 
