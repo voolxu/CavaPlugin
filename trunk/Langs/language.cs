@@ -21,8 +21,9 @@ namespace CavaPlugin
             //0 English 
             //1 Dansk 
             //2 Deutsch 
-            //3 Português  
-            //4 Русский 
+            //3 Français
+            //4 Português  
+            //5 Русский 
             CPGlobalSettings.Instance.language = comboBox1.SelectedIndex;
             CPGlobalSettings.Instance.languageselected = true;
             CPGlobalSettings.Instance.Save();

@@ -42,6 +42,8 @@
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.button6 = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.pictureBox14 = new System.Windows.Forms.PictureBox();
+            this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.ProfMinBlack1600radioButton = new System.Windows.Forms.RadioButton();
             this.MiningBlacksmithingProf = new System.Windows.Forms.RadioButton();
             this.tabPage6 = new System.Windows.Forms.TabPage();
@@ -77,25 +79,29 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage9 = new System.Windows.Forms.TabPage();
-            this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.connectgroupBox = new System.Windows.Forms.GroupBox();
+            this.passwordlabel = new System.Windows.Forms.Label();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.TestAccessbutton = new System.Windows.Forms.Button();
             this.PasswordtextBox = new System.Windows.Forms.TextBox();
             this.LogintextBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.loginlabel = new System.Windows.Forms.Label();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.languageGroupBox = new System.Windows.Forms.GroupBox();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.labelprofmb600 = new System.Windows.Forms.Label();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.fixmountcheckBox1 = new System.Windows.Forms.CheckBox();
+            this.OpenBox_checkBox = new System.Windows.Forms.CheckBox();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.charsetgroupBox = new System.Windows.Forms.GroupBox();
+            this.combatloot_checkBox = new System.Windows.Forms.CheckBox();
             this.AntiStuck_CheckBox = new System.Windows.Forms.CheckBox();
             this.ResscheckBox = new System.Windows.Forms.CheckBox();
             this.refuseDuelCheckBox = new System.Windows.Forms.CheckBox();
@@ -154,6 +160,8 @@
             this.tabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.groupBox10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -165,7 +173,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage9.SuspendLayout();
-            this.groupBox14.SuspendLayout();
+            this.connectgroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.groupBox11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -173,6 +181,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.groupBox4.SuspendLayout();
+            this.groupBox15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.charsetgroupBox.SuspendLayout();
@@ -345,6 +354,8 @@
             // groupBox10
             // 
             this.groupBox10.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.groupBox10.Controls.Add(this.pictureBox14);
+            this.groupBox10.Controls.Add(this.pictureBox13);
             this.groupBox10.Controls.Add(this.ProfMinBlack1600radioButton);
             this.groupBox10.Controls.Add(this.MiningBlacksmithingProf);
             this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -357,6 +368,26 @@
             this.groupBox10.TabIndex = 20;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Select One Profile From This List Then Press Start";
+            // 
+            // pictureBox14
+            // 
+            this.pictureBox14.Location = new System.Drawing.Point(690, 58);
+            this.pictureBox14.Name = "pictureBox14";
+            this.pictureBox14.Size = new System.Drawing.Size(110, 23);
+            this.pictureBox14.TabIndex = 10;
+            this.pictureBox14.TabStop = false;
+            this.pictureBox14.Click += new System.EventHandler(this.pictureBox14_Click);
+            this.pictureBox14.MouseEnter += new System.EventHandler(this.button_MouseEnter);
+            // 
+            // pictureBox13
+            // 
+            this.pictureBox13.Location = new System.Drawing.Point(690, 28);
+            this.pictureBox13.Name = "pictureBox13";
+            this.pictureBox13.Size = new System.Drawing.Size(110, 23);
+            this.pictureBox13.TabIndex = 9;
+            this.pictureBox13.TabStop = false;
+            this.pictureBox13.Click += new System.EventHandler(this.pictureBox13_Click);
+            this.pictureBox13.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
             // ProfMinBlack1600radioButton
             // 
@@ -698,7 +729,7 @@
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(146, 17);
             this.label14.TabIndex = 2;
-            this.label14.Text = "CavaPlugin V 4.2.0";
+            this.label14.Text = "CavaPlugin V 4.2.1";
             // 
             // button4
             // 
@@ -820,7 +851,7 @@
             // tabPage9
             // 
             this.tabPage9.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.tabPage9.Controls.Add(this.groupBox14);
+            this.tabPage9.Controls.Add(this.connectgroupBox);
             this.tabPage9.Controls.Add(this.groupBox11);
             this.tabPage9.Controls.Add(this.pictureBox5);
             this.tabPage9.Controls.Add(this.languageGroupBox);
@@ -834,37 +865,37 @@
             this.tabPage9.Text = "Armageddoner";
             this.tabPage9.Click += new System.EventHandler(this.tabPage9_Click);
             // 
-            // groupBox14
+            // connectgroupBox
             // 
-            this.groupBox14.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.groupBox14.Controls.Add(this.label5);
-            this.groupBox14.Controls.Add(this.pictureBox10);
-            this.groupBox14.Controls.Add(this.TestAccessbutton);
-            this.groupBox14.Controls.Add(this.PasswordtextBox);
-            this.groupBox14.Controls.Add(this.LogintextBox);
-            this.groupBox14.Controls.Add(this.label2);
-            this.groupBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox14.ForeColor = System.Drawing.Color.Gold;
-            this.groupBox14.Location = new System.Drawing.Point(381, 149);
-            this.groupBox14.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox14.Size = new System.Drawing.Size(360, 154);
-            this.groupBox14.TabIndex = 28;
-            this.groupBox14.TabStop = false;
-            this.groupBox14.Text = "Connect";
+            this.connectgroupBox.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.connectgroupBox.Controls.Add(this.passwordlabel);
+            this.connectgroupBox.Controls.Add(this.pictureBox10);
+            this.connectgroupBox.Controls.Add(this.TestAccessbutton);
+            this.connectgroupBox.Controls.Add(this.PasswordtextBox);
+            this.connectgroupBox.Controls.Add(this.LogintextBox);
+            this.connectgroupBox.Controls.Add(this.loginlabel);
+            this.connectgroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.connectgroupBox.ForeColor = System.Drawing.Color.Gold;
+            this.connectgroupBox.Location = new System.Drawing.Point(381, 149);
+            this.connectgroupBox.Margin = new System.Windows.Forms.Padding(4);
+            this.connectgroupBox.Name = "connectgroupBox";
+            this.connectgroupBox.Padding = new System.Windows.Forms.Padding(4);
+            this.connectgroupBox.Size = new System.Drawing.Size(360, 154);
+            this.connectgroupBox.TabIndex = 28;
+            this.connectgroupBox.TabStop = false;
+            this.connectgroupBox.Text = "Connect";
             // 
-            // label5
+            // passwordlabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label5.Location = new System.Drawing.Point(270, 65);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 18);
-            this.label5.TabIndex = 31;
-            this.label5.Text = "Password";
+            this.passwordlabel.AutoSize = true;
+            this.passwordlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordlabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.passwordlabel.Location = new System.Drawing.Point(270, 65);
+            this.passwordlabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.passwordlabel.Name = "passwordlabel";
+            this.passwordlabel.Size = new System.Drawing.Size(75, 18);
+            this.passwordlabel.TabIndex = 31;
+            this.passwordlabel.Text = "Password";
             // 
             // pictureBox10
             // 
@@ -903,17 +934,17 @@
             this.LogintextBox.Size = new System.Drawing.Size(255, 30);
             this.LogintextBox.TabIndex = 28;
             // 
-            // label2
+            // loginlabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(270, 25);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 18);
-            this.label2.TabIndex = 27;
-            this.label2.Text = "Login";
+            this.loginlabel.AutoSize = true;
+            this.loginlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loginlabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.loginlabel.Location = new System.Drawing.Point(270, 25);
+            this.loginlabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.loginlabel.Name = "loginlabel";
+            this.loginlabel.Size = new System.Drawing.Size(44, 18);
+            this.loginlabel.TabIndex = 27;
+            this.loginlabel.Text = "Login";
             // 
             // groupBox11
             // 
@@ -941,6 +972,7 @@
             "English",
             "Dansk",
             "Deutsch",
+            "Français",
             "Português",
             "Русский"});
             this.comboBox1.Location = new System.Drawing.Point(3, 25);
@@ -978,7 +1010,7 @@
             // 
             this.languageGroupBox.BackColor = System.Drawing.Color.CornflowerBlue;
             this.languageGroupBox.Controls.Add(this.pictureBox12);
-            this.languageGroupBox.Controls.Add(this.label7);
+            this.languageGroupBox.Controls.Add(this.labelprofmb600);
             this.languageGroupBox.Controls.Add(this.pictureBox8);
             this.languageGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.languageGroupBox.ForeColor = System.Drawing.Color.Gold;
@@ -999,17 +1031,17 @@
             this.pictureBox12.TabIndex = 42;
             this.pictureBox12.TabStop = false;
             // 
-            // label7
+            // labelprofmb600
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label7.Location = new System.Drawing.Point(45, 29);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(232, 18);
-            this.label7.TabIndex = 39;
-            this.label7.Text = "Mining and Blacksmithing 1 to 600";
+            this.labelprofmb600.AutoSize = true;
+            this.labelprofmb600.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelprofmb600.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.labelprofmb600.Location = new System.Drawing.Point(45, 29);
+            this.labelprofmb600.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelprofmb600.Name = "labelprofmb600";
+            this.labelprofmb600.Size = new System.Drawing.Size(232, 18);
+            this.labelprofmb600.TabIndex = 39;
+            this.labelprofmb600.Text = "Mining and Blacksmithing 1 to 600";
             // 
             // pictureBox8
             // 
@@ -1027,6 +1059,7 @@
             // groupBox4
             // 
             this.groupBox4.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.groupBox4.Controls.Add(this.groupBox15);
             this.groupBox4.Controls.Add(this.pictureBox11);
             this.groupBox4.Controls.Add(this.pictureBox9);
             this.groupBox4.Controls.Add(this.charsetgroupBox);
@@ -1041,6 +1074,50 @@
             this.groupBox4.TabIndex = 20;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Reserved for Armagueddoners";
+            // 
+            // groupBox15
+            // 
+            this.groupBox15.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.groupBox15.Controls.Add(this.fixmountcheckBox1);
+            this.groupBox15.Controls.Add(this.OpenBox_checkBox);
+            this.groupBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox15.ForeColor = System.Drawing.Color.Gold;
+            this.groupBox15.Location = new System.Drawing.Point(370, 22);
+            this.groupBox15.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox15.Size = new System.Drawing.Size(360, 374);
+            this.groupBox15.TabIndex = 42;
+            this.groupBox15.TabStop = false;
+            // 
+            // fixmountcheckBox1
+            // 
+            this.fixmountcheckBox1.AutoSize = true;
+            this.fixmountcheckBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fixmountcheckBox1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.fixmountcheckBox1.Location = new System.Drawing.Point(3, 50);
+            this.fixmountcheckBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.fixmountcheckBox1.Name = "fixmountcheckBox1";
+            this.fixmountcheckBox1.Size = new System.Drawing.Size(244, 22);
+            this.fixmountcheckBox1.TabIndex = 23;
+            this.fixmountcheckBox1.Text = "Fix Auto-Summon-Repair-Mount";
+            this.fixmountcheckBox1.UseVisualStyleBackColor = true;
+            this.fixmountcheckBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // OpenBox_checkBox
+            // 
+            this.OpenBox_checkBox.AutoSize = true;
+            this.OpenBox_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OpenBox_checkBox.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.OpenBox_checkBox.Location = new System.Drawing.Point(3, 25);
+            this.OpenBox_checkBox.Margin = new System.Windows.Forms.Padding(4);
+            this.OpenBox_checkBox.Name = "OpenBox_checkBox";
+            this.OpenBox_checkBox.Size = new System.Drawing.Size(192, 22);
+            this.OpenBox_checkBox.TabIndex = 22;
+            this.OpenBox_checkBox.Text = "AutoOpen Boxs (Rogue)";
+            this.OpenBox_checkBox.UseVisualStyleBackColor = true;
+            this.OpenBox_checkBox.CheckedChanged += new System.EventHandler(this.OpenBox_checkBox_CheckedChanged);
+            this.OpenBox_checkBox.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
             // pictureBox11
             // 
@@ -1066,6 +1143,7 @@
             // charsetgroupBox
             // 
             this.charsetgroupBox.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.charsetgroupBox.Controls.Add(this.combatloot_checkBox);
             this.charsetgroupBox.Controls.Add(this.AntiStuck_CheckBox);
             this.charsetgroupBox.Controls.Add(this.ResscheckBox);
             this.charsetgroupBox.Controls.Add(this.refuseDuelCheckBox);
@@ -1080,10 +1158,26 @@
             this.charsetgroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.charsetgroupBox.Name = "charsetgroupBox";
             this.charsetgroupBox.Padding = new System.Windows.Forms.Padding(4);
-            this.charsetgroupBox.Size = new System.Drawing.Size(335, 253);
+            this.charsetgroupBox.Size = new System.Drawing.Size(357, 253);
             this.charsetgroupBox.TabIndex = 37;
             this.charsetgroupBox.TabStop = false;
             this.charsetgroupBox.Text = "Character Settings";
+            // 
+            // combatloot_checkBox
+            // 
+            this.combatloot_checkBox.AutoSize = true;
+            this.combatloot_checkBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.combatloot_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combatloot_checkBox.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.combatloot_checkBox.Location = new System.Drawing.Point(3, 223);
+            this.combatloot_checkBox.Margin = new System.Windows.Forms.Padding(4);
+            this.combatloot_checkBox.Name = "combatloot_checkBox";
+            this.combatloot_checkBox.Size = new System.Drawing.Size(132, 22);
+            this.combatloot_checkBox.TabIndex = 35;
+            this.combatloot_checkBox.Text = "Loot in Combat";
+            this.combatloot_checkBox.UseVisualStyleBackColor = true;
+            this.combatloot_checkBox.CheckedChanged += new System.EventHandler(this.combatloot_checkBox_CheckedChanged);
+            this.combatloot_checkBox.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
             // AntiStuck_CheckBox
             // 
@@ -1216,7 +1310,7 @@
             this.globalsetgroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.globalsetgroupBox.Name = "globalsetgroupBox";
             this.globalsetgroupBox.Padding = new System.Windows.Forms.Padding(4);
-            this.globalsetgroupBox.Size = new System.Drawing.Size(335, 80);
+            this.globalsetgroupBox.Size = new System.Drawing.Size(357, 80);
             this.globalsetgroupBox.TabIndex = 36;
             this.globalsetgroupBox.TabStop = false;
             this.globalsetgroupBox.Text = "Global Settings";
@@ -1875,6 +1969,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -1889,8 +1985,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage9.ResumeLayout(false);
-            this.groupBox14.ResumeLayout(false);
-            this.groupBox14.PerformLayout();
+            this.connectgroupBox.ResumeLayout(false);
+            this.connectgroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
@@ -1901,6 +1997,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox15.ResumeLayout(false);
+            this.groupBox15.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.charsetgroupBox.ResumeLayout(false);
@@ -2046,17 +2144,23 @@
         private System.Windows.Forms.GroupBox charsetgroupBox;
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.GroupBox groupBox14;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.GroupBox connectgroupBox;
+        private System.Windows.Forms.Label passwordlabel;
         private System.Windows.Forms.Button TestAccessbutton;
         private System.Windows.Forms.TextBox PasswordtextBox;
         private System.Windows.Forms.TextBox LogintextBox;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label loginlabel;
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.RadioButton ProfMinBlack1600radioButton;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelprofmb600;
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.PictureBox pictureBox12;
         private System.Windows.Forms.PictureBox pictureBox11;
+        private System.Windows.Forms.CheckBox combatloot_checkBox;
+        private System.Windows.Forms.PictureBox pictureBox14;
+        private System.Windows.Forms.PictureBox pictureBox13;
+        private System.Windows.Forms.GroupBox groupBox15;
+        private System.Windows.Forms.CheckBox OpenBox_checkBox;
+        private System.Windows.Forms.CheckBox fixmountcheckBox1;
     }
 }
