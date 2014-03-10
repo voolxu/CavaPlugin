@@ -141,6 +141,14 @@ namespace CavaPlugin
             charsetgroupBox.Text = rm.GetString("charsettings", ci);
             groupBox11.Text = rm.GetString("settings", ci);
             MiningBlacksmithingProf.Text = rm.GetString("miningbs1300", ci);
+            combatloot_checkBox.Text = rm.GetString("Loot_in_Combat", ci);
+            OpenBox_checkBox.Text = rm.GetString("AutoOpen_Boxs_Rogue", ci);
+            connectgroupBox.Text = rm.GetString("Connect", ci);
+            loginlabel.Text = rm.GetString("Login", ci);
+            passwordlabel.Text = rm.GetString("Password", ci);
+            TestAccessbutton.Text = rm.GetString("Save_and_Test_Access", ci);
+            labelprofmb600.Text = rm.GetString("Mining_ and_ Blacksmithing600", ci);
+
             if (lastUseProfile == 1)
             {
                 label4.Text = rm.GetString("leveling1to90", ci);
@@ -190,6 +198,8 @@ namespace CavaPlugin
             pictureBox8.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\donate2.gif");
             pictureBox9.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\donate2.gif");
             pictureBox10.ImageLocation = CPGlobalSettings.Instance.CpPanelBack ? Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\y.png") : Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\n.png");
+            pictureBox13.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\register.png");
+            pictureBox14.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\donate2.gif");
 
             
             UpdateStuff();
@@ -237,6 +247,9 @@ namespace CavaPlugin
             refuseTradesCheckBox.Checked = CPsettings.Instance.refusetradeInvitescheck;
             refuseDuelCheckBox.Checked = CPsettings.Instance.refuseduelInvitescheck;
             comboBox1.SelectedIndex = CPGlobalSettings.Instance.language;
+            combatloot_checkBox.Checked = CPsettings.Instance.CombatLoot;
+            OpenBox_checkBox.Checked = CPsettings.Instance.OpenBox;
+            fixmountcheckBox1.Checked = CPsettings.Instance.fixSummonMountVendor;
             if (comboBox1.SelectedIndex == 0)
             {
                 CultureInfo ci = new CultureInfo("en-US");
@@ -264,16 +277,16 @@ namespace CavaPlugin
                 ResourceManager rm = new ResourceManager("Lang.de", _assembly);
                 getRes(ci, rm);
             }
-            /*if (comboBox1.SelectedIndex == 3)
+            if (comboBox1.SelectedIndex == 3)
             {
-                CultureInfo ci = new CultureInfo("nl");
+                CultureInfo ci = new CultureInfo("fr");
                 string str = Assembly.GetExecutingAssembly().FullName;
                 str = str.Remove(str.IndexOf(','));
                 Assembly _assembly = Assembly.Load(str);
-                ResourceManager rm = new ResourceManager("Lang.nl", _assembly);
+                ResourceManager rm = new ResourceManager("Lang.fr", _assembly);
                 getRes(ci, rm);
-            }*/
-            if (comboBox1.SelectedIndex == 3)
+            }
+            if (comboBox1.SelectedIndex == 4)
             {
                 CultureInfo ci = new CultureInfo("pt-PT");
                 string str = Assembly.GetExecutingAssembly().FullName;
@@ -282,7 +295,7 @@ namespace CavaPlugin
                 ResourceManager rm = new ResourceManager("Lang.pt", _assembly);
                 getRes(ci, rm);
             }
-            if (comboBox1.SelectedIndex == 4)
+            if (comboBox1.SelectedIndex == 5)
             {
                 CultureInfo ci = new CultureInfo("ru-RU");
                 string str = Assembly.GetExecutingAssembly().FullName;
@@ -756,8 +769,20 @@ namespace CavaPlugin
             }*/
             if (comboBox1.SelectedIndex == 3)
             {
-                CultureInfo ci = new CultureInfo("pt-PT");
+                CultureInfo ci = new CultureInfo("fr");
                 CPGlobalSettings.Instance.language = 3;
+                string str = Assembly.GetExecutingAssembly().FullName;
+                str = str.Remove(str.IndexOf(','));
+                Assembly _assembly = Assembly.Load(str);
+                ResourceManager rm = new ResourceManager("Lang.fr", _assembly);
+                richTextBox1.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\GoodToKnow_fr.rtf");
+                thanksRichText.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\Thanks_fr.rtf");
+                getRes(ci, rm);
+            }
+            if (comboBox1.SelectedIndex == 4)
+            {
+                CultureInfo ci = new CultureInfo("pt-PT");
+                CPGlobalSettings.Instance.language = 4;
                 string str = Assembly.GetExecutingAssembly().FullName;
                 str = str.Remove(str.IndexOf(','));
                 Assembly _assembly = Assembly.Load(str);
@@ -766,10 +791,10 @@ namespace CavaPlugin
                 thanksRichText.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\Thanks_pt.rtf");
                 getRes(ci, rm);
             }
-            if (comboBox1.SelectedIndex == 4)
+            if (comboBox1.SelectedIndex == 5)
             {
                 CultureInfo ci = new CultureInfo("ru-RU");
-                CPGlobalSettings.Instance.language = 4;
+                CPGlobalSettings.Instance.language = 5;
                 string str = Assembly.GetExecutingAssembly().FullName;
                 str = str.Remove(str.IndexOf(','));
                 Assembly _assembly = Assembly.Load(str);
@@ -890,6 +915,9 @@ namespace CavaPlugin
             refuseTradesCheckBox.Enabled = true;
             refuseDuelCheckBox.Enabled = true;
             ResscheckBox.Enabled = true;
+            combatloot_checkBox.Enabled = true;
+            fixmountcheckBox1.Enabled = true;
+            OpenBox_checkBox.Enabled = StyxWoW.Me.Class == WoWClass.Rogue;
             CPGlobalSettings.Instance.BotAllowUpdate = true;
             CPGlobalSettings.Instance.AllowUpdate = true;
             CPGlobalSettings.Instance.ArmaPanelBack = true;
@@ -920,6 +948,12 @@ namespace CavaPlugin
             refuseDuelCheckBox.Checked = false;
             ResscheckBox.Checked = false;
             ResscheckBox.Enabled = false;
+            combatloot_checkBox.Checked = false;
+            combatloot_checkBox.Enabled = false;
+            OpenBox_checkBox.Checked = false;
+            OpenBox_checkBox.Enabled = false;
+            fixmountcheckBox1.Checked = false;
+            fixmountcheckBox1.Enabled = false;
             CPGlobalSettings.Instance.BotAllowUpdate = false;
             CPGlobalSettings.Instance.AllowUpdate = false;
             CPGlobalSettings.Instance.ArmaPanelBack = false;
@@ -1057,6 +1091,39 @@ namespace CavaPlugin
             ProfessionsrichTextBox.Text = mbs1600txt;
             lastUseProfile = 7; //MB 1 to 600
         }
+
+        private void combatloot_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            button_Click();
+            CPsettings.Instance.CombatLoot = combatloot_checkBox.Checked;
+
+        }
+
+        private void pictureBox14_Click(object sender, EventArgs e)
+        {
+            button_Click();
+            ProcessStartInfo sInfo = new ProcessStartInfo("http://cavaprofiles.org/index.php/plans/plans-list/by-category/membership-plans?id=2");
+            Process.Start(sInfo);
+        }
+
+        private void pictureBox13_Click(object sender, EventArgs e)
+        {
+            button_Click();
+            ProcessStartInfo sInfo = new ProcessStartInfo("http://cavaprofiles.org/index.php/access/new-user");
+            Process.Start(sInfo);
+        }
+
+        private void OpenBox_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            button_Click();
+            CPsettings.Instance.OpenBox = OpenBox_checkBox.Checked;
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            button_Click();
+            CPsettings.Instance.fixSummonMountVendor = fixmountcheckBox1.Checked;
+        }
     }
     public class CPsettings : Settings
     {
@@ -1083,6 +1150,12 @@ namespace CavaPlugin
         public bool refuseduelInvitescheck { get; set; }
         [Setting, DefaultValue(false)]
         public bool RessAfterDie { get; set; }
+        [Setting, DefaultValue(false)]
+        public bool CombatLoot { get; set; }
+        [Setting, DefaultValue(false)]
+        public bool OpenBox { get; set; }
+        [Setting, DefaultValue(false)]
+        public bool fixSummonMountVendor { get; set; }
 
     }
 

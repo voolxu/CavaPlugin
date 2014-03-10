@@ -75,394 +75,379 @@ to Portuguese
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="about" xml:space="preserve">
-    <value>О продукте</value>
+    <value>À propos</value>
   </data>
   <data name="antistuck" xml:space="preserve">
-    <value>Антизастревание(Нужен релогер)</value>
+    <value>Système Anti-Stuck(Besoin de redémarrer WoW)</value>
   </data>
   <data name="armageddoner" xml:space="preserve">
-    <value>Армагеддонер</value>
+    <value>Armageddoner</value>
   </data>
   <data name="autodownload" xml:space="preserve">
-    <value>Скачать частные профили</value>
+    <value>Télécharger Automatiquement Les Profils Privés</value>
   </data>
   <data name="autoshutdown" xml:space="preserve">
-    <value>Автовыключение после обновления</value>
+    <value>Fermer Automatiquement Après Mise À Jours</value>
   </data>
   <data name="cancel" xml:space="preserve">
-    <value>Отмена</value>
+    <value>Annuler</value>
   </data>
   <data name="cavaprofessions" xml:space="preserve">
-    <value>Профили для профессий</value>
+    <value>Cava Profession Profils</value>
   </data>
   <data name="cavaweb" xml:space="preserve">
-    <value>Наша страница</value>
+    <value>Cava Web</value>
   </data>
   <data name="close" xml:space="preserve">
-    <value>Закрыть</value>
+    <value>Fermer</value>
   </data>
   <data name="dailies" xml:space="preserve">
-    <value>Дейлики</value>
+    <value>Quotidiens</value>
   </data>
   <data name="farming" xml:space="preserve">
-    <value>Фарм</value>
+    <value>Farming</value>
   </data>
   <data name="goodtoknow" xml:space="preserve">
-    <value>Подробнее</value>
+    <value>Bon À Savoir</value>
   </data>
   <data name="language" xml:space="preserve">
-    <value>Язык</value>
+    <value>Language</value>
   </data>
   <data name="lastusedprofile" xml:space="preserve">
-    <value>Последний профиль:</value>
+    <value>Dernier profil utilisé:</value>
   </data>
   <data name="lastusedprofiletxtdef" xml:space="preserve">
-    <value>Последний профиль не был выбран</value>
+    <value>Il n'y a pas de profil précédemment sélectionné</value>
   </data>
   <data name="level85to90" xml:space="preserve">
-    <value>Прокачка 85 - 90 все квесты</value>
+    <value>Level 85 à 90 Toutes les quêtes</value>
   </data>
   <data name="level85to90txt" xml:space="preserve">
-    <value>Этот профиль для прокачки персонажей альянса с 85 до 90 и персонажей орды с 85 до 88. Не уходите в афк, сообщайте об любых ошибках.</value>
+    <value>Ce profil va monter de level n'importe quel personnage de l'Alliance de 85 à 90 et Horde 85 à 88.  Ce profil est pas AFK amical alors s'il vous plaît reportez n'importe quel problèmes.</value>
   </data>
   <data name="leveling1to90" xml:space="preserve">
-    <value>Прокачка с 1 до 90</value>
+    <value>Niveau 1 à 90</value>
   </data>
   <data name="leveling1to90txt" xml:space="preserve">
-    <value>Этот профиль для прокачки с любого уровня до 90. Профиль еще в  разработке. Для альянса работает с 1 по 70-й уровень и с 85 по 90. Для орды с 1 по 70-й уровень и с 85 по 88.</value>
+    <value>Ce profil va monter de niveau n'importe quel personnage de n'importe quel niveau à 90. Ceci est un travail en cours jusqu'ici. Alliance fonctionne de 1 à 70 et 85 à 90. Horde fonctionne de 1 à 68 et 85 à 88.</value>
   </data>
   <data name="levelinggrind" xml:space="preserve">
-    <value>Прокачка гриндом</value>
+    <value>Niveau Grinding</value>
   </data>
   <data name="levelingpandaally" xml:space="preserve">
-    <value>Прокачка пандаренов с 1 по 90-й уровень для Альянса.</value>
+    <value>Niveau Pandaren 1 à 90 Alliance</value>
   </data>
   <data name="levelingpandaallytxt" xml:space="preserve">
-    <value>Этот профиль для прокачки пандаренов Альянса с 1 по 12-й уровень. Выберите 1-90 профиль для Альянса, чтобы продолжить после 12-го уровня.</value>
+    <value>Ce profil va monter de niveau un personnage Pandaren de l'Alliance de 1 à 12. Selectionne le profil 1 à 90 de l'Alliance pour continuer après le niveau 12.</value>
   </data>
   <data name="levelingpandahorde" xml:space="preserve">
-    <value>Прокачка пандаренов с 1 по 90-й уровень для Орды.</value>
+    <value>Niveau Pandaren 1 à 90 Horde</value>
   </data>
   <data name="levelingpandahordetxt" xml:space="preserve">
-    <value>Этот профиль для прокачки пандаренов Орды с 1 по 12-й уровень. Выберите 1-90 профиль для Орды, чтобы продолжить после 12-го уровня.</value>
+    <value>Ce profil va monter de niveau un personnage Pandaren de l'Horde de 1 à 12. Sélectionne le profil 1 à 90 de l'Horde pour continuer après niveau 12.</value>
   </data>
   <data name="levelingquest" xml:space="preserve">
-    <value>Квесты для прокачки</value>
+    <value>Quêtes Montage De Niveaux</value>
   </data>
   <data name="linksrelated" xml:space="preserve">
-    <value>Полезные ссылки</value>
+    <value>Liens Utiles</value>
   </data>
   <data name="linksrelatedplugins" xml:space="preserve">
-    <value>Ссылки, относящиеся к плагину</value>
+    <value>Liens Connexes</value>
   </data>
   <data name="main" xml:space="preserve">
-    <value>Основной</value>
+    <value>Principal</value>
   </data>
   <data name="mbs1300txt" xml:space="preserve">
-    <value>Этот профиль для прокачки Кузнечного и Горного дел с любого уровня по 300. Работает для обеих фракций. Запустите профиль в любом месте в игре, Cava плагин все сделает сам.</value>
+    <value>Ce profil va monter de niveau Minage et Forge de n'importe quel niveau à 300. Fonctionne pour Alliance et Horde. Commencez le profil n'importe où, le Cava Plugin va bouger le personnage jusqu'à l'emplacement requis.</value>
   </data>
   <data name="mbs1600txt" xml:space="preserve">
-    <value>Этот профиль для прокачки Кузнечного и Горного дел с любого уровня по 600. Работает для обеих фракций. Запустите профиль в любом месте в игре, Cava плагин все сделает сам.</value>
+    <value>Ce profil va monter de niveau Minage et Forge de n'importe quel niveau à 600. Fonctionne pour Alliance et Horde. Commencez le profil n'importe où, le Cava Plugin va bouger le personnage jusqu'à l'emplacement requis.</value>
   </data>
   <data name="pbmbs" xml:space="preserve">
-    <value>Кузнечное и Горное дело 1-600</value>
+    <value>Minage Et Forge 1 à 600</value>
   </data>
   <data name="pbprofiles" xml:space="preserve">
-    <value>Разработчики профилей для профессий</value>
+    <value>Profils De Professions Propriétaires</value>
   </data>
   <data name="pressdonation" xml:space="preserve">
-    <value>Нажмите Donate для помощи в развитии Cava.</value>
+    <value>Clique Faire Un Don pour aider à supporter la cause de Cava.</value>
   </data>
   <data name="problemsconfiguring" xml:space="preserve">
-    <value>Проблемы с настройкой Honorbuddy...</value>
+    <value>Problèmes pour configuer Honorbuddy...</value>
   </data>
   <data name="problemsquesting" xml:space="preserve">
-    <value>Проблемы с квестами/профилями...</value>
+    <value>Problèmes pour faire les Quêtes / Profils...</value>
   </data>
   <data name="professions" xml:space="preserve">
-    <value>Профессии</value>
+    <value>Professions</value>
   </data>
   <data name="reportabug" xml:space="preserve">
-    <value>Сообщить об ошибке / Предложить идею</value>
+    <value>Reporter un bug / Demande de fonction</value>
   </data>
   <data name="reputation" xml:space="preserve">
-    <value>Репутации</value>
+    <value>Réputation</value>
   </data>
   <data name="reservedfortesters" xml:space="preserve">
-    <value>Для тестеров / донаторов</value>
+    <value>Reservé pour les Testeurs / Donateurs</value>
   </data>
   <data name="ressafterdie" xml:space="preserve">
-    <value>Воскреснуть после смерти</value>
+    <value>Relâchez après la mort</value>
   </data>
   <data name="secondstostart" xml:space="preserve">
-    <value>До автостарта осталось секунд:</value>
+    <value>Secondes pour le démarrage automatique:</value>
   </data>
   <data name="selectoneprofile" xml:space="preserve">
-    <value>Выберите профиль со списка и нажмите Старт</value>
+    <value>Sélectionnez un Profil dans la Liste et appuyez sur Démarrer</value>
   </data>
   <data name="showursupport" xml:space="preserve">
-    <value>Оказать поддержку проекту</value>
+    <value>Montrez votre soutien</value>
   </data>
   <data name="specialthanks" xml:space="preserve">
-    <value>Благодарности</value>
+    <value>Remerciements Spéciaux</value>
   </data>
   <data name="start" xml:space="preserve">
-    <value>Старт</value>
+    <value>Démarrer</value>
   </data>
   <data name="summompets" xml:space="preserve">
-    <value>Включить вызов случайного питомца</value>
+    <value>Activer Invoquer Animaux Au Hazard</value>
   </data>
   <data name="usefulllinks" xml:space="preserve">
-    <value>Полезные ссылки</value>
+    <value>Liens Utiles</value>
   </data>
   <data name="usinghonorbuddy" xml:space="preserve">
-    <value>Использование Honorbuddy ...</value>
+    <value>Utilisant Honorbuddy ...</value>
   </data>
   <data name="guildInvitescheckBox" xml:space="preserve">
-    <value>Принимать инвайты от 25-х гильдий</value>
+    <value>Accepter Les Invitations Des Guildes Niveau 25</value>
   </data>
   <data name="refuseGuildCheckBox" xml:space="preserve">
-    <value>Отклонять приглашения в гильдии</value>
+    <value>Refuser Les Invitations De Guilde</value>
   </data>
   <data name="refusePartyCheckBox" xml:space="preserve">
-    <value>Отклонять приглашения в группу</value>
+    <value>Refuser Les Invitations De Groupe</value>
   </data>
   <data name="refuseTradesCheckBox" xml:space="preserve">
-    <value>Отклонять предложения обмена</value>
+    <value>Refuser Les Invitations d'Échange</value>
   </data>
   <data name="refuseDuelCheckBox" xml:space="preserve">
-    <value>Отклонять предложения на дуэль</value>
+    <value>Refuser Les Invitations De Duel</value>
   </data>
   <data name="globalsettings" xml:space="preserve">
-    <value>Основные настройки</value>
+    <value>Paramètres Globaux</value>
   </data>
   <data name="charsettings" xml:space="preserve">
-    <value>Настройки персонажа</value>
+    <value>Paramètres de Personnage</value>
   </data>
-
-
-
-
-
-
-
-
-
-
-
-
-
   <data name="Bot_is_running_stop_bot_before_initiate_Cava_Plugin" xml:space="preserve">
-    <value>Бот работает, остановите бот для работы с Cava плагином.</value>
+    <value>Le bot est en cours d'exécution, arrêtez le bot avant l'ouverture du CavaPlugin.</value>
   </data>
   <data name="error" xml:space="preserve">
-    <value>ОШИБКА</value>
+    <value>ERREUR</value>
   </data>
   <data name="Unable_to_run_TortoiseSVN" xml:space="preserve">
-    <value>Не могу запустить TortoiseSVN</value>
+    <value>Impossible d'exécuter TortoiseSVN</value>
   </data>
   <data name="Welcome_to_CavaPlugin" xml:space="preserve">
-    <value>Добро пожаловать CavaPlugin</value>
+    <value>Bienvenue sur le CavaPlugin</value>
   </data>
   <data name="Please_download_and_update_your_version_to_latest_one" xml:space="preserve">
-    <value>Пожалуйста, обновите вашу версию до последней</value>
+    <value>S'il vous plaît télécharger et mettre à jour votre version vers la dernière version</value>
   </data>
   <data name="This_version_have_some_problems_with_TortoiseSVN" xml:space="preserve">
-    <value>В этой версии существуют проблемы с TortoiseSVN</value>
+    <value>Cette version de CavaPlugin a quelques problèmes avec TortoiseSVN</value>
   </data>
   <data name="Download_latest_version_from_HB_Forum" xml:space="preserve">
-    <value>Скачать последнюю версию с форума HB</value>
+    <value>Télécharger la dernière version sur les Forums d'HonorBuddy</value>
   </data>
   <data name="information" xml:space="preserve">
-    <value>Информация</value>
+    <value>INFORMATION</value>
   </data>
   <data name="Loading_CavaPlugin" xml:space="preserve">
-    <value>Загружаю Cava Плагин</value>
+    <value>Chargement de CavaPlugin</value>
   </data>
   <data name="CavaPlugin_use_TortoiseSVN_to_download_files_Make_sure_you_have_it" xml:space="preserve">
-    <value>CavaPlugin использует TortoiseSVN для скачивания файлов, убедитесь что он у вас есть</value>
+    <value>CavaPlugin utilise TortoiseSVN pour télécharger les fichiers. S'il vous plaît assurez-vous que vous l'avez installé</value>
   </data>
   <data name="CavaPlugin_will_now_auto_install_required_files_to_work" xml:space="preserve">
-    <value>CavaPlugin сейчас установит необходимые файлы</value>
+    <value>CavaPlugin va maintenant installer automatiquement les fichiers requis</value>
   </data>
   <data name="Remove_Previus_Cava_Behaviors_or_Cava_Profiles_before_continue" xml:space="preserve">
-    <value>Удалите предыдущие версии Cava Behaviors или профили Cava перед началом работы</value>
+    <value>Enlever les précédents Comportements de Cava ou les Profils de Cava avant de continuer</value>
   </data>
   <data name="Press_Yes_OK_when_prompt_by_TortoiseSVN_windows" xml:space="preserve">
-    <value>Нажмите Yes/OK когда перейдете на окно TortoiseSVN</value>
+    <value>S'il vous plaît sélectionner une réponse à l'invite de fenêtres de TortoiseSVN</value>
   </data>
   <data name="Press_OK_to_continue" xml:space="preserve">
-    <value>Нажмите OK для продолжения</value>
+    <value>Appuyez sur OK pour continuer</value>
   </data>
   <data name="There_is_an_old_folder_from_previus_instalation_remove" xml:space="preserve">
-    <value>Удалите старую папку с плагином</value>
+    <value>Il ya un vieux dossier de l'installation précédente, s'il vous plaît le supprimer avant de procéder</value>
   </data>
   <data name="before_continue" xml:space="preserve">
-    <value>для продолжения</value>
+    <value>avant de continuer</value>
   </data>
   <data name="Cava_Plugin_sucefull_checkout" xml:space="preserve">
-    <value>Проверка плагина Cava успешно завершена </value>
+    <value>CavaPlugin installé avec succès.</value>
   </data>
   <data name="There_is_a_problem_with_checkout_Cava_Plugin" xml:space="preserve">
-    <value>Проблема при проверке  Cava плагина.</value>
+    <value>Il ya un problème avec l'installation de CavaPlugin.</value>
   </data>
   <data name="Congratulations_Cava_Plugin_Sucefully_checkout" xml:space="preserve">
-    <value>Поздравляем. Проверка Cava плагина успешно завершена.</value>
+    <value>Félicitations. Le CavaPlugin a été installé avec succès.</value>
   </data>
   <data name="Failed_to_Create_Cava_Quest_Behavior_Folder" xml:space="preserve">
-    <value>Не могу создать папку с Cava Quest Behavior.</value>
+    <value>Impossible de créer le dossier Cava Quête Comportement.</value>
   </data>
   <data name="Cava_Quest_Behavior_sucefull_checkout" xml:space="preserve">
-    <value>Проверка Cava Quest Behavior прошла успешно.</value>
+    <value>Cava Quête Comportements installé avec succès.</value>
   </data>
   <data name="There_is_a_problem_with_checkout_Cava_Quest_Behaviors" xml:space="preserve">
-    <value>Возникла проблема при проверке Cava Quest Behaviors.</value>
+    <value>Il y a un problème avec l'installation de Cava Quête Comportements.</value>
   </data>
   <data name="Congratulations_Cava_Quest_Behaviors_Sucefully_Created_and_checkout" xml:space="preserve">
-    <value>Поздравляем. Cava Quest Behaviors успешно созданы и проверены.</value>
+    <value>Félicitations. Le Cava Quête Comportements a été installé avec succès.</value>
   </data>
   <data name="Failed_to_Create_Cava_Profiles_Folder" xml:space="preserve">
-    <value>Ошибка в создании папки профилей Cava.</value>
+    <value>Impossible de créer le dossier Profils Cava.</value>
   </data>
   <data name="Cava_Profiles_sucefull_checkout" xml:space="preserve">
-    <value>Профили Cava успешно проверены.</value>
+    <value>Les Profils Cava ont été mis à jour avec succès.</value>
   </data>
   <data name="There_is_a_problem_with_checkout_Cava_Profiles" xml:space="preserve">
-    <value>Возникла проблема в проверке профилей Cava.</value>
+    <value>Il y a un problème avec la mise à jour des Profils Cava.</value>
   </data>
   <data name="Congratulations_Cava_Profiles_Sucefully_Created_and_checkout" xml:space="preserve">
-    <value>Поздравляем. Профили Cava успешно созданы и проверены.</value>
+    <value>Félicitations. Les Profils Cava ont été installés avec succès.</value>
   </data>
   <data name="Please_Wait_While_CavaPlugin_Check_For_Updates" xml:space="preserve">
-    <value>Пожалуйста ожидайте пока CavaPlugin выполнит проверку обновлений.</value>
+    <value>S'il vous plaît patienter pendant que le plugin Cava vérifie les mises à jour.</value>
   </data>
   <data name="Cava_Plugin_Update_to_0_is_available_You_are_on_1" xml:space="preserve">
-    <value>Доступно обновление Cava Plugin  ${0}! Ваша версия ${1}.</value>
+    <value>CavaPlugin mise à jour ${0} est disponible! Vous êtes sur ${1}.</value>
   </data>
   <data name="Starting_update_process" xml:space="preserve">
-    <value>Начинаем обновление.</value>
+    <value>Démarrage du processus de mise à jour.</value>
   </data>
   <data name="is_at_Rev_0_and_up_to_date" xml:space="preserve">
-    <value>Текущая версия ${0} , и это самая последняя версия.</value>
+    <value>est à Rev ${0} et à jour.</value>
   </data>
   <data name="There_is_a_problem_updating" xml:space="preserve">
-    <value>Ошибка обновления</value>
+    <value>Il y a eu un problème dans la mise à jour</value>
   </data>
   <data name="Theres_an_error_with_Cava_Quest_Behaviors_or_Cava_profiles" xml:space="preserve">
-    <value>Ошибка в Cava Quest Behaviors или в профилях Cava.</value>
+    <value>Il y a une erreur avec le Cava Quête Comportements ou les Profils.</value>
   </data>
   <data name="Update_to_0_are_available_You_are_on_1" xml:space="preserve">
-    <value>Обновление ${0} доступно! вы на ${1}.</value>
+    <value>CavaPlugin mise à jour ${0} est disponible! Vous êtes sur ${1}.</value>
   </data>
   <data name="are_at_Rev_0_and_up_to_date" xml:space="preserve">
-    <value>Ваща версия обновлена  ${0}.</value>
+    <value>est à Rev ${0} et à jour.</value>
   </data>
   <data name="Armageddoner_are_up_to_date" xml:space="preserve">
-    <value>Armageddoner обновлен!</value>
+    <value>Armageddoner est à jour!</value>
   </data>
   <data name="Mining_and_Blacksmithing_1_to_600_are_up_to_date" xml:space="preserve">
-    <value>Горное и кузнечное дело с 1 до 600 обновлено!</value>
+    <value>Minage et Forge 1 à 600 sont à jour!</value>
   </data>
   <data name="There_is_a_problem_updating_Mining_Blacksmithing_1_to_600" xml:space="preserve">
-    <value>Проблема в обновлении Горное и кузнечное дело с 1 до 600.</value>
+    <value>Il y a un problème de mise à jour du profil Minage et Forge 1 à 600.</value>
   </data>
   <data name="is_now_up_to_date_Please_reload_HB" xml:space="preserve">
-    <value>обновлен! Пожалуйста перезагрузите HB.</value>
+    <value>est à jour! S'il vous plaît, rechargez HonorBuddy.</value>
   </data>
   <data name="is_up_to_date_and_ready" xml:space="preserve">
-    <value>обновлен и готов.</value>
+    <value>est à jour et est prêt à être utiliser.</value>
   </data>
   <data name="Auto_Shutdown_in_progress_at" xml:space="preserve">
-    <value>Авто-закрытие через : </value>
+    <value>Arrêt automatique en cours à</value>
   </data>
-
-
-
-
-
-
-
   <data name="settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>Paramètres</value>
   </data>
   <data name="Support_Profession_Profile_Iniciative" xml:space="preserve">
-    <value>Support Profession Profile Iniciative</value>
+    <value>Soutien Profession Profil Initiative</value>
   </data>
   <data name="CavaPlugin_Disposed" xml:space="preserve">
-    <value>CavaPlugin Disposed</value>
+    <value>CavaPlugin Disposé</value>
   </data>
   <data name="Is_now_ENABLED" xml:space="preserve">
-    <value>Is now ENABLED</value>
+    <value>Est maintenant ACTIVÉ</value>
   </data>
   <data name="Is_now_DISABLED" xml:space="preserve">
-    <value>Is now DISABLED</value>
+    <value>Est maintenant DÉSACTIVÉ</value>
   </data>
   <data name="System_Anti-Stuck_Enabled" xml:space="preserve">
-    <value>[System Anti-Stuck Enabled]</value>
+    <value>[Système Anti-Stuck: Activé]</value>
   </data>
   <data name="System_Anti-Stuck_Disabled" xml:space="preserve">
-    <value>[System Anti-Stuck Disabled]</value>
+    <value>[Système Anti-Stuck: Désactivé]</value>
   </data>
   <data name="Summon_Random_Pet_Enabled" xml:space="preserve">
-    <value>[Summon Random Pet Enabled]</value>
+    <value>[Invocation Aléatoire d'Animaux: Activé]</value>
   </data>
   <data name="Dont_have_any_Pet_to_summom_disabling_Summon_Random_Pet" xml:space="preserve">
-    <value>Dont have any Pet to summom, disabling Summon Random Pet</value>
+    <value>Aucun animal à invoquer, désactivation de l'Invocation Aléatoire d'Animaux</value>
   </data>
   <data name="Summon_Random_Pet_Disabled" xml:space="preserve">
-    <value>[Summon Random Pet Disabled]</value>
+    <value>[Invocation Aléatoire d'Animaux: Désactivé]</value>
   </data>
   <data name="Accept_lvl_25_guild_invite_Enabled" xml:space="preserve">
-    <value>[Accept lvl 25 guild invite Enabled]</value>
+    <value>[Accepte Les Invites De Guilde Niveau 25: Activé]</value>
   </data>
   <data name="Refuse_guild_invites_Enabled" xml:space="preserve">
-    <value>[Refuse guild invites Enabled]</value>
+    <value>[Refuser Les Invites De Guilde: Activé]</value>
   </data>
   <data name="Accept_lvl_25_guild_invite_Disabled" xml:space="preserve">
-    <value>[Accept lvl 25 guild invite Disabled]</value>
+    <value>[Accepte Les Invites De Guilde Niveau 25: Désactivé]</value>
   </data>
   <data name="Refuse_guild_invites_Disabled" xml:space="preserve">
-    <value>[Refuse guild invites Disabled]</value>
+    <value>[Refuser Les Invites De Guilde: Désactivé]</value>
   </data>
   <data name="Refuse_party_invites_Enabled" xml:space="preserve">
-    <value>[Refuse party invites Enabled]</value>
+    <value>[Refuser Les Invites De Groupe: Activé]</value>
   </data>
   <data name="Refuse_party_invites_Disabled" xml:space="preserve">
-    <value>[Refuse party invites Disabled]</value>
+    <value>[Refuser Les Invites De Groupe: Désactivé]</value>
   </data>
   <data name="Refuse_trade_invites_Enabled" xml:space="preserve">
-    <value>[Refuse trade invites Enabled]</value>
+    <value>[Refuser Les Invites d'Échange: Activé]</value>
   </data>
   <data name="Refuse_trade_invites_Disabled" xml:space="preserve">
-    <value>[Refuse trade invites Disabled]</value>
+    <value>[Refuser Les Invites d'Échange: Désactivé]</value>
   </data>
   <data name="Refuse_duel_invites_Enabled" xml:space="preserve">
-    <value>[Refuse duel invites Enabled]</value>
+    <value>[Refuser Les Invites De Duel: Activé]</value>
   </data>
   <data name="Refuse_duel_invites_Disabled" xml:space="preserve">
-    <value>[Refuse duel invites Disabled]</value>
+    <value>[Refuser Les Invites De Duel: Désactivé]</value>
   </data>
+
+
+
   <data name="Accepting_guild_invite_from" xml:space="preserve">
-    <value>Accepting guild invite from {0}</value>
+    <value>Acceptant invitations de guilde de {0}</value>
   </data>
   <data name="Declining_guild_invite_from" xml:space="preserve">
-    <value>Declining guild invite from {0} lvl {1} in </value>
+    <value>Refusant invitations de guilde de {0} niv {1} dans </value>
   </data>
   <data name="Declining_party_invite_from" xml:space="preserve">
-    <value>Declining party invite from {0} in </value>
+    <value>Refusant invitations de groupe de {0} dans </value>
   </data>
   <data name="Declining_trade_in" xml:space="preserve">
-    <value>Declining trade in </value>
+    <value>Refusant échange dans </value>
   </data>
   <data name="Declining_duel_invite_from" xml:space="preserve">
-    <value>Declining duel invite from {0} in </value>
+    <value>Refusant invites de duel de {0} dans </value>
   </data>
   <data name="CavaPlugin_has_been_updated_restart_required" xml:space="preserve">
-    <value>Cava Plugin/Quest Behaviors has been updated a restart is required.</value>
+    <value>Cava Plugin/Quête Comportements a été mis à jour, un redémarrage est nécessaire.</value>
   </data>
   <data name="RESTART_REQUIRED" xml:space="preserve">
-    <value>RESTART REQUIRED</value>
+    <value>REDÉMARRAGE NÉCESSAIRE</value>
   </data>
+
+
   <data name="Armageddoner_Access_Tested_and_Passed" xml:space="preserve">
     <value>Armageddoner Access Tested and Passed</value>
   </data>
@@ -568,5 +553,6 @@ to Portuguese
   <data name="newtxt" xml:space="preserve">
     <value>Added Zul'Drak map profile, levels 77 to 79. Added Uldum map Profile levels 83 to 84 (reserved for Armageddoners).</value>
   </data>
+
 
 </root>

@@ -131,9 +131,6 @@ to Portuguese
   <data name="leveling1to90txt" xml:space="preserve">
     <value>This profile will level any character from any level to 90. This is a work in progress so far. Alliance works from 1 to 70 and 85 to 90. Horde works from 1 to 68 and 85 to 88.</value>
   </data>
-  <data name="levelingarmagessonertxt" xml:space="preserve">
-    <value>This profile will level any character from 70 to 78</value>
-  </data>
   <data name="levelinggrind" xml:space="preserve">
     <value>Level Grinding</value>
   </data>
@@ -166,12 +163,6 @@ to Portuguese
   </data>
   <data name="mbs1600txt" xml:space="preserve">
     <value>This profile will level Mining and Blacksmithing from any level to 600. Works for both Alliance and Horde. Start profile anywhere, the Cava Plugin will move the character to the required locations.</value>
-  </data>
-  <data name="miningbs1300" xml:space="preserve">
-    <value>Mining And Blacksmithing 1 to 300</value>
-  </data>
-  <data name="miningbs1600" xml:space="preserve">
-    <value>Mining And Blacksmithing 1 to 600</value>
   </data>
   <data name="pbmbs" xml:space="preserve">
     <value>Mining And Blacksmithing 1 to 600</value>
@@ -434,32 +425,117 @@ to Portuguese
 
 
 
-  <data name="Accepting_guild_invite_from" xml:space="preserve">
-    <value>Accepting guild invite from {0}</value>
-  </data>
-  <data name="Declining_guild_invite_from" xml:space="preserve">
-    <value>Declining guild invite from {0} lvl {1} in </value>
-  </data>
-  <data name="Declining_party_invite_from" xml:space="preserve">
-    <value>Declining party invite from {0} in </value>
-  </data>
-  <data name="Declining_trade_in" xml:space="preserve">
-    <value>Declining trade in </value>
-  </data>
-  <data name="Declining_duel_invite_from" xml:space="preserve">
-    <value>Declining duel invite from {0} in </value>
-  </data>
   <data name="CavaPlugin_has_been_updated_restart_required" xml:space="preserve">
     <value>Cava Plugin/Quest Behaviors has been updated a restart is required.</value>
   </data>
   <data name="RESTART_REQUIRED" xml:space="preserve">
     <value>RESTART REQUIRED</value>
   </data>
-  <data name="newtxt" xml:space="preserve">
-    <value>Added map profiles, levels 72 to 77. Added map levels 77 to 83 (reserved for Armageddoners).</value>
+  <data name="Armageddoner_Access_Tested_and_Passed" xml:space="preserve">
+    <value>Armageddoner Access Tested and Passed</value>
+  </data>
+  <data name="Profession_Owner_Access_Tested_and_Passed_for_MiningBlacksmithing1to600" xml:space="preserve">
+    <value>Profession Owner Access Tested and Passed for Mining/Blacksmithing 1 to 600</value>
+  </data>
+  <data name="Open_Boxes_is_Enabled" xml:space="preserve">
+    <value>[Open Boxes: Enabled]</value>
+  </data>
+  <data name="Open_Boxes_is_Disabled" xml:space="preserve">
+    <value>[Open Boxes: Disabled]</value>
+  </data>
+  <data name="Accepting_guild_invite_from" xml:space="preserve">
+    <value>Accepting guild invite from {0}</value>
+  </data>
+  <data name="Declining_guild_invite_from" xml:space="preserve">
+    <value>Declining guild invite from {0} lvl {1} in {2} seconds</value>
+  </data>
+  <data name="Declining_party_invite_from" xml:space="preserve">
+    <value>Declining party invite from {0} in {1 } seconds</value>
+  </data>
+  <data name="Declining_trade_in" xml:space="preserve">
+    <value>Declining trade in {0} seconds</value>
+  </data>
+  <data name="Declining_duel_invite_from" xml:space="preserve">
+    <value>Declining duel invite from {0} in {1} seconds</value>
+  </data>
+  <data name="loading_profile" xml:space="preserve">
+    <value>Loading '{0}'</value>
+  </data>
+  <data name="Anti_Bug_Release_System" xml:space="preserve">
+    <value>Anti-Bug Release System</value>
+  </data>
+  <data name="CombatLoot_Moving_to_loot" xml:space="preserve">
+    <value>[CombatLoot]-Moving to loot {0}.</value>
+  </data>
+  <data name="CombatLoot_Looting" xml:space="preserve">
+    <value>[CombatLoot]-Looting {0}.</value>
+  </data>
+  <data name="OpenBoxs_Check_Started_at" xml:space="preserve">
+    <value>[Open Boxs] Check Started at {0}.</value>
+  </data>
+  <data name="OpenBoxs_Opening" xml:space="preserve">
+    <value>Opening {0}.</value>
+  </data>
+  <data name="OpenBoxs_Check_Finished_at" xml:space="preserve">
+    <value>[Open Boxs] Check Finished at {0}.</value>
+  </data>
+  <data name="Summoning_Random_pet" xml:space="preserve">
+    <value>Summoning Random pet.</value>
+  </data>
+  <data name="AntiStuck_Char_is_Mounted_for_more_than_6_secs_and_stuck" xml:space="preserve">
+    <value>[AntiStuck] Char is Mounted for more than 6 secs and stuck : Forcing Dismount at {0}.</value>
+  </data>
+  <data name="AntiStuck_Char_is_Mounted_for_more_than_10_min" xml:space="preserve">
+    <value>[AntiStuck] Char is Mounted for more than 10 min : Forcing Dismount at {0}.</value>
+  </data>
+  <data name="AntiStuck_Im_AFK_flagged_Anti_Afking_at" xml:space="preserve">
+    <value>[AntiStuck] I'm AFK flagged, Anti-Afking at {0}.</value>
+  </data>
+  <data name="AntiStuck_not_moving_last_5_min" xml:space="preserve">
+    <value>[AntiStuck] not moving last 5 min : Forcing Dismount at {0}.</value>
+  </data>
+  <data name="AntiStuck_not_moving_last_10_min" xml:space="preserve">
+    <value>[AntiStuck] not moving last 10 min : Restarting bot at {0}.</value>
+  </data>
+  <data name="AntiStuck_not_moving_last_15_min" xml:space="preserve">
+    <value>[AntiStuck] not moving last 15 min : Closing WOW Game at {0}.</value>
+  </data>
+  <data name="Loot_in_Combat" xml:space="preserve">
+    <value>Loot in Combat</value>
+  </data>
+  <data name="AutoOpen_Boxs_Rogue" xml:space="preserve">
+    <value>AutoOpen Boxs (Rogue)</value>
+  </data>
+  <data name="Connect" xml:space="preserve">
+    <value>Connect</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Save_and_Test_Access" xml:space="preserve">
+    <value>Save and Test Access</value>
+  </data>
+  <data name="miningbs1300" xml:space="preserve">
+    <value>Mining And Blacksmithing 1 to 300 (Reserved for Registered Users)</value>
+  </data>
+  <data name="miningbs1600" xml:space="preserve">
+    <value>Mining And Blacksmithing 1 to 600 (Reserved for Profession Owners)</value>
+  </data>
+  <data name="Mining_ and_ Blacksmithing600" xml:space="preserve">
+    <value>Mining and Blacksmithing 1 to 600</value>
+  </data>
+  <data name="levelingarmagessonertxt" xml:space="preserve">
+    <value>This profile will level any character from 79 to 84</value>
   </data>
   <data name="levelingarmagessoner" xml:space="preserve">
-    <value>Alliance And Horde (77-83) (testers/donators only)</value>
+    <value>Alliance And Horde (79-84) (testers/donators only)</value>
   </data>
+  <data name="newtxt" xml:space="preserve">
+    <value>Added Zul'Drak map profile, levels 77 to 79. Added Uldum map Profile levels 83 to 84 (reserved for Armageddoners).</value>
+  </data>
+
 
 </root>
