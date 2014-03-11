@@ -1084,6 +1084,11 @@ namespace CavaPlugin
                     }
                     if (!Me.Combat && !CanLootMobs.Any())
                     {
+                        if (Me.Location.Distance(new WoWPoint(-10710.21, 1060.979, 24.15302 )) < 15)
+                        {
+                            Flightor.MoveTo(new WoWPoint(-10710.26, 1061.079, 48.51095));
+                        }
+
                         if (!IsObjectiveComplete(1, 28195))
                         {
                             Flightor.MoveTo(Me.Location.Distance(new WoWPoint(-10819.5, 1059.74, 17.47325)) > 30
