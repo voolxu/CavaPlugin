@@ -202,19 +202,19 @@
     <value>Principal</value>
   </data>
   <data name="mbs1300txt" xml:space="preserve">
-    <value>Este profile vai levelar as profissões de Mineração e Ferraria desde qualquer level até 300. Funciona para ambos Alliance e Horde. O profile pode ser iniciado, em qualquer ponto do mapa, o bot vai sempre se deslocar para a main city (Stormwind ou Orgrimmar)</value>
+    <value>Este profile vai levelar as profissões de Mining e Blacksmithing desde qualquer level até 300. Funciona para ambos Alliance e Horde. O profile pode ser iniciado, em qualquer ponto do mapa, o bot vai sempre se deslocar para a main city (Stormwind ou Orgrimmar)</value>
   </data>
   <data name="mbs1600txt" xml:space="preserve">
-    <value>Este profile vai levelar as profissões de Mineração e Ferraria desde qualquer level até 600. Funciona para ambos Alliance e Horde. O profile pode ser iniciado, em qualquer ponto do mapa, o bot vai sempre se deslocar para a main city (Stormwind ou Orgrimmar)</value>
+    <value>Este profile vai levelar as profissões de Mining e Blacksmithing desde qualquer level até 600. Funciona para ambos Alliance e Horde. O profile pode ser iniciado, em qualquer ponto do mapa, o bot vai sempre se deslocar para a main city (Stormwind ou Orgrimmar)</value>
   </data>
   <data name="pbmbs" xml:space="preserve">
-    <value>Mineração e Ferraria 1 a 600</value>
+    <value>Mining e Blacksmithing 1 a 600</value>
   </data>
   <data name="pbprofiles" xml:space="preserve">
     <value>Donos de Profiles de Profissões</value>
   </data>
   <data name="pressdonation" xml:space="preserve">
-    <value>Clique no Botão 'Donation' e faça uma doação para apoiar a iniciativa Profiles do Cava.</value>
+    <value>Clica no Botão 'Donation' e faz um donativo para apoiar a iniciativa Profiles do Cava.</value>
   </data>
   <data name="problemsconfiguring" xml:space="preserve">
     <value>Problemas CONFIGURANDO Honorbuddy...</value>
@@ -241,7 +241,7 @@
     <value>Segundos para inicio automatico:</value>
   </data>
   <data name="selectoneprofile" xml:space="preserve">
-    <value>Selecione um profile desta lista e clica em Iniciar</value>
+    <value>Seleciona um profile desta lista e clica em Iniciar</value>
   </data>
   <data name="showursupport" xml:space="preserve">
     <value>Demonstra O Teu Suporte</value>
@@ -274,10 +274,10 @@
     <value>Recusar Invites de Duelos</value>
   </data>
   <data name="globalsettings" xml:space="preserve">
-    <value>Definições Globais</value>
+    <value>Defenições Globais</value>
   </data>
   <data name="charsettings" xml:space="preserve">
-    <value>Definições do Boneco</value>
+    <value>Defenições do Boneco</value>
   </data>
   <data name="Bot_is_running_stop_bot_before_initiate_Cava_Plugin" xml:space="preserve">
     <value>Bot em execução, pare o bot antes de iniciar o CavaPlugin.</value>
@@ -334,7 +334,7 @@
     <value>Houve um problema na criação  da pasta Cava Plugin.</value>
   </data>
   <data name="Congratulations_Cava_Plugin_Sucefully_checkout" xml:space="preserve">
-    <value>Parabéns. A pasta Cava Plugin foi actualizada com sucesso.</value>
+    <value>Parebens. A pasta Cava Plugin foi actualizada com sucesso.</value>
   </data>
   <data name="Failed_to_Create_Cava_Quest_Behavior_Folder" xml:space="preserve">
     <value>Falha em criar a pasta Cava Quest Behavior.</value>
@@ -373,7 +373,7 @@
     <value>está agora na versão ${0} e actualizado.</value>
   </data>
   <data name="There_is_a_problem_updating" xml:space="preserve">
-    <value>Foi encontrado um problema actualizando</value>
+    <value>Foi emcontrado um problama actalizando</value>
   </data>
   <data name="Theres_an_error_with_Cava_Quest_Behaviors_or_Cava_profiles" xml:space="preserve">
     <value>Existe um erro com Cava Quest Behaviors ou Cava profiles.</value>
@@ -388,13 +388,13 @@
     <value>Armageddoner está agora actualizado!</value>
   </data>
   <data name="Mining_and_Blacksmithing_1_to_600_are_up_to_date" xml:space="preserve">
-    <value>Mineração e Ferraria 1 a 600 está agora actualizado!</value>
+    <value>Mining e Blacksmithing 1 a 600 está agora actualizado!</value>
   </data>
   <data name="There_is_a_problem_updating_Mining_Blacksmithing_1_to_600" xml:space="preserve">
-    <value>Foi detectado um problema com a actualização de Mineração e Ferraria 1 a 600.</value>
+    <value>Foi detectado um problema com a actualização de Mining Blacksmithing 1 a 600.</value>
   </data>
   <data name="is_now_up_to_date_Please_reload_HB" xml:space="preserve">
-    <value>está agora actualizado! Por favor reinicie o HonorBuddy.</value>
+    <value>está agora aactualizado! Por favor reinicie o HonorBuddy.</value>
   </data>
   <data name="is_up_to_date_and_ready" xml:space="preserve">
     <value>está agora actualizado e pronto.</value>
@@ -415,13 +415,13 @@
     <value>Está agora ATIVO</value>
   </data>
   <data name="Is_now_DISABLED" xml:space="preserve">
-    <value>Está agora INATIVO</value>
+    <value>Está agora inativo</value>
   </data>
   <data name="System_Anti-Stuck_Enabled" xml:space="preserve">
-    <value>[Sistema Anti-Stuck Ativo]</value>
+    <value>[Sistema Anti-Stuck ativo]</value>
   </data>
   <data name="System_Anti-Stuck_Disabled" xml:space="preserve">
-    <value>[Sistema Anti-Stuck Inativo]</value>
+    <value>[Sistema Anti-Stuck Inátivo]</value>
   </data>
   <data name="Summon_Random_Pet_Enabled" xml:space="preserve">
     <value>[Fazer summom de pets aleatório Ativo]</value>
@@ -430,88 +430,88 @@
     <value>Não tenho qualquer pet para poder fazer summom , desativando o sistema de fazer summom a pets</value>
   </data>
   <data name="Summon_Random_Pet_Disabled" xml:space="preserve">
-    <value>[Fazer summom de pets aleatório : Inativo]</value>
+    <value>[Fazer summom de pets aleatório Inativo]</value>
   </data>
   <data name="Accept_lvl_25_guild_invite_Enabled" xml:space="preserve">
-    <value>[Aceitar invites de guilds de nivel 25 : Ativo]</value>
+    <value>[Aceitar invites de guilds de nivel 25 Ativo]</value>
   </data>
   <data name="Refuse_guild_invites_Enabled" xml:space="preserve">
-    <value>[Recusar invites de guilds : Ativo]</value>
+    <value>[Recusar invites de guilds Ativo]</value>
   </data>
   <data name="Accept_lvl_25_guild_invite_Disabled" xml:space="preserve">
-    <value>[Recusar invites de guilds nivel 25 : Inativo]</value>
+    <value>[Recusar invites de guilds nivel 25 Inativo]</value>
   </data>
   <data name="Refuse_guild_invites_Disabled" xml:space="preserve">
-    <value>[Recusar invites de guilds : Inativo]</value>
+    <value>[Recusar invites de guilds desativo]</value>
   </data>
   <data name="Refuse_party_invites_Enabled" xml:space="preserve">
-    <value>[Recusar invites de Grupo : Ativo]</value>
+    <value>[Recusar invites de Grupo Ativo]</value>
   </data>
   <data name="Refuse_party_invites_Disabled" xml:space="preserve">
-    <value>[Recusar invites de Grupo : Inativo]</value>
+    <value>[Recusar invites de Grupo Inativo]</value>
   </data>
   <data name="Refuse_trade_invites_Enabled" xml:space="preserve">
-    <value>[Recusar invites de Trade : Ativo]</value>
+    <value>[Recusar invites de Trade Ativo]</value>
   </data>
   <data name="Refuse_trade_invites_Disabled" xml:space="preserve">
-    <value>[Recusar invites de Trade : Inativo]</value>
+    <value>[Recusar invites de Trade Inativo]</value>
   </data>
   <data name="Refuse_duel_invites_Enabled" xml:space="preserve">
-    <value>[Recusar invites de Duelo : Ativo]</value>
+    <value>[Recusar invites de Duelo Ativo]</value>
   </data>
   <data name="Refuse_duel_invites_Disabled" xml:space="preserve">
-    <value>[Recusar invites de Duelo : Inativo]</value>
+    <value>[Recusar invites de Duelo Inativo]</value>
   </data>
 
 
   <data name="Accepting_guild_invite_from" xml:space="preserve">
-    <value>Aceitando pedido de guild invite de {0}</value>
+    <value>Accepting guild invite from {0}</value>
   </data>
   <data name="Declining_guild_invite_from" xml:space="preserve">
-    <value>Recusando pedido de guild invite de {0} lvl {1} in </value>
+    <value>Declining guild invite from {0} lvl {1} in </value>
   </data>
   <data name="Declining_party_invite_from" xml:space="preserve">
-    <value>Recusando pedido de party de {0} in </value>
+    <value>Declining party invite from {0} in </value>
   </data>
   <data name="Declining_trade_in" xml:space="preserve">
-    <value>Recusando trade em </value>
+    <value>Declining trade in </value>
   </data>
   <data name="Declining_duel_invite_from" xml:space="preserve">
-    <value>Recusando pedido de duelo de {0} in </value>
+    <value>Declining duel invite from {0} in </value>
   </data>
   <data name="CavaPlugin_has_been_updated_restart_required" xml:space="preserve">
     <value>Cava Plugin/Quest Behaviors has been updated a restart is required.</value>
   </data>
   <data name="RESTART_REQUIRED" xml:space="preserve">
-    <value>RESTART NECESSÁRIO/value>
+    <value>RESTART REQUIRED</value>
   </data>
 
   <data name="Armageddoner_Access_Tested_and_Passed" xml:space="preserve">
     <value>Armageddoner Access Tested and Passed</value>
   </data>
   <data name="Profession_Owner_Access_Tested_and_Passed_for_MiningBlacksmithing1to600" xml:space="preserve">
-    <value>Profession Owner Access Tested and Passed para Mineração/Ferraria 1 to 600</value>
+    <value>Profession Owner Access Tested and Passed for Mining/Blacksmithing 1 to 600</value>
   </data>
   <data name="Open_Boxes_is_Enabled" xml:space="preserve">
-    <value>[Abrir Cofres: ATIVO]</value>
+    <value>[Open Boxes: Enabled]</value>
   </data>
   <data name="Open_Boxes_is_Disabled" xml:space="preserve">
-    <value>[Abrir Cofres: Inativo]</value>
+    <value>[Open Boxes: Disabled]</value>
   </data>
   <data name="Accepting_guild_invite_from" xml:space="preserve">
-    <value>Aceitando pedido de guild invite de {0}</value>
+    <value>Accepting guild invite from {0}</value>
   </data>
   <data name="Declining_guild_invite_from" xml:space="preserve">
-    <value>Recusando pedido de guild invite de {0} lvl {1} in {2} seconds</value>
+    <value>Declining guild invite from {0} lvl {1} in {2} seconds</value>
   </data>
   <data name="Declining_party_invite_from" xml:space="preserve">
-    <value>Recusando pedido de party de {0} in {1} seconds</value>
+    <value>Declining party invite from {0} in {1 } seconds</value>
   </data>
   <data name="Declining_trade_in" xml:space="preserve">
-    <value>Recusando trade em {0} seconds</value>
+    <value>Declining trade in {0} seconds</value>
   </data>
   <data name="Declining_duel_invite_from" xml:space="preserve">
-    <value>Recusando pedido de duelo de {0} in {1} seconds</value>
+    <value>Declining duel invite from {0} in {1} seconds</value>
   </data>
   <data name="loading_profile" xml:space="preserve">
     <value>Loading '{0}'</value>
@@ -520,46 +520,46 @@
     <value>Anti-Bug Release System</value>
   </data>
   <data name="CombatLoot_Moving_to_loot" xml:space="preserve">
-    <value>[CombatLoot]-Movendo para o loot {0}.</value>
+    <value>[CombatLoot]-Moving to loot {0}.</value>
   </data>
   <data name="CombatLoot_Looting" xml:space="preserve">
     <value>[CombatLoot]-Looting {0}.</value>
   </data>
   <data name="OpenBoxs_Check_Started_at" xml:space="preserve">
-    <value>[Abrindo Cofres] Check Started at {0}.</value>
+    <value>[Open Boxs] Check Started at {0}.</value>
   </data>
   <data name="OpenBoxs_Opening" xml:space="preserve">
-    <value>Abrindo {0}.</value>
+    <value>Opening {0}.</value>
   </data>
   <data name="OpenBoxs_Check_Finished_at" xml:space="preserve">
-    <value>[Abrindo Cofres] Check Finished at {0}.</value>
+    <value>[Open Boxs] Check Finished at {0}.</value>
   </data>
   <data name="Summoning_Random_pet" xml:space="preserve">
-    <value>Sumonando Pet Aleatório.</value>
+    <value>Summoning Random pet.</value>
   </data>
   <data name="AntiStuck_Char_is_Mounted_for_more_than_6_secs_and_stuck" xml:space="preserve">
-    <value>[AntiStuck] Personagem está montado por mais de 6 segs e travado : Forçando Desmontar em {0}.</value>
+    <value>[AntiStuck] Char is Mounted for more than 6 secs and stuck : Forcing Dismount at {0}.</value>
   </data>
   <data name="AntiStuck_Char_is_Mounted_for_more_than_10_min" xml:space="preserve">
-    <value>[AntiStuck] Personagem está montado por mais de 10 min : Forçando Desmontar em {0}.</value>
+    <value>[AntiStuck] Char is Mounted for more than 10 min : Forcing Dismount at {0}.</value>
   </data>
   <data name="AntiStuck_Im_AFK_flagged_Anti_Afking_at" xml:space="preserve">
-    <value>[AntiStuck] Estou marcado como AFK, Anti-Afking em {0}.</value>
+    <value>[AntiStuck] I'm AFK flagged, Anti-Afking at {0}.</value>
   </data>
   <data name="AntiStuck_not_moving_last_5_min" xml:space="preserve">
-    <value>[AntiStuck] Não está se movendo por mais de 5 min : Forçando Desmontar em {0}.</value>
+    <value>[AntiStuck] not moving last 5 min : Forcing Dismount at {0}.</value>
   </data>
   <data name="AntiStuck_not_moving_last_10_min" xml:space="preserve">
-    <value>[AntiStuck] Não está se movendo por mais de 10 min : Restartando bot em {0}.</value>
+    <value>[AntiStuck] not moving last 10 min : Restarting bot at {0}.</value>
   </data>
   <data name="AntiStuck_not_moving_last_15_min" xml:space="preserve">
-    <value>[AntiStuck] Não está se movendo por mais de 15 min : Fechando WOW em {0}.</value>
+    <value>[AntiStuck] not moving last 15 min : Closing WOW Game at {0}.</value>
   </data>
   <data name="Loot_in_Combat" xml:space="preserve">
-    <value>Loot em Combate</value>
+    <value>Loot in Combat</value>
   </data>
   <data name="AutoOpen_Boxs_Rogue" xml:space="preserve">
-    <value>Abertura Automática de Cofres (Ladino)</value>
+    <value>AutoOpen Boxs (Rogue)</value>
   </data>
   <data name="Connect" xml:space="preserve">
     <value>Connect</value>
@@ -574,22 +574,22 @@
     <value>Save and Test Access</value>
   </data>
   <data name="miningbs1300" xml:space="preserve">
-    <value>Mineração e Ferraria 1 a 300 (Reservado para Usários Registrados)</value>
+    <value>Mining And Blacksmithing 1 to 300 (Reserved for Registered Users)</value>
   </data>
   <data name="miningbs1600" xml:space="preserve">
-    <value>Mineração e Ferraria 1 a 600 (Reservado para Profession Owners)</value>
+    <value>Mining And Blacksmithing 1 to 600 (Reserved for Profession Owners)</value>
   </data>
   <data name="Mining_ and_ Blacksmithing600" xml:space="preserve">
-    <value>Mineração e Ferraria 1 a 600</value>
+    <value>Mining and Blacksmithing 1 to 600</value>
   </data>
   <data name="levelingarmagessonertxt" xml:space="preserve">
-    <value>Este profile vai levelar qualquer char do level 79 ao 84</value>
+    <value>This profile will level any character from 79 to 84</value>
   </data>
   <data name="levelingarmagessoner" xml:space="preserve">
-    <value>Alliance And Horde (79-84) (testers/donators apenas)</value>
+    <value>Alliance And Horde (79-84) (testers/donators only)</value>
   </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Adicionado Zul'Drak map profile, levels 77 ao 79. Adicionado Uldum map Profile levels 83 ao 84 (Reservado para Armageddoners).</value>
+    <value>Added Zul'Drak map profile, levels 77 to 79. Added Uldum map Profile levels 83 to 84 (reserved for Armageddoners).</value>
   </data>
 
 
