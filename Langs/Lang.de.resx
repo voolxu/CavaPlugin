@@ -451,109 +451,109 @@ to Portuguese
 
 
   <data name="Armageddoner_Access_Tested_and_Passed" xml:space="preserve">
-    <value>Armageddoner Access Tested and Passed</value>
+    <value>Armageddoner Zugriff geprüft und stattgegeben</value>
   </data>
   <data name="Profession_Owner_Access_Tested_and_Passed_for_MiningBlacksmithing1to600" xml:space="preserve">
-    <value>Profession Owner Access Tested and Passed for Mining/Blacksmithing 1 to 600</value>
+    <value>Berufe Käufer, Zugriff geprüft und stattgegeben für Bergbau/Schmiedekunst 1 bis 600</value>
   </data>
   <data name="Open_Boxes_is_Enabled" xml:space="preserve">
-    <value>[Open Boxes: Enabled]</value>
+    <value>[Schließkassetten öffnen: aktiv]</value>
   </data>
   <data name="Open_Boxes_is_Disabled" xml:space="preserve">
-    <value>[Open Boxes: Disabled]</value>
+    <value>[Schließkassetten öffnen: inaktiv]</value>
   </data>
   <data name="Accepting_guild_invite_from" xml:space="preserve">
-    <value>Accepting guild invite from {0}</value>
+    <value>Gildeneinladungen akzeptieren von {0}</value>
   </data>
   <data name="Declining_guild_invite_from" xml:space="preserve">
-    <value>Declining guild invite from {0} lvl {1} in {2} seconds</value>
+    <value>Gildeneinladungen ablehnen von {0} lvl {1} in {2} Sekunden</value>
   </data>
   <data name="Declining_party_invite_from" xml:space="preserve">
-    <value>Declining party invite from {0} in {1 } seconds</value>
+    <value>Gruppeneinladungen ablehnen von {0} in {1 } Sekunden</value>
   </data>
   <data name="Declining_trade_in" xml:space="preserve">
-    <value>Declining trade in {0} seconds</value>
+    <value>Handeln ablehnen in {0} Sekunden</value>
   </data>
   <data name="Declining_duel_invite_from" xml:space="preserve">
-    <value>Declining duel invite from {0} in {1} seconds</value>
+    <value>Duelle ablehnen von {0} in {1} Sekunden</value>
   </data>
   <data name="loading_profile" xml:space="preserve">
-    <value>Loading '{0}'</value>
+    <value>Lade '{0}'</value>
   </data>
   <data name="Anti_Bug_Release_System" xml:space="preserve">
-    <value>Anti-Bug Release System</value>
+    <value>Anti-Bug Geist freilassen System</value>
   </data>
   <data name="CombatLoot_Moving_to_loot" xml:space="preserve">
-    <value>[CombatLoot]-Moving to loot {0}.</value>
+    <value>[CombatLoot]-Bewege zum Plündern {0}.</value>
   </data>
   <data name="CombatLoot_Looting" xml:space="preserve">
-    <value>[CombatLoot]-Looting {0}.</value>
+    <value>[CombatLoot]-Plündern {0}.</value>
   </data>
   <data name="OpenBoxs_Check_Started_at" xml:space="preserve">
-    <value>[Open Boxs] Check Started at {0}.</value>
+    <value>[Schließkassetten öffnen] Prüfe start um {0}.</value>
   </data>
   <data name="OpenBoxs_Opening" xml:space="preserve">
-    <value>Opening {0}.</value>
+    <value>Öffnen {0}.</value>
   </data>
   <data name="OpenBoxs_Check_Finished_at" xml:space="preserve">
-    <value>[Open Boxs] Check Finished at {0}.</value>
+    <value>[Schließkassetten öffnen] Prüfe fertigstellung um {0}.</value>
   </data>
   <data name="Summoning_Random_pet" xml:space="preserve">
-    <value>Summoning Random pet.</value>
+    <value>Beschwören zufälliges Haustier.</value>
   </data>
   <data name="AntiStuck_Char_is_Mounted_for_more_than_6_secs_and_stuck" xml:space="preserve">
-    <value>[AntiStuck] Char is Mounted for more than 6 secs and stuck : Forcing Dismount at {0}.</value>
+    <value>[AntiStuck] Spieler befindet sich auf einem Reittier über 6 Sekunden und hängt fest: Absitzen eingeleitet um {0}.</value>
   </data>
   <data name="AntiStuck_Char_is_Mounted_for_more_than_10_min" xml:space="preserve">
-    <value>[AntiStuck] Char is Mounted for more than 10 min : Forcing Dismount at {0}.</value>
+    <value>[AntiStuck] Spieler befindet sich auf einem Reittier über 10 min : Absitzen eingeleitet um {0}.</value>
   </data>
   <data name="AntiStuck_Im_AFK_flagged_Anti_Afking_at" xml:space="preserve">
-    <value>[AntiStuck] I'm AFK flagged, Anti-Afking at {0}.</value>
+    <value>[AntiStuck] Ich bin AFK markiert, Anti-Afking um {0}.</value>
   </data>
   <data name="AntiStuck_not_moving_last_5_min" xml:space="preserve">
-    <value>[AntiStuck] not moving last 5 min : Forcing Dismount at {0}.</value>
+    <value>[AntiStuck] Keine Bewegungen seit 5 min : Absitzen eingeleitet um {0}.</value>
   </data>
   <data name="AntiStuck_not_moving_last_10_min" xml:space="preserve">
-    <value>[AntiStuck] not moving last 10 min : Restarting bot at {0}.</value>
+    <value>[AntiStuck] Keine Bewegungen seit 10 min : HB wird gestoppt und gestartet um {0}.</value>
   </data>
   <data name="AntiStuck_not_moving_last_15_min" xml:space="preserve">
-    <value>[AntiStuck] not moving last 15 min : Closing WOW Game at {0}.</value>
+    <value>[AntiStuck] Keine Bewegungen seit 15 min : WoW wird geschlossen um {0}.</value>
   </data>
   <data name="Loot_in_Combat" xml:space="preserve">
-    <value>Loot in Combat</value>
+    <value>Plündern im Kampf</value>
   </data>
   <data name="AutoOpen_Boxs_Rogue" xml:space="preserve">
-    <value>AutoOpen Boxs (Rogue)</value>
+    <value>Automatischen öffnen der Schließkassetten (Rogue)</value>
   </data>
   <data name="Connect" xml:space="preserve">
-    <value>Connect</value>
+    <value>Verbunden</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value>Password</value>
+    <value>Passwort</value>
   </data>
   <data name="Save_and_Test_Access" xml:space="preserve">
-    <value>Save and Test Access</value>
+    <value>Speichern und zugriffs Test</value>
   </data>
   <data name="miningbs1300" xml:space="preserve">
-    <value>Mining And Blacksmithing 1 to 300 (Reserved for Registered Users)</value>
+    <value>Bergbau und Schmiedekunst 1 bis 300 (Nur für Registrierte Benutzer)</value>
   </data>
   <data name="miningbs1600" xml:space="preserve">
-    <value>Mining And Blacksmithing 1 to 600 (Reserved for Profession Owners)</value>
+    <value>Bergbau und Schmiedekunst 1 bis 600 (Nur für Käufer der Berufe)</value>
   </data>
   <data name="Mining_ and_ Blacksmithing600" xml:space="preserve">
-    <value>Mining and Blacksmithing 1 to 600</value>
+    <value>Bergbau und Schmiedekunst 1 bis 600</value>
   </data>
   <data name="levelingarmagessonertxt" xml:space="preserve">
-    <value>This profile will level any character from 79 to 84</value>
+    <value>Dieses Profil ist von Level 79 bis Level 84</value>
   </data>
   <data name="levelingarmagessoner" xml:space="preserve">
-    <value>Alliance And Horde (79-84) (testers/donators only)</value>
+    <value>Allianz und Horde (79-84) (nur für Tester/Käufer)</value>
   </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Added Zul'Drak map profile, levels 77 to 79. Added Uldum map Profile levels 83 to 84 (reserved for Armageddoners).</value>
+    <value>Zul'Drak Gebiet hinzugefügt, Level 77 bis 79. Uldum Gebiet hinzugefügt, Levels 83 bis 84 (Nur für Armageddoners/Käufer).</value>
   </data>
 
 
