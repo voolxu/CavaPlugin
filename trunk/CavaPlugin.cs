@@ -744,7 +744,7 @@ namespace CavaPlugin
 
         private void LoggingOnOnLogMessage(ReadOnlyCollection<Logging.LogMessage> messages)
         {
-            // anti mount vendor run bug
+            // anti mount vendor run 
            foreach (var logEntry in messages)
            {
                if (!logEntry.Message.Contains(VendorMountLogEntry))
@@ -788,10 +788,12 @@ namespace CavaPlugin
             Logging.Write(color, "Err: " + format, args);
             Player.SoundLocation = PathToCavaPlugin + "Sounds\\Error2.wav";
             Player.Play();
+            
 
         }
         // ReSharper restore LocalizableElement
         // ReSharper restore MemberCanBePrivate.Global
+
         #endregion
         
         #region Utils
@@ -839,6 +841,8 @@ namespace CavaPlugin
         #region Override Pulse
         public override void Pulse()
         {
+            //AppDomain.CurrentDomain.SetData("Teste1","OI");
+            //Environment.SetEnvironmentVariable("Teste1","OI",EnvironmentVariableTarget.Process);
             if (ProfileManager.CurrentOuterProfile.Name == "Mining Blacksmithing 1 to 300 by Cava" ||
                 ProfileManager.CurrentOuterProfile.Name == "Mining Blacksmithing 1 to 600 by Cava")
             {
@@ -889,13 +893,13 @@ namespace CavaPlugin
                 {
                     GetLoot();
                     var lootthis = CanLootMobs.FirstOrDefault();
-                    if (lootthis != null && lootthis.Distance > lootthis.InteractRange && lootthis.Distance < 10)
+                    /*if (lootthis != null && lootthis.Distance > lootthis.InteractRange && lootthis.Distance < 10)
                     {
                         //ReSharper disable once ResourceItemNotResolved
                         Log(_rm.GetString("CombatLoot_Moving_to_loot", _ci), lootthis.Name);
                         Navigator.MoveTo(lootthis.Location);
-                    }
-                    if (lootthis != null && lootthis.Distance < lootthis.InteractRange)
+                    }*/
+                    if (lootthis != null && lootthis.Distance <= lootthis.InteractRange)
                     {
                         // ReSharper disable once ResourceItemNotResolved
                         Log(_rm.GetString("CombatLoot_Looting", _ci), lootthis.Name);
