@@ -16,6 +16,7 @@ using System.Windows.Forms;
 using System.Windows.Media;
 using Styx;
 using Styx.CommonBot.Frames;
+using Styx.CommonBot.Routines;
 using Styx.Helpers;
 using Styx.Pathing;
 using Styx.Plugins;
@@ -81,7 +82,7 @@ namespace CavaPlugin
 
         public override Version Version
         {
-            get { return new Version(4, 2, 1); }
+            get { return new Version(4, 3, 0); }
         }
 
         public override string Name
@@ -162,6 +163,58 @@ namespace CavaPlugin
             16883 //Worn Junkbox
         };
 
+        public void CavaAtackMob()
+        {
+            var spell=0; 
+            switch (Me.Class)
+            {
+                case WoWClass.Mage:
+                    spell = 44614;
+                    break;
+                case WoWClass.Druid:
+                    spell = 8921;
+                    break;
+                case WoWClass.Paladin:
+                    spell = 35395;
+                    break;
+                case WoWClass.Priest:
+                    spell = 589;
+                    break;
+                case WoWClass.Shaman:
+                    spell = 8050;
+                    break;
+                case WoWClass.Warlock:
+                    spell = 686;
+                    break;
+                case WoWClass.DeathKnight:
+                    if (SpellManager.CanCast(45902))
+                        spell = 45902;
+                    if (SpellManager.CanCast(49143))
+                        spell = 49143;
+                    if (SpellManager.CanCast(45462))
+                        spell = 45462;
+                    break;
+                case WoWClass.Hunter:
+                    spell = 56641;
+                    break;
+                case WoWClass.Warrior:
+                    spell = 78;
+                    break;
+                case WoWClass.Rogue:
+                    spell = 1752;
+                    break;
+                case WoWClass.Monk:
+                    spell = 100780;
+                    break;
+            }
+            if (spell != 0)
+            {
+                if (SpellManager.CanCast(spell))
+                {
+                    SpellManager.Cast(spell);
+                }
+            }
+        }
         // ReSharper restore PossiblyMistakenUseOfParamsMethod
         private static bool UpdaterCava(string f, string stuff)
         {
@@ -832,6 +885,7 @@ namespace CavaPlugin
         private static List<WoWUnit> MobKoiKoiSpirit { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 22226 && ret.IsAlive)).OrderBy(ret => ret.Distance).ToList(); } }
         private static List<WoWUnit> MobWitheredCorpse { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 20561 && ret.Distance < 16 && ret.HasAura(31261))).OrderBy(ret => ret.Distance).ToList(); } }
         private static List<WoWUnit> MobGlacierIce { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 49233 && ret.IsAlive)).OrderBy(ret => ret.Distance).ToList(); } }
+        private static List<WoWUnit> MobSauranokMystic { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 44120 && ret.IsAlive && ret.HasAura(82531))).OrderBy(ret => ret.Distance).ToList(); } }
         //private static WoWItem ItemCelebrationPack { get { return (StyxWoW.Me.CarriedItems.FirstOrDefault(i => i.Entry == 90918)); } }
         //private static WoWItem ItemHs { get { return (StyxWoW.Me.CarriedItems.FirstOrDefault(i => i.Entry == 6948)); } }
         private static WoWItem ItemThisShiv { get { return (StyxWoW.Me.CarriedItems.FirstOrDefault(i => i.Entry == 55883)); } }
@@ -918,10 +972,11 @@ namespace CavaPlugin
                     {
                         // ReSharper disable once ResourceItemNotResolved
                         Log(_rm.GetString("OpenBoxs_Opening", _ci), item);
-                        SpellManager.Cast(1804);
-                        UseItem(item);
-                        while (!item.IsOpenable)
+                        WoWMovement.MoveStop();
+                        if (!item.IsOpenable)
                         {
+                            SpellManager.Cast(1804);
+                            UseItem(item);
                             StyxWoW.Sleep(6000);
                         }
                         UseItem(item);
@@ -990,7 +1045,7 @@ namespace CavaPlugin
                 {
                     MobTidecrusher[0].Interact();
                     MobTidecrusher[0].Face();
-                    Styx.CommonBot.Routines.RoutineManager.Current.Pull();
+                    RoutineManager.Current.Pull();
                 }
                 if (Me.QuestLog.GetQuestById(10584) != null && !Me.QuestLog.GetQuestById(10584).IsCompleted && MobElectromental.Count > 0)
                 {
@@ -1031,7 +1086,7 @@ namespace CavaPlugin
                 {
                     MobKoiKoiSpirit[0].Interact();
                     MobKoiKoiSpirit[0].Face();
-                    Styx.CommonBot.Routines.RoutineManager.Current.Pull();
+                    RoutineManager.Current.Pull();
                 }
                 if (Me.QuestLog.GetQuestById(10345) != null && !Me.Combat && MobWitheredCorpse.Count > 0)
                 {
@@ -1049,6 +1104,22 @@ namespace CavaPlugin
                     Lua.DoString("UseItemByName(35125)");
                     StyxWoW.Sleep(500);
                 }
+                if (Me.QuestLog.GetQuestById(26830) != null && !Me.QuestLog.GetQuestById(26830).IsCompleted && MobSauranokMystic.Count > 0 )
+                {
+                    if (MobSauranokMystic[0].Location.Distance(Me.Location) > 4)
+                    {
+                        Navigator.MoveTo(MobSauranokMystic[0].Location);
+                    }
+                    if (MobSauranokMystic[0].Location.Distance(Me.Location) <= 4)
+                    {
+                        WoWMovement.MoveStop();
+                        MobSauranokMystic[0].Target();
+                        MobSauranokMystic[0].Face();
+                        MobSauranokMystic[0].Interact();
+                        CavaAtackMob();
+                    }
+                }
+                
                 if (Me.ZoneId == 616 && Me.CurrentTarget != null && Me.CurrentTarget.Entry == 41031)
                 {
                     if (ItemThisShiv != null)

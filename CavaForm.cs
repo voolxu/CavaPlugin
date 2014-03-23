@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
+//using System.Collections.Generic;
+// ReSharper disable once RedundantUsingDirective
 using System.ComponentModel;
-using System.Data;
+//using System.Data;
 using System.Diagnostics; 
-using System.Drawing;
+//using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Media;
@@ -19,11 +20,11 @@ using System.Globalization;
 using Styx;
 using Styx.Common;
 using Styx.CommonBot;
-using Styx.CommonBot.Frames;
-using Styx.CommonBot.Profiles;
+//using Styx.CommonBot.Frames;
+//using Styx.CommonBot.Profiles;
 using Styx.Helpers;
 using Styx.WoWInternals;
-using Styx.WoWInternals.WoWObjects;
+//using Styx.WoWInternals.WoWObjects;
 
 using DefaultValue = Styx.Helpers.DefaultValueAttribute;
 
@@ -31,10 +32,10 @@ namespace CavaPlugin
 {
     public partial class CavaForm : Form
     {
-        public int lastUseProfile = 0; // Ultimo Profile usado.
+        public int LastUseProfile = 0; // Ultimo Profile usado.
         public bool ArmaguedonerAllow = false;
-        public int seconds = 15; // Segundos do countdown.
-        public int numberBotBase;
+        public int Seconds = 15; // Segundos do countdown.
+        public int NumberBotBase;
         public string PathToCavaPlugin = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\");
 
         public string pathToSettings =
@@ -149,35 +150,39 @@ namespace CavaPlugin
             TestAccessbutton.Text = rm.GetString("Save_and_Test_Access", ci);
             labelprofmb600.Text = rm.GetString("Mining_ and_ Blacksmithing600", ci);
 
-            if (lastUseProfile == 1)
+            if (LastUseProfile == 1)
             {
                 label4.Text = rm.GetString("leveling1to90", ci);
             }
-            if (lastUseProfile == 2)
+            if (LastUseProfile == 2)
             {
                 label4.Text = rm.GetString("levelingpandahorde", ci);
             }
-            if (lastUseProfile == 3)
+            if (LastUseProfile == 3)
             {
                 label4.Text = rm.GetString("levelingpandaally", ci);
             }
-            if (lastUseProfile == 4)
+            if (LastUseProfile == 4)
             {
                 label4.Text = rm.GetString("level85to90", ci);
             }
-            if (lastUseProfile == 5)
+            if (LastUseProfile == 5)
             {
                 label4.Text = rm.GetString("levelingarmagessoner", ci);
             }
-            if (lastUseProfile == 7)
+            if (LastUseProfile == 7)
             {
                 label4.Text = rm.GetString("miningbs1600", ci);
                 //MiningBlacksmithingProf.Text = rm.GetString("miningbs1600", ci);
             }
-            if (lastUseProfile == 8)
+            if (LastUseProfile == 8)
             {
                 label4.Text = rm.GetString("miningbs1300", ci);
                 MiningBlacksmithingProf.Text = rm.GetString("miningbs1300", ci);
+            }
+            if (LastUseProfile == 10)
+            {
+                label4.Text = "Run Checked List Of Reserved Profiles For Armageddoner Users";
             }
             // ReSharper restore ResourceItemNotResolved   
         }
@@ -200,9 +205,107 @@ namespace CavaPlugin
             pictureBox10.ImageLocation = CPGlobalSettings.Instance.CpPanelBack ? Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\y.png") : Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\n.png");
             pictureBox13.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\register.png");
             pictureBox14.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\donate2.gif");
+            pictureBox15.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\main.png");
 
             
             UpdateStuff();
+        }
+
+        private void Checkarmageddonerreservedprofiles()
+        {
+            if (StyxWoW.Me.Level < 80 || Lua.GetReturnVal<bool>("return GetQuestsCompleted()[25316]", 0) || !CPGlobalSettings.Instance.BotAllowUpdate)
+            {
+                learnportal1checkBox.Enabled = false;
+                learnportal1checkBox.Checked = false;
+                AppDomain.CurrentDomain.SetData("learnportal1", null);
+                CPsettings.Instance.Learnportal1 = false;
+            }
+            if (CPsettings.Instance.Learnportal1)
+            {
+                learnportal1checkBox.Checked = true;
+                AppDomain.CurrentDomain.SetData("learnportal1", "true");
+            }
+            else
+            {
+                learnportal1checkBox.Checked = false;
+                AppDomain.CurrentDomain.SetData("learnportal1", null);
+                
+            }
+
+            if (StyxWoW.Me.Level < 80 || Lua.GetReturnVal<bool>("return GetQuestsCompleted()[14482]", 0) || Lua.GetReturnVal<bool>("return GetQuestsCompleted()[25924]", 0) || !CPGlobalSettings.Instance.BotAllowUpdate)
+            {
+                learnportal2checkBox.Enabled = false;
+                learnportal2checkBox.Checked = false;
+                AppDomain.CurrentDomain.SetData("learnportal2", null);
+                CPsettings.Instance.Learnportal2 = false;
+            }
+            if (CPsettings.Instance.Learnportal2)
+            {
+                learnportal2checkBox.Checked = true;
+                AppDomain.CurrentDomain.SetData("learnportal2", "true");
+            }
+            else
+            {
+                learnportal2checkBox.Checked = false;
+                AppDomain.CurrentDomain.SetData("learnportal2", null);
+            }
+
+            if (StyxWoW.Me.Level < 82 || Lua.GetReturnVal<bool>("return GetQuestsCompleted()[27123]", 0) || !CPGlobalSettings.Instance.BotAllowUpdate)
+            {
+                learnportal3checkBox.Enabled = false;
+                learnportal3checkBox.Checked = false;
+                AppDomain.CurrentDomain.SetData("learnportal3", null);
+                CPsettings.Instance.Learnportal3 = false;
+            }
+
+            if (CPsettings.Instance.Learnportal3)            
+            {
+                learnportal3checkBox.Checked = true;
+                AppDomain.CurrentDomain.SetData("learnportal3", "true");
+            }
+            else
+            {
+                learnportal3checkBox.Checked = false;
+                AppDomain.CurrentDomain.SetData("learnportal3", null);
+            }
+
+            if (StyxWoW.Me.Level < 83 || Lua.GetReturnVal<bool>("return GetQuestsCompleted()[28112]", 0) || !CPGlobalSettings.Instance.BotAllowUpdate)
+            {
+                learnportal4checkBox.Enabled = false;
+                learnportal4checkBox.Checked = false;
+                AppDomain.CurrentDomain.SetData("learnportal4", null);
+                CPsettings.Instance.Learnportal4 = false;
+            }
+            if (CPsettings.Instance.Learnportal4)
+            {
+                learnportal4checkBox.Checked = true;
+                AppDomain.CurrentDomain.SetData("learnportal4", "true");
+            }
+            else
+            {
+                learnportal4checkBox.Checked = false;
+                AppDomain.CurrentDomain.SetData("learnportal4", null);
+
+            }
+
+            if (StyxWoW.Me.Level < 84 || Lua.GetReturnVal<bool>("return GetQuestsCompleted()[27538]", 0) || Lua.GetReturnVal<bool>("return GetQuestsCompleted()[26840]", 0) || !CPGlobalSettings.Instance.BotAllowUpdate)
+            {
+                learnportal5checkBox.Enabled = false;
+                learnportal5checkBox.Checked = false;
+                AppDomain.CurrentDomain.SetData("learnportal5", null);
+                CPsettings.Instance.Learnportal5 = false;
+            }
+            if (CPsettings.Instance.Learnportal5)
+            {
+                learnportal5checkBox.Checked = true;
+                AppDomain.CurrentDomain.SetData("learnportal5", "true");
+            }
+            else
+            {
+                learnportal5checkBox.Checked = false;
+                AppDomain.CurrentDomain.SetData("learnportal5", null);
+
+            }
         }
 
         public void UpdateStuff()
@@ -232,10 +335,11 @@ namespace CavaPlugin
             else
             {
                 MiningBlacksmithingProf.Enabled = false;
-                if (lastUseProfile == 8)
-                    lastUseProfile = 0;
+                if (LastUseProfile == 8)
+                    LastUseProfile = 0;
             }
-            lastUseProfile = CPsettings.Instance.lastUsedPath;
+            Checkarmageddonerreservedprofiles();
+            LastUseProfile = CPsettings.Instance.lastUsedPath;
             guildInvitescheckBox.Checked = CPsettings.Instance.guildInvitescheck;
             AntiStuck_CheckBox.Checked = CPsettings.Instance.AntiStuckSystem;
             AutoShutDown_Checkbox.Checked = CPGlobalSettings.Instance.AutoShutdownWhenUpdate;
@@ -304,7 +408,7 @@ namespace CavaPlugin
                 ResourceManager rm = new ResourceManager("Lang.ru", _assembly);
                 getRes(ci, rm);
             }
-            if (lastUseProfile > 0)
+            if (LastUseProfile > 0)
             {
                 button1.Visible = true;
                 label3.Visible = true;
@@ -325,7 +429,7 @@ namespace CavaPlugin
         {
             button_Click();
             timer1.Enabled = false;
-            lastUseProfile = 1; //Leveling 1 to 90
+            LastUseProfile = 1; //Leveling 1 to 90
             richTextBox2.Text = leveling1to90txt;
         }
 
@@ -333,7 +437,7 @@ namespace CavaPlugin
         {
             button_Click();
             timer1.Enabled = false;
-            lastUseProfile = 2; //Leveling Pandaren 1 to 90 Horde
+            LastUseProfile = 2; //Leveling Pandaren 1 to 90 Horde
             richTextBox2.Text = levelingpandahordetxt;
 
         }
@@ -342,7 +446,7 @@ namespace CavaPlugin
         {
             button_Click();
             timer1.Enabled = false;
-            lastUseProfile = 3; //Leveling Pandaren 1 to 90 Alliance
+            LastUseProfile = 3; //Leveling Pandaren 1 to 90 Alliance
             richTextBox2.Text = levelingpandaallytxt;
         }
 
@@ -350,7 +454,7 @@ namespace CavaPlugin
         {
             button_Click();
             timer1.Enabled = false;
-            lastUseProfile = 4; //Leveling 85 to 90 With Loot 
+            LastUseProfile = 4; //Leveling 85 to 90 With Loot 
             richTextBox2.Text = level85to90boxtxt;
         }
 
@@ -358,7 +462,7 @@ namespace CavaPlugin
         {
             button_Click();
             timer1.Enabled = false;
-            lastUseProfile = 5; //test profiles
+            LastUseProfile = 5; //test profiles
             richTextBox2.Text = levelingarmagessonertxt;
         }
 
@@ -367,7 +471,7 @@ namespace CavaPlugin
             button_Click();
             timer1.Enabled = false;
             timer1.Dispose();
-            CPsettings.Instance.lastUsedPath = lastUseProfile;
+            CPsettings.Instance.lastUsedPath = LastUseProfile;
             CPGlobalSettings.Instance.Save();
             CPsettings.Instance.Save();
             nomeiaprofile();
@@ -375,9 +479,9 @@ namespace CavaPlugin
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            seconds -= 1;
-            label6.Text = seconds.ToString();
-            if (seconds == 0)
+            Seconds -= 1;
+            label6.Text = Seconds.ToString();
+            if (Seconds == 0)
             {
                 timer1.Enabled = false;
                 nomeiaprofile();
@@ -405,16 +509,17 @@ namespace CavaPlugin
         }
         private void nomeiaprofile()
         {
-            if (lastUseProfile == 1) { lancaprofile(pathToProfiles + "Next[Cava].xml"); }
-            if (lastUseProfile == 2) { lancaprofile(pathToProfiles + "[Quest]Pandaren-Horde1to90By[Cava].xml"); }
-            if (lastUseProfile == 3) { lancaprofile(pathToProfiles + "[Quest]Pandaren-Alliance1to90By[Cava].xml"); }
-            if (lastUseProfile == 4) { lancaprofile(pathToProfiles + "[Quest]MOP85to90WithLootBy[Cava].xml"); }
-            if (lastUseProfile == 5) { lancaprofile(pathToProfiles + "ArmageddonerNext[Cava].xml"); }
-            if (lastUseProfile == 6) { lancaprofile(pathToProfiles + "ArmageddonerNext[Cava].xml"); }
-            if (lastUseProfile == 7) { lancaprofile(pathToProfiles + "emptymb600.xml"); }
-            if (lastUseProfile == 8) { lancaprofile(pathToProfiles + "emptymb300.xml"); }
+            if (LastUseProfile == 1) { lancaprofile(pathToProfiles + "Next[Cava].xml"); }
+            if (LastUseProfile == 2) { lancaprofile(pathToProfiles + "[Quest]Pandaren-Horde1to90By[Cava].xml"); }
+            if (LastUseProfile == 3) { lancaprofile(pathToProfiles + "[Quest]Pandaren-Alliance1to90By[Cava].xml"); }
+            if (LastUseProfile == 4) { lancaprofile(pathToProfiles + "[Quest]MOP85to90WithLootBy[Cava].xml"); }
+            if (LastUseProfile == 5) { lancaprofile(pathToProfiles + "ArmageddonerNext[Cava].xml"); }
+            if (LastUseProfile == 6) { lancaprofile(pathToProfiles + "ArmageddonerNext[Cava].xml"); }
+            if (LastUseProfile == 7) { lancaprofile(pathToProfiles + "emptymb600.xml"); }
+            if (LastUseProfile == 8) { lancaprofile(pathToProfiles + "emptymb300.xml"); }
+            if (LastUseProfile == 10) { lancaprofile(pathToProfiles + "[N-Quest]Armageddoner_Reserved[Cava].xml"); }
         }
-
+        
         private void lancaprofile(string ProfileToLoad)
         {
             //para relogio
@@ -425,7 +530,7 @@ namespace CavaPlugin
             if (isRunningantes)
             {
                 CPGlobalSettings.Instance.Allowlunch = true;
-                CPGlobalSettings.Instance.BaseProfileToLunch = lastUseProfile;
+                CPGlobalSettings.Instance.BaseProfileToLunch = LastUseProfile;
                 CPGlobalSettings.Instance.Save();
                 Close();
             }
@@ -433,8 +538,8 @@ namespace CavaPlugin
             {
                 //muda para quest bot
                 Styx.Helpers.CharacterSettings.Instance.Load();
-                numberBotBase = Styx.Helpers.CharacterSettings.Instance.SelectedBotIndex;
-                if (numberBotBase != 9)
+                NumberBotBase = Styx.Helpers.CharacterSettings.Instance.SelectedBotIndex;
+                if (NumberBotBase != 9)
                 {
                     var questBot = BotManager.Instance.Bots.FirstOrDefault(kvp => kvp.Key == "Questing");
                     if (questBot.Key == "Questing")
@@ -659,7 +764,7 @@ namespace CavaPlugin
         {
             timer1.Enabled = false;
             timer1.Dispose();
-            CPsettings.Instance.lastUsedPath = lastUseProfile;
+            CPsettings.Instance.lastUsedPath = LastUseProfile;
             CPGlobalSettings.Instance.Save();
             CPsettings.Instance.Save();
             nomeiaprofile();
@@ -676,7 +781,7 @@ namespace CavaPlugin
             button_Click();
             timer1.Enabled = false;
             ProfessionsrichTextBox.Text = mbs1300txt;
-            lastUseProfile = 8; //MB 1 to 300
+            LastUseProfile = 8; //MB 1 to 300
         }
 
         private void linkLabel29_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -918,10 +1023,34 @@ namespace CavaPlugin
             combatloot_checkBox.Enabled = true;
             fixmountcheckBox1.Enabled = true;
             OpenBox_checkBox.Enabled = StyxWoW.Me.Class == WoWClass.Rogue;
+            CPGlobalSettings.Instance.ArmaPanelBack = true; 
             CPGlobalSettings.Instance.BotAllowUpdate = true;
             CPGlobalSettings.Instance.AllowUpdate = true;
-            CPGlobalSettings.Instance.ArmaPanelBack = true;
-            CPGlobalSettings.Instance.Save();
+            CPGlobalSettings.Instance.Save(); 
+            Checkarmageddonerreservedprofiles();
+
+            if (StyxWoW.Me.Level >= 80 && !Lua.GetReturnVal<bool>("return GetQuestsCompleted()[25316]", 0))
+            {
+                learnportal1checkBox.Enabled = true;
+            }
+            if (StyxWoW.Me.Level >= 80)
+            {
+                learnportal2checkBox.Enabled = true;
+            }
+
+            if (StyxWoW.Me.Level >= 82)
+            {
+                learnportal3checkBox.Enabled = true;
+            }
+            if (StyxWoW.Me.Level >= 83)
+            {
+                learnportal4checkBox.Enabled = true;
+            }
+            if (StyxWoW.Me.Level >= 84)
+            {
+                learnportal4checkBox.Enabled = true;
+            }
+
         }
 
         private void DontHaveArmageddonerAccess()
@@ -954,6 +1083,21 @@ namespace CavaPlugin
             OpenBox_checkBox.Enabled = false;
             fixmountcheckBox1.Checked = false;
             fixmountcheckBox1.Enabled = false;
+            learnportal1checkBox.Enabled = false;
+            learnportal1checkBox.Checked = false;
+            AppDomain.CurrentDomain.SetData("learnportal1", null);
+            learnportal2checkBox.Enabled = false;
+            learnportal2checkBox.Checked = false;
+            AppDomain.CurrentDomain.SetData("learnportal2", null);
+            learnportal3checkBox.Enabled = false;
+            learnportal3checkBox.Checked = false;
+            AppDomain.CurrentDomain.SetData("learnportal3", null);
+            learnportal4checkBox.Enabled = false;
+            learnportal4checkBox.Checked = false;
+            AppDomain.CurrentDomain.SetData("learnportal4", null);
+            learnportal5checkBox.Enabled = false;
+            learnportal5checkBox.Checked = false;
+            AppDomain.CurrentDomain.SetData("learnportal5", null);
             CPGlobalSettings.Instance.BotAllowUpdate = false;
             CPGlobalSettings.Instance.AllowUpdate = false;
             CPGlobalSettings.Instance.ArmaPanelBack = false;
@@ -971,10 +1115,10 @@ namespace CavaPlugin
             CPGlobalSettings.Instance.ProfMinBlack600 = true;
             CPGlobalSettings.Instance.Save();
             ProfMinBlack1600radioButton.Enabled = true;
-            if (lastUseProfile != 8) return;
+            if (LastUseProfile != 8) return;
             label4.Text = mbs1600;
             ProfessionsrichTextBox.Text = mbs1600txt;
-            lastUseProfile = 7;
+            LastUseProfile = 7;
             ProfMinBlack1600radioButton.Checked = true;
         }
 
@@ -988,10 +1132,10 @@ namespace CavaPlugin
             CPGlobalSettings.Instance.BotPBMiningBlacksmithing = false;
             CPGlobalSettings.Instance.PBMiningBlacksmithing = false;
             CPGlobalSettings.Instance.Save();
-            if (lastUseProfile != 7) return;
+            if (LastUseProfile != 7) return;
             label4.Text = mbs1300;
             ProfessionsrichTextBox.Text = mbs1300txt;
-            lastUseProfile = 8;
+            LastUseProfile = 8;
             MiningBlacksmithingProf.Checked = true;
         }
 
@@ -1089,7 +1233,7 @@ namespace CavaPlugin
             button_Click();
             timer1.Enabled = false;
             ProfessionsrichTextBox.Text = mbs1600txt;
-            lastUseProfile = 7; //MB 1 to 600
+            LastUseProfile = 7; //MB 1 to 600
         }
 
         private void combatloot_checkBox_CheckedChanged(object sender, EventArgs e)
@@ -1124,6 +1268,58 @@ namespace CavaPlugin
             button_Click();
             CPsettings.Instance.fixSummonMountVendor = fixmountcheckBox1.Checked;
         }
+
+        private void learnportal1checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            AppDomain.CurrentDomain.SetData("learnportal1", learnportal1checkBox.Checked ? "true" : null);
+            CPsettings.Instance.Learnportal1 = learnportal1checkBox.Checked;
+            LastUseProfile = 10; 
+            richTextBox4.Text = "Run Checked List Of Reserved Profiles For Armageddoner Users";
+        }
+
+        private void learnportal2checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            AppDomain.CurrentDomain.SetData("learnportal2", learnportal2checkBox.Checked ? "true" : null);
+            CPsettings.Instance.Learnportal2 = learnportal2checkBox.Checked;
+            LastUseProfile = 10;
+            richTextBox4.Text = "Run Checked List Of Reserved Profiles For Armageddoner Users";
+        }
+
+        private void learnportal3checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            AppDomain.CurrentDomain.SetData("learnportal3", learnportal3checkBox.Checked ? "true" : null);
+            CPsettings.Instance.Learnportal3 = learnportal3checkBox.Checked;
+            LastUseProfile = 10;
+            richTextBox4.Text = "Run Checked List Of Reserved Profiles For Armageddoner Users";
+        }
+
+        private void learnportal4checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            AppDomain.CurrentDomain.SetData("learnportal4", learnportal4checkBox.Checked ? "true" : null);
+            CPsettings.Instance.Learnportal4 = learnportal4checkBox.Checked;
+            LastUseProfile = 10;
+            richTextBox4.Text = "Run Checked List Of Reserved Profiles For Armageddoner Users";
+        }
+
+        private void learnportal5checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            AppDomain.CurrentDomain.SetData("learnportal5", learnportal5checkBox.Checked ? "true" : null);
+            CPsettings.Instance.Learnportal5 = learnportal5checkBox.Checked;
+            LastUseProfile = 10;
+            richTextBox4.Text = "Run Checked List Of Reserved Profiles For Armageddoner Users";
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            button_Click();
+            timer1.Enabled = false;
+            timer1.Dispose();
+            CPsettings.Instance.lastUsedPath = LastUseProfile;
+            CPGlobalSettings.Instance.Save();
+            CPsettings.Instance.Save();
+            nomeiaprofile();
+
+        }
     }
     public class CPsettings : Settings
     {
@@ -1156,7 +1352,16 @@ namespace CavaPlugin
         public bool OpenBox { get; set; }
         [Setting, DefaultValue(false)]
         public bool fixSummonMountVendor { get; set; }
-
+        [Setting, DefaultValue(false)]
+        public bool Learnportal1 { get; set; }
+        [Setting, DefaultValue(false)]
+        public bool Learnportal2 { get; set; }
+        [Setting, DefaultValue(false)]
+        public bool Learnportal3 { get; set; }
+        [Setting, DefaultValue(false)]
+        public bool Learnportal4 { get; set; }
+        [Setting, DefaultValue(false)]
+        public bool Learnportal5 { get; set; }
     }
 
     public class CPGlobalSettings : Settings 
