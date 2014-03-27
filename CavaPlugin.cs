@@ -82,7 +82,7 @@ namespace CavaPlugin
 
         public override Version Version
         {
-            get { return new Version(4, 3, 0); }
+            get { return new Version(4, 3, 1); }
         }
 
         public override string Name
@@ -165,46 +165,86 @@ namespace CavaPlugin
 
         public void CavaAtackMob()
         {
+            if (!Me.IsAutoAttacking)
+            { Lua.DoString("StartAttack()"); }
             var spell=0; 
             switch (Me.Class)
             {
                 case WoWClass.Mage:
-                    spell = 44614;
+                    if (SpellManager.CanCast(2136))
+                        spell = 2136;
+                    if (SpellManager.CanCast(126201))
+                        spell = 126201;
+                    if (SpellManager.CanCast(44614))
+                        spell = 44614;
                     break;
                 case WoWClass.Druid:
-                    spell = 8921;
+                    if (SpellManager.CanCast(33917))
+                        spell = 33917;
+                    if (SpellManager.CanCast(22568))
+                        spell = 22568;
+                    if (SpellManager.CanCast(1822))
+                        spell = 1822;
+                    if (SpellManager.CanCast(768) && !Me.HasAura(768))
+                        spell = 768;
+                    if (SpellManager.CanCast(5176) && !Me.HasAura(768))
+                        spell = 5176;
                     break;
                 case WoWClass.Paladin:
-                    spell = 35395;
+                    if (SpellManager.CanCast(20271))
+                        spell = 20271;
+                    if (SpellManager.CanCast(35395))
+                        spell = 35395;
                     break;
                 case WoWClass.Priest:
-                    spell = 589;
+                    if (SpellManager.CanCast(585))
+                        spell = 585;
+                    if (SpellManager.CanCast(15407))
+                        spell = 15407;
+                    if (SpellManager.CanCast(589) && !Me.CurrentTarget.HasAura(589))
+                        spell = 589;
                     break;
                 case WoWClass.Shaman:
-                    spell = 8050;
+                    if (SpellManager.CanCast(73899))
+                        spell = 73899;
+                    if (SpellManager.CanCast(403))
+                        spell = 403;
+                    if (SpellManager.CanCast(17364))
+                        spell = 17364;
                     break;
                 case WoWClass.Warlock:
                     spell = 686;
                     break;
                 case WoWClass.DeathKnight:
-                    if (SpellManager.CanCast(45902))
-                        spell = 45902;
-                    if (SpellManager.CanCast(49143))
-                        spell = 49143;
-                    if (SpellManager.CanCast(45462))
-                        spell = 45462;
+                    spell = 49998;
                     break;
                 case WoWClass.Hunter:
-                    spell = 56641;
+                    if (SpellManager.CanCast(56641))
+                        spell = 56641;
+                    if (SpellManager.CanCast(3044))
+                        spell = 3044;
                     break;
                 case WoWClass.Warrior:
-                    spell = 78;
+                    if (SpellManager.CanCast(20243))
+                        spell = 20243;
+                    if (SpellManager.CanCast(23922))
+                        spell = 23922;
+                    if (SpellManager.CanCast(34428))
+                        spell = 34428;
+                    if (SpellManager.CanCast(78))
+                        spell = 78;
                     break;
                 case WoWClass.Rogue:
-                    spell = 1752;
+                    if (SpellManager.CanCast(1752))
+                        spell = 1752;
+                    if (SpellManager.CanCast(2098))
+                        spell = 2098;
                     break;
                 case WoWClass.Monk:
-                    spell = 100780;
+                    if (SpellManager.CanCast(100787))
+                        spell = 100787;
+                    if (SpellManager.CanCast(100780))
+                        spell = 100780;
                     break;
             }
             if (spell != 0)
@@ -885,7 +925,7 @@ namespace CavaPlugin
         private static List<WoWUnit> MobKoiKoiSpirit { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 22226 && ret.IsAlive)).OrderBy(ret => ret.Distance).ToList(); } }
         private static List<WoWUnit> MobWitheredCorpse { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 20561 && ret.Distance < 16 && ret.HasAura(31261))).OrderBy(ret => ret.Distance).ToList(); } }
         private static List<WoWUnit> MobGlacierIce { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 49233 && ret.IsAlive)).OrderBy(ret => ret.Distance).ToList(); } }
-        private static List<WoWUnit> MobSauranokMystic { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 44120 && ret.IsAlive && ret.HasAura(82531))).OrderBy(ret => ret.Distance).ToList(); } }
+        private static List<WoWUnit> MobSauranokMystic { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 44120 && ret.IsAlive)).OrderBy(ret => ret.Distance).ToList(); } }
         //private static WoWItem ItemCelebrationPack { get { return (StyxWoW.Me.CarriedItems.FirstOrDefault(i => i.Entry == 90918)); } }
         //private static WoWItem ItemHs { get { return (StyxWoW.Me.CarriedItems.FirstOrDefault(i => i.Entry == 6948)); } }
         private static WoWItem ItemThisShiv { get { return (StyxWoW.Me.CarriedItems.FirstOrDefault(i => i.Entry == 55883)); } }
@@ -1106,12 +1146,16 @@ namespace CavaPlugin
                 }
                 if (Me.QuestLog.GetQuestById(26830) != null && !Me.QuestLog.GetQuestById(26830).IsCompleted && MobSauranokMystic.Count > 0 )
                 {
-                    if (MobSauranokMystic[0].Location.Distance(Me.Location) > 4)
+                    if (MobSauranokMystic[0].HasAura(82548) && Me.CurrentTarget != null && Me.CurrentTarget.Entry == 44120)
+                        Blacklist.Add(Me.CurrentTarget, BlacklistFlags.Combat, TimeSpan.FromSeconds(180000));
+                    if (MobSauranokMystic[0].Location.Distance(Me.Location) > 4 && MobSauranokMystic[0].HasAura(82531))
                     {
                         Navigator.MoveTo(MobSauranokMystic[0].Location);
                     }
-                    if (MobSauranokMystic[0].Location.Distance(Me.Location) <= 4)
+                    if (MobSauranokMystic[0].Location.Distance(Me.Location) <= 4 && MobSauranokMystic[0].HasAura(82531))
                     {
+                        Blacklist.Add(Me.CurrentTarget, BlacklistFlags.Combat, TimeSpan.FromSeconds(1));
+                        StyxWoW.Sleep(10);
                         WoWMovement.MoveStop();
                         MobSauranokMystic[0].Target();
                         MobSauranokMystic[0].Face();
@@ -1250,7 +1294,7 @@ namespace CavaPlugin
                 */
                 if (CPsettings.Instance.AntiStuckSystem )
                 {
-                    if (_vendorMountSpellId != 0 && CPsettings.Instance.fixSummonMountVendor)
+                    if (_vendorMountSpellId != 0 && CPsettings.Instance.fixSummonMountVendor && Me.IsAlive && !Me.Combat)
                     {
                         if (Me.Mounted)
                         {

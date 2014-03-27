@@ -330,10 +330,15 @@ namespace CavaPlugin
             {
                 DontHaveprofessionminingblacksmithing600Access();
             }
-            if(CPGlobalSettings.Instance.CpPanelBack)
-            { MiningBlacksmithingProf.Enabled = true; }
+            if (CPGlobalSettings.Instance.CpPanelBack)
+            {
+                pictureBox13.Visible = false; 
+                MiningBlacksmithingProf.Enabled = true;
+            }
             else
             {
+                pictureBox13.Visible = true;
+                pictureBox10.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\n.png");
                 MiningBlacksmithingProf.Enabled = false;
                 if (LastUseProfile == 8)
                     LastUseProfile = 0;
@@ -1008,6 +1013,7 @@ namespace CavaPlugin
         {
             CavaPlugin.Log("Armageddoner Access Tested and Passed");
             pictureBox11.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\y.png");
+            pictureBox9.Visible = false;
             AntiStuck_CheckBox.Enabled = true;
             AutoShutDown_Checkbox.Enabled = true;
             AllowSummonPet_Checkbox.Enabled = true;
@@ -1056,6 +1062,7 @@ namespace CavaPlugin
         private void DontHaveArmageddonerAccess()
         {
             pictureBox11.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\n.png");
+            pictureBox9.Visible = true;
             AntiStuck_CheckBox.Checked = false;
             AntiStuck_CheckBox.Enabled = false;
             AutoShutDown_Checkbox.Checked = false;
@@ -1108,6 +1115,8 @@ namespace CavaPlugin
         {
             CavaPlugin.Log("Profession Owner Access Tested and Passed for Mining/Blacksmithing 1 to 600");
             pictureBox12.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\y.png");
+            pictureBox14.Visible = false;
+            pictureBox8.Visible = false;
             linkLabel29.Enabled = true;
             MiningBlacksmithingProf.Text = mbs1600;
             CPGlobalSettings.Instance.BotPBMiningBlacksmithing = true;
@@ -1125,6 +1134,8 @@ namespace CavaPlugin
         private void DontHaveprofessionminingblacksmithing600Access()
         {
             pictureBox12.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\n.png");
+            pictureBox14.Visible = true;
+            pictureBox8.Visible = true;
             ProfMinBlack1600radioButton.Checked = false;
             ProfMinBlack1600radioButton.Enabled = false;
             linkLabel29.Enabled = false;
@@ -1162,6 +1173,7 @@ namespace CavaPlugin
                 if (response.StatusCode.ToString() == "OK")//is reg
                 {
                     CavaPlugin.Log("Registered Access Tested and Passed");
+                    pictureBox13.Visible = false;
                     CPGlobalSettings.Instance.CpPanelBack = true;
                     MiningBlacksmithingProf.Enabled = true;
                     pictureBox10.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\y.png");
@@ -1209,6 +1221,7 @@ namespace CavaPlugin
                 else
                 {
                     pictureBox10.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\n.png");
+                    pictureBox13.Visible = true;
                     DontHaveArmageddonerAccess();
                     DontHaveprofessionminingblacksmithing600Access();
                     CPGlobalSettings.Instance.CpPanelBack = false;
@@ -1219,8 +1232,10 @@ namespace CavaPlugin
             {
                 CavaPlugin.Err("Something Wrong, cant confirm you have registered access, opening browser to test access");
                 pictureBox10.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\n.png");
+                pictureBox13.Visible = true;
                 DontHaveArmageddonerAccess();
                 DontHaveprofessionminingblacksmithing600Access();
+                CPGlobalSettings.Instance.CpPanelBack = false;
                 CPGlobalSettings.Instance.Save();
                 var sInfo = new ProcessStartInfo("http://cavaprofiles.org/index.php");
                 Process.Start(sInfo);

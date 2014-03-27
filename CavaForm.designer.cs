@@ -390,6 +390,7 @@ namespace CavaPlugin
             this.pictureBox14.Location = new System.Drawing.Point(690, 58);
             this.pictureBox14.Name = "pictureBox14";
             this.pictureBox14.Size = new System.Drawing.Size(110, 23);
+            this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox14.TabIndex = 10;
             this.pictureBox14.TabStop = false;
             this.pictureBox14.Click += new System.EventHandler(this.pictureBox14_Click);
@@ -400,6 +401,7 @@ namespace CavaPlugin
             this.pictureBox13.Location = new System.Drawing.Point(690, 28);
             this.pictureBox13.Name = "pictureBox13";
             this.pictureBox13.Size = new System.Drawing.Size(110, 23);
+            this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox13.TabIndex = 9;
             this.pictureBox13.TabStop = false;
             this.pictureBox13.Click += new System.EventHandler(this.pictureBox13_Click);
@@ -755,7 +757,7 @@ namespace CavaPlugin
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(146, 17);
             this.label14.TabIndex = 2;
-            this.label14.Text = "CavaPlugin V 4.3.0";
+            this.label14.Text = "CavaPlugin V 4.3.1";
             // 
             // button4
             // 
@@ -917,6 +919,7 @@ namespace CavaPlugin
             this.pictureBox10.Location = new System.Drawing.Point(273, 105);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox10.TabIndex = 41;
             this.pictureBox10.TabStop = false;
             // 
@@ -1040,9 +1043,10 @@ namespace CavaPlugin
             // 
             // pictureBox12
             // 
-            this.pictureBox12.Location = new System.Drawing.Point(3, 43);
+            this.pictureBox12.Location = new System.Drawing.Point(3, 26);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox12.TabIndex = 42;
             this.pictureBox12.TabStop = false;
             // 
@@ -1139,6 +1143,7 @@ namespace CavaPlugin
             this.pictureBox11.Location = new System.Drawing.Point(3, 30);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox11.TabIndex = 41;
             this.pictureBox11.TabStop = false;
             // 
