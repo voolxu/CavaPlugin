@@ -82,7 +82,7 @@ namespace CavaPlugin
 
         public override Version Version
         {
-            get { return new Version(4, 3, 1); }
+            get { return new Version(4, 3, 2); }
         }
 
         public override string Name
@@ -650,6 +650,9 @@ namespace CavaPlugin
                         Log(_rm.GetString("Summon_Random_Pet_Disabled", _ci));
                     }
 
+                    Log(CPsettings.Instance.fixSummonMountVendor
+                        ? "Fix Summon Mount Vendor Enabled"
+                        : "Fix Summon Mount Vendor Disabled");
                     if (CPsettings.Instance.guildInvitescheck || CPsettings.Instance.refuseguildInvitescheck)
                     {
                         if (CPsettings.Instance.guildInvitescheck)
@@ -1292,51 +1295,51 @@ namespace CavaPlugin
                     }
                 }
                 */
-                if (CPsettings.Instance.AntiStuckSystem )
+                if (_vendorMountSpellId != 0 && CPsettings.Instance.fixSummonMountVendor && Me.IsAlive && !Me.Combat)
                 {
-                    if (_vendorMountSpellId != 0 && CPsettings.Instance.fixSummonMountVendor && Me.IsAlive && !Me.Combat)
+                    if (Me.Mounted)
                     {
-                        if (Me.Mounted)
+                        //VendorMountSpellId = 0;
+                        if (StyxWoW.Me.HasAura(WoWSpell.FromId(_vendorMountSpellId).Name))
                         {
-                            //VendorMountSpellId = 0;
-                            if (StyxWoW.Me.HasAura(WoWSpell.FromId(_vendorMountSpellId).Name))
-                            {
-                                Log("[antistuck]-Summon Mound Vendor Finished");
-                                _vendorMountSpellId = 0;
-                            }
-                            else
-                                Mount.Dismount();
+                            Log("[antistuck]-Summon Mound Vendor Finished");
+                            _vendorMountSpellId = 0;
                         }
                         else
+                            Mount.Dismount();
+                    }
+                    else
+                    {
+                        WoWMovement.MoveStop();
+                        WoWSpell.FromId(_vendorMountSpellId).Cast();
+                        StyxWoW.Sleep(6000);
+                        if (!Me.Mounted)
                         {
-                            WoWMovement.MoveStop();
-                            WoWSpell.FromId(_vendorMountSpellId).Cast();
-                            StyxWoW.Sleep(6000);
-                            if (!Me.Mounted)
+                            //need mov
+                            var randtogo = RandomNumber(1, 4);
+                            switch (randtogo)
                             {
-                                //need mov
-                                var randtogo = RandomNumber(1, 4);
-                                switch (randtogo)
-                                {
-                                    case 1:
-                                        WoWMovement.Move(WoWMovement.MovementDirection.Forward);
-                                        break;
-                                    case 2:
-                                        WoWMovement.Move(WoWMovement.MovementDirection.Backwards);
-                                        break;
-                                    case 3:
-                                        WoWMovement.Move(WoWMovement.MovementDirection.StrafeLeft);
-                                        break;
-                                    default:
-                                        WoWMovement.Move(WoWMovement.MovementDirection.StrafeRight);
-                                        break;
-                                }
-                                StyxWoW.Sleep(2000);
-                                WoWMovement.MoveStop();
+                                case 1:
+                                    WoWMovement.Move(WoWMovement.MovementDirection.Forward);
+                                    break;
+                                case 2:
+                                    WoWMovement.Move(WoWMovement.MovementDirection.Backwards);
+                                    break;
+                                case 3:
+                                    WoWMovement.Move(WoWMovement.MovementDirection.StrafeLeft);
+                                    break;
+                                default:
+                                    WoWMovement.Move(WoWMovement.MovementDirection.StrafeRight);
+                                    break;
                             }
+                            StyxWoW.Sleep(2000);
+                            WoWMovement.MoveStop();
                         }
                     }
+                }
 
+                if (CPsettings.Instance.AntiStuckSystem )
+                {
                     if (_asLastSavedPosition.Distance(Me.Location) > 35)
                     {
                         _asLastSavedPosition = Me.Location;
