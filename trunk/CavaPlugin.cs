@@ -82,7 +82,7 @@ namespace CavaPlugin
 
         public override Version Version
         {
-            get { return new Version(4, 3, 2); }
+            get { return new Version(4, 3, 3); }
         }
 
         public override string Name
@@ -1441,7 +1441,11 @@ namespace CavaPlugin
                     {
                         // ReSharper disable once ResourceItemNotResolved
                         Log(_rm.GetString("AntiStuck_not_moving_last_10_min", _ci), DateTime.Now.ToString(CultureInfo.InvariantCulture));
-                        _recomecar.Start();
+                        //_recomecar.Start();
+                        TreeRoot.Stop();
+                        ProfileManager.LoadNew(PathToCavaProfiles + "Cava_Starter_Profiles.xml");
+                        StyxWoW.Sleep(2000);
+                        TreeRoot.Start();
                         _nVezesBotUnstuck++;
                     }
                     if (_ultimoSemStuck.ElapsedMilliseconds > 900000 && Me.ZoneId != 1519 && Me.ZoneId != 1637)
