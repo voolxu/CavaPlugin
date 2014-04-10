@@ -452,14 +452,14 @@ to Portuguese
   <data name="CavaPlugin_has_been_updated_restart_required" xml:space="preserve">
     <value>Cava Plugin/Quête Comportements a été mis à jour, un redémarrage est nécessaire.</value>
   </data>
-  <data name="RESTART_REQUIRED" xml:space="preserve">
-    <value>REDÉMARRAGE NÉCESSAIRE</value>
-  </data>
-  <data name="newtxt" xml:space="preserve">
-    <value>Profils de la carte ajoutée, niveaux 72 to 77. Carte ajoutée niveaux 77 à 83 (reservé pour Armageddoners).</value>
+  <data name="levelingarmagessonertxt" xml:space="preserve">
+    <value>This profile will level any character from 79 to 85</value>
   </data>
   <data name="levelingarmagessoner" xml:space="preserve">
-    <value>Alliance Et Horde (77-83) (testeurs/donateurs seulement)</value>
+    <value>Alliance And Horde (79-85) (testers/donators only)</value>
+  </data>
+  <data name="newtxt" xml:space="preserve">
+    <value>Added Twilight Highlands map profile, levels 84 to 85, (reserved for Armageddoners).</value>
   </data>
 
 </root>

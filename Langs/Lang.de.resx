@@ -547,13 +547,13 @@ to Portuguese
     <value>Bergbau und Schmiedekunst 1 bis 600</value>
   </data>
   <data name="levelingarmagessonertxt" xml:space="preserve">
-    <value>Dieses Profil ist von Level 79 bis Level 84</value>
+    <value>This profile will level any character from 79 to 85</value>
   </data>
   <data name="levelingarmagessoner" xml:space="preserve">
-    <value>Allianz und Horde (79-84) (nur für Tester/Käufer)</value>
+    <value>Alliance And Horde (79-85) (testers/donators only)</value>
   </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Zul'Drak Gebiet hinzugefügt, Level 77 bis 79. Uldum Gebiet hinzugefügt, Levels 83 bis 84 (Nur für Armageddoners/Käufer).</value>
+    <value>Added Twilight Highlands map profile, levels 84 to 85, (reserved for Armageddoners).</value>
   </data>
 
 
