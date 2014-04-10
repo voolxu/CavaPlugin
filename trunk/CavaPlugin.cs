@@ -82,7 +82,7 @@ namespace CavaPlugin
 
         public override Version Version
         {
-            get { return new Version(4, 3, 4); }
+            get { return new Version(4, 4, 0); }
         }
 
         public override string Name

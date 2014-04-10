@@ -527,13 +527,13 @@ to Portuguese
     <value>Mining and Blacksmithing 1 to 600</value>
   </data>
   <data name="levelingarmagessonertxt" xml:space="preserve">
-    <value>This profile will level any character from 79 to 84</value>
+    <value>This profile will level any character from 79 to 85</value>
   </data>
   <data name="levelingarmagessoner" xml:space="preserve">
-    <value>Alliance And Horde (79-84) (testers/donators only)</value>
+    <value>Alliance And Horde (79-85) (testers/donators only)</value>
   </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Added Zul'Drak map profile, levels 77 to 79. Added Uldum map Profile levels 83 to 84 (reserved for Armageddoners).</value>
+    <value>Added Twilight Highlands map profile, levels 84 to 85, (reserved for Armageddoners).</value>
   </data>
 
 </root>
