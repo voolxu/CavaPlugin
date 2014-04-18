@@ -77,9 +77,6 @@ to Portuguese
   <data name="about" xml:space="preserve">
     <value>About</value>
   </data>
-  <data name="antistuck" xml:space="preserve">
-    <value>Anti-Stuck System(Need to Restart WoW)</value>
-  </data>
   <data name="armageddoner" xml:space="preserve">
     <value>Armageddoner</value>
   </data>
@@ -90,7 +87,7 @@ to Portuguese
     <value>Auto Shut-down After Update</value>
   </data>
   <data name="cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Cancels script</value>
   </data>
   <data name="cavaprofessions" xml:space="preserve">
     <value>Cava Profession Profiles</value>
@@ -99,10 +96,10 @@ to Portuguese
     <value>Cava Web</value>
   </data>
   <data name="close" xml:space="preserve">
-    <value>Close</value>
+    <value>Closes Gui</value>
   </data>
   <data name="dailies" xml:space="preserve">
-    <value>Dailies</value>
+    <value>Completes Dailies</value>
   </data>
   <data name="farming" xml:space="preserve">
     <value>Farming</value>
@@ -114,16 +111,16 @@ to Portuguese
     <value>Language</value>
   </data>
   <data name="lastusedprofile" xml:space="preserve">
-    <value>Last Used Profile:</value>
+    <value>Runs last Used Profile:</value>
   </data>
   <data name="lastusedprofiletxtdef" xml:space="preserve">
     <value>There is no previously selected profile</value>
   </data>
   <data name="level85to90" xml:space="preserve">
-    <value>Level 85 to 90 All Quests</value>
+    <value>Level toon from 85 to 90 using only Quests</value>
   </data>
   <data name="level85to90txt" xml:space="preserve">
-    <value>This profile will level any Alliance character from 85 to 90 and Horde 85 to 88. This profile is not AFK friendly so please report any issues.</value>
+    <value>This profile will level all Alliance characters from 85 to 90 and Horde characters 85 to 88. This profile is not fully AFK so please report any issues.</value>
   </data>
   <data name="leveling1to90" xml:space="preserve">
     <value>Level 1 to 90</value>
@@ -144,7 +141,7 @@ to Portuguese
     <value>Level Pandaren 1 to 90 Horde</value>
   </data>
   <data name="levelingpandahordetxt" xml:space="preserve">
-    <value>This profile will level a Horde Pandaren character from 1 to 12. Select the 1 to 90 Horde profile to continue after level 12.</value>
+    <value>This profile will level a Horde Pandaren character from 1 to 12. When level 12, select the 1 to 90 Horde profile to continue after level 12.</value>
   </data>
   <data name="levelingquest" xml:space="preserve">
     <value>Leveling Quests</value>
@@ -159,7 +156,7 @@ to Portuguese
     <value>Main</value>
   </data>
   <data name="mbs1300txt" xml:space="preserve">
-    <value>This profile will level Mining and Blacksmithing from any level to 300. Works for both Alliance and Horde. Start profile anywhere, the Cava Plugin will move the character to the required locations.</value>
+    <value>This profile will level Mining and Blacksmithing from any level to 300. Works for both Alliance and Horde. Start profile anywhere, the Cava Plugin will move the character to the required locations. (Make sure to have space in bank) </value>
   </data>
   <data name="mbs1600txt" xml:space="preserve">
     <value>This profile will level Mining and Blacksmithing from any level to 600. Works for both Alliance and Horde. Start profile anywhere, the Cava Plugin will move the character to the required locations.</value>
@@ -171,7 +168,7 @@ to Portuguese
     <value>Profession Profiles Owners</value>
   </data>
   <data name="pressdonation" xml:space="preserve">
-    <value>Press Donate to help support the Cava Cause.</value>
+    <value>Press Donate to help support the Cava plugin develope more for you!.</value>
   </data>
   <data name="problemsconfiguring" xml:space="preserve">
     <value>Problems Configuring Honorbuddy...</value>
@@ -255,7 +252,7 @@ to Portuguese
     <value>Please download and update your version to latest release</value>
   </data>
   <data name="This_version_have_some_problems_with_TortoiseSVN" xml:space="preserve">
-    <value>This version of CavaPlugin has some problems with TortoiseSVN</value>
+    <value>This version of CavaPlugin has a few problems with TortoiseSVN</value>
   </data>
   <data name="Download_latest_version_from_HB_Forum" xml:space="preserve">
     <value>Download the latest version from HonorBuddy Forums</value>
@@ -267,10 +264,10 @@ to Portuguese
     <value>Loading CavaPlugin</value>
   </data>
   <data name="CavaPlugin_use_TortoiseSVN_to_download_files_Make_sure_you_have_it" xml:space="preserve">
-    <value>CavaPlugin uses TortoiseSVN to download files. Please make sure you have it installed</value>
+    <value>CavaPlugin uses TortoiseSVN to download files. Please make sure you have TortoiseSVN installed</value>
   </data>
   <data name="CavaPlugin_will_now_auto_install_required_files_to_work" xml:space="preserve">
-    <value>CavaPlugin will now auto install the required files</value>
+    <value>CavaPlugin will now auto-install the required files</value>
   </data>
   <data name="Remove_Previus_Cava_Behaviors_or_Cava_Profiles_before_continue" xml:space="preserve">
     <value>Remove previous Cava Behaviors or Cava Profiles before continuing</value>
@@ -422,9 +419,6 @@ to Portuguese
   <data name="Refuse_duel_invites_Disabled" xml:space="preserve">
     <value>[Refuse Duel Invites: Disabled]</value>
   </data>
-
-
-
   <data name="CavaPlugin_has_been_updated_restart_required" xml:space="preserve">
     <value>Cava Plugin/Quest Behaviors has been updated a restart is required.</value>
   </data>
@@ -527,15 +521,24 @@ to Portuguese
   <data name="Mining_ and_ Blacksmithing600" xml:space="preserve">
     <value>Mining and Blacksmithing 1 to 600</value>
   </data>
+  <data name="antistuck" xml:space="preserve">
+    <value>Anti-Stuck System(Need have an WoW reloger)</value>
+  </data>
+  <data name="RunCheckedListOfReservedProfilesForArmageddonerUsers" xml:space="preserve">
+    <value>Run Checked List Of Reserved Profiles For Armageddoner Users</value>
+  </data>
   <data name="levelingarmagessonertxt" xml:space="preserve">
-    <value>This profile will level any character from 79 to 85</value>
+    <value>This profile will level any character from 80 to 86</value>
   </data>
   <data name="levelingarmagessoner" xml:space="preserve">
-    <value>Alliance And Horde (79-85) (testers/donators only)</value>
+    <value>Alliance And Horde (80-86) (testers/donators only)</value>
   </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Added Twilight Highlands map profile, levels 84 to 85, (reserved for Armageddoners).</value>
+    <value>Added The Jade Forest map profile, levels 85 to 86, (reserved for Armageddoners).</value>
   </data>
+
+
+
 
 
 </root>

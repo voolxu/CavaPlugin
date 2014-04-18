@@ -119,6 +119,7 @@ namespace CavaPlugin
             this.button7 = new System.Windows.Forms.Button();
             this.richTextBox4 = new System.Windows.Forms.RichTextBox();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.learnportal6checkBox = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.learnportal2checkBox = new System.Windows.Forms.CheckBox();
             this.learnportal5checkBox = new System.Windows.Forms.CheckBox();
@@ -757,7 +758,7 @@ namespace CavaPlugin
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(146, 17);
             this.label14.TabIndex = 2;
-            this.label14.Text = "CavaPlugin V 4.4.0";
+            this.label14.Text = "CavaPlugin V 4.5.0";
             // 
             // button4
             // 
@@ -1400,6 +1401,7 @@ namespace CavaPlugin
             // 
             // groupBox14
             // 
+            this.groupBox14.Controls.Add(this.learnportal6checkBox);
             this.groupBox14.Controls.Add(this.label2);
             this.groupBox14.Controls.Add(this.learnportal2checkBox);
             this.groupBox14.Controls.Add(this.learnportal5checkBox);
@@ -1414,6 +1416,20 @@ namespace CavaPlugin
             this.groupBox14.TabIndex = 0;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "Reserved Profiles For Armageddoner Users";
+            // 
+            // learnportal6checkBox
+            // 
+            this.learnportal6checkBox.AutoSize = true;
+            this.learnportal6checkBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.learnportal6checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.learnportal6checkBox.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.learnportal6checkBox.Location = new System.Drawing.Point(3, 155);
+            this.learnportal6checkBox.Name = "learnportal6checkBox";
+            this.learnportal6checkBox.Size = new System.Drawing.Size(250, 24);
+            this.learnportal6checkBox.TabIndex = 7;
+            this.learnportal6checkBox.Text = "Learn The Jade Forest Portal";
+            this.learnportal6checkBox.UseVisualStyleBackColor = true;
+            this.learnportal6checkBox.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged_1);
             // 
             // label2
             // 
@@ -2348,5 +2364,6 @@ namespace CavaPlugin
         private System.Windows.Forms.CheckBox learnportal1checkBox;
         private System.Windows.Forms.PictureBox pictureBox15;
         private System.Windows.Forms.RichTextBox label4;
+        private System.Windows.Forms.CheckBox learnportal6checkBox;
     }
 }
