@@ -82,9 +82,6 @@ to Portuguese
   <data name="about" xml:space="preserve">
     <value>Über</value>
   </data>
-  <data name="antistuck" xml:space="preserve">
-    <value>Anti-Stuck System(benötigt Relogger)</value>
-  </data>
   <data name="armageddoner" xml:space="preserve">
     <value>Armageddoner</value>
   </data>
@@ -546,14 +543,20 @@ to Portuguese
   <data name="Mining_ and_ Blacksmithing600" xml:space="preserve">
     <value>Bergbau und Schmiedekunst 1 bis 600</value>
   </data>
+  <data name="antistuck" xml:space="preserve">
+    <value>Anti-Stuck System(Need have an WoW reloger)</value>
+  </data>
+  <data name="RunCheckedListOfReservedProfilesForArmageddonerUsers" xml:space="preserve">
+    <value>Run Checked List Of Reserved Profiles For Armageddoner Users</value>
+  </data>
   <data name="levelingarmagessonertxt" xml:space="preserve">
-    <value>This profile will level any character from 79 to 85</value>
+    <value>This profile will level any character from 80 to 86</value>
   </data>
   <data name="levelingarmagessoner" xml:space="preserve">
-    <value>Alliance And Horde (79-85) (testers/donators only)</value>
+    <value>Alliance And Horde (80-86) (testers/donators only)</value>
   </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Added Twilight Highlands map profile, levels 84 to 85, (reserved for Armageddoners).</value>
+    <value>Added The Jade Forest map profile, levels 85 to 86, (reserved for Armageddoners).</value>
   </data>
 
 

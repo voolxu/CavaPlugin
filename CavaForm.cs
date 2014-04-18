@@ -36,10 +36,10 @@ namespace CavaPlugin
         public bool ArmaguedonerAllow = false;
         public int Seconds = 15; // Segundos do countdown.
         public int NumberBotBase;
+        // ReSharper disable once PossiblyMistakenUseOfParamsMethod
         public string PathToCavaPlugin = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\");
-
-        public string pathToSettings =
-            Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Settings\Main-Settings.xml");
+        // ReSharper disable once PossiblyMistakenUseOfParamsMethod
+        public string PathToSettings =Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Settings\Main-Settings.xml");
 
         public string pathToProfiles = Path.Combine(Utilities.AssemblyDirectory + @"\Default Profiles\Cava\Scripts\");
         public string profileToLoad = "";
@@ -75,7 +75,7 @@ namespace CavaPlugin
             TortoiseExitCode = p.ExitCode;
         }
 
-        private void getRes(CultureInfo ci, ResourceManager rm)
+        private void GetRes(CultureInfo ci, ResourceManager rm)
         {
             // ReSharper disable ResourceItemNotResolved
             tabPage3.Text = rm.GetString("about", ci);
@@ -182,7 +182,7 @@ namespace CavaPlugin
             }
             if (LastUseProfile == 10)
             {
-                label4.Text = "Run Checked List Of Reserved Profiles For Armageddoner Users";
+                label4.Text = rm.GetString("RunCheckedListOfReservedProfilesForArmageddonerUsers", ci);
             }
             // ReSharper restore ResourceItemNotResolved   
         }
@@ -285,7 +285,6 @@ namespace CavaPlugin
             {
                 learnportal4checkBox.Checked = false;
                 AppDomain.CurrentDomain.SetData("learnportal4", null);
-
             }
 
             if (StyxWoW.Me.Level < 84 || Lua.GetReturnVal<bool>("return GetQuestsCompleted()[27538]", 0) || Lua.GetReturnVal<bool>("return GetQuestsCompleted()[26840]", 0) || !CPGlobalSettings.Instance.BotAllowUpdate)
@@ -304,7 +303,24 @@ namespace CavaPlugin
             {
                 learnportal5checkBox.Checked = false;
                 AppDomain.CurrentDomain.SetData("learnportal5", null);
+            }
 
+            if (StyxWoW.Me.Level < 85 || Lua.GetReturnVal<bool>("return GetQuestsCompleted()[31733]", 0) || Lua.GetReturnVal<bool>("return GetQuestsCompleted()[31766]", 0) || !CPGlobalSettings.Instance.BotAllowUpdate)
+            {
+                learnportal6checkBox.Enabled = false;
+                learnportal6checkBox.Checked = false;
+                AppDomain.CurrentDomain.SetData("learnportal6", null);
+                CPsettings.Instance.Learnportal6 = false;
+            }
+            if (CPsettings.Instance.Learnportal6)
+            {
+                learnportal6checkBox.Checked = true;
+                AppDomain.CurrentDomain.SetData("learnportal6", "true");
+            }
+            else
+            {
+                learnportal6checkBox.Checked = false;
+                AppDomain.CurrentDomain.SetData("learnportal6", null);
             }
         }
 
@@ -366,7 +382,7 @@ namespace CavaPlugin
                 str = str.Remove(str.IndexOf(','));
                 Assembly _assembly = Assembly.Load(str);
                 ResourceManager rm = new ResourceManager("Lang", _assembly);
-                getRes(ci, rm);
+                GetRes(ci, rm);
             }
             if (comboBox1.SelectedIndex == 1)
             {
@@ -375,7 +391,7 @@ namespace CavaPlugin
                 str = str.Remove(str.IndexOf(','));
                 Assembly _assembly = Assembly.Load(str);
                 ResourceManager rm = new ResourceManager("Lang.da", _assembly);
-                getRes(ci, rm);
+                GetRes(ci, rm);
             }
             if (comboBox1.SelectedIndex == 2)
             {
@@ -384,7 +400,7 @@ namespace CavaPlugin
                 str = str.Remove(str.IndexOf(','));
                 Assembly _assembly = Assembly.Load(str);
                 ResourceManager rm = new ResourceManager("Lang.de", _assembly);
-                getRes(ci, rm);
+                GetRes(ci, rm);
             }
             if (comboBox1.SelectedIndex == 3)
             {
@@ -393,7 +409,7 @@ namespace CavaPlugin
                 str = str.Remove(str.IndexOf(','));
                 Assembly _assembly = Assembly.Load(str);
                 ResourceManager rm = new ResourceManager("Lang.fr", _assembly);
-                getRes(ci, rm);
+                GetRes(ci, rm);
             }
             if (comboBox1.SelectedIndex == 4)
             {
@@ -402,7 +418,7 @@ namespace CavaPlugin
                 str = str.Remove(str.IndexOf(','));
                 Assembly _assembly = Assembly.Load(str);
                 ResourceManager rm = new ResourceManager("Lang.pt", _assembly);
-                getRes(ci, rm);
+                GetRes(ci, rm);
             }
             if (comboBox1.SelectedIndex == 5)
             {
@@ -411,7 +427,7 @@ namespace CavaPlugin
                 str = str.Remove(str.IndexOf(','));
                 Assembly _assembly = Assembly.Load(str);
                 ResourceManager rm = new ResourceManager("Lang.ru", _assembly);
-                getRes(ci, rm);
+                GetRes(ci, rm);
             }
             if (LastUseProfile > 0)
             {
@@ -839,7 +855,7 @@ namespace CavaPlugin
                 ResourceManager rm = new ResourceManager("Lang", _assembly);
                 richTextBox1.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\GoodToKnow_en.rtf");
                 thanksRichText.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\Thanks_en.rtf");
-                getRes(ci,rm);
+                GetRes(ci,rm);
             }
             if (comboBox1.SelectedIndex == 1)
             {
@@ -851,7 +867,7 @@ namespace CavaPlugin
                 ResourceManager rm = new ResourceManager("Lang.da", _assembly);
                 richTextBox1.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\GoodToKnow_da.rtf");
                 thanksRichText.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\Thanks_da.rtf");
-                getRes(ci, rm);
+                GetRes(ci, rm);
             }
             if (comboBox1.SelectedIndex == 2)
             {
@@ -863,7 +879,7 @@ namespace CavaPlugin
                 ResourceManager rm = new ResourceManager("Lang.de", _assembly);
                 richTextBox1.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\GoodToKnow_de.rtf");
                 thanksRichText.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\Thanks_de.rtf");
-                getRes(ci, rm);
+                GetRes(ci, rm);
             }
             /*if (comboBox1.SelectedIndex == 3)
             {
@@ -887,7 +903,7 @@ namespace CavaPlugin
                 ResourceManager rm = new ResourceManager("Lang.fr", _assembly);
                 richTextBox1.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\GoodToKnow_fr.rtf");
                 thanksRichText.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\Thanks_fr.rtf");
-                getRes(ci, rm);
+                GetRes(ci, rm);
             }
             if (comboBox1.SelectedIndex == 4)
             {
@@ -899,7 +915,7 @@ namespace CavaPlugin
                 ResourceManager rm = new ResourceManager("Lang.pt", _assembly);
                 richTextBox1.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\GoodToKnow_pt.rtf");
                 thanksRichText.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\Thanks_pt.rtf");
-                getRes(ci, rm);
+                GetRes(ci, rm);
             }
             if (comboBox1.SelectedIndex == 5)
             {
@@ -911,7 +927,7 @@ namespace CavaPlugin
                 ResourceManager rm = new ResourceManager("Lang.ru", _assembly);
                 richTextBox1.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\GoodToKnow_ru.rtf");
                 thanksRichText.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\Thanks_ru.rtf");
-                getRes(ci, rm);
+                GetRes(ci, rm);
             }
         }
 
@@ -1324,6 +1340,14 @@ namespace CavaPlugin
             richTextBox4.Text = "Run Checked List Of Reserved Profiles For Armageddoner Users";
         }
 
+        private void checkBox1_CheckedChanged_1(object sender, EventArgs e)
+        {
+            AppDomain.CurrentDomain.SetData("learnportal6", learnportal6checkBox.Checked ? "true" : null);
+            CPsettings.Instance.Learnportal6 = learnportal6checkBox.Checked;
+            LastUseProfile = 10;
+            richTextBox4.Text = "Run Checked List Of Reserved Profiles For Armageddoner Users";
+        }
+
         private void button7_Click(object sender, EventArgs e)
         {
             button_Click();
@@ -1333,8 +1357,8 @@ namespace CavaPlugin
             CPGlobalSettings.Instance.Save();
             CPsettings.Instance.Save();
             nomeiaprofile();
-
         }
+
     }
     public class CPsettings : Settings
     {
@@ -1377,6 +1401,8 @@ namespace CavaPlugin
         public bool Learnportal4 { get; set; }
         [Setting, DefaultValue(false)]
         public bool Learnportal5 { get; set; }
+        [Setting, DefaultValue(false)]
+        public bool Learnportal6 { get; set; }
     }
 
     public class CPGlobalSettings : Settings 
