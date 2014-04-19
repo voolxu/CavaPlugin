@@ -45,16 +45,16 @@ namespace CavaPlugin
         private bool _erro;
         private int _nVezesBotUnstuck;
         private static Thread _recomecar;
-        private Stopwatch _ultimoSemStuck;
-        private Stopwatch _summonpettime;
-        private Stopwatch _mountedTime;
+        private readonly Stopwatch _ultimoSemStuck = new Stopwatch();
+        private readonly Stopwatch _summonpettime = new Stopwatch();
+        private readonly Stopwatch _mountedTime = new Stopwatch();
+        private readonly Stopwatch _checkBags = new Stopwatch();
+        private readonly Stopwatch _asLastSavedTimer = new Stopwatch();
+ 
         private int _refusetime;
         private WoWPoint _ultimoLocal;
-
-        private Stopwatch _asLastSavedTimer;
         private WoWPoint _asLastSavedPosition;
         private bool _asLastSavedPositionTrigger;
-        private Stopwatch _checkBags;
         private const string VendorMountLogEntry = "Summoning vendor mount (";
         private int _vendorMountSpellId;
 
@@ -82,7 +82,7 @@ namespace CavaPlugin
 
         public override Version Version
         {
-            get { return new Version(4, 5, 0); }
+            get { return new Version(4, 5, 1); }
         }
 
         public override string Name
@@ -553,11 +553,16 @@ namespace CavaPlugin
                 _hasBeenInitialized = true;
                 CPGlobalSettings.Instance.Save();
                 CPsettings.Instance.Save();
-                _mountedTime = new Stopwatch();
-                _summonpettime = new Stopwatch();
-                _ultimoSemStuck = new Stopwatch();
-                _asLastSavedTimer = new Stopwatch();
-                _checkBags = new Stopwatch();
+                _mountedTime.Reset();
+                _mountedTime.Start();
+                _summonpettime.Reset();
+                _summonpettime.Start();
+                _ultimoSemStuck.Reset();
+                _ultimoSemStuck.Start();
+                _asLastSavedTimer.Reset();
+                _asLastSavedTimer.Start();
+                _checkBags.Reset();
+                _checkBags.Start();
             }
             //duplo ignore, bot corre 2 vezes o Initialize
             if (!_hasBeenInitialized2)

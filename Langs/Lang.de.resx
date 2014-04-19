@@ -445,8 +445,6 @@ to Portuguese
   <data name="RESTART_REQUIRED" xml:space="preserve">
     <value>NEUSTART BENÖTIGT</value>
   </data>
-
-
   <data name="Armageddoner_Access_Tested_and_Passed" xml:space="preserve">
     <value>Armageddoner Zugriff geprüft und stattgegeben</value>
   </data>
@@ -544,19 +542,19 @@ to Portuguese
     <value>Bergbau und Schmiedekunst 1 bis 600</value>
   </data>
   <data name="antistuck" xml:space="preserve">
-    <value>Anti-Stuck System(Need have an WoW reloger)</value>
+    <value>Anti-Stuck System(Benötigt einen WoW reloger)</value>
   </data>
   <data name="RunCheckedListOfReservedProfilesForArmageddonerUsers" xml:space="preserve">
-    <value>Run Checked List Of Reserved Profiles For Armageddoner Users</value>
+    <value>Führe Prüfung der Registrierten Benutzer Profile aus</value>
   </data>
   <data name="levelingarmagessonertxt" xml:space="preserve">
-    <value>This profile will level any character from 80 to 86</value>
+    <value>Dieses Profile levelt alle Chars von 80 bis 86</value>
   </data>
   <data name="levelingarmagessoner" xml:space="preserve">
-    <value>Alliance And Horde (80-86) (testers/donators only)</value>
+    <value>Allianz und Horde (80-86) (Nur für Tester/Registrierte Benutzer)</value>
   </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Added The Jade Forest map profile, levels 85 to 86, (reserved for Armageddoners).</value>
+    <value>Jade Wald hinzugefügt, Level 85 bis 86 (Nur für Armageddoners/Registrierte Benutzer)</value>
   </data>
 
 
