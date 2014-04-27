@@ -203,7 +203,7 @@ namespace CavaPlugin
                 Err(addedganker);
                 var i = addedganker.IndexOf(',');
                 var gankedtime = DateTime.Parse(addedganker.Substring(i + 1));
-                if (DateTime.Now <= gankedtime.AddMinutes(1)) continue;
+                if (DateTime.Now <= gankedtime.AddMinutes(15)) continue;
                 Log("[AntiGank]: Removed {0} from Ganker List.", addedganker.Substring(0, i));
                 ganktoremove.Add(addedganker);
             }
