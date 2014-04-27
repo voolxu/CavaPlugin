@@ -200,7 +200,6 @@ namespace CavaPlugin
             var ganktoremove = new List<string>();
             foreach (var addedganker in _antigank)
             {
-                Err(addedganker);
                 var i = addedganker.IndexOf(',');
                 var gankedtime = DateTime.Parse(addedganker.Substring(i + 1));
                 if (DateTime.Now <= gankedtime.AddMinutes(15)) continue;
