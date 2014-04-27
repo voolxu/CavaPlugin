@@ -40,32 +40,31 @@ namespace CavaPlugin
         public string PathToCavaPlugin = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\");
         // ReSharper disable once PossiblyMistakenUseOfParamsMethod
         public string PathToSettings =Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Settings\Main-Settings.xml");
+        // ReSharper disable once PossiblyMistakenUseOfParamsMethod
+        public string PathToProfiles = Path.Combine(Utilities.AssemblyDirectory + @"\Default Profiles\Cava\Scripts\");
+        public string ProfileToLoad = "";
+        // ReSharper disable once PossiblyMistakenUseOfParamsMethod
+        public string PathToDoYouKnow =Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Settings\DYK.txt");
 
-        public string pathToProfiles = Path.Combine(Utilities.AssemblyDirectory + @"\Default Profiles\Cava\Scripts\");
-        public string profileToLoad = "";
-
-        public string pathToDoYouKnow =
-            Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Settings\DYK.txt");
-
-        private static int TortoiseExitCode;
-        private bool isRunningdepois;
-        public string leveling1to90txt;
-        public string levelingpandahordetxt;
-        public string levelingpandaallytxt;
-        public string level85to90boxtxt;
-        public string levelingarmagessonertxt;
-        public string mbs1300;
-        public string mbs1600;
-        public string mbs1300txt;
-        public string mbs1600txt;
-        private static SoundPlayer player = new SoundPlayer();
+        //private static int TortoiseExitCode;
+        private bool _isRunningdepois;
+        public string Leveling1To90Txt;
+        public string Levelingpandahordetxt;
+        public string Levelingpandaallytxt;
+        public string Level85To90Boxtxt;
+        public string Levelingarmagessonertxt;
+        public string Mbs1300;
+        public string Mbs1600;
+        public string Mbs1300Txt;
+        public string Mbs1600Txt;
+        private static readonly SoundPlayer Player = new SoundPlayer();
 
         public CavaForm()
         {
             InitializeComponent();
         }
 
-        private static void Updater_Armageddoner(string f)
+        /*private static void Updater_Armageddoner(string f)
         {
             Process p = new Process();
             p.StartInfo.FileName = "TortoiseProc.exe";
@@ -73,7 +72,7 @@ namespace CavaPlugin
             p.Start();
             p.WaitForExit();
             TortoiseExitCode = p.ExitCode;
-        }
+        }*/
 
         private void GetRes(CultureInfo ci, ResourceManager rm)
         {
@@ -106,15 +105,15 @@ namespace CavaPlugin
             radioButton3.Text = rm.GetString("levelingpandaally", ci);
             radioButton4.Text = rm.GetString("level85to90", ci);
             radioButton5.Text = rm.GetString("levelingarmagessoner", ci);
-            leveling1to90txt = rm.GetString("leveling1to90txt", ci);
-            levelingpandahordetxt = rm.GetString("levelingpandahordetxt", ci);
-            levelingpandaallytxt = rm.GetString("levelingpandaallytxt", ci);
-            level85to90boxtxt = rm.GetString("level85to90txt", ci);
-            levelingarmagessonertxt = rm.GetString("levelingarmagessonertxt", ci);
-            mbs1300 = rm.GetString("miningbs1300", ci);
-            mbs1600 = rm.GetString("miningbs1600", ci);
-            mbs1300txt = rm.GetString("mbs1300txt", ci);
-            mbs1600txt = rm.GetString("mbs1600txt", ci);
+            Leveling1To90Txt = rm.GetString("leveling1to90txt", ci);
+            Levelingpandahordetxt = rm.GetString("levelingpandahordetxt", ci);
+            Levelingpandaallytxt = rm.GetString("levelingpandaallytxt", ci);
+            Level85To90Boxtxt = rm.GetString("level85to90txt", ci);
+            Levelingarmagessonertxt = rm.GetString("levelingarmagessonertxt", ci);
+            Mbs1300 = rm.GetString("miningbs1300", ci);
+            Mbs1600 = rm.GetString("miningbs1600", ci);
+            Mbs1300Txt = rm.GetString("mbs1300txt", ci);
+            Mbs1600Txt = rm.GetString("mbs1600txt", ci);
             groupBox4.Text = rm.GetString("reservedfortesters", ci);
             label15.Text = rm.GetString("language", ci);
             AntiStuck_CheckBox.Text = rm.GetString("antistuck", ci);
@@ -178,7 +177,7 @@ namespace CavaPlugin
             if (LastUseProfile == 8)
             {
                 label4.Text = rm.GetString("miningbs1300", ci);
-                MiningBlacksmithingProf.Text = rm.GetString("miningbs1300", ci);
+                //MiningBlacksmithingProf.Text = rm.GetString("miningbs1300", ci);
             }
             if (LastUseProfile == 10)
             {
@@ -190,8 +189,8 @@ namespace CavaPlugin
 
         private void CavaForm_Load(object sender, EventArgs e)
         {
-            player.SoundLocation = PathToCavaPlugin + "Sounds\\Open.wav";
-            player.Play();
+            Player.SoundLocation = PathToCavaPlugin + "Sounds\\Open.wav";
+            Player.Play();
             pictureBox1.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\main.png");
             pictureBox2.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\quests.png");
             pictureBox3.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\about.png");
@@ -368,13 +367,16 @@ namespace CavaPlugin
             linkLabel29.Enabled = CPGlobalSettings.Instance.PBMiningBlacksmithing;
             ResscheckBox.Checked = CPsettings.Instance.RessAfterDie;
             refuseGuildCheckBox.Checked = CPsettings.Instance.refuseguildInvitescheck;
-            refusePartyCheckBox.Checked = CPsettings.Instance.refusepartyInvitescheck;
-            refuseTradesCheckBox.Checked = CPsettings.Instance.refusetradeInvitescheck;
-            refuseDuelCheckBox.Checked = CPsettings.Instance.refuseduelInvitescheck;
+            refusePartyCheckBox.Checked = CPsettings.Instance.RefusepartyInvitescheck;
+            refuseTradesCheckBox.Checked = CPsettings.Instance.RefusetradeInvitescheck;
+            refuseDuelCheckBox.Checked = CPsettings.Instance.RefuseduelInvitescheck;
             comboBox1.SelectedIndex = CPGlobalSettings.Instance.language;
             combatloot_checkBox.Checked = CPsettings.Instance.CombatLoot;
             OpenBox_checkBox.Checked = CPsettings.Instance.OpenBox;
-            fixmountcheckBox1.Checked = CPsettings.Instance.fixSummonMountVendor;
+            fixmountcheckBox1.Checked = CPsettings.Instance.FixSummonMountVendor;
+            blacklistflycheckBox.Checked = CPsettings.Instance.BlacklistflycheckBox;
+            antigankcheckBox.Checked = CPsettings.Instance.AntigankcheckBox;
+            playsoundcheckBox.Checked = CPsettings.Instance.Playsonar;
             if (comboBox1.SelectedIndex == 0)
             {
                 CultureInfo ci = new CultureInfo("en-US");
@@ -451,7 +453,7 @@ namespace CavaPlugin
             button_Click();
             timer1.Enabled = false;
             LastUseProfile = 1; //Leveling 1 to 90
-            richTextBox2.Text = leveling1to90txt;
+            richTextBox2.Text = Leveling1To90Txt;
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
@@ -459,7 +461,7 @@ namespace CavaPlugin
             button_Click();
             timer1.Enabled = false;
             LastUseProfile = 2; //Leveling Pandaren 1 to 90 Horde
-            richTextBox2.Text = levelingpandahordetxt;
+            richTextBox2.Text = Levelingpandahordetxt;
 
         }
 
@@ -468,7 +470,7 @@ namespace CavaPlugin
             button_Click();
             timer1.Enabled = false;
             LastUseProfile = 3; //Leveling Pandaren 1 to 90 Alliance
-            richTextBox2.Text = levelingpandaallytxt;
+            richTextBox2.Text = Levelingpandaallytxt;
         }
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
@@ -476,7 +478,7 @@ namespace CavaPlugin
             button_Click();
             timer1.Enabled = false;
             LastUseProfile = 4; //Leveling 85 to 90 With Loot 
-            richTextBox2.Text = level85to90boxtxt;
+            richTextBox2.Text = Level85To90Boxtxt;
         }
 
         private void radioButton5_CheckedChanged(object sender, EventArgs e)
@@ -484,7 +486,7 @@ namespace CavaPlugin
             button_Click();
             timer1.Enabled = false;
             LastUseProfile = 5; //test profiles
-            richTextBox2.Text = levelingarmagessonertxt;
+            richTextBox2.Text = Levelingarmagessonertxt;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -530,15 +532,15 @@ namespace CavaPlugin
         }
         private void nomeiaprofile()
         {
-            if (LastUseProfile == 1) { lancaprofile(pathToProfiles + "Next[Cava].xml"); }
-            if (LastUseProfile == 2) { lancaprofile(pathToProfiles + "[Quest]Pandaren-Horde1to90By[Cava].xml"); }
-            if (LastUseProfile == 3) { lancaprofile(pathToProfiles + "[Quest]Pandaren-Alliance1to90By[Cava].xml"); }
-            if (LastUseProfile == 4) { lancaprofile(pathToProfiles + "[Quest]MOP85to90WithLootBy[Cava].xml"); }
-            if (LastUseProfile == 5) { lancaprofile(pathToProfiles + "ArmageddonerNext[Cava].xml"); }
-            if (LastUseProfile == 6) { lancaprofile(pathToProfiles + "ArmageddonerNext[Cava].xml"); }
-            if (LastUseProfile == 7) { lancaprofile(pathToProfiles + "emptymb600.xml"); }
-            if (LastUseProfile == 8) { lancaprofile(pathToProfiles + "emptymb300.xml"); }
-            if (LastUseProfile == 10) { lancaprofile(pathToProfiles + "[N-Quest]Armageddoner_Reserved[Cava].xml"); }
+            if (LastUseProfile == 1) { lancaprofile(PathToProfiles + "Next[Cava].xml"); }
+            if (LastUseProfile == 2) { lancaprofile(PathToProfiles + "[Quest]Pandaren-Horde1to90By[Cava].xml"); }
+            if (LastUseProfile == 3) { lancaprofile(PathToProfiles + "[Quest]Pandaren-Alliance1to90By[Cava].xml"); }
+            if (LastUseProfile == 4) { lancaprofile(PathToProfiles + "[Quest]MOP85to90WithLootBy[Cava].xml"); }
+            if (LastUseProfile == 5) { lancaprofile(PathToProfiles + "ArmageddonerNext[Cava].xml"); }
+            if (LastUseProfile == 6) { lancaprofile(PathToProfiles + "ArmageddonerNext[Cava].xml"); }
+            if (LastUseProfile == 7) { lancaprofile(PathToProfiles + "emptymb600.xml"); }
+            if (LastUseProfile == 8) { lancaprofile(PathToProfiles + "emptymb300.xml"); }
+            if (LastUseProfile == 10) { lancaprofile(PathToProfiles + "[N-Quest]Armageddoner_Reserved[Cava].xml"); }
         }
         
         private void lancaprofile(string ProfileToLoad)
@@ -603,8 +605,8 @@ namespace CavaPlugin
             CPGlobalSettings.Instance.Save();
             timer1.Dispose();
             Close();
-            isRunningdepois = TreeRoot.IsRunning;
-            if (isRunningdepois) { TreeRoot.Stop(); }
+            _isRunningdepois = TreeRoot.IsRunning;
+            if (_isRunningdepois) { TreeRoot.Stop(); }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -619,13 +621,13 @@ namespace CavaPlugin
 
         private void button_MouseEnter(object sender, EventArgs e)
         {
-            player.SoundLocation = PathToCavaPlugin + "Sounds\\Over.wav";
-            player.Play();
+            Player.SoundLocation = PathToCavaPlugin + "Sounds\\Over.wav";
+            Player.Play();
         }
         private void button_Click()
         {
-            player.SoundLocation = PathToCavaPlugin + "Sounds\\Click.wav";
-            player.Play();
+            Player.SoundLocation = PathToCavaPlugin + "Sounds\\Click.wav";
+            Player.Play();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -801,7 +803,7 @@ namespace CavaPlugin
         {
             button_Click();
             timer1.Enabled = false;
-            ProfessionsrichTextBox.Text = mbs1300txt;
+            ProfessionsrichTextBox.Text = Mbs1300Txt;
             LastUseProfile = 8; //MB 1 to 300
         }
 
@@ -950,19 +952,19 @@ namespace CavaPlugin
         private void refusePartyCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             button_Click();
-            CPsettings.Instance.refusepartyInvitescheck = refusePartyCheckBox.Checked;
+            CPsettings.Instance.RefusepartyInvitescheck = refusePartyCheckBox.Checked;
         }
 
         private void refuseTradesCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             button_Click();
-            CPsettings.Instance.refusetradeInvitescheck = refuseTradesCheckBox.Checked;
+            CPsettings.Instance.RefusetradeInvitescheck = refuseTradesCheckBox.Checked;
         }
 
         private void refuseDuelCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             button_Click();
-            CPsettings.Instance.refuseduelInvitescheck = refuseDuelCheckBox.Checked;
+            CPsettings.Instance.RefuseduelInvitescheck = refuseDuelCheckBox.Checked;
         }
 
         private void pictureBox8_Click(object sender, EventArgs e)
@@ -1044,6 +1046,9 @@ namespace CavaPlugin
             ResscheckBox.Enabled = true;
             combatloot_checkBox.Enabled = true;
             fixmountcheckBox1.Enabled = true;
+            blacklistflycheckBox.Enabled = true;
+            antigankcheckBox.Enabled = true;
+            playsoundcheckBox.Enabled = true;
             OpenBox_checkBox.Enabled = StyxWoW.Me.Class == WoWClass.Rogue;
             CPGlobalSettings.Instance.ArmaPanelBack = true; 
             CPGlobalSettings.Instance.BotAllowUpdate = true;
@@ -1106,6 +1111,12 @@ namespace CavaPlugin
             OpenBox_checkBox.Enabled = false;
             fixmountcheckBox1.Checked = false;
             fixmountcheckBox1.Enabled = false;
+            blacklistflycheckBox.Checked = false;
+            blacklistflycheckBox.Enabled = false;
+            antigankcheckBox.Checked = false;
+            antigankcheckBox.Enabled = false;
+            playsoundcheckBox.Checked = false;
+            playsoundcheckBox.Enabled = false;
             learnportal1checkBox.Enabled = false;
             learnportal1checkBox.Checked = false;
             AppDomain.CurrentDomain.SetData("learnportal1", null);
@@ -1134,15 +1145,15 @@ namespace CavaPlugin
             pictureBox14.Visible = false;
             pictureBox8.Visible = false;
             linkLabel29.Enabled = true;
-            MiningBlacksmithingProf.Text = mbs1600;
+            //MiningBlacksmithingProf.Text = mbs1600;
             CPGlobalSettings.Instance.BotPBMiningBlacksmithing = true;
             CPGlobalSettings.Instance.PBMiningBlacksmithing = true;
             CPGlobalSettings.Instance.ProfMinBlack600 = true;
             CPGlobalSettings.Instance.Save();
             ProfMinBlack1600radioButton.Enabled = true;
             if (LastUseProfile != 8) return;
-            label4.Text = mbs1600;
-            ProfessionsrichTextBox.Text = mbs1600txt;
+            label4.Text = Mbs1600;
+            ProfessionsrichTextBox.Text = Mbs1600Txt;
             LastUseProfile = 7;
             ProfMinBlack1600radioButton.Checked = true;
         }
@@ -1160,8 +1171,8 @@ namespace CavaPlugin
             CPGlobalSettings.Instance.PBMiningBlacksmithing = false;
             CPGlobalSettings.Instance.Save();
             if (LastUseProfile != 7) return;
-            label4.Text = mbs1300;
-            ProfessionsrichTextBox.Text = mbs1300txt;
+            label4.Text = Mbs1300;
+            ProfessionsrichTextBox.Text = Mbs1300Txt;
             LastUseProfile = 8;
             MiningBlacksmithingProf.Checked = true;
         }
@@ -1263,7 +1274,7 @@ namespace CavaPlugin
         {
             button_Click();
             timer1.Enabled = false;
-            ProfessionsrichTextBox.Text = mbs1600txt;
+            ProfessionsrichTextBox.Text = Mbs1600Txt;
             LastUseProfile = 7; //MB 1 to 600
         }
 
@@ -1297,7 +1308,24 @@ namespace CavaPlugin
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             button_Click();
-            CPsettings.Instance.fixSummonMountVendor = fixmountcheckBox1.Checked;
+            CPsettings.Instance.FixSummonMountVendor = fixmountcheckBox1.Checked;
+        }
+
+        private void blacklistflycheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            button_Click();
+            CPsettings.Instance.BlacklistflycheckBox = fixmountcheckBox1.Checked;
+        }
+
+        private void antigankcheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            button_Click();
+            CPsettings.Instance.AntigankcheckBox = antigankcheckBox.Checked;
+        }
+        private void checkBox1_CheckedChanged_2(object sender, EventArgs e)
+        {
+            button_Click();
+            CPsettings.Instance.Playsonar = playsoundcheckBox.Checked;
         }
 
         private void learnportal1checkBox_CheckedChanged(object sender, EventArgs e)
@@ -1378,11 +1406,11 @@ namespace CavaPlugin
         [Setting, DefaultValue(false)]
         public bool refuseguildInvitescheck { get; set; }
         [Setting, DefaultValue(false)]
-        public bool refusepartyInvitescheck { get; set; }
+        public bool RefusepartyInvitescheck { get; set; }
         [Setting, DefaultValue(false)]
-        public bool refusetradeInvitescheck { get; set; }
+        public bool RefusetradeInvitescheck { get; set; }
         [Setting, DefaultValue(false)]
-        public bool refuseduelInvitescheck { get; set; }
+        public bool RefuseduelInvitescheck { get; set; }
         [Setting, DefaultValue(false)]
         public bool RessAfterDie { get; set; }
         [Setting, DefaultValue(false)]
@@ -1390,7 +1418,13 @@ namespace CavaPlugin
         [Setting, DefaultValue(false)]
         public bool OpenBox { get; set; }
         [Setting, DefaultValue(false)]
-        public bool fixSummonMountVendor { get; set; }
+        public bool FixSummonMountVendor { get; set; }
+        [Setting, DefaultValue(false)]
+        public bool BlacklistflycheckBox { get; set; }
+        [Setting, DefaultValue(false)]
+        public bool AntigankcheckBox { get; set; }
+        [Setting, DefaultValue(false)]
+        public bool Playsonar { get; set; }
         [Setting, DefaultValue(false)]
         public bool Learnportal1 { get; set; }
         [Setting, DefaultValue(false)]

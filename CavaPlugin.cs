@@ -16,6 +16,7 @@ using System.Windows.Forms;
 using System.Windows.Media;
 using Styx;
 using Styx.CommonBot.Frames;
+//using Styx.CommonBot.Profiles.Quest.Order;
 using Styx.CommonBot.Routines;
 using Styx.Helpers;
 using Styx.Pathing;
@@ -26,6 +27,7 @@ using Styx.CommonBot.POI;
 using Styx.CommonBot.Profiles;
 using Styx.WoWInternals;
 using Styx.WoWInternals.WoWObjects;
+using Bots.Grind;
 
 namespace CavaPlugin
 {
@@ -50,20 +52,24 @@ namespace CavaPlugin
         private readonly Stopwatch _mountedTime = new Stopwatch();
         private readonly Stopwatch _checkBags = new Stopwatch();
         private readonly Stopwatch _asLastSavedTimer = new Stopwatch();
+        private readonly Stopwatch _antigankertimeTimer = new Stopwatch();
  
         private int _refusetime;
         private WoWPoint _ultimoLocal;
         private WoWPoint _asLastSavedPosition;
         private bool _asLastSavedPositionTrigger;
         private const string VendorMountLogEntry = "Summoning vendor mount (";
+        private const string TaximapLogEntry = "Taximap failed to open. Blacklisting the flight master.";
         private int _vendorMountSpellId;
+        private int _waitgankercount;
+        private bool _oldSh;
+        private bool _gankedressatSh;
 
         private bool _onbotstart = true;
         private readonly Stopwatch _refuseguildtimer = new Stopwatch();
         private readonly Stopwatch _refusepartytimer = new Stopwatch();
         private readonly Stopwatch _refusetradetimer = new Stopwatch();
         private readonly Stopwatch _refusedueltimer = new Stopwatch();
-        //private int _movetoplace;
         
         //languages
         private static CultureInfo _ci;
@@ -82,7 +88,7 @@ namespace CavaPlugin
 
         public override Version Version
         {
-            get { return new Version(4, 5, 1); }
+            get { return new Version(4, 5, 2); }
         }
 
         public override string Name
@@ -162,7 +168,69 @@ namespace CavaPlugin
             16884, //Sturdy Junkbox
             16883 //Worn Junkbox
         };
+        readonly List<string> _antigank = new List<string>();
+     
+        public WoWPlayer[] GetAllTargetingNonFriendlyPlayers()
+        {
+            return ObjectManager.GetObjectsOfType<WoWPlayer>().Where(ret => (
+                ret != null &&
+                ret.IsPlayer &&
+                !ret.IsFriendly &&
+                ret.IsTargetingMeOrPet
+                )).ToArray();
+        }
 
+        public void Addgankers()
+        {
+            foreach (var ganker in GetAllTargetingNonFriendlyPlayers())
+            {
+                if (CPsettings.Instance.Playsonar)
+                {
+                    Player.SoundLocation = PathToCavaPlugin + "Sounds\\Sonar.wav";
+                    Player.Play();
+                }
+                _antigank.RemoveAll(x => _antigank.Contains(ganker.ToString()));
+                _antigank.Add(ganker.Name + "," + DateTime.Now);
+                Log("[AntiGank]: Added {0} to ganker list, at {1}.", ganker.Name, DateTime.Now);
+            }
+        }
+
+        public void Delgankers()
+        {
+            var ganktoremove = new List<string>();
+            foreach (var addedganker in _antigank)
+            {
+                Err(addedganker);
+                var i = addedganker.IndexOf(',');
+                var gankedtime = DateTime.Parse(addedganker.Substring(i + 1));
+                if (DateTime.Now <= gankedtime.AddMinutes(1)) continue;
+                Log("[AntiGank]: Removed {0} from Ganker List.", addedganker.Substring(0, i));
+                ganktoremove.Add(addedganker);
+            }
+            foreach (var removethis in ganktoremove)
+            {
+               _antigank.Remove(removethis);
+            }
+        }
+
+        public bool LookForGankers()
+        {
+            foreach (var checkplayer in ObjectManager.GetObjectsOfType<WoWPlayer>().Where(ret =>
+                ret != null &&
+                !ret.IsAFKFlagged &&
+                ret.Distance <= 150 &&
+                ret.IsHostile &&
+                ret.IsPlayer &&
+                _antigank.Any(checkganker => checkganker.Contains(ret.Name)) &&
+                StyxWoW.Me.Location.Distance(StyxWoW.Me.CorpsePoint) < 100)
+                )
+            {
+                Log("[AntiGank]: Detected Ganker {0} Level {1}. Starting idle time routine.", checkplayer.Name, checkplayer.Level);
+                if (LevelBot.BehaviorFlags.HasFlag(BehaviorFlags.Death)) { LevelBot.BehaviorFlags &= ~BehaviorFlags.Death; }
+                return true;
+            }
+            return false;
+        }
         public void CavaAtackMob()
         {
             if (!Me.IsAutoAttacking)
@@ -486,13 +554,16 @@ namespace CavaPlugin
                         CPsettings.Instance.CheckAllowSummonPet = false;
                         CPsettings.Instance.guildInvitescheck = false;
                         CPsettings.Instance.refuseguildInvitescheck = false;
-                        CPsettings.Instance.refusepartyInvitescheck = false;
-                        CPsettings.Instance.refusetradeInvitescheck = false;
-                        CPsettings.Instance.refuseduelInvitescheck = false;
+                        CPsettings.Instance.RefusepartyInvitescheck = false;
+                        CPsettings.Instance.RefusetradeInvitescheck = false;
+                        CPsettings.Instance.RefuseduelInvitescheck = false;
                         CPsettings.Instance.RessAfterDie = false;
                         CPsettings.Instance.CombatLoot = false;
                         CPsettings.Instance.OpenBox = false;
-                        CPsettings.Instance.fixSummonMountVendor = false;
+                        CPsettings.Instance.FixSummonMountVendor = false;
+                        CPsettings.Instance.BlacklistflycheckBox = false;
+                        CPsettings.Instance.AntigankcheckBox = false;
+                        CPsettings.Instance.Playsonar = false;
                     }
                 }
                 catch (Exception)
@@ -561,6 +632,8 @@ namespace CavaPlugin
                 _ultimoSemStuck.Start();
                 _asLastSavedTimer.Reset();
                 _asLastSavedTimer.Start();
+                _antigankertimeTimer.Reset();
+                _antigankertimeTimer.Start();
                 _checkBags.Reset();
                 _checkBags.Start();
             }
@@ -588,15 +661,15 @@ namespace CavaPlugin
             {
                 Lua.Events.DetachEvent("GUILD_INVITE_REQUEST", RotinaGuildInvites);
             }
-            if (CPsettings.Instance.refusepartyInvitescheck)
+            if (CPsettings.Instance.RefusepartyInvitescheck)
             {
                 Lua.Events.DetachEvent("PARTY_INVITE_REQUEST", RotinaPartyInvites);
             }
-            if (CPsettings.Instance.refusetradeInvitescheck)
+            if (CPsettings.Instance.RefusetradeInvitescheck)
             {
                 Lua.Events.DetachEvent("TRADE_SHOW", RotinaTradeInvites);
             }
-            if (CPsettings.Instance.refuseduelInvitescheck)
+            if (CPsettings.Instance.RefuseduelInvitescheck)
             {
                 Lua.Events.DetachEvent("DUEL_REQUESTED", RotinaDuelInvites);
             }
@@ -655,9 +728,15 @@ namespace CavaPlugin
                         Log(_rm.GetString("Summon_Random_Pet_Disabled", _ci));
                     }
 
-                    Log(CPsettings.Instance.fixSummonMountVendor
+                    Log(CPsettings.Instance.FixSummonMountVendor
                         ? "Fix Summon Mount Vendor Enabled"
                         : "Fix Summon Mount Vendor Disabled");
+                    Log(CPsettings.Instance.BlacklistflycheckBox
+                        ? "Remove Blacklist Flight Master Enabled"
+                        : "Remove Blacklist Flight Master Disabled");
+                    Log(CPsettings.Instance.AntigankcheckBox
+                        ? "Anti Gank System Enabled"
+                        : "Anti Gank System Disabled");
                     if (CPsettings.Instance.guildInvitescheck || CPsettings.Instance.refuseguildInvitescheck)
                     {
                         if (CPsettings.Instance.guildInvitescheck)
@@ -682,7 +761,7 @@ namespace CavaPlugin
                         }
                     }
 
-                    if (CPsettings.Instance.refusepartyInvitescheck)
+                    if (CPsettings.Instance.RefusepartyInvitescheck)
                     {
                         Log(_rm.GetString("Refuse_party_invites_Enabled", _ci));
                         Lua.Events.AttachEvent("PARTY_INVITE_REQUEST", RotinaPartyInvites);
@@ -692,7 +771,7 @@ namespace CavaPlugin
                         Log(_rm.GetString("Refuse_party_invites_Disabled", _ci));
                     }
 
-                    if (CPsettings.Instance.refusetradeInvitescheck)
+                    if (CPsettings.Instance.RefusetradeInvitescheck)
                     {
                         Log(_rm.GetString("Refuse_trade_invites_Enabled", _ci));
                         Lua.Events.AttachEvent("TRADE_SHOW", RotinaTradeInvites);
@@ -702,7 +781,7 @@ namespace CavaPlugin
                         Log(_rm.GetString("Refuse_trade_invites_Disabled", _ci));
                     }
 
-                    if (CPsettings.Instance.refuseduelInvitescheck)
+                    if (CPsettings.Instance.RefuseduelInvitescheck)
                     {
                         Log(_rm.GetString("Refuse_duel_invites_Enabled", _ci));
                         Lua.Events.AttachEvent("DUEL_REQUESTED", RotinaDuelInvites);
@@ -843,14 +922,36 @@ namespace CavaPlugin
             LootFrame.Instance.LootAll();
         }
 
+        public static WoWUnit IsBlaclistedFp
+        {
+            get
+            {
+                return ObjectManager.GetObjectsOfType<WoWUnit>().Where(u =>
+                    u.CanSelect &&
+                    !u.IsDead &&
+                    u.IsFlightMaster &&
+                    !u.IsHostile
+                    ).OrderBy(u => u.Distance).FirstOrDefault();
+            }
+        }
+
         private void LoggingOnOnLogMessage(ReadOnlyCollection<Logging.LogMessage> messages)
         {
             // anti mount vendor run 
            foreach (var logEntry in messages)
            {
+               if (logEntry.Message.Contains(TaximapLogEntry) && CPsettings.Instance.BlacklistflycheckBox)
+               {
+                   if (IsBlaclistedFp != null)
+                   {
+                       Log("Removing Blacklist From Flight Master {0}.", IsBlaclistedFp.Name);
+                       Blacklist.Clear(blacklistEntry => blacklistEntry.Entry == IsBlaclistedFp.Entry);
+                       StyxWoW.Sleep(1000);
+                   }
+               }
                if (!logEntry.Message.Contains(VendorMountLogEntry))
                continue;
-               if (_vendorMountSpellId == 0 && CPsettings.Instance.fixSummonMountVendor)
+               if (_vendorMountSpellId == 0 && CPsettings.Instance.FixSummonMountVendor)
                Log("Summoning vendor mount Detected, starting fix routine");
                var mountIdStr = logEntry.Message.Substring(VendorMountLogEntry.Length, logEntry.Message.LastIndexOf(')') - VendorMountLogEntry.Length);
                _vendorMountSpellId = int.Parse(mountIdStr);
@@ -920,7 +1021,7 @@ namespace CavaPlugin
         #endregion
 
         #region Quests
-
+        private static WoWObject ObjBarricadeHorde { get { return (ObjectManager.GetObjectsOfType<WoWGameObject>().FirstOrDefault(ret => ret.Entry == 215646 && ret.Distance < 10)); } }
         private static List<WoWUnit> MobKingGennGreymane { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 36332)).OrderBy(ret => ret.Distance).ToList(); } }
         private static List<WoWUnit> MobDocZapnozzle { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 36608)).OrderBy(ret => ret.Distance).ToList(); } }
         private static List<WoWUnit> MobArctanus { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 34292)).OrderBy(ret => ret.Distance).ToList(); } }
@@ -943,6 +1044,42 @@ namespace CavaPlugin
         #region Override Pulse
         public override void Pulse()
         {
+            if (StyxWoW.Me.IsGhost && CPsettings.Instance.AntigankcheckBox)
+            {
+                if (LookForGankers())
+                {
+                    _waitgankercount++;
+                    if (CPsettings.Instance.Playsonar)
+                    {
+                        Player.SoundLocation = PathToCavaPlugin + "Sounds\\Sonar.wav";
+                        Player.Play();
+                    }
+                    if (_waitgankercount == 20)
+                    {
+                        Log("[AntiGank]: Going to Ress at Spirit Healer");
+                        Lua.DoString("RunMacroText('/click GhostFrame')");
+                        _oldSh = LevelBot.ShouldUseSpiritHealer;
+                        _gankedressatSh = true;
+                        StyxWoW.Sleep(1000);
+                        LevelBot.ShouldUseSpiritHealer = true;
+                        if (!LevelBot.BehaviorFlags.HasFlag(BehaviorFlags.Death)){LevelBot.BehaviorFlags |= BehaviorFlags.Death;}
+                        return;
+                    }
+                    StyxWoW.Sleep(30000);
+                }
+                else
+                {
+                    if (!LevelBot.BehaviorFlags.HasFlag(BehaviorFlags.Death)){LevelBot.BehaviorFlags |= BehaviorFlags.Death;}
+                }
+            }
+            if (!Me.IsGhost && (_waitgankercount > 0 || _gankedressatSh))
+            {
+                _waitgankercount = 0;
+                _gankedressatSh = false;
+                LevelBot.ShouldUseSpiritHealer = _oldSh;
+            }
+            if (Me.IsDead && CPsettings.Instance.AntigankcheckBox)
+                Addgankers();
             //AppDomain.CurrentDomain.SetData("Teste1","OI");
             //Environment.SetEnvironmentVariable("Teste1","OI",EnvironmentVariableTarget.Process);
             if (ProfileManager.CurrentOuterProfile.Name == "Mining Blacksmithing 1 to 300 by Cava" ||
@@ -981,6 +1118,12 @@ namespace CavaPlugin
                 }
             }
 
+            if (CPsettings.Instance.AntigankcheckBox && _antigankertimeTimer.ElapsedMilliseconds >= 60000)
+            {
+                _antigankertimeTimer.Restart();
+                Delgankers();
+                //Checkgankers();
+            }
             if (Me.IsDead && !Me.HasAura(8326) && CPsettings.Instance.RessAfterDie)
             {
                 StyxWoW.Sleep(5000);
@@ -1014,9 +1157,14 @@ namespace CavaPlugin
                     !Me.HasAura(15215))
                 {
                     // ReSharper disable once ResourceItemNotResolved
-                    Log(_rm.GetString("OpenBoxs_Check_Started_at", _ci), DateTime.Now.ToString(CultureInfo.InvariantCulture));
+                    Log(_rm.GetString("OpenBoxs_Check_Started_at", _ci),
+                        DateTime.Now.ToString(CultureInfo.InvariantCulture));
                     WoWMovement.MoveStop();
-                    foreach (var item in ObjectManager.GetObjectsOfType<WoWItem>().Where(item => item != null && item.BagSlot != -1 && _boxList.Contains(item.Entry)).Where(item => StyxWoW.Me.FreeNormalBagSlots >= 2 && SpellManager.HasSpell(1804)))
+                    foreach (
+                        var item in
+                            ObjectManager.GetObjectsOfType<WoWItem>()
+                                .Where(item => item != null && item.BagSlot != -1 && _boxList.Contains(item.Entry))
+                                .Where(item => StyxWoW.Me.FreeNormalBagSlots >= 2 && SpellManager.HasSpell(1804)))
                     {
                         // ReSharper disable once ResourceItemNotResolved
                         Log(_rm.GetString("OpenBoxs_Opening", _ci), item);
@@ -1033,7 +1181,8 @@ namespace CavaPlugin
                     }
                     _checkBags.Restart();
                     // ReSharper disable once ResourceItemNotResolved
-                    Log(_rm.GetString("OpenBoxs_Check_Finished_at", _ci), DateTime.Now.ToString(CultureInfo.InvariantCulture));
+                    Log(_rm.GetString("OpenBoxs_Check_Finished_at", _ci),
+                        DateTime.Now.ToString(CultureInfo.InvariantCulture));
                 }
 
                 if (_gotGuildInvite && _refuseguildtimer.ElapsedMilliseconds >= _refusetime)
@@ -1065,14 +1214,15 @@ namespace CavaPlugin
                 }
                 //Elapsed.TotalMinutes
                 if (CPsettings.Instance.CheckAllowSummonPet && _summonpettime.Elapsed.Minutes > 30)
-                {                                                             
+                {
                     // ReSharper disable once ResourceItemNotResolved
                     Log(_rm.GetString("Summoning_Random_pet", _ci));
                     Lua.DoString("RunMacroText('/randompet')");
                     _summonpettime.Restart();
                 }
 
-                if (Me.Race == WoWRace.Goblin && Me.HasAura("Near Death!") && Me.ZoneId == 4720 && MobDocZapnozzle.Count > 0)
+                if (Me.Race == WoWRace.Goblin && Me.HasAura("Near Death!") && Me.ZoneId == 4720 &&
+                    MobDocZapnozzle.Count > 0)
                 {
                     MobDocZapnozzle[0].Interact();
                     StyxWoW.Sleep(1000);
@@ -1084,53 +1234,61 @@ namespace CavaPlugin
                     StyxWoW.Sleep(1000);
                     Lua.DoString("RunMacroText('/click QuestFrameCompleteQuestButton')");
                 }
-                if (Me.QuestLog.GetQuestById(13884) != null && !Me.QuestLog.GetQuestById(13884).IsCompleted && !Me.HasAura(65178) && MobArctanus.Count > 0)
+                if (Me.QuestLog.GetQuestById(13884) != null && !Me.QuestLog.GetQuestById(13884).IsCompleted &&
+                    !Me.HasAura(65178) && MobArctanus.Count > 0)
                 {
                     MobArctanus[0].Interact();
                     StyxWoW.Sleep(1000);
                 }
-                if (Me.QuestLog.GetQuestById(24950) != null && !Me.QuestLog.GetQuestById(24950).IsCompleted && MobTidecrusher.Count > 0)
+                if (Me.QuestLog.GetQuestById(24950) != null && !Me.QuestLog.GetQuestById(24950).IsCompleted &&
+                    MobTidecrusher.Count > 0)
                 {
                     MobTidecrusher[0].Interact();
                     MobTidecrusher[0].Face();
                     RoutineManager.Current.Pull();
                 }
-                if (Me.QuestLog.GetQuestById(10584) != null && !Me.QuestLog.GetQuestById(10584).IsCompleted && MobElectromental.Count > 0)
+                if (Me.QuestLog.GetQuestById(10584) != null && !Me.QuestLog.GetQuestById(10584).IsCompleted &&
+                    MobElectromental.Count > 0)
                 {
                     MobElectromental[0].Interact();
                     MobElectromental[0].Face();
                     Lua.DoString("UseItemByName(30656)");
                     StyxWoW.Sleep(4000);
                 }
-                if (Me.QuestLog.GetQuestById(10609) != null && !Me.QuestLog.GetQuestById(10609).IsCompleted && MobNetherWhelp.Count > 0)
+                if (Me.QuestLog.GetQuestById(10609) != null && !Me.QuestLog.GetQuestById(10609).IsCompleted &&
+                    MobNetherWhelp.Count > 0)
                 {
                     MobNetherWhelp[0].Interact();
                     MobNetherWhelp[0].Face();
                     Lua.DoString("UseItemByName(30742)");
                     StyxWoW.Sleep(4000);
                 }
-                if (Me.QuestLog.GetQuestById(10609) != null && !Me.QuestLog.GetQuestById(10609).IsCompleted && IsObjectiveComplete(1, 10609) && MobProtoNetherDrake.Count > 0)
+                if (Me.QuestLog.GetQuestById(10609) != null && !Me.QuestLog.GetQuestById(10609).IsCompleted &&
+                    IsObjectiveComplete(1, 10609) && MobProtoNetherDrake.Count > 0)
                 {
                     MobProtoNetherDrake[0].Interact();
                     MobProtoNetherDrake[0].Face();
                     Lua.DoString("UseItemByName(30742)");
                     StyxWoW.Sleep(4000);
                 }
-                if (Me.QuestLog.GetQuestById(10609) != null && !Me.QuestLog.GetQuestById(10609).IsCompleted && IsObjectiveComplete(2, 10609) && MobAdolescentNetherDrake.Count > 0)
+                if (Me.QuestLog.GetQuestById(10609) != null && !Me.QuestLog.GetQuestById(10609).IsCompleted &&
+                    IsObjectiveComplete(2, 10609) && MobAdolescentNetherDrake.Count > 0)
                 {
                     MobAdolescentNetherDrake[0].Interact();
                     MobAdolescentNetherDrake[0].Face();
                     Lua.DoString("UseItemByName(30742)");
                     StyxWoW.Sleep(4000);
                 }
-                if (Me.QuestLog.GetQuestById(10609) != null && !Me.QuestLog.GetQuestById(10609).IsCompleted && IsObjectiveComplete(3, 10609) && MobMatureNetherDrake.Count > 0)
+                if (Me.QuestLog.GetQuestById(10609) != null && !Me.QuestLog.GetQuestById(10609).IsCompleted &&
+                    IsObjectiveComplete(3, 10609) && MobMatureNetherDrake.Count > 0)
                 {
                     MobMatureNetherDrake[0].Interact();
                     MobMatureNetherDrake[0].Face();
                     Lua.DoString("UseItemByName(30742)");
                     StyxWoW.Sleep(4000);
                 }
-                if (Me.QuestLog.GetQuestById(10830) != null && !Me.QuestLog.GetQuestById(10830).IsCompleted && MobKoiKoiSpirit.Count > 0)
+                if (Me.QuestLog.GetQuestById(10830) != null && !Me.QuestLog.GetQuestById(10830).IsCompleted &&
+                    MobKoiKoiSpirit.Count > 0)
                 {
                     MobKoiKoiSpirit[0].Interact();
                     MobKoiKoiSpirit[0].Face();
@@ -1142,19 +1300,23 @@ namespace CavaPlugin
                     Lua.DoString("UseItemByName(29473)");
                     StyxWoW.Sleep(500);
                 }
-                if (Me.QuestLog.GetQuestById(28632) != null && !Me.QuestLog.GetQuestById(28632).IsCompleted && !Me.Combat && MobGlacierIce.Count > 0)
+                if (Me.QuestLog.GetQuestById(28632) != null && !Me.QuestLog.GetQuestById(28632).IsCompleted &&
+                    !Me.Combat && MobGlacierIce.Count > 0)
                 {
                     MobGlacierIce[0].Interact();
                 }
-                if (Me.QuestLog.GetQuestById(11794) != null && Me.QuestLog.GetQuestById(11794).IsCompleted && !Me.Combat && !Me.HasAura(46078))
+                if (Me.QuestLog.GetQuestById(11794) != null && Me.QuestLog.GetQuestById(11794).IsCompleted && !Me.Combat &&
+                    !Me.HasAura(46078))
                 {
                     WoWMovement.MoveStop();
                     Lua.DoString("UseItemByName(35125)");
                     StyxWoW.Sleep(500);
                 }
-                if (Me.QuestLog.GetQuestById(26830) != null && !Me.QuestLog.GetQuestById(26830).IsCompleted && MobSauranokMystic.Count > 0 )
+                if (Me.QuestLog.GetQuestById(26830) != null && !Me.QuestLog.GetQuestById(26830).IsCompleted &&
+                    MobSauranokMystic.Count > 0)
                 {
-                    if (MobSauranokMystic[0].HasAura(82548) && Me.CurrentTarget != null && Me.CurrentTarget.Entry == 44120)
+                    if (MobSauranokMystic[0].HasAura(82548) && Me.CurrentTarget != null &&
+                        Me.CurrentTarget.Entry == 44120)
                         Blacklist.Add(Me.CurrentTarget, BlacklistFlags.Combat, TimeSpan.FromSeconds(180000));
                     if (MobSauranokMystic[0].Location.Distance(Me.Location) > 4 && MobSauranokMystic[0].HasAura(82531))
                     {
@@ -1171,7 +1333,13 @@ namespace CavaPlugin
                         CavaAtackMob();
                     }
                 }
-                
+
+                if (Me.QuestLog.GetQuestById(31769) != null && !Me.QuestLog.GetQuestById(31769).IsCompleted && ObjBarricadeHorde != null)
+                {
+                    WoWMovement.MoveStop();
+                    Lua.DoString("UseItemByName(89769)");
+                    StyxWoW.Sleep(500);
+                }
                 if (Me.ZoneId == 616 && Me.CurrentTarget != null && Me.CurrentTarget.Entry == 41031)
                 {
                     if (ItemThisShiv != null)
@@ -1300,7 +1468,7 @@ namespace CavaPlugin
                     }
                 }
                 */
-                if (_vendorMountSpellId != 0 && CPsettings.Instance.fixSummonMountVendor && Me.IsAlive && !Me.Combat)
+                if (_vendorMountSpellId != 0 && CPsettings.Instance.FixSummonMountVendor && Me.IsAlive && !Me.Combat)
                 {
                     if (Me.Mounted)
                     {
