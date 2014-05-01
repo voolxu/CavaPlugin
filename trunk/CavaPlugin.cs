@@ -28,6 +28,7 @@ using Styx.CommonBot.Profiles;
 using Styx.WoWInternals;
 using Styx.WoWInternals.WoWObjects;
 using Bots.Grind;
+using ThreadState = System.Threading.ThreadState;
 
 namespace CavaPlugin
 {
@@ -88,7 +89,7 @@ namespace CavaPlugin
 
         public override Version Version
         {
-            get { return new Version(4, 5, 2); }
+            get { return new Version(4, 5, 3); }
         }
 
         public override string Name
@@ -1613,6 +1614,7 @@ namespace CavaPlugin
                     {
                         // ReSharper disable once ResourceItemNotResolved
                         Log(_rm.GetString("AntiStuck_not_moving_last_10_min", _ci), DateTime.Now.ToString(CultureInfo.InvariantCulture));
+                        if (_recomecar.ThreadState == ThreadState.Running) _recomecar.Abort();
                         _recomecar.Start();
                         _nVezesBotUnstuck++;
                     }
