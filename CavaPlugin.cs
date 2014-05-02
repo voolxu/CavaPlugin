@@ -1614,7 +1614,7 @@ namespace CavaPlugin
                     {
                         // ReSharper disable once ResourceItemNotResolved
                         Log(_rm.GetString("AntiStuck_not_moving_last_10_min", _ci), DateTime.Now.ToString(CultureInfo.InvariantCulture));
-                        if (_recomecar.ThreadState == ThreadState.Running) _recomecar.Abort();
+                        //if (_recomecar.ThreadState == ThreadState.Running) _recomecar.Abort();
                         _recomecar.Start();
                         _nVezesBotUnstuck++;
                     }
