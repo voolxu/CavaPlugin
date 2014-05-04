@@ -16,7 +16,6 @@ using System.Windows.Forms;
 using System.Windows.Media;
 using Styx;
 using Styx.CommonBot.Frames;
-//using Styx.CommonBot.Profiles.Quest.Order;
 using Styx.CommonBot.Routines;
 using Styx.Helpers;
 using Styx.Pathing;
@@ -89,7 +88,7 @@ namespace CavaPlugin
 
         public override Version Version
         {
-            get { return new Version(4, 5, 3); }
+            get { return new Version(4, 6, 0); }
         }
 
         public override string Name
@@ -384,7 +383,7 @@ namespace CavaPlugin
             Logging.OnLogMessage += LoggingOnOnLogMessage;
             CPGlobalSettings.Instance.Load();
             CPsettings.Instance.Load();
-            if (!CPGlobalSettings.Instance.languageselected)
+            if (!CPGlobalSettings.Instance.Languageselected)
             {
                 Form getlanguage = new Language();
                 getlanguage.ShowDialog();

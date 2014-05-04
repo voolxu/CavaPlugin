@@ -191,6 +191,7 @@ namespace CavaPlugin
         {
             Player.SoundLocation = PathToCavaPlugin + "Sounds\\Open.wav";
             Player.Play();
+            // ReSharper disable PossiblyMistakenUseOfParamsMethod
             pictureBox1.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\main.png");
             pictureBox2.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\quests.png");
             pictureBox3.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\about.png");
@@ -205,6 +206,7 @@ namespace CavaPlugin
             pictureBox13.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\register.png");
             pictureBox14.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\donate2.gif");
             pictureBox15.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\main.png");
+            // ReSharper restore PossiblyMistakenUseOfParamsMethod
 
             
             UpdateStuff();
@@ -353,6 +355,7 @@ namespace CavaPlugin
             else
             {
                 pictureBox13.Visible = true;
+                // ReSharper disable once PossiblyMistakenUseOfParamsMethod
                 pictureBox10.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\n.png");
                 MiningBlacksmithingProf.Enabled = false;
                 if (LastUseProfile == 8)
@@ -379,56 +382,56 @@ namespace CavaPlugin
             playsoundcheckBox.Checked = CPsettings.Instance.Playsonar;
             if (comboBox1.SelectedIndex == 0)
             {
-                CultureInfo ci = new CultureInfo("en-US");
-                string str = Assembly.GetExecutingAssembly().FullName;
+                var ci = new CultureInfo("en-US");
+                var str = Assembly.GetExecutingAssembly().FullName;
                 str = str.Remove(str.IndexOf(','));
-                Assembly _assembly = Assembly.Load(str);
-                ResourceManager rm = new ResourceManager("Lang", _assembly);
+                var assembly = Assembly.Load(str);
+                var rm = new ResourceManager("Lang", assembly);
                 GetRes(ci, rm);
             }
             if (comboBox1.SelectedIndex == 1)
             {
-                CultureInfo ci = new CultureInfo("da");
-                string str = Assembly.GetExecutingAssembly().FullName;
+                var ci = new CultureInfo("da");
+                var str = Assembly.GetExecutingAssembly().FullName;
                 str = str.Remove(str.IndexOf(','));
-                Assembly _assembly = Assembly.Load(str);
-                ResourceManager rm = new ResourceManager("Lang.da", _assembly);
+                var assembly = Assembly.Load(str);
+                var rm = new ResourceManager("Lang.da", assembly);
                 GetRes(ci, rm);
             }
             if (comboBox1.SelectedIndex == 2)
             {
-                CultureInfo ci = new CultureInfo("de");
-                string str = Assembly.GetExecutingAssembly().FullName;
+                var ci = new CultureInfo("de");
+                var str = Assembly.GetExecutingAssembly().FullName;
                 str = str.Remove(str.IndexOf(','));
-                Assembly _assembly = Assembly.Load(str);
-                ResourceManager rm = new ResourceManager("Lang.de", _assembly);
+                var assembly = Assembly.Load(str);
+                var rm = new ResourceManager("Lang.de", assembly);
                 GetRes(ci, rm);
             }
             if (comboBox1.SelectedIndex == 3)
             {
-                CultureInfo ci = new CultureInfo("fr");
-                string str = Assembly.GetExecutingAssembly().FullName;
+                var ci = new CultureInfo("fr");
+                var str = Assembly.GetExecutingAssembly().FullName;
                 str = str.Remove(str.IndexOf(','));
-                Assembly _assembly = Assembly.Load(str);
-                ResourceManager rm = new ResourceManager("Lang.fr", _assembly);
+                var assembly = Assembly.Load(str);
+                var rm = new ResourceManager("Lang.fr", assembly);
                 GetRes(ci, rm);
             }
             if (comboBox1.SelectedIndex == 4)
             {
-                CultureInfo ci = new CultureInfo("pt-PT");
-                string str = Assembly.GetExecutingAssembly().FullName;
+                var ci = new CultureInfo("pt-PT");
+                var str = Assembly.GetExecutingAssembly().FullName;
                 str = str.Remove(str.IndexOf(','));
-                Assembly _assembly = Assembly.Load(str);
-                ResourceManager rm = new ResourceManager("Lang.pt", _assembly);
+                var assembly = Assembly.Load(str);
+                var rm = new ResourceManager("Lang.pt", assembly);
                 GetRes(ci, rm);
             }
             if (comboBox1.SelectedIndex == 5)
             {
-                CultureInfo ci = new CultureInfo("ru-RU");
-                string str = Assembly.GetExecutingAssembly().FullName;
+                var ci = new CultureInfo("ru-RU");
+                var str = Assembly.GetExecutingAssembly().FullName;
                 str = str.Remove(str.IndexOf(','));
-                Assembly _assembly = Assembly.Load(str);
-                ResourceManager rm = new ResourceManager("Lang.ru", _assembly);
+                var assembly = Assembly.Load(str);
+                var rm = new ResourceManager("Lang.ru", assembly);
                 GetRes(ci, rm);
             }
             if (LastUseProfile > 0)
@@ -1463,7 +1466,7 @@ namespace CavaPlugin
         [Setting, DefaultValue(0)]
         public int language { get; set; }
         [Setting, DefaultValue(false)]
-        public bool languageselected { get; set; }
+        public bool Languageselected { get; set; }
         [Setting, DefaultValue("")]
         public string CpLogin { get; set; }
         [Setting, DefaultValue("")]
