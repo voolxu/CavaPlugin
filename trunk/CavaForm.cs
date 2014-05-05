@@ -506,7 +506,7 @@ namespace CavaPlugin
         private void timer1_Tick(object sender, EventArgs e)
         {
             Seconds -= 1;
-            label6.Text = Seconds.ToString();
+            label6.Text = Seconds.ToString(CultureInfo.InvariantCulture);
             if (Seconds == 0)
             {
                 timer1.Enabled = false;
@@ -535,24 +535,24 @@ namespace CavaPlugin
         }
         private void nomeiaprofile()
         {
-            if (LastUseProfile == 1) { lancaprofile(PathToProfiles + "Next[Cava].xml"); }
-            if (LastUseProfile == 2) { lancaprofile(PathToProfiles + "[Quest]Pandaren-Horde1to90By[Cava].xml"); }
-            if (LastUseProfile == 3) { lancaprofile(PathToProfiles + "[Quest]Pandaren-Alliance1to90By[Cava].xml"); }
-            if (LastUseProfile == 4) { lancaprofile(PathToProfiles + "[Quest]MOP85to90WithLootBy[Cava].xml"); }
-            if (LastUseProfile == 5) { lancaprofile(PathToProfiles + "ArmageddonerNext[Cava].xml"); }
-            if (LastUseProfile == 6) { lancaprofile(PathToProfiles + "ArmageddonerNext[Cava].xml"); }
-            if (LastUseProfile == 7) { lancaprofile(PathToProfiles + "emptymb600.xml"); }
-            if (LastUseProfile == 8) { lancaprofile(PathToProfiles + "emptymb300.xml"); }
-            if (LastUseProfile == 10) { lancaprofile(PathToProfiles + "[N-Quest]Armageddoner_Reserved[Cava].xml"); }
+            if (LastUseProfile == 1) { Lancaprofile(PathToProfiles + "Next[Cava].xml"); }
+            if (LastUseProfile == 2) { Lancaprofile(PathToProfiles + "[Quest]Pandaren-Horde1to90By[Cava].xml"); }
+            if (LastUseProfile == 3) { Lancaprofile(PathToProfiles + "[Quest]Pandaren-Alliance1to90By[Cava].xml"); }
+            if (LastUseProfile == 4) { Lancaprofile(PathToProfiles + "[Quest]MOP88to90WithLootBy[Cava].xml"); }
+            if (LastUseProfile == 5) { Lancaprofile(PathToProfiles + "ArmageddonerNext[Cava].xml"); }
+            if (LastUseProfile == 6) { Lancaprofile(PathToProfiles + "ArmageddonerNext[Cava].xml"); }
+            if (LastUseProfile == 7) { Lancaprofile(PathToProfiles + "emptymb600.xml"); }
+            if (LastUseProfile == 8) { Lancaprofile(PathToProfiles + "emptymb300.xml"); }
+            if (LastUseProfile == 10) { Lancaprofile(PathToProfiles + "[N-Quest]Armageddoner_Reserved[Cava].xml"); }
         }
         
-        private void lancaprofile(string ProfileToLoad)
+        private void Lancaprofile(string ProfileToLoad)
         {
             //para relogio
             timer1.Dispose();
 
             //verifica se bot esta para ou a trabalhar
-            bool isRunningantes = TreeRoot.IsRunning;
+            var isRunningantes = TreeRoot.IsRunning;
             if (isRunningantes)
             {
                 CPGlobalSettings.Instance.Allowlunch = true;
@@ -563,8 +563,8 @@ namespace CavaPlugin
             else
             {
                 //muda para quest bot
-                Styx.Helpers.CharacterSettings.Instance.Load();
-                NumberBotBase = Styx.Helpers.CharacterSettings.Instance.SelectedBotIndex;
+                CharacterSettings.Instance.Load();
+                NumberBotBase = CharacterSettings.Instance.SelectedBotIndex;
                 if (NumberBotBase != 9)
                 {
                     var questBot = BotManager.Instance.Bots.FirstOrDefault(kvp => kvp.Key == "Questing");
@@ -591,7 +591,7 @@ namespace CavaPlugin
         private void pictureBox4_Click(object sender, EventArgs e)
         {
             button_Click();
-            ProcessStartInfo sInfo = new ProcessStartInfo("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5S8G78PRDGUFG");
+            var sInfo = new ProcessStartInfo("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5S8G78PRDGUFG");
             Process.Start(sInfo);
         }
  
@@ -635,143 +635,143 @@ namespace CavaPlugin
 
         private void button5_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://cava.repositoryhosting.com/trac/cava_profiles/wiki");
+            Process.Start("https://cava.repositoryhosting.com/trac/cava_profiles/wiki");
             button_Click();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://cavaplugin.googlecode.com/svn/trunk/");
+            Process.Start("http://cavaplugin.googlecode.com/svn/trunk/");
         }
 
         private void linkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk-post1100415.html#post1100415");
+            Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk-post1100415.html#post1100415");
         }
 
         private void linkLabel6_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk.html#post1061397");
+            Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk.html#post1061397");
         }
 
         private void linkLabel7_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk.html#post1062537");
+            Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk.html#post1062537");
         }
 
         private void linkLabel8_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk-post1067665.html#post1067665");
+            Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk-post1067665.html#post1067665");
         }
 
         private void linkLabel9_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk-post1094850.html#post1094850");
+            Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk-post1094850.html#post1094850");
         }
 
         private void linkLabel10_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk-post1096341.html#post1096341");
+            Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk-post1096341.html#post1096341");
         }
 
         private void linkLabel11_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk-3.html#post1150713");
+            Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk-3.html#post1150713");
         }
 
         private void linkLabel12_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk.html#post1061411");
+            Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk.html#post1061411");
         }
 
         private void linkLabel13_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk.html#post1067322");
+            Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk.html#post1067322");
         }
 
         private void linkLabel14_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk-post1087063.html#post1087063");
+            Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk-post1087063.html#post1087063");
         }
 
         private void linkLabel15_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk.html#post1067373");
+            Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk.html#post1067373");
         }
 
         private void linkLabel16_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk.html#post1067435");
+            Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk.html#post1067435");
         }
 
         private void linkLabel17_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk-post1105561.html#post1105561");
+            Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk-post1105561.html#post1105561");
         }
 
         private void linkLabel18_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk.html#post1067544");
+            Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk.html#post1067544");
         }
 
         private void linkLabel19_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk-post1067958.html#post1067958");
+            Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk-post1067958.html#post1067958");
         }
 
         private void linkLabel20_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk-post1067983.html#post1067983");
+            Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk-post1067983.html#post1067983");
         }
 
         private void linkLabel21_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk-post1070048.html#post1070048");
+            Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk-post1070048.html#post1070048");
         }
 
         private void linkLabel22_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk-post1096357.html#post1096357");
+            Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk-post1096357.html#post1096357");
         }
 
         private void linkLabel23_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk-post1144989.html#post1144989");
+            Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk-post1144989.html#post1144989");
         }
 
         private void linkLabel24_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk.html#post1067458");
+            Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk.html#post1067458");
         }
 
         private void linkLabel25_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk.html#post1067458");
+            Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/honorbuddy-guides/108771-help-desk.html#post1067458");
         }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://cavaqbs.googlecode.com/svn/trunk/");
+            Process.Start("http://cavaqbs.googlecode.com/svn/trunk/");
         }
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://cavaprofiles.googlecode.com/svn/trunk/");
+            Process.Start("http://cavaprofiles.googlecode.com/svn/trunk/");
         }
 
         private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://cavaprofiles.org/index.php/profiles/profiles-list/armageddoner");
+            Process.Start("http://cavaprofiles.org/index.php/profiles/profiles-list/armageddoner");
         }
 
         private void linkLabel26_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/submitted-profiles/68612-cava-s-profiles-lvl-1-a.html");
+            Process.Start("http://www.thebuddyforum.com/honorbuddy-forum/submitted-profiles/68612-cava-s-profiles-lvl-1-a.html");
         }
 
         private void linkLabel27_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://cavaprofiles.org/index.php");
+            Process.Start("http://cavaprofiles.org/index.php");
         }
 
         private void AntiStuck_CheckBox_CheckedChanged(object sender, EventArgs e)
