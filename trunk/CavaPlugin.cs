@@ -35,6 +35,7 @@ namespace CavaPlugin
     public class CavaPlugin : HBPlugin
     // ReSharper restore UnusedMember.Global
     {
+        public int UseServer = 1;
         private bool _hasBeenInitialized;
         private bool _hasBeenInitialized2;
         private bool _hasBeenInitialized3;
@@ -88,7 +89,7 @@ namespace CavaPlugin
 
         public override Version Version
         {
-            get { return new Version(4, 6, 1); }
+            get { return new Version(4, 6, 2); }
         }
 
         public override string Name
@@ -523,77 +524,156 @@ namespace CavaPlugin
                     }
                 }
                 //fazer update de Armageddoner
-                var url = string.Format("http://cavaprofiles.org/index.php?user={0}&passw={1}",
-                    CPGlobalSettings.Instance.CpLogin, Decrypt(CPGlobalSettings.Instance.CpPassword));
-                var request = (HttpWebRequest) WebRequest.Create(url);
-                request.AllowAutoRedirect = false;
-                request.CookieContainer = new CookieContainer();
-                var response = (HttpWebResponse) request.GetResponse();
-                var cookies = request.CookieContainer;
-                response.Close();
-                try
+                UseServer = CPGlobalSettings.Instance.UseServer;
+                if (UseServer==1)
                 {
-                    request =
-                        (HttpWebRequest)
-                            WebRequest.Create(
-                                "http://cavaprofiles.org/index.php/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
+                    var url = string.Format("http://cavaprofiles.org/index.php?user={0}&passw={1}",
+                        CPGlobalSettings.Instance.CpLogin, Decrypt(CPGlobalSettings.Instance.CpPassword));
+                    var request = (HttpWebRequest)WebRequest.Create(url);
                     request.AllowAutoRedirect = false;
-                    request.CookieContainer = cookies;
-                    response = (HttpWebResponse) request.GetResponse();
+                    request.CookieContainer = new CookieContainer();
+                    var response = (HttpWebResponse)request.GetResponse();
+                    var cookies = request.CookieContainer;
                     response.Close();
-                    if (response.StatusCode.ToString() == "OK") //is armageddoner
+                    try
                     {
-                        Log(_rm.GetString("Armageddoner_Access_Tested_and_Passed", _ci));
-                        CPGlobalSettings.Instance.ArmaPanelBack = true;
+                        request =
+                            (HttpWebRequest)
+                                WebRequest.Create(
+                                    "http://cavaprofiles.org/index.php/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
+                        request.AllowAutoRedirect = false;
+                        request.CookieContainer = cookies;
+                        response = (HttpWebResponse)request.GetResponse();
+                        response.Close();
+                        if (response.StatusCode.ToString() == "OK") //is armageddoner
+                        {
+                            Log(_rm.GetString("Armageddoner_Access_Tested_and_Passed", _ci));
+                            CPGlobalSettings.Instance.ArmaPanelBack = true;
+                        }
+                        else
+                        {
+                            CPGlobalSettings.Instance.ArmaPanelBack = false;
+                            CPGlobalSettings.Instance.AutoShutdownWhenUpdate = false;
+                            CPGlobalSettings.Instance.DisablePlugin = true;
+                            CPsettings.Instance.AntiStuckSystem = false;
+                            CPsettings.Instance.CheckAllowSummonPet = false;
+                            CPsettings.Instance.guildInvitescheck = false;
+                            CPsettings.Instance.refuseguildInvitescheck = false;
+                            CPsettings.Instance.RefusepartyInvitescheck = false;
+                            CPsettings.Instance.RefusetradeInvitescheck = false;
+                            CPsettings.Instance.RefuseduelInvitescheck = false;
+                            CPsettings.Instance.RessAfterDie = false;
+                            CPsettings.Instance.CombatLoot = false;
+                            CPsettings.Instance.OpenBox = false;
+                            CPsettings.Instance.FixSummonMountVendor = false;
+                            CPsettings.Instance.BlacklistflycheckBox = false;
+                            CPsettings.Instance.AntigankcheckBox = false;
+                            CPsettings.Instance.Playsonar = false;
+                        }
                     }
-                    else
+                    catch (Exception)
                     {
                         CPGlobalSettings.Instance.ArmaPanelBack = false;
-                        CPsettings.Instance.AntiStuckSystem = false;
-                        CPsettings.Instance.CheckAllowSummonPet = false;
-                        CPsettings.Instance.guildInvitescheck = false;
-                        CPsettings.Instance.refuseguildInvitescheck = false;
-                        CPsettings.Instance.RefusepartyInvitescheck = false;
-                        CPsettings.Instance.RefusetradeInvitescheck = false;
-                        CPsettings.Instance.RefuseduelInvitescheck = false;
-                        CPsettings.Instance.RessAfterDie = false;
-                        CPsettings.Instance.CombatLoot = false;
-                        CPsettings.Instance.OpenBox = false;
-                        CPsettings.Instance.FixSummonMountVendor = false;
-                        CPsettings.Instance.BlacklistflycheckBox = false;
-                        CPsettings.Instance.AntigankcheckBox = false;
-                        CPsettings.Instance.Playsonar = false;
                     }
-                }
-                catch (Exception)
-                {
-                    CPGlobalSettings.Instance.ArmaPanelBack = false;
-                }
-                //fazer update de PBs
-                //mining+blacksmithing 1 to 600
-                try
-                {
-                    request =
-                        (HttpWebRequest)
-                            WebRequest.Create(
-                                "http://cavaprofiles.org/index.php/profiles/profiles-list/cavaprofessions/mining/13-miningblacksmithing600/file");
-                    request.AllowAutoRedirect = false;
-                    request.CookieContainer = cookies;
-                    response = (HttpWebResponse) request.GetResponse();
-                    response.Close();
-                    if (response.StatusCode.ToString() == "OK") //is profession min,bs600
+                    try
                     {
-                        Log(_rm.GetString("Profession_Owner_Access_Tested_and_Passed_for_MiningBlacksmithing1to600", _ci));
-                        CPGlobalSettings.Instance.ProfMinBlack600 = true;
+                        request =
+                            (HttpWebRequest)
+                                WebRequest.Create(
+                                    "http://cavaprofiles.org/index.php/profiles/profiles-list/cavaprofessions/mining/13-miningblacksmithing600/file");
+                        request.AllowAutoRedirect = false;
+                        request.CookieContainer = cookies;
+                        response = (HttpWebResponse)request.GetResponse();
+                        response.Close();
+                        if (response.StatusCode.ToString() == "OK") //is profession min,bs600
+                        {
+                            Log(_rm.GetString("Profession_Owner_Access_Tested_and_Passed_for_MiningBlacksmithing1to600", _ci));
+                            CPGlobalSettings.Instance.ProfMinBlack600 = true;
+                        }
+                        else
+                        {
+                            CPGlobalSettings.Instance.ProfMinBlack600 = false;
+                        }
                     }
-                    else
+                    catch (Exception)
                     {
                         CPGlobalSettings.Instance.ProfMinBlack600 = false;
                     }
                 }
-                catch (Exception)
+                else
                 {
-                    CPGlobalSettings.Instance.ProfMinBlack600 = false;
+                    var url = string.Format("http://cavaprofiles.net/index.php?user={0}&passw={1}",
+                       CPGlobalSettings.Instance.CpLogin, Decrypt(CPGlobalSettings.Instance.CpPassword));
+                    var request = (HttpWebRequest)WebRequest.Create(url);
+                    request.AllowAutoRedirect = false;
+                    request.CookieContainer = new CookieContainer();
+                    var response = (HttpWebResponse)request.GetResponse();
+                    var cookies = request.CookieContainer;
+                    response.Close();
+                    try
+                    {
+                        request =
+                            (HttpWebRequest)
+                                WebRequest.Create(
+                                    "http://cavaprofiles.net/index.php/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
+                        request.AllowAutoRedirect = false;
+                        request.CookieContainer = cookies;
+                        response = (HttpWebResponse)request.GetResponse();
+                        response.Close();
+                        if (response.StatusCode.ToString() == "OK") //is armageddoner
+                        {
+                            Log(_rm.GetString("Armageddoner_Access_Tested_and_Passed", _ci));
+                            CPGlobalSettings.Instance.ArmaPanelBack = true;
+                        }
+                        else
+                        {
+                            CPGlobalSettings.Instance.ArmaPanelBack = false;
+                            CPGlobalSettings.Instance.AutoShutdownWhenUpdate = false;
+                            CPGlobalSettings.Instance.DisablePlugin = true;
+                            CPsettings.Instance.AntiStuckSystem = false;
+                            CPsettings.Instance.CheckAllowSummonPet = false;
+                            CPsettings.Instance.guildInvitescheck = false;
+                            CPsettings.Instance.refuseguildInvitescheck = false;
+                            CPsettings.Instance.RefusepartyInvitescheck = false;
+                            CPsettings.Instance.RefusetradeInvitescheck = false;
+                            CPsettings.Instance.RefuseduelInvitescheck = false;
+                            CPsettings.Instance.RessAfterDie = false;
+                            CPsettings.Instance.CombatLoot = false;
+                            CPsettings.Instance.OpenBox = false;
+                            CPsettings.Instance.FixSummonMountVendor = false;
+                            CPsettings.Instance.BlacklistflycheckBox = false;
+                            CPsettings.Instance.AntigankcheckBox = false;
+                            CPsettings.Instance.Playsonar = false;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        CPGlobalSettings.Instance.ArmaPanelBack = false;
+                    }
+                    try
+                    {
+                        request =
+                            (HttpWebRequest)
+                                WebRequest.Create(
+                                    "http://cavaprofiles.net/index.php/profiles/profiles-list/cavaprofessions/mining/13-miningblacksmithing600/file");
+                        request.AllowAutoRedirect = false;
+                        request.CookieContainer = cookies;
+                        response = (HttpWebResponse)request.GetResponse();
+                        response.Close();
+                        if (response.StatusCode.ToString() == "OK") //is profession min,bs600
+                        {
+                            Log(_rm.GetString("Profession_Owner_Access_Tested_and_Passed_for_MiningBlacksmithing1to600", _ci));
+                            CPGlobalSettings.Instance.ProfMinBlack600 = true;
+                        }
+                        else
+                        {
+                            CPGlobalSettings.Instance.ProfMinBlack600 = false;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        CPGlobalSettings.Instance.ProfMinBlack600 = false;
+                    }
                 }
                 var fi = new FileInfo(_pathToPbLoadProfile);
                 if (!File.Exists(_pathToPbLoadProfile) || fi.Length != 9591) //
@@ -681,7 +761,7 @@ namespace CavaPlugin
                 CPsettings.Instance.Load();
                 _botRunning = true;
                 if (ProfileManager.CurrentProfile.Name != null && !ProfileManager.CurrentProfile.Name.Contains("[Cava]") &&
-                    _botRunning)
+                    _botRunning && CPGlobalSettings.Instance.DisablePlugin)
                 {
                     _botRunning = false;
                 }

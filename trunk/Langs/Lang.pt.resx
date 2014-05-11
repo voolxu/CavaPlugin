@@ -159,12 +159,6 @@
   <data name="lastusedprofiletxtdef" xml:space="preserve">
     <value>Não Existe Profile previamente Selecionado</value>
   </data>
-  <data name="level85to90" xml:space="preserve">
-    <value>Levelar 85 a 90 Todas as Quests</value>
-  </data>
-  <data name="level85to90txt" xml:space="preserve">
-    <value>Este profile vai levelar qualquer char do level 85 a 90. Este profile não e AFK e não esta finalizado, ate agora: a Aliança pode ir de 85 a 90, a Horde de 85 a 88. Este profile faz todas as quests e todos os Map Achievments em Pandaria</value>
-  </data>
   <data name="leveling1to90" xml:space="preserve">
     <value>Levelar 1 a 90</value>
   </data>
@@ -585,14 +579,22 @@
   <data name="RunCheckedListOfReservedProfilesForArmageddonerUsers" xml:space="preserve">
     <value>Run Checked List Of Reserved Profiles For Armageddoner Users</value>
   </data>
+
+
   <data name="levelingarmagessonertxt" xml:space="preserve">
-    <value>This profile will level any character from 80 to 86</value>
+    <value>This profile will level any character from 81 to 89</value>
   </data>
   <data name="levelingarmagessoner" xml:space="preserve">
-    <value>Alliance And Horde (80-86) (testers/donators only)</value>
+    <value>Alliance And Horde (81-89) (testers/donators only)</value>
   </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Added The Jade Forest map profile, levels 85 to 86, (reserved for Armageddoners).</value>
+    <value>Added Kun-Lai Summit map profile, levels 88 to 89, (reserved for Armageddoners).</value>
+  </data>
+  <data name="level85to90" xml:space="preserve">
+    <value>Level toon from 89 to 90 using only Quests</value>
+  </data>
+  <data name="level85to90txt" xml:space="preserve">
+    <value>This profile will level all Alliance characters from 89 to 90. This profile is not fully AFK so please report any issues.</value>
   </data>
 
 

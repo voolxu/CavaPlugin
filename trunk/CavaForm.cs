@@ -32,6 +32,7 @@ namespace CavaPlugin
 {
     public partial class CavaForm : Form
     {
+        public int UseServer = 1;
         public int LastUseProfile = 0; // Ultimo Profile usado.
         public bool ArmaguedonerAllow = false;
         public int Seconds = 15; // Segundos do countdown.
@@ -362,10 +363,11 @@ namespace CavaPlugin
                     LastUseProfile = 0;
             }
             Checkarmageddonerreservedprofiles();
-            LastUseProfile = CPsettings.Instance.lastUsedPath;
+            LastUseProfile = CPsettings.Instance.LastUsedPath;
             guildInvitescheckBox.Checked = CPsettings.Instance.guildInvitescheck;
             AntiStuck_CheckBox.Checked = CPsettings.Instance.AntiStuckSystem;
             AutoShutDown_Checkbox.Checked = CPGlobalSettings.Instance.AutoShutdownWhenUpdate;
+            disableplugincheckBox.Checked = CPGlobalSettings.Instance.DisablePlugin;
             AllowSummonPet_Checkbox.Checked = CPsettings.Instance.CheckAllowSummonPet;
             linkLabel29.Enabled = CPGlobalSettings.Instance.PBMiningBlacksmithing;
             ResscheckBox.Checked = CPsettings.Instance.RessAfterDie;
@@ -380,6 +382,17 @@ namespace CavaPlugin
             blacklistflycheckBox.Checked = CPsettings.Instance.BlacklistflycheckBox;
             antigankcheckBox.Checked = CPsettings.Instance.AntigankcheckBox;
             playsoundcheckBox.Checked = CPsettings.Instance.Playsonar;
+            UseServer = CPGlobalSettings.Instance.UseServer;
+            if (UseServer == 1)
+            {
+                selectserver1radio.Checked = true;
+            }
+            else
+            {
+                selectserver2radio.Checked = true;
+            }
+            disableplugincheckBox.Checked = CPGlobalSettings.Instance.DisablePlugin;
+
             if (comboBox1.SelectedIndex == 0)
             {
                 var ci = new CultureInfo("en-US");
@@ -497,7 +510,7 @@ namespace CavaPlugin
             button_Click();
             timer1.Enabled = false;
             timer1.Dispose();
-            CPsettings.Instance.lastUsedPath = LastUseProfile;
+            CPsettings.Instance.LastUsedPath = LastUseProfile;
             CPGlobalSettings.Instance.Save();
             CPsettings.Instance.Save();
             nomeiaprofile();
@@ -790,7 +803,7 @@ namespace CavaPlugin
         {
             timer1.Enabled = false;
             timer1.Dispose();
-            CPsettings.Instance.lastUsedPath = LastUseProfile;
+            CPsettings.Instance.LastUsedPath = LastUseProfile;
             CPGlobalSettings.Instance.Save();
             CPsettings.Instance.Save();
             nomeiaprofile();
@@ -812,7 +825,7 @@ namespace CavaPlugin
 
         private void linkLabel29_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://cavaprofiles.org/index.php/profiles/profiles-list/cavaprofessions/blacksmithing-1");
+            Process.Start("http://cavaprofiles.org/index.php/profiles/profiles-list/cavaprofessions/blacksmithing-1");
         }
 
         private void tabPage2_Click_1(object sender, EventArgs e)
@@ -852,36 +865,36 @@ namespace CavaPlugin
             button_Click();
             if (comboBox1.SelectedIndex == 0)
             {
-                CultureInfo ci = new CultureInfo("en-US");
+                var ci = new CultureInfo("en-US");
                 CPGlobalSettings.Instance.language = 0;
-                string str = Assembly.GetExecutingAssembly().FullName;
+                var str = Assembly.GetExecutingAssembly().FullName;
                 str = str.Remove(str.IndexOf(','));
-                Assembly _assembly = Assembly.Load(str);
-                ResourceManager rm = new ResourceManager("Lang", _assembly);
+                var assembly = Assembly.Load(str);
+                var rm = new ResourceManager("Lang", assembly);
                 richTextBox1.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\GoodToKnow_en.rtf");
                 thanksRichText.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\Thanks_en.rtf");
                 GetRes(ci,rm);
             }
             if (comboBox1.SelectedIndex == 1)
             {
-                CultureInfo ci = new CultureInfo("da");
+                var ci = new CultureInfo("da");
                 CPGlobalSettings.Instance.language = 1;
-                string str = Assembly.GetExecutingAssembly().FullName;
+                var str = Assembly.GetExecutingAssembly().FullName;
                 str = str.Remove(str.IndexOf(','));
-                Assembly _assembly = Assembly.Load(str);
-                ResourceManager rm = new ResourceManager("Lang.da", _assembly);
+                var assembly = Assembly.Load(str);
+                var rm = new ResourceManager("Lang.da", assembly);
                 richTextBox1.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\GoodToKnow_da.rtf");
                 thanksRichText.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\Thanks_da.rtf");
                 GetRes(ci, rm);
             }
             if (comboBox1.SelectedIndex == 2)
             {
-                CultureInfo ci = new CultureInfo("de");
+                var ci = new CultureInfo("de");
                 CPGlobalSettings.Instance.language = 2;
-                string str = Assembly.GetExecutingAssembly().FullName;
+                var str = Assembly.GetExecutingAssembly().FullName;
                 str = str.Remove(str.IndexOf(','));
-                Assembly _assembly = Assembly.Load(str);
-                ResourceManager rm = new ResourceManager("Lang.de", _assembly);
+                var assembly = Assembly.Load(str);
+                var rm = new ResourceManager("Lang.de", assembly);
                 richTextBox1.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\GoodToKnow_de.rtf");
                 thanksRichText.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\Thanks_de.rtf");
                 GetRes(ci, rm);
@@ -900,36 +913,36 @@ namespace CavaPlugin
             }*/
             if (comboBox1.SelectedIndex == 3)
             {
-                CultureInfo ci = new CultureInfo("fr");
+                var ci = new CultureInfo("fr");
                 CPGlobalSettings.Instance.language = 3;
-                string str = Assembly.GetExecutingAssembly().FullName;
+                var str = Assembly.GetExecutingAssembly().FullName;
                 str = str.Remove(str.IndexOf(','));
-                Assembly _assembly = Assembly.Load(str);
-                ResourceManager rm = new ResourceManager("Lang.fr", _assembly);
+                var assembly = Assembly.Load(str);
+                var rm = new ResourceManager("Lang.fr", assembly);
                 richTextBox1.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\GoodToKnow_fr.rtf");
                 thanksRichText.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\Thanks_fr.rtf");
                 GetRes(ci, rm);
             }
             if (comboBox1.SelectedIndex == 4)
             {
-                CultureInfo ci = new CultureInfo("pt-PT");
+                var ci = new CultureInfo("pt-PT");
                 CPGlobalSettings.Instance.language = 4;
-                string str = Assembly.GetExecutingAssembly().FullName;
+                var str = Assembly.GetExecutingAssembly().FullName;
                 str = str.Remove(str.IndexOf(','));
-                Assembly _assembly = Assembly.Load(str);
-                ResourceManager rm = new ResourceManager("Lang.pt", _assembly);
+                var assembly = Assembly.Load(str);
+                var rm = new ResourceManager("Lang.pt", assembly);
                 richTextBox1.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\GoodToKnow_pt.rtf");
                 thanksRichText.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\Thanks_pt.rtf");
                 GetRes(ci, rm);
             }
             if (comboBox1.SelectedIndex == 5)
             {
-                CultureInfo ci = new CultureInfo("ru-RU");
+                var ci = new CultureInfo("ru-RU");
                 CPGlobalSettings.Instance.language = 5;
-                string str = Assembly.GetExecutingAssembly().FullName;
+                var str = Assembly.GetExecutingAssembly().FullName;
                 str = str.Remove(str.IndexOf(','));
-                Assembly _assembly = Assembly.Load(str);
-                ResourceManager rm = new ResourceManager("Lang.ru", _assembly);
+                var assembly = Assembly.Load(str);
+                var rm = new ResourceManager("Lang.ru", assembly);
                 richTextBox1.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\GoodToKnow_ru.rtf");
                 thanksRichText.LoadFile(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\Langs\Thanks_ru.rtf");
                 GetRes(ci, rm);
@@ -973,14 +986,14 @@ namespace CavaPlugin
         private void pictureBox8_Click(object sender, EventArgs e)
         {
             button_Click();
-            ProcessStartInfo sInfo = new ProcessStartInfo("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9A7GNEUY8JZMU");
+            var sInfo = new ProcessStartInfo("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9A7GNEUY8JZMU");
             Process.Start(sInfo);
         }
 
         private void pictureBox9_Click(object sender, EventArgs e)
         {
             button_Click();
-            ProcessStartInfo sInfo = new ProcessStartInfo("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5S8G78PRDGUFG");
+            var sInfo = new ProcessStartInfo("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5S8G78PRDGUFG");
             Process.Start(sInfo);
         }
 
@@ -1033,10 +1046,12 @@ namespace CavaPlugin
         private void HaveArmageddonerAccess()
         {
             CavaPlugin.Log("Armageddoner Access Tested and Passed");
+            // ReSharper disable once PossiblyMistakenUseOfParamsMethod
             pictureBox11.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\y.png");
             pictureBox9.Visible = false;
             AntiStuck_CheckBox.Enabled = true;
             AutoShutDown_Checkbox.Enabled = true;
+            disableplugincheckBox.Enabled = true;
             AllowSummonPet_Checkbox.Enabled = true;
             radioButton5.Enabled = true;
             groupBox6.Enabled = true;
@@ -1085,12 +1100,15 @@ namespace CavaPlugin
 
         private void DontHaveArmageddonerAccess()
         {
+            // ReSharper disable once PossiblyMistakenUseOfParamsMethod
             pictureBox11.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\n.png");
             pictureBox9.Visible = true;
             AntiStuck_CheckBox.Checked = false;
             AntiStuck_CheckBox.Enabled = false;
             AutoShutDown_Checkbox.Checked = false;
             AutoShutDown_Checkbox.Enabled = false;
+            disableplugincheckBox.Checked = true;
+            disableplugincheckBox.Enabled = false;
             AllowSummonPet_Checkbox.Checked = false;
             AllowSummonPet_Checkbox.Enabled = false;
             radioButton5.Enabled = false;
@@ -1144,6 +1162,7 @@ namespace CavaPlugin
         private void Haveprofessionminingblacksmithing600Access()
         {
             CavaPlugin.Log("Profession Owner Access Tested and Passed for Mining/Blacksmithing 1 to 600");
+            // ReSharper disable once PossiblyMistakenUseOfParamsMethod
             pictureBox12.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\y.png");
             pictureBox14.Visible = false;
             pictureBox8.Visible = false;
@@ -1163,6 +1182,7 @@ namespace CavaPlugin
 
         private void DontHaveprofessionminingblacksmithing600Access()
         {
+            // ReSharper disable once PossiblyMistakenUseOfParamsMethod
             pictureBox12.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\n.png");
             pictureBox14.Visible = true;
             pictureBox8.Visible = true;
@@ -1186,91 +1206,211 @@ namespace CavaPlugin
             CPGlobalSettings.Instance.CpLogin = LogintextBox.Text;
             CPGlobalSettings.Instance.CpPassword = Encrypt(PasswordtextBox.Text);
             CPGlobalSettings.Instance.Save();
-            var url = string.Format("http://cavaprofiles.org/index.php?user={0}&passw={1}", LogintextBox.Text, PasswordtextBox.Text);
-            var request = (HttpWebRequest)WebRequest.Create(url);
-            request.AllowAutoRedirect = false;
-            request.CookieContainer = new CookieContainer();
-            var response = (HttpWebResponse)request.GetResponse();
-            var cookies = request.CookieContainer;
-            response.Close();
-            try
+            if (CPGlobalSettings.Instance.UseServer == 1)
             {
-                request = (HttpWebRequest)WebRequest.Create("http://cavaprofiles.org/index.php/profiles/profiles-list/leveling-1-to-90/leveling-60-to-90/5-reg-user/file");
+                var url = string.Format("http://cavaprofiles.org/index.php?user={0}&passw={1}", LogintextBox.Text,
+                    PasswordtextBox.Text);
+                var request = (HttpWebRequest) WebRequest.Create(url);
                 request.AllowAutoRedirect = false;
-                request.CookieContainer = cookies;
-                response = (HttpWebResponse)request.GetResponse();
+                request.CookieContainer = new CookieContainer();
+                var response = (HttpWebResponse) request.GetResponse();
+                var cookies = request.CookieContainer;
                 response.Close();
-                if (response.StatusCode.ToString() == "OK")//is reg
+                try
                 {
-                    CavaPlugin.Log("Registered Access Tested and Passed");
-                    pictureBox13.Visible = false;
-                    CPGlobalSettings.Instance.CpPanelBack = true;
-                    MiningBlacksmithingProf.Enabled = true;
-                    pictureBox10.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\y.png");
-                    try
+                    request =
+                        (HttpWebRequest)
+                            WebRequest.Create(
+                                "http://cavaprofiles.org/index.php/profiles/profiles-list/leveling-1-to-90/leveling-60-to-90/5-reg-user/file");
+                    request.AllowAutoRedirect = false;
+                    request.CookieContainer = cookies;
+                    response = (HttpWebResponse) request.GetResponse();
+                    response.Close();
+                    if (response.StatusCode.ToString() == "OK") //is reg
                     {
-                        request = (HttpWebRequest)WebRequest.Create("http://cavaprofiles.org/index.php/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
-                        request.AllowAutoRedirect = false;
-                        request.CookieContainer = cookies;
-                        response = (HttpWebResponse)request.GetResponse();
-                        response.Close();
-                        if (response.StatusCode.ToString() == "OK")//is armageddoner
+                        CavaPlugin.Log("Registered Access Tested and Passed");
+                        pictureBox13.Visible = false;
+                        CPGlobalSettings.Instance.CpPanelBack = true;
+                        MiningBlacksmithingProf.Enabled = true;
+                        // ReSharper disable once PossiblyMistakenUseOfParamsMethod
+                        pictureBox10.ImageLocation =
+                            Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\y.png");
+                        try
                         {
-                            HaveArmageddonerAccess();
+                            request =
+                                (HttpWebRequest)
+                                    WebRequest.Create(
+                                        "http://cavaprofiles.org/index.php/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
+                            request.AllowAutoRedirect = false;
+                            request.CookieContainer = cookies;
+                            response = (HttpWebResponse) request.GetResponse();
+                            response.Close();
+                            if (response.StatusCode.ToString() == "OK") //is armageddoner
+                            {
+                                HaveArmageddonerAccess();
+                            }
+                            else
+                            {
+                                DontHaveArmageddonerAccess();
+                            }
                         }
-                        else
+                        catch (Exception)
                         {
                             DontHaveArmageddonerAccess();
                         }
-                    }
-                    catch (Exception)
-                    {
-                        DontHaveArmageddonerAccess();
-                    }
-                    try
-                    {
-                        request = (HttpWebRequest)WebRequest.Create("http://cavaprofiles.org/index.php/profiles/profiles-list/cavaprofessions/mining/13-miningblacksmithing600/file");
-                        request.AllowAutoRedirect = false;
-                        request.CookieContainer = cookies;
-                        response = (HttpWebResponse)request.GetResponse();
-                        response.Close();
-                        if (response.StatusCode.ToString() == "OK")//is profession min,bs600
+                        try
                         {
-                            Haveprofessionminingblacksmithing600Access();
+                            request =
+                                (HttpWebRequest)
+                                    WebRequest.Create(
+                                        "http://cavaprofiles.org/index.php/profiles/profiles-list/cavaprofessions/mining/13-miningblacksmithing600/file");
+                            request.AllowAutoRedirect = false;
+                            request.CookieContainer = cookies;
+                            response = (HttpWebResponse) request.GetResponse();
+                            response.Close();
+                            if (response.StatusCode.ToString() == "OK") //is profession min,bs600
+                            {
+                                Haveprofessionminingblacksmithing600Access();
+                            }
+                            else
+                            {
+                                DontHaveprofessionminingblacksmithing600Access();
+                            }
                         }
-                        else
+                        catch (Exception)
                         {
                             DontHaveprofessionminingblacksmithing600Access();
                         }
                     }
-                    catch (Exception)
+                    else
                     {
+                        pictureBox10.ImageLocation =
+                            Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\n.png");
+                        pictureBox13.Visible = true;
+                        DontHaveArmageddonerAccess();
                         DontHaveprofessionminingblacksmithing600Access();
+                        CPGlobalSettings.Instance.CpPanelBack = false;
                     }
+                    CPGlobalSettings.Instance.Save();
                 }
-                else
+                catch (Exception)
                 {
-                    pictureBox10.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\n.png");
+                    CavaPlugin.Err(
+                        "Something Wrong, cant confirm you have registered access, opening browser to test access");
+                    pictureBox10.ImageLocation =
+                        Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\n.png");
                     pictureBox13.Visible = true;
                     DontHaveArmageddonerAccess();
                     DontHaveprofessionminingblacksmithing600Access();
                     CPGlobalSettings.Instance.CpPanelBack = false;
+                    CPGlobalSettings.Instance.Save();
+                    var sInfo = new ProcessStartInfo("http://cavaprofiles.org/index.php");
+                    Process.Start(sInfo);
                 }
-                CPGlobalSettings.Instance.Save();
             }
-            catch (Exception)
+            else
             {
-                CavaPlugin.Err("Something Wrong, cant confirm you have registered access, opening browser to test access");
-                pictureBox10.ImageLocation = Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\n.png");
-                pictureBox13.Visible = true;
-                DontHaveArmageddonerAccess();
-                DontHaveprofessionminingblacksmithing600Access();
-                CPGlobalSettings.Instance.CpPanelBack = false;
-                CPGlobalSettings.Instance.Save();
-                var sInfo = new ProcessStartInfo("http://cavaprofiles.org/index.php");
-                Process.Start(sInfo);
-                return;
+                var url = string.Format("http://cavaprofiles.net/index.php?user={0}&passw={1}", LogintextBox.Text,
+                    PasswordtextBox.Text);
+                var request = (HttpWebRequest)WebRequest.Create(url);
+                request.AllowAutoRedirect = false;
+                request.CookieContainer = new CookieContainer();
+                var response = (HttpWebResponse)request.GetResponse();
+                var cookies = request.CookieContainer;
+                response.Close();
+                try
+                {
+                    request =
+                        (HttpWebRequest)
+                            WebRequest.Create(
+                                "http://cavaprofiles.net/index.php/profiles/profiles-list/leveling-1-to-90/leveling-60-to-90/5-reg-user/file");
+                    request.AllowAutoRedirect = false;
+                    request.CookieContainer = cookies;
+                    response = (HttpWebResponse)request.GetResponse();
+                    response.Close();
+                    if (response.StatusCode.ToString() == "OK") //is reg
+                    {
+                        CavaPlugin.Log("Registered Access Tested and Passed");
+                        pictureBox13.Visible = false;
+                        CPGlobalSettings.Instance.CpPanelBack = true;
+                        MiningBlacksmithingProf.Enabled = true;
+                        // ReSharper disable once PossiblyMistakenUseOfParamsMethod
+                        pictureBox10.ImageLocation =
+                            Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\y.png");
+                        try
+                        {
+                            request =
+                                (HttpWebRequest)
+                                    WebRequest.Create(
+                                        "http://cavaprofiles.net/index.php/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
+                            request.AllowAutoRedirect = false;
+                            request.CookieContainer = cookies;
+                            response = (HttpWebResponse)request.GetResponse();
+                            response.Close();
+                            if (response.StatusCode.ToString() == "OK") //is armageddoner
+                            {
+                                HaveArmageddonerAccess();
+                            }
+                            else
+                            {
+                                DontHaveArmageddonerAccess();
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            DontHaveArmageddonerAccess();
+                        }
+                        try
+                        {
+                            request =
+                                (HttpWebRequest)
+                                    WebRequest.Create(
+                                        "http://cavaprofiles.net/index.php/profiles/profiles-list/cavaprofessions/mining/13-miningblacksmithing600/file");
+                            request.AllowAutoRedirect = false;
+                            request.CookieContainer = cookies;
+                            response = (HttpWebResponse)request.GetResponse();
+                            response.Close();
+                            if (response.StatusCode.ToString() == "OK") //is profession min,bs600
+                            {
+                                Haveprofessionminingblacksmithing600Access();
+                            }
+                            else
+                            {
+                                DontHaveprofessionminingblacksmithing600Access();
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            DontHaveprofessionminingblacksmithing600Access();
+                        }
+                    }
+                    else
+                    {
+                        pictureBox10.ImageLocation =
+                            Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\n.png");
+                        pictureBox13.Visible = true;
+                        DontHaveArmageddonerAccess();
+                        DontHaveprofessionminingblacksmithing600Access();
+                        CPGlobalSettings.Instance.CpPanelBack = false;
+                    }
+                    CPGlobalSettings.Instance.Save();
+                }
+                catch (Exception)
+                {
+                    CavaPlugin.Err(
+                        "Something Wrong, cant confirm you have registered access, opening browser to test access");
+                    pictureBox10.ImageLocation =
+                        Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\n.png");
+                    pictureBox13.Visible = true;
+                    DontHaveArmageddonerAccess();
+                    DontHaveprofessionminingblacksmithing600Access();
+                    CPGlobalSettings.Instance.CpPanelBack = false;
+                    CPGlobalSettings.Instance.Save();
+                    var sInfo = new ProcessStartInfo("http://cavaprofiles.net/index.php");
+                    Process.Start(sInfo);
+                }
             }
+
         }
 
         private void ProfMinBlack1600radioButton_CheckedChanged(object sender, EventArgs e)
@@ -1384,10 +1524,30 @@ namespace CavaPlugin
             button_Click();
             timer1.Enabled = false;
             timer1.Dispose();
-            CPsettings.Instance.lastUsedPath = LastUseProfile;
+            CPsettings.Instance.LastUsedPath = LastUseProfile;
             CPGlobalSettings.Instance.Save();
             CPsettings.Instance.Save();
             nomeiaprofile();
+        }
+
+        private void selectserver1radio_CheckedChanged(object sender, EventArgs e)
+        {
+            button_Click();
+            UseServer = 1;
+            CPGlobalSettings.Instance.UseServer = 1;
+        }
+
+        private void selectserver2radio_CheckedChanged(object sender, EventArgs e)
+        {
+            button_Click();
+            UseServer = 2;
+            CPGlobalSettings.Instance.UseServer = 2;
+        }
+
+        private void disableplugincheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            button_Click();
+            CPGlobalSettings.Instance.DisablePlugin = disableplugincheckBox.Checked;
         }
 
     }
@@ -1399,7 +1559,7 @@ namespace CavaPlugin
         {
         }
         [Setting, DefaultValue(0)]
-        public int lastUsedPath { get; set; }
+        public int LastUsedPath { get; set; }
         [Setting, DefaultValue(false)]
         public bool AntiStuckSystem { get; set; }
         [Setting, DefaultValue(false)]
@@ -1477,6 +1637,9 @@ namespace CavaPlugin
         public bool ArmaPanelBack { get; set; }
         [Setting, DefaultValue(false)]
         public bool ProfMinBlack600 { get; set; }
-       
+        [Setting, DefaultValue(1)]
+        public int UseServer { get; set; }
+        [Setting, DefaultValue(true)]
+        public bool DisablePlugin { get; set; }
     }
 }
