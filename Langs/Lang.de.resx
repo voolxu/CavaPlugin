@@ -121,12 +121,6 @@ to Portuguese
   <data name="lastusedprofiletxtdef" xml:space="preserve">
     <value>Kein zuletzt benutztes Profil verfügbar</value>
   </data>
-  <data name="level85to90" xml:space="preserve">
-    <value>Level 85 bis 90 alle Quests</value>
-  </data>
-  <data name="level85to90txt" xml:space="preserve">
-    <value>Profil für Allianz von 85 bis 90 und Horde 95 bis 88. Dieses Profil sollte nicht ohne Aufsicht laufen gelassen werden. Bitte mir alle Fehler melden.</value>
-  </data>
   <data name="leveling1to90" xml:space="preserve">
     <value>Level 1 bis 90</value>
   </data>
@@ -547,19 +541,26 @@ to Portuguese
   <data name="RunCheckedListOfReservedProfilesForArmageddonerUsers" xml:space="preserve">
     <value>Führe Prüfung der Registrierten Benutzer Profile aus</value>
   </data>
+
+
+
+
+
   <data name="levelingarmagessonertxt" xml:space="preserve">
-    <value>Dieses Profile levelt alle Chars von 80 bis 86</value>
+    <value>This profile will level any character from 81 to 89</value>
   </data>
   <data name="levelingarmagessoner" xml:space="preserve">
-    <value>Allianz und Horde (80-86) (Nur für Tester/Registrierte Benutzer)</value>
+    <value>Alliance And Horde (81-89) (testers/donators only)</value>
   </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Jade Wald hinzugefügt, Level 85 bis 86 (Nur für Armageddoners/Registrierte Benutzer)</value>
+    <value>Added Kun-Lai Summit map profile, levels 88 to 89, (reserved for Armageddoners).</value>
   </data>
-
-
-
-
+  <data name="level85to90" xml:space="preserve">
+    <value>Level toon from 89 to 90 using only Quests</value>
+  </data>
+  <data name="level85to90txt" xml:space="preserve">
+    <value>This profile will level all Alliance characters from 89 to 90. This profile is not fully AFK so please report any issues.</value>
+  </data>
 
 
 

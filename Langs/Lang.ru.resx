@@ -119,12 +119,6 @@ to Portuguese
   <data name="lastusedprofiletxtdef" xml:space="preserve">
     <value>Последний профиль не был выбран</value>
   </data>
-  <data name="level85to90" xml:space="preserve">
-    <value>Прокачка 85 - 90 все квесты</value>
-  </data>
-  <data name="level85to90txt" xml:space="preserve">
-    <value>Этот профиль для прокачки персонажей альянса с 85 до 90 и персонажей орды с 85 до 88. Не уходите в афк, сообщайте об любых ошибках.</value>
-  </data>
   <data name="leveling1to90" xml:space="preserve">
     <value>Прокачка с 1 до 90</value>
   </data>
@@ -565,14 +559,23 @@ to Portuguese
   <data name="RunCheckedListOfReservedProfilesForArmageddonerUsers" xml:space="preserve">
     <value>Run Checked List Of Reserved Profiles For Armageddoner Users</value>
   </data>
+
+
   <data name="levelingarmagessonertxt" xml:space="preserve">
-    <value>This profile will level any character from 80 to 86</value>
+    <value>This profile will level any character from 81 to 89</value>
   </data>
   <data name="levelingarmagessoner" xml:space="preserve">
-    <value>Alliance And Horde (80-86) (testers/donators only)</value>
+    <value>Alliance And Horde (81-89) (testers/donators only)</value>
   </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Added The Jade Forest map profile, levels 85 to 86, (reserved for Armageddoners).</value>
+    <value>Added Kun-Lai Summit map profile, levels 88 to 89, (reserved for Armageddoners).</value>
   </data>
+  <data name="level85to90" xml:space="preserve">
+    <value>Level toon from 89 to 90 using only Quests</value>
+  </data>
+  <data name="level85to90txt" xml:space="preserve">
+    <value>This profile will level all Alliance characters from 89 to 90. This profile is not fully AFK so please report any issues.</value>
+  </data>
+
 
 </root>

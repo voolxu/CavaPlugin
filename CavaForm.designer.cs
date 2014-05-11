@@ -82,6 +82,9 @@ namespace CavaPlugin
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.connectgroupBox = new System.Windows.Forms.GroupBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.selectserver2radio = new System.Windows.Forms.RadioButton();
+            this.selectserver1radio = new System.Windows.Forms.RadioButton();
             this.passwordlabel = new System.Windows.Forms.Label();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.TestAccessbutton = new System.Windows.Forms.Button();
@@ -116,6 +119,7 @@ namespace CavaPlugin
             this.guildInvitescheckBox = new System.Windows.Forms.CheckBox();
             this.refuseGuildCheckBox = new System.Windows.Forms.CheckBox();
             this.globalsetgroupBox = new System.Windows.Forms.GroupBox();
+            this.disableplugincheckBox = new System.Windows.Forms.CheckBox();
             this.AutoShutDown_Checkbox = new System.Windows.Forms.CheckBox();
             this.tabPage11 = new System.Windows.Forms.TabPage();
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
@@ -191,6 +195,7 @@ namespace CavaPlugin
             this.tabControl1.SuspendLayout();
             this.tabPage9.SuspendLayout();
             this.connectgroupBox.SuspendLayout();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.groupBox11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -761,7 +766,7 @@ namespace CavaPlugin
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(146, 17);
             this.label14.TabIndex = 2;
-            this.label14.Text = "CavaPlugin V 4.6.1";
+            this.label14.Text = "CavaPlugin V 4.6.2";
             // 
             // button4
             // 
@@ -889,6 +894,7 @@ namespace CavaPlugin
             // connectgroupBox
             // 
             this.connectgroupBox.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.connectgroupBox.Controls.Add(this.panel4);
             this.connectgroupBox.Controls.Add(this.passwordlabel);
             this.connectgroupBox.Controls.Add(this.pictureBox10);
             this.connectgroupBox.Controls.Add(this.TestAccessbutton);
@@ -897,21 +903,61 @@ namespace CavaPlugin
             this.connectgroupBox.Controls.Add(this.loginlabel);
             this.connectgroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.connectgroupBox.ForeColor = System.Drawing.Color.Gold;
-            this.connectgroupBox.Location = new System.Drawing.Point(381, 149);
+            this.connectgroupBox.Location = new System.Drawing.Point(240, 149);
             this.connectgroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.connectgroupBox.Name = "connectgroupBox";
             this.connectgroupBox.Padding = new System.Windows.Forms.Padding(4);
-            this.connectgroupBox.Size = new System.Drawing.Size(360, 154);
+            this.connectgroupBox.Size = new System.Drawing.Size(501, 154);
             this.connectgroupBox.TabIndex = 28;
             this.connectgroupBox.TabStop = false;
             this.connectgroupBox.Text = "Connect";
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.selectserver2radio);
+            this.panel4.Controls.Add(this.selectserver1radio);
+            this.panel4.Location = new System.Drawing.Point(317, 22);
+            this.panel4.Margin = new System.Windows.Forms.Padding(0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(180, 61);
+            this.panel4.TabIndex = 27;
+            // 
+            // selectserver2radio
+            // 
+            this.selectserver2radio.AutoSize = true;
+            this.selectserver2radio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectserver2radio.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.selectserver2radio.Location = new System.Drawing.Point(3, 30);
+            this.selectserver2radio.Name = "selectserver2radio";
+            this.selectserver2radio.Size = new System.Drawing.Size(173, 22);
+            this.selectserver2radio.TabIndex = 1;
+            this.selectserver2radio.TabStop = true;
+            this.selectserver2radio.Text = "Use Server 2(Europe)";
+            this.selectserver2radio.UseVisualStyleBackColor = true;
+            this.selectserver2radio.CheckedChanged += new System.EventHandler(this.selectserver2radio_CheckedChanged);
+            this.selectserver2radio.MouseEnter += new System.EventHandler(this.button_MouseEnter);
+            // 
+            // selectserver1radio
+            // 
+            this.selectserver1radio.AutoSize = true;
+            this.selectserver1radio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectserver1radio.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.selectserver1radio.Location = new System.Drawing.Point(3, 5);
+            this.selectserver1radio.Name = "selectserver1radio";
+            this.selectserver1radio.Size = new System.Drawing.Size(155, 22);
+            this.selectserver1radio.TabIndex = 0;
+            this.selectserver1radio.TabStop = true;
+            this.selectserver1radio.Text = "Use Server 1(USA)";
+            this.selectserver1radio.UseVisualStyleBackColor = true;
+            this.selectserver1radio.CheckedChanged += new System.EventHandler(this.selectserver1radio_CheckedChanged);
+            this.selectserver1radio.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
             // passwordlabel
             // 
             this.passwordlabel.AutoSize = true;
             this.passwordlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordlabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.passwordlabel.Location = new System.Drawing.Point(270, 65);
+            this.passwordlabel.Location = new System.Drawing.Point(216, 65);
             this.passwordlabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.passwordlabel.Name = "passwordlabel";
             this.passwordlabel.Size = new System.Drawing.Size(75, 18);
@@ -920,7 +966,7 @@ namespace CavaPlugin
             // 
             // pictureBox10
             // 
-            this.pictureBox10.Location = new System.Drawing.Point(273, 105);
+            this.pictureBox10.Location = new System.Drawing.Point(392, 105);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(30, 30);
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -933,7 +979,7 @@ namespace CavaPlugin
             this.TestAccessbutton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.TestAccessbutton.Location = new System.Drawing.Point(3, 105);
             this.TestAccessbutton.Name = "TestAccessbutton";
-            this.TestAccessbutton.Size = new System.Drawing.Size(255, 30);
+            this.TestAccessbutton.Size = new System.Drawing.Size(365, 30);
             this.TestAccessbutton.TabIndex = 30;
             this.TestAccessbutton.Text = "Save and Test Access";
             this.TestAccessbutton.UseVisualStyleBackColor = true;
@@ -945,7 +991,7 @@ namespace CavaPlugin
             this.PasswordtextBox.Location = new System.Drawing.Point(3, 65);
             this.PasswordtextBox.Name = "PasswordtextBox";
             this.PasswordtextBox.PasswordChar = '*';
-            this.PasswordtextBox.Size = new System.Drawing.Size(255, 30);
+            this.PasswordtextBox.Size = new System.Drawing.Size(206, 30);
             this.PasswordtextBox.TabIndex = 29;
             this.PasswordtextBox.UseSystemPasswordChar = true;
             // 
@@ -953,7 +999,7 @@ namespace CavaPlugin
             // 
             this.LogintextBox.Location = new System.Drawing.Point(3, 25);
             this.LogintextBox.Name = "LogintextBox";
-            this.LogintextBox.Size = new System.Drawing.Size(255, 30);
+            this.LogintextBox.Size = new System.Drawing.Size(206, 30);
             this.LogintextBox.TabIndex = 28;
             // 
             // loginlabel
@@ -961,7 +1007,7 @@ namespace CavaPlugin
             this.loginlabel.AutoSize = true;
             this.loginlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loginlabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.loginlabel.Location = new System.Drawing.Point(270, 25);
+            this.loginlabel.Location = new System.Drawing.Point(216, 33);
             this.loginlabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.loginlabel.Name = "loginlabel";
             this.loginlabel.Size = new System.Drawing.Size(44, 18);
@@ -979,7 +1025,7 @@ namespace CavaPlugin
             this.groupBox11.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox11.Size = new System.Drawing.Size(360, 154);
+            this.groupBox11.Size = new System.Drawing.Size(221, 154);
             this.groupBox11.TabIndex = 27;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Settings";
@@ -997,7 +1043,7 @@ namespace CavaPlugin
             "Français",
             "Português",
             "Русский"});
-            this.comboBox1.Location = new System.Drawing.Point(3, 25);
+            this.comboBox1.Location = new System.Drawing.Point(3, 48);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(196, 26);
@@ -1010,7 +1056,7 @@ namespace CavaPlugin
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label15.Location = new System.Drawing.Point(213, 31);
+            this.label15.Location = new System.Drawing.Point(3, 29);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(72, 18);
@@ -1381,6 +1427,7 @@ namespace CavaPlugin
             // globalsetgroupBox
             // 
             this.globalsetgroupBox.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.globalsetgroupBox.Controls.Add(this.disableplugincheckBox);
             this.globalsetgroupBox.Controls.Add(this.AutoShutDown_Checkbox);
             this.globalsetgroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.globalsetgroupBox.ForeColor = System.Drawing.Color.Gold;
@@ -1392,6 +1439,20 @@ namespace CavaPlugin
             this.globalsetgroupBox.TabIndex = 36;
             this.globalsetgroupBox.TabStop = false;
             this.globalsetgroupBox.Text = "Global Settings";
+            // 
+            // disableplugincheckBox
+            // 
+            this.disableplugincheckBox.AutoSize = true;
+            this.disableplugincheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.disableplugincheckBox.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.disableplugincheckBox.Location = new System.Drawing.Point(3, 49);
+            this.disableplugincheckBox.Margin = new System.Windows.Forms.Padding(4);
+            this.disableplugincheckBox.Name = "disableplugincheckBox";
+            this.disableplugincheckBox.Size = new System.Drawing.Size(307, 22);
+            this.disableplugincheckBox.TabIndex = 24;
+            this.disableplugincheckBox.Text = "Auto-Disable when not using Cava profiles";
+            this.disableplugincheckBox.UseVisualStyleBackColor = true;
+            this.disableplugincheckBox.CheckedChanged += new System.EventHandler(this.disableplugincheckBox_CheckedChanged);
             // 
             // AutoShutDown_Checkbox
             // 
@@ -2231,6 +2292,8 @@ namespace CavaPlugin
             this.tabPage9.ResumeLayout(false);
             this.connectgroupBox.ResumeLayout(false);
             this.connectgroupBox.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
@@ -2425,5 +2488,9 @@ namespace CavaPlugin
         private System.Windows.Forms.CheckBox blacklistflycheckBox;
         private System.Windows.Forms.CheckBox antigankcheckBox;
         private System.Windows.Forms.CheckBox playsoundcheckBox;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.RadioButton selectserver2radio;
+        private System.Windows.Forms.RadioButton selectserver1radio;
+        private System.Windows.Forms.CheckBox disableplugincheckBox;
     }
 }
