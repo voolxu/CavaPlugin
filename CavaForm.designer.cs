@@ -766,7 +766,7 @@ namespace CavaPlugin
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(146, 17);
             this.label14.TabIndex = 2;
-            this.label14.Text = "CavaPlugin V 4.6.2";
+            this.label14.Text = "CavaPlugin V 4.7.0";
             // 
             // button4
             // 

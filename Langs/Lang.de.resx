@@ -527,7 +527,7 @@ to Portuguese
     <value>Speichern und zugriffs Test</value>
   </data>
   <data name="miningbs1300" xml:space="preserve">
-    <value>Bergbau und Schmiedekunst 1 bis 300 (Nur für Registrierte Benutzer)</value>
+    <value>Bergbau und Schmiedekunst 1 bis 300 (Nur für registrierte Benutzer)</value>
   </data>
   <data name="miningbs1600" xml:space="preserve">
     <value>Bergbau und Schmiedekunst 1 bis 600 (Nur für Käufer der Berufe)</value>
@@ -541,25 +541,20 @@ to Portuguese
   <data name="RunCheckedListOfReservedProfilesForArmageddonerUsers" xml:space="preserve">
     <value>Führe Prüfung der Registrierten Benutzer Profile aus</value>
   </data>
-
-
-
-
-
   <data name="levelingarmagessonertxt" xml:space="preserve">
-    <value>This profile will level any character from 81 to 89</value>
+    <value>Dieses Profile wird jeden Spieler von Level 81 auf Level 89 bringen</value>
   </data>
   <data name="levelingarmagessoner" xml:space="preserve">
-    <value>Alliance And Horde (81-89) (testers/donators only)</value>
+    <value>Allianz und Horde (81-89) (Tester/Registrierte Benutzer)</value>
   </data>
   <data name="newtxt" xml:space="preserve">
-    <value>Added Kun-Lai Summit map profile, levels 88 to 89, (reserved for Armageddoners).</value>
+    <value>Kun-Lai Summit hinzugefügt, Level 88 bis 89, (Nur für registrierte Benutzer).</value>
   </data>
   <data name="level85to90" xml:space="preserve">
-    <value>Level toon from 89 to 90 using only Quests</value>
+    <value>Levelt einen Spieler von 89 bis 90, nur mit Questing</value>
   </data>
   <data name="level85to90txt" xml:space="preserve">
-    <value>This profile will level all Alliance characters from 89 to 90. This profile is not fully AFK so please report any issues.</value>
+    <value>Dieses Profil levelt alle Allianz Spieler von 89 bis 90. Dieses Profil ist nicht voll AFK fähig, bei Problemen bitte diese Melden.</value>
   </data>
 
 

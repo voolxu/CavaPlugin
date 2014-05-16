@@ -327,7 +327,7 @@ to Portuguese
     <value>There was a problem updating</value>
   </data>
   <data name="Theres_an_error_with_Cava_Quest_Behaviors_or_Cava_profiles" xml:space="preserve">
-    <value>There is an error with the Cava Quest Behaviors or Profiles.</value>
+    <value>There is an error with the Cava Quest Behaviours or Profiles.</value>
   </data>
   <data name="Update_to_0_are_available_You_are_on_1" xml:space="preserve">
     <value>CavaPlugin update ${0} is available! You are on ${1}.</value>
@@ -414,7 +414,7 @@ to Portuguese
     <value>[Refuse Duel Invites: Disabled]</value>
   </data>
   <data name="CavaPlugin_has_been_updated_restart_required" xml:space="preserve">
-    <value>Cava Plugin/Quest Behaviors has been updated a restart is required.</value>
+    <value>Cava Plugin/Quest Behaviours has been updated a restart is required.</value>
   </data>
   <data name="RESTART_REQUIRED" xml:space="preserve">
     <value>RESTART REQUIRED</value>
@@ -459,40 +459,40 @@ to Portuguese
     <value>[CombatLoot]-Looting {0}.</value>
   </data>
   <data name="OpenBoxs_Check_Started_at" xml:space="preserve">
-    <value>[Open Boxs] Check Started at {0}.</value>
+    <value>[Open Boxes] Check Started at {0}.</value>
   </data>
   <data name="OpenBoxs_Opening" xml:space="preserve">
     <value>Opening {0}.</value>
   </data>
   <data name="OpenBoxs_Check_Finished_at" xml:space="preserve">
-    <value>[Open Boxs] Check Finished at {0}.</value>
+    <value>[Open Boxes] Check Finished at {0}.</value>
   </data>
   <data name="Summoning_Random_pet" xml:space="preserve">
-    <value>Summoning Random pet.</value>
+    <value>Summoning random pet.</value>
   </data>
   <data name="AntiStuck_Char_is_Mounted_for_more_than_6_secs_and_stuck" xml:space="preserve">
-    <value>[AntiStuck] Char is Mounted for more than 6 secs and stuck : Forcing Dismount at {0}.</value>
+    <value>[AntiStuck] Character is mounted for more than 6 seconds and stuck : Forcing Dismount at {0}.</value>
   </data>
   <data name="AntiStuck_Char_is_Mounted_for_more_than_10_min" xml:space="preserve">
-    <value>[AntiStuck] Char is Mounted for more than 10 min : Forcing Dismount at {0}.</value>
+    <value>[AntiStuck] Character is mounted for more than 10 min : Forcing Dismount at {0}.</value>
   </data>
   <data name="AntiStuck_Im_AFK_flagged_Anti_Afking_at" xml:space="preserve">
-    <value>[AntiStuck] I'm AFK flagged, Anti-Afking at {0}.</value>
+    <value>[AntiStuck] I'm flagged AFK, Anti-Afking at {0}.</value>
   </data>
   <data name="AntiStuck_not_moving_last_5_min" xml:space="preserve">
-    <value>[AntiStuck] not moving last 5 min : Forcing Dismount at {0}.</value>
+    <value>[AntiStuck] no movement for 5 minutes = Forcing Dismount at {0}.</value>
   </data>
   <data name="AntiStuck_not_moving_last_10_min" xml:space="preserve">
-    <value>[AntiStuck] not moving last 10 min : Restarting bot at {0}.</value>
+    <value>[AntiStuck] no movement for 10 minutes = Restarting bot at {0}.</value>
   </data>
   <data name="AntiStuck_not_moving_last_15_min" xml:space="preserve">
-    <value>[AntiStuck] not moving last 15 min : Closing WOW Game at {0}.</value>
+    <value>[AntiStuck] no movement for 15 minutes = Closing WOW Game at {0}.</value>
   </data>
   <data name="Loot_in_Combat" xml:space="preserve">
     <value>Loot in Combat</value>
   </data>
   <data name="AutoOpen_Boxs_Rogue" xml:space="preserve">
-    <value>AutoOpen Boxs (Rogue)</value>
+    <value>AutoOpen Lock Boxes (Rogue)</value>
   </data>
   <data name="Connect" xml:space="preserve">
     <value>Connect</value>
@@ -521,8 +521,6 @@ to Portuguese
   <data name="RunCheckedListOfReservedProfilesForArmageddonerUsers" xml:space="preserve">
     <value>Run Checked List Of Reserved Profiles For Armageddoner Users</value>
   </data>
-
-
   <data name="levelingarmagessonertxt" xml:space="preserve">
     <value>This profile will level any character from 81 to 89</value>
   </data>
@@ -533,7 +531,7 @@ to Portuguese
     <value>Added Kun-Lai Summit map profile, levels 88 to 89, (reserved for Armageddoners).</value>
   </data>
   <data name="level85to90" xml:space="preserve">
-    <value>Level toon from 89 to 90 using only Quests</value>
+    <value>Level characters from 89 to 90 using only Quests</value>
   </data>
   <data name="level85to90txt" xml:space="preserve">
     <value>This profile will level all Alliance characters from 89 to 90. This profile is not fully AFK so please report any issues.</value>

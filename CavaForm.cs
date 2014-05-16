@@ -1,5 +1,6 @@
 ﻿using System;
 //using System.Collections.Generic;
+//using Bots.Quest;
 // ReSharper disable once RedundantUsingDirective
 using System.ComponentModel;
 //using System.Data;
@@ -11,7 +12,7 @@ using System.Media;
 using System.Net;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading;
+//using System.Threading;
 using System.Windows.Forms;
 using System.Reflection;
 using System.Resources;
@@ -576,27 +577,37 @@ namespace CavaPlugin
             else
             {
                 //muda para quest bot
-                CharacterSettings.Instance.Load();
-                NumberBotBase = CharacterSettings.Instance.SelectedBotIndex;
-                if (NumberBotBase != 9)
+                //CharacterSettings.Instance.Load();
+                //NumberBotBase = CharacterSettings.Instance.SelectedBotIndex;
+                //if (NumberBotBase != 9)
+                var questBot = BotManager.Instance.Bots.Where(kvp => kvp.Value.GetType().Name == "QuestBot").Select(kvp => kvp.Value).FirstOrDefault();
+                if (questBot != null)
                 {
+                    BotManager.Instance.SetCurrent(questBot);
+                    StyxWoW.Sleep(2000);
+                }
+                else
+                {
+                    Logging.Write("Unable to locate Questing bot");
+                }
+                /*{
                     var questBot = BotManager.Instance.Bots.FirstOrDefault(kvp => kvp.Key == "Questing");
                     if (questBot.Key == "Questing")
                     {
                         BotManager.Instance.SetCurrent(questBot.Value);
-                        Thread.Sleep(2000);
+                        StyxWoW.Sleep(2000);
                     }
                     else
                     {
                         Logging.Write("Unable to locate Questing bot");
                     }
-                }
+                }*/
                 //carrega novo profile
                 Styx.CommonBot.Profiles.ProfileManager.LoadNew(ProfileToLoad);
                 //isRunningdepois = TreeRoot.IsRunning;
                 //if (!isRunningdepois) { TreeRoot.Start(); }
                 Close();
-                Thread.Sleep(2000);
+                StyxWoW.Sleep(2000);
                 TreeRoot.Start();
             }
         }
@@ -1285,6 +1296,7 @@ namespace CavaPlugin
                     else
                     {
                         pictureBox10.ImageLocation =
+                        // ReSharper disable once PossiblyMistakenUseOfParamsMethod
                             Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\n.png");
                         pictureBox13.Visible = true;
                         DontHaveArmageddonerAccess();
@@ -1298,6 +1310,7 @@ namespace CavaPlugin
                     CavaPlugin.Err(
                         "Something Wrong, cant confirm you have registered access, opening browser to test access");
                     pictureBox10.ImageLocation =
+                    // ReSharper disable once PossiblyMistakenUseOfParamsMethod
                         Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\n.png");
                     pictureBox13.Visible = true;
                     DontHaveArmageddonerAccess();
@@ -1387,6 +1400,7 @@ namespace CavaPlugin
                     else
                     {
                         pictureBox10.ImageLocation =
+                        // ReSharper disable once PossiblyMistakenUseOfParamsMethod
                             Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\n.png");
                         pictureBox13.Visible = true;
                         DontHaveArmageddonerAccess();
@@ -1400,6 +1414,7 @@ namespace CavaPlugin
                     CavaPlugin.Err(
                         "Something Wrong, cant confirm you have registered access, opening browser to test access");
                     pictureBox10.ImageLocation =
+                        // ReSharper disable once PossiblyMistakenUseOfParamsMethod
                         Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\pngs\n.png");
                     pictureBox13.Visible = true;
                     DontHaveArmageddonerAccess();
@@ -1431,14 +1446,14 @@ namespace CavaPlugin
         private void pictureBox14_Click(object sender, EventArgs e)
         {
             button_Click();
-            ProcessStartInfo sInfo = new ProcessStartInfo("http://cavaprofiles.org/index.php/plans/plans-list/by-category/membership-plans?id=2");
+            var sInfo = new ProcessStartInfo("http://cavaprofiles.org/index.php/plans/plans-list/by-category/membership-plans?id=2");
             Process.Start(sInfo);
         }
 
         private void pictureBox13_Click(object sender, EventArgs e)
         {
             button_Click();
-            ProcessStartInfo sInfo = new ProcessStartInfo("http://cavaprofiles.org/index.php/access/new-user");
+            var sInfo = new ProcessStartInfo("http://cavaprofiles.org/index.php/access/new-user");
             Process.Start(sInfo);
         }
 
