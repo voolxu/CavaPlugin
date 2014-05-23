@@ -379,7 +379,7 @@ namespace CavaPlugin
             comboBox1.SelectedIndex = CPGlobalSettings.Instance.language;
             combatloot_checkBox.Checked = CPsettings.Instance.CombatLoot;
             OpenBox_checkBox.Checked = CPsettings.Instance.OpenBox;
-            fixmountcheckBox1.Checked = CPsettings.Instance.FixSummonMountVendor;
+            fixmountcheckBox1.Checked = CPsettings.Instance.FixMountFlightVendor;
             blacklistflycheckBox.Checked = CPsettings.Instance.BlacklistflycheckBox;
             antigankcheckBox.Checked = CPsettings.Instance.AntigankcheckBox;
             playsoundcheckBox.Checked = CPsettings.Instance.Playsonar;
@@ -1466,7 +1466,7 @@ namespace CavaPlugin
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             button_Click();
-            CPsettings.Instance.FixSummonMountVendor = fixmountcheckBox1.Checked;
+            CPsettings.Instance.FixMountFlightVendor = fixmountcheckBox1.Checked;
         }
 
         private void blacklistflycheckBox_CheckedChanged(object sender, EventArgs e)
@@ -1596,7 +1596,7 @@ namespace CavaPlugin
         [Setting, DefaultValue(false)]
         public bool OpenBox { get; set; }
         [Setting, DefaultValue(false)]
-        public bool FixSummonMountVendor { get; set; }
+        public bool FixMountFlightVendor { get; set; }
         [Setting, DefaultValue(false)]
         public bool BlacklistflycheckBox { get; set; }
         [Setting, DefaultValue(false)]

@@ -542,13 +542,10 @@ to Portuguese
     <value>Führe Prüfung der Registrierten Benutzer Profile aus</value>
   </data>
   <data name="levelingarmagessonertxt" xml:space="preserve">
-    <value>Dieses Profile wird jeden Spieler von Level 81 auf Level 89 bringen</value>
+    <value>Dieses Profile wird jeden Spieler von Level 81 auf Level 90 bringen</value>
   </data>
   <data name="levelingarmagessoner" xml:space="preserve">
-    <value>Allianz und Horde (81-89) (Tester/Registrierte Benutzer)</value>
-  </data>
-  <data name="newtxt" xml:space="preserve">
-    <value>Kun-Lai Summit hinzugefügt, Level 88 bis 89, (Nur für registrierte Benutzer).</value>
+    <value>Allianz und Horde (81-90) (Tester/Registrierte Benutzer)</value>
   </data>
   <data name="level85to90" xml:space="preserve">
     <value>Levelt einen Spieler von 89 bis 90, nur mit Questing</value>
@@ -561,6 +558,7 @@ to Portuguese
 
 
 
-
-
+  <data name="newtxt" xml:space="preserve">
+    <value>Added Townlong Steppes map profile, levels 89 to 90, (reserved for Armageddoners).</value>
+  </data>
 </root>

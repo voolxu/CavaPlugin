@@ -531,8 +531,9 @@ namespace CavaPlugin
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
+            this.radioButton4.Enabled = false;
             this.radioButton4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.radioButton4.Location = new System.Drawing.Point(8, 108);
+            this.radioButton4.Location = new System.Drawing.Point(34, 215);
             this.radioButton4.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(276, 29);
@@ -540,6 +541,7 @@ namespace CavaPlugin
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "Leveling 85 to 90 All Quests";
             this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.Visible = false;
             this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
             this.radioButton4.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
@@ -577,7 +579,7 @@ namespace CavaPlugin
             // 
             this.radioButton5.AutoSize = true;
             this.radioButton5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.radioButton5.Location = new System.Drawing.Point(8, 137);
+            this.radioButton5.Location = new System.Drawing.Point(8, 108);
             this.radioButton5.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton5.Name = "radioButton5";
             this.radioButton5.Size = new System.Drawing.Size(471, 29);
@@ -766,7 +768,7 @@ namespace CavaPlugin
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(146, 17);
             this.label14.TabIndex = 2;
-            this.label14.Text = "CavaPlugin V 4.7.0";
+            this.label14.Text = "CavaPlugin V 4.8.0";
             // 
             // button4
             // 
@@ -1219,9 +1221,9 @@ namespace CavaPlugin
             this.fixmountcheckBox1.Location = new System.Drawing.Point(3, 50);
             this.fixmountcheckBox1.Margin = new System.Windows.Forms.Padding(4);
             this.fixmountcheckBox1.Name = "fixmountcheckBox1";
-            this.fixmountcheckBox1.Size = new System.Drawing.Size(244, 22);
+            this.fixmountcheckBox1.Size = new System.Drawing.Size(214, 22);
             this.fixmountcheckBox1.TabIndex = 23;
-            this.fixmountcheckBox1.Text = "Fix Auto-Summon-Repair-Mount";
+            this.fixmountcheckBox1.Text = "Fix Mount Flight Master Bug";
             this.fixmountcheckBox1.UseVisualStyleBackColor = true;
             this.fixmountcheckBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             this.fixmountcheckBox1.MouseEnter += new System.EventHandler(this.button_MouseEnter);
