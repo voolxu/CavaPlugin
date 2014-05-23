@@ -562,13 +562,10 @@ to Portuguese
 
 
   <data name="levelingarmagessonertxt" xml:space="preserve">
-    <value>This profile will level any character from 81 to 89</value>
+    <value>This profile will level any character from 81 to 90</value>
   </data>
   <data name="levelingarmagessoner" xml:space="preserve">
-    <value>Alliance And Horde (81-89) (testers/donators only)</value>
-  </data>
-  <data name="newtxt" xml:space="preserve">
-    <value>Added Kun-Lai Summit map profile, levels 88 to 89, (reserved for Armageddoners).</value>
+    <value>Alliance And Horde (81-90) (testers/donators only)</value>
   </data>
   <data name="level85to90" xml:space="preserve">
     <value>Level toon from 89 to 90 using only Quests</value>
@@ -576,6 +573,7 @@ to Portuguese
   <data name="level85to90txt" xml:space="preserve">
     <value>This profile will level all Alliance characters from 89 to 90. This profile is not fully AFK so please report any issues.</value>
   </data>
-
-
+  <data name="newtxt" xml:space="preserve">
+    <value>Added Townlong Steppes map profile, levels 89 to 90, (reserved for Armageddoners).</value>
+  </data>
 </root>

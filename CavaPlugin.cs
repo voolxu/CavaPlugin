@@ -89,7 +89,7 @@ namespace CavaPlugin
 
         public override Version Version
         {
-            get { return new Version(4, 7, 0); }
+            get { return new Version(4, 8, 0); }
         }
 
         public override string Name
@@ -565,7 +565,7 @@ namespace CavaPlugin
                             CPsettings.Instance.RessAfterDie = false;
                             CPsettings.Instance.CombatLoot = false;
                             CPsettings.Instance.OpenBox = false;
-                            CPsettings.Instance.FixSummonMountVendor = false;
+                            CPsettings.Instance.FixMountFlightVendor = false;
                             CPsettings.Instance.BlacklistflycheckBox = false;
                             CPsettings.Instance.AntigankcheckBox = false;
                             CPsettings.Instance.Playsonar = false;
@@ -640,7 +640,7 @@ namespace CavaPlugin
                             CPsettings.Instance.RessAfterDie = false;
                             CPsettings.Instance.CombatLoot = false;
                             CPsettings.Instance.OpenBox = false;
-                            CPsettings.Instance.FixSummonMountVendor = false;
+                            CPsettings.Instance.FixMountFlightVendor = false;
                             CPsettings.Instance.BlacklistflycheckBox = false;
                             CPsettings.Instance.AntigankcheckBox = false;
                             CPsettings.Instance.Playsonar = false;
@@ -807,9 +807,9 @@ namespace CavaPlugin
                         Log(_rm.GetString("Summon_Random_Pet_Disabled", _ci));
                     }
 
-                    Log(CPsettings.Instance.FixSummonMountVendor
-                        ? "Fix Summon Mount Vendor Enabled"
-                        : "Fix Summon Mount Vendor Disabled");
+                    Log(CPsettings.Instance.FixMountFlightVendor
+                        ? "Fix Mount Flight Master Bug Enabled"
+                        : "Fix Mount Flight Master Bug Disabled");
                     Log(CPsettings.Instance.BlacklistflycheckBox
                         ? "Remove Blacklist Flight Master Enabled"
                         : "Remove Blacklist Flight Master Disabled");
@@ -1028,12 +1028,13 @@ namespace CavaPlugin
                        StyxWoW.Sleep(1000);
                    }
                }
-               if (!logEntry.Message.Contains(VendorMountLogEntry))
+               /*if (!logEntry.Message.Contains(VendorMountLogEntry))
                continue;
                if (_vendorMountSpellId == 0 && CPsettings.Instance.FixSummonMountVendor)
                Log("Summoning vendor mount Detected, starting fix routine");
                var mountIdStr = logEntry.Message.Substring(VendorMountLogEntry.Length, logEntry.Message.LastIndexOf(')') - VendorMountLogEntry.Length);
                _vendorMountSpellId = int.Parse(mountIdStr);
+                * */
            }
         }
         #endregion
@@ -1117,7 +1118,7 @@ namespace CavaPlugin
         //private static WoWItem ItemCelebrationPack { get { return (StyxWoW.Me.CarriedItems.FirstOrDefault(i => i.Entry == 90918)); } }
         //private static WoWItem ItemHs { get { return (StyxWoW.Me.CarriedItems.FirstOrDefault(i => i.Entry == 6948)); } }
         private static WoWItem ItemThisShiv { get { return (StyxWoW.Me.CarriedItems.FirstOrDefault(i => i.Entry == 55883)); } }
-
+        public WoWUnit FlightMaster { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => ret.IsAlive && !ret.Combat && ret.IsFlightMaster && ret.Location.Distance(Me.Location) <= 5).OrderBy(u => u.Distance).FirstOrDefault(); } }
         #endregion
 
         #region Override Pulse
@@ -1213,6 +1214,16 @@ namespace CavaPlugin
             }
             if (_botRunning)
             {
+                //if ()// && Me.CurrentTarget.IsFlightMaster) && Me.Mounted) && CPsettings.Instance.FixMountFlightVendor)
+                if(TaxiFrame.Instance.IsVisible && Me.Mounted && CPsettings.Instance.FixMountFlightVendor)
+                {
+                    Log("Anti-Bug Flight Master Dismounting");
+                    WoWMovement.MoveStop();
+                    Lua.DoString("Dismount()");
+                    Lua.DoString("RunMacroText('/cancelaura cat form\n/cancelaura bear form\n/cancelaura travel form\n/cancelaura ghost wolf\n/cancelaura Flight Form')");
+                    Mount.Dismount();
+                }
+
                 if (Me.Combat && !Me.IsCasting && CPsettings.Instance.CombatLoot)
                 {
                     GetLoot();
@@ -1547,7 +1558,8 @@ namespace CavaPlugin
                     }
                 }
                 */
-                if (_vendorMountSpellId != 0 && CPsettings.Instance.FixSummonMountVendor && Me.IsAlive && !Me.Combat)
+                /*
+                 * if (_vendorMountSpellId != 0 && CPsettings.Instance.FixSummonMountVendor && Me.IsAlive && !Me.Combat)
                 {
                     if (Me.Mounted)
                     {
@@ -1588,7 +1600,7 @@ namespace CavaPlugin
                             WoWMovement.MoveStop();
                         }
                     }
-                }
+                }*/
 
                 if (CPsettings.Instance.AntiStuckSystem )
                 {
