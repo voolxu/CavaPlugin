@@ -124,9 +124,6 @@ to Portuguese
   <data name="leveling1to90" xml:space="preserve">
     <value>Level 1 bis 90</value>
   </data>
-  <data name="leveling1to90txt" xml:space="preserve">
-    <value>Diese Profil ist für alle Charakter egal von welchem Level bis 90. Dieses Profil ist weiterhin in Arbeit. Allianz ist von 1 bis 70 und 85 bis 90. Horde ist von 1 bis 68 und 85 bis 88.</value>
-  </data>
   <data name="levelinggrind" xml:space="preserve">
     <value>Level Grinding</value>
   </data>
@@ -553,12 +550,13 @@ to Portuguese
   <data name="level85to90txt" xml:space="preserve">
     <value>Dieses Profil levelt alle Allianz Spieler von 89 bis 90. Dieses Profil ist nicht voll AFK fähig, bei Problemen bitte diese Melden.</value>
   </data>
-
-
-
-
-
   <data name="newtxt" xml:space="preserve">
-    <value>Added Townlong Steppes map profile, levels 89 to 90, (reserved for Armageddoners).</value>
+    <value>Townlong Steppes Profil hinzugefügt, Level 89 bis 90, (Registrierte Benutzer).</value>
   </data>
+
+
+  <data name="leveling1to90txt" xml:space="preserve">
+    <value>This profile will level any character from any level to 90. This is a work in progress so far. So far works from 1 to 81.</value>
+  </data>
+
 </root>

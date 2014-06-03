@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
@@ -35,6 +34,7 @@ namespace CavaPlugin
     public class CavaPlugin : HBPlugin
     // ReSharper restore UnusedMember.Global
     {
+        //private Dictionary<ulong, DateTime> _blackList = new Dictionary<ulong, DateTime>();
         public int UseServer = 1;
         private bool _hasBeenInitialized;
         private bool _hasBeenInitialized2;
@@ -59,9 +59,9 @@ namespace CavaPlugin
         private WoWPoint _ultimoLocal;
         private WoWPoint _asLastSavedPosition;
         private bool _asLastSavedPositionTrigger;
-        private const string VendorMountLogEntry = "Summoning vendor mount (";
-        private const string TaximapLogEntry = "Taximap failed to open. Blacklisting the flight master.";
-        private int _vendorMountSpellId;
+        //private const string VendorMountLogEntry = "Summoning vendor mount (";
+        //private const string TaximapLogEntry = "Taximap failed to open. Blacklisting the flight master.";
+        //private int _vendorMountSpellId;
         private int _waitgankercount;
         private bool _oldSh;
         private bool _gankedressatSh;
@@ -89,7 +89,7 @@ namespace CavaPlugin
 
         public override Version Version
         {
-            get { return new Version(4, 8, 0); }
+            get { return new Version(4, 8, 1); }
         }
 
         public override string Name
@@ -381,7 +381,7 @@ namespace CavaPlugin
 
         public override void OnEnable()
         {
-            Logging.OnLogMessage += LoggingOnOnLogMessage;
+            //Logging.OnLogMessage += LoggingOnOnLogMessage;
             CPGlobalSettings.Instance.Load();
             CPsettings.Instance.Load();
             if (!CPGlobalSettings.Instance.Languageselected)
@@ -566,7 +566,7 @@ namespace CavaPlugin
                             CPsettings.Instance.CombatLoot = false;
                             CPsettings.Instance.OpenBox = false;
                             CPsettings.Instance.FixMountFlightVendor = false;
-                            CPsettings.Instance.BlacklistflycheckBox = false;
+                            //CPsettings.Instance.BlacklistflycheckBox = false;
                             CPsettings.Instance.AntigankcheckBox = false;
                             CPsettings.Instance.Playsonar = false;
                         }
@@ -641,7 +641,7 @@ namespace CavaPlugin
                             CPsettings.Instance.CombatLoot = false;
                             CPsettings.Instance.OpenBox = false;
                             CPsettings.Instance.FixMountFlightVendor = false;
-                            CPsettings.Instance.BlacklistflycheckBox = false;
+                            //CPsettings.Instance.BlacklistflycheckBox = false;
                             CPsettings.Instance.AntigankcheckBox = false;
                             CPsettings.Instance.Playsonar = false;
                         }
@@ -732,7 +732,7 @@ namespace CavaPlugin
 
         public override void OnDisable()
         {
-            Logging.OnLogMessage -= LoggingOnOnLogMessage;
+            //Logging.OnLogMessage -= LoggingOnOnLogMessage;
             BotEvents.OnBotStartRequested -= _OnBotStart;
             Log(_rm.GetString("CavaPlugin_Disposed", _ci));
             if (!_botRunning) return;
@@ -810,9 +810,9 @@ namespace CavaPlugin
                     Log(CPsettings.Instance.FixMountFlightVendor
                         ? "Fix Mount Flight Master Bug Enabled"
                         : "Fix Mount Flight Master Bug Disabled");
-                    Log(CPsettings.Instance.BlacklistflycheckBox
-                        ? "Remove Blacklist Flight Master Enabled"
-                        : "Remove Blacklist Flight Master Disabled");
+                    //Log(CPsettings.Instance.BlacklistflycheckBox
+                    //    ? "Remove Blacklist Flight Master Enabled"
+                    //    : "Remove Blacklist Flight Master Disabled");
                     Log(CPsettings.Instance.AntigankcheckBox
                         ? "Anti Gank System Enabled"
                         : "Anti Gank System Disabled");
@@ -1014,7 +1014,7 @@ namespace CavaPlugin
             }
         }
 
-        private void LoggingOnOnLogMessage(ReadOnlyCollection<Logging.LogMessage> messages)
+        /*private void LoggingOnOnLogMessage(ReadOnlyCollection<Logging.LogMessage> messages)
         {
             // anti mount vendor run 
            foreach (var logEntry in messages)
@@ -1028,15 +1028,15 @@ namespace CavaPlugin
                        StyxWoW.Sleep(1000);
                    }
                }
-               /*if (!logEntry.Message.Contains(VendorMountLogEntry))
+               if (!logEntry.Message.Contains(VendorMountLogEntry))
                continue;
                if (_vendorMountSpellId == 0 && CPsettings.Instance.FixSummonMountVendor)
                Log("Summoning vendor mount Detected, starting fix routine");
                var mountIdStr = logEntry.Message.Substring(VendorMountLogEntry.Length, logEntry.Message.LastIndexOf(')') - VendorMountLogEntry.Length);
                _vendorMountSpellId = int.Parse(mountIdStr);
-                * */
+               
            }
-        }
+        }*/
         #endregion
 
 
@@ -1102,7 +1102,7 @@ namespace CavaPlugin
 
         #region Quests
         private static WoWObject ObjBarricadeHorde { get { return (ObjectManager.GetObjectsOfType<WoWGameObject>().FirstOrDefault(ret => ret.Entry == 215646 && ret.Distance < 10)); } }
-        private static List<WoWUnit> MobKingGennGreymane { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 36332)).OrderBy(ret => ret.Distance).ToList(); } }
+        //private static List<WoWUnit> MobKingGennGreymane { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 36332)).OrderBy(ret => ret.Distance).ToList(); } }
         private static List<WoWUnit> MobDocZapnozzle { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 36608)).OrderBy(ret => ret.Distance).ToList(); } }
         private static List<WoWUnit> MobArctanus { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 34292)).OrderBy(ret => ret.Distance).ToList(); } }
         private static List<WoWUnit> MobTidecrusher { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 38750 && ret.IsAlive)).OrderBy(ret => ret.Distance).ToList(); } }
@@ -1318,12 +1318,13 @@ namespace CavaPlugin
                     StyxWoW.Sleep(1000);
                     Lua.DoString("RunMacroText('/click QuestFrameCompleteQuestButton')");
                 }
-                if (Me.Race == WoWRace.Worgen && Me.HasAura(68631) && Me.ZoneId == 4714 && MobKingGennGreymane.Count > 0)
+                /*if (Me.Race == WoWRace.Worgen && Me.HasAura(68631) && Me.ZoneId == 4714 && MobKingGennGreymane.Count > 0)
                 {
                     MobKingGennGreymane[0].Interact();
                     StyxWoW.Sleep(1000);
                     Lua.DoString("RunMacroText('/click QuestFrameCompleteQuestButton')");
                 }
+                 * */
                 if (Me.QuestLog.GetQuestById(13884) != null && !Me.QuestLog.GetQuestById(13884).IsCompleted &&
                     !Me.HasAura(65178) && MobArctanus.Count > 0)
                 {
