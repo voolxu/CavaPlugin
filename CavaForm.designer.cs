@@ -103,7 +103,6 @@ namespace CavaPlugin
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.playsoundcheckBox = new System.Windows.Forms.CheckBox();
             this.antigankcheckBox = new System.Windows.Forms.CheckBox();
-            this.blacklistflycheckBox = new System.Windows.Forms.CheckBox();
             this.fixmountcheckBox1 = new System.Windows.Forms.CheckBox();
             this.OpenBox_checkBox = new System.Windows.Forms.CheckBox();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
@@ -768,7 +767,7 @@ namespace CavaPlugin
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(146, 17);
             this.label14.TabIndex = 2;
-            this.label14.Text = "CavaPlugin V 4.8.0";
+            this.label14.Text = "CavaPlugin V 4.8.1";
             // 
             // button4
             // 
@@ -1151,7 +1150,6 @@ namespace CavaPlugin
             this.groupBox15.BackColor = System.Drawing.Color.CornflowerBlue;
             this.groupBox15.Controls.Add(this.playsoundcheckBox);
             this.groupBox15.Controls.Add(this.antigankcheckBox);
-            this.groupBox15.Controls.Add(this.blacklistflycheckBox);
             this.groupBox15.Controls.Add(this.fixmountcheckBox1);
             this.groupBox15.Controls.Add(this.OpenBox_checkBox);
             this.groupBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1170,7 +1168,7 @@ namespace CavaPlugin
             this.playsoundcheckBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.playsoundcheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playsoundcheckBox.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.playsoundcheckBox.Location = new System.Drawing.Point(23, 125);
+            this.playsoundcheckBox.Location = new System.Drawing.Point(23, 100);
             this.playsoundcheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.playsoundcheckBox.Name = "playsoundcheckBox";
             this.playsoundcheckBox.Size = new System.Drawing.Size(204, 22);
@@ -1186,7 +1184,7 @@ namespace CavaPlugin
             this.antigankcheckBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.antigankcheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.antigankcheckBox.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.antigankcheckBox.Location = new System.Drawing.Point(3, 100);
+            this.antigankcheckBox.Location = new System.Drawing.Point(3, 75);
             this.antigankcheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.antigankcheckBox.Name = "antigankcheckBox";
             this.antigankcheckBox.Size = new System.Drawing.Size(148, 22);
@@ -1195,22 +1193,6 @@ namespace CavaPlugin
             this.antigankcheckBox.UseVisualStyleBackColor = true;
             this.antigankcheckBox.CheckedChanged += new System.EventHandler(this.antigankcheckBox_CheckedChanged);
             this.antigankcheckBox.MouseEnter += new System.EventHandler(this.button_MouseEnter);
-            // 
-            // blacklistflycheckBox
-            // 
-            this.blacklistflycheckBox.AutoSize = true;
-            this.blacklistflycheckBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.blacklistflycheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.blacklistflycheckBox.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.blacklistflycheckBox.Location = new System.Drawing.Point(3, 75);
-            this.blacklistflycheckBox.Margin = new System.Windows.Forms.Padding(4);
-            this.blacklistflycheckBox.Name = "blacklistflycheckBox";
-            this.blacklistflycheckBox.Size = new System.Drawing.Size(234, 22);
-            this.blacklistflycheckBox.TabIndex = 24;
-            this.blacklistflycheckBox.Text = "Remove Blacklist Flight Master";
-            this.blacklistflycheckBox.UseVisualStyleBackColor = true;
-            this.blacklistflycheckBox.CheckedChanged += new System.EventHandler(this.blacklistflycheckBox_CheckedChanged);
-            this.blacklistflycheckBox.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             // 
             // fixmountcheckBox1
             // 
@@ -2487,7 +2469,6 @@ namespace CavaPlugin
         private System.Windows.Forms.PictureBox pictureBox15;
         private System.Windows.Forms.RichTextBox label4;
         private System.Windows.Forms.CheckBox learnportal6checkBox;
-        private System.Windows.Forms.CheckBox blacklistflycheckBox;
         private System.Windows.Forms.CheckBox antigankcheckBox;
         private System.Windows.Forms.CheckBox playsoundcheckBox;
         private System.Windows.Forms.Panel panel4;

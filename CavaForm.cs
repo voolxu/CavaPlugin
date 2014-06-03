@@ -380,7 +380,6 @@ namespace CavaPlugin
             combatloot_checkBox.Checked = CPsettings.Instance.CombatLoot;
             OpenBox_checkBox.Checked = CPsettings.Instance.OpenBox;
             fixmountcheckBox1.Checked = CPsettings.Instance.FixMountFlightVendor;
-            blacklistflycheckBox.Checked = CPsettings.Instance.BlacklistflycheckBox;
             antigankcheckBox.Checked = CPsettings.Instance.AntigankcheckBox;
             playsoundcheckBox.Checked = CPsettings.Instance.Playsonar;
             UseServer = CPGlobalSettings.Instance.UseServer;
@@ -1075,7 +1074,6 @@ namespace CavaPlugin
             ResscheckBox.Enabled = true;
             combatloot_checkBox.Enabled = true;
             fixmountcheckBox1.Enabled = true;
-            blacklistflycheckBox.Enabled = true;
             antigankcheckBox.Enabled = true;
             playsoundcheckBox.Enabled = true;
             OpenBox_checkBox.Enabled = StyxWoW.Me.Class == WoWClass.Rogue;
@@ -1143,8 +1141,6 @@ namespace CavaPlugin
             OpenBox_checkBox.Enabled = false;
             fixmountcheckBox1.Checked = false;
             fixmountcheckBox1.Enabled = false;
-            blacklistflycheckBox.Checked = false;
-            blacklistflycheckBox.Enabled = false;
             antigankcheckBox.Checked = false;
             antigankcheckBox.Enabled = false;
             playsoundcheckBox.Checked = false;
@@ -1467,12 +1463,6 @@ namespace CavaPlugin
         {
             button_Click();
             CPsettings.Instance.FixMountFlightVendor = fixmountcheckBox1.Checked;
-        }
-
-        private void blacklistflycheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            button_Click();
-            CPsettings.Instance.BlacklistflycheckBox = fixmountcheckBox1.Checked;
         }
 
         private void antigankcheckBox_CheckedChanged(object sender, EventArgs e)

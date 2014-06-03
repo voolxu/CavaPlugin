@@ -119,9 +119,6 @@ to Portuguese
   <data name="leveling1to90" xml:space="preserve">
     <value>Niveau 1 à 90</value>
   </data>
-  <data name="leveling1to90txt" xml:space="preserve">
-    <value>Ce profil va monter de niveau n'importe quel personnage de n'importe quel niveau à 90. Ceci est un travail en cours jusqu'ici. Alliance fonctionne de 1 à 70 et 85 à 90. Horde fonctionne de 1 à 68 et 85 à 88.</value>
-  </data>
   <data name="levelinggrind" xml:space="preserve">
     <value>Niveau Grinding</value>
   </data>
@@ -563,4 +560,8 @@ to Portuguese
   <data name="newtxt" xml:space="preserve">
     <value>Added Townlong Steppes map profile, levels 89 to 90, (reserved for Armageddoners).</value>
   </data>
+  <data name="leveling1to90txt" xml:space="preserve">
+    <value>This profile will level any character from any level to 90. This is a work in progress so far. So far works from 1 to 81.</value>
+  </data>
+
 </root>

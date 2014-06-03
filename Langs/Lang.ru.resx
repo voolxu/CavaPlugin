@@ -122,9 +122,6 @@ to Portuguese
   <data name="leveling1to90" xml:space="preserve">
     <value>Прокачка с 1 до 90</value>
   </data>
-  <data name="leveling1to90txt" xml:space="preserve">
-    <value>Этот профиль для прокачки с любого уровня до 90. Профиль еще в  разработке. Для альянса работает с 1 по 70-й уровень и с 85 по 90. Для орды с 1 по 70-й уровень и с 85 по 88.</value>
-  </data>
   <data name="levelinggrind" xml:space="preserve">
     <value>Прокачка гриндом</value>
   </data>
@@ -576,4 +573,8 @@ to Portuguese
   <data name="newtxt" xml:space="preserve">
     <value>Added Townlong Steppes map profile, levels 89 to 90, (reserved for Armageddoners).</value>
   </data>
+  <data name="leveling1to90txt" xml:space="preserve">
+    <value>This profile will level any character from any level to 90. This is a work in progress so far. So far works from 1 to 81.</value>
+  </data>
+
 </root>
