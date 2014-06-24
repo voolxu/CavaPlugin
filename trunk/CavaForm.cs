@@ -784,7 +784,7 @@ namespace CavaPlugin
 
         private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("http://cavaprofiles.org/index.php/profiles/profiles-list/armageddoner");
+            Process.Start("http://cavaprofiles.net/index.php/profiles/profiles-list/armageddoner");
         }
 
         private void linkLabel26_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -794,7 +794,7 @@ namespace CavaPlugin
 
         private void linkLabel27_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("http://cavaprofiles.org/index.php");
+            Process.Start("http://cavaprofiles.net/index.php");
         }
 
         private void AntiStuck_CheckBox_CheckedChanged(object sender, EventArgs e)
@@ -835,7 +835,7 @@ namespace CavaPlugin
 
         private void linkLabel29_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("http://cavaprofiles.org/index.php/profiles/profiles-list/cavaprofessions/blacksmithing-1");
+            Process.Start("http://cavaprofiles.net/index.php/profiles/profiles-list/cavaprofessions/blacksmithing-1");
         }
 
         private void tabPage2_Click_1(object sender, EventArgs e)
@@ -1215,7 +1215,7 @@ namespace CavaPlugin
             CPGlobalSettings.Instance.Save();
             if (CPGlobalSettings.Instance.UseServer == 1)
             {
-                var url = string.Format("http://cavaprofiles.org/index.php?user={0}&passw={1}", LogintextBox.Text,
+                var url = string.Format("http://cavaprofiles.net/index.php?user={0}&passw={1}", LogintextBox.Text,
                     PasswordtextBox.Text);
                 var request = (HttpWebRequest) WebRequest.Create(url);
                 request.AllowAutoRedirect = false;
@@ -1228,7 +1228,7 @@ namespace CavaPlugin
                     request =
                         (HttpWebRequest)
                             WebRequest.Create(
-                                "http://cavaprofiles.org/index.php/profiles/profiles-list/leveling-1-to-90/leveling-60-to-90/5-reg-user/file");
+                                "http://cavaprofiles.net/index.php/profiles/profiles-list/leveling-1-to-90/leveling-60-to-90/5-reg-user/file");
                     request.AllowAutoRedirect = false;
                     request.CookieContainer = cookies;
                     response = (HttpWebResponse) request.GetResponse();
@@ -1247,7 +1247,7 @@ namespace CavaPlugin
                             request =
                                 (HttpWebRequest)
                                     WebRequest.Create(
-                                        "http://cavaprofiles.org/index.php/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
+                                        "http://cavaprofiles.net/index.php/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
                             request.AllowAutoRedirect = false;
                             request.CookieContainer = cookies;
                             response = (HttpWebResponse) request.GetResponse();
@@ -1270,7 +1270,7 @@ namespace CavaPlugin
                             request =
                                 (HttpWebRequest)
                                     WebRequest.Create(
-                                        "http://cavaprofiles.org/index.php/profiles/profiles-list/cavaprofessions/mining/13-miningblacksmithing600/file");
+                                        "http://cavaprofiles.net/index.php/profiles/profiles-list/cavaprofessions/mining/13-miningblacksmithing600/file");
                             request.AllowAutoRedirect = false;
                             request.CookieContainer = cookies;
                             response = (HttpWebResponse) request.GetResponse();
@@ -1313,7 +1313,7 @@ namespace CavaPlugin
                     DontHaveprofessionminingblacksmithing600Access();
                     CPGlobalSettings.Instance.CpPanelBack = false;
                     CPGlobalSettings.Instance.Save();
-                    var sInfo = new ProcessStartInfo("http://cavaprofiles.org/index.php");
+                    var sInfo = new ProcessStartInfo("http://cavaprofiles.net/index.php");
                     Process.Start(sInfo);
                 }
             }
@@ -1442,14 +1442,14 @@ namespace CavaPlugin
         private void pictureBox14_Click(object sender, EventArgs e)
         {
             button_Click();
-            var sInfo = new ProcessStartInfo("http://cavaprofiles.org/index.php/plans/plans-list/by-category/membership-plans?id=2");
+            var sInfo = new ProcessStartInfo("http://cavaprofiles.net/index.php/plans/plans-list/by-category/membership-plans?id=2");
             Process.Start(sInfo);
         }
 
         private void pictureBox13_Click(object sender, EventArgs e)
         {
             button_Click();
-            var sInfo = new ProcessStartInfo("http://cavaprofiles.org/index.php/access/new-user");
+            var sInfo = new ProcessStartInfo("http://cavaprofiles.net/index.php/access/new-user");
             Process.Start(sInfo);
         }
 
