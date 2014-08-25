@@ -89,7 +89,7 @@ namespace CavaPlugin
 
         public override Version Version
         {
-            get { return new Version(4, 9, 3); }
+            get { return new Version(4, 9, 4); }
         }
 
         public override string Name
@@ -543,7 +543,7 @@ namespace CavaPlugin
                         request =
                             (HttpWebRequest)
                                 WebRequest.Create(
-                                    "http://cavaprofiles.net/index.php/cavapages/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
+                                    "http://cavaprofiles.net/index.php/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
                         request.AllowAutoRedirect = false;
                         request.CookieContainer = cookies;
                         response = (HttpWebResponse)request.GetResponse();
@@ -583,7 +583,7 @@ namespace CavaPlugin
                         request =
                             (HttpWebRequest)
                                 WebRequest.Create(
-                                    "http://cavaprofiles.net/index.php/cavapages/profiles/profiles-list/cavaprofessions/mining/13-miningblacksmithing600/file");
+                                    "http://cavaprofiles.net/index.php/profiles/profiles-list/cavaprofessions/mining/13-miningblacksmithing600/file");
                         request.AllowAutoRedirect = false;
                         request.CookieContainer = cookies;
                         response = (HttpWebResponse)request.GetResponse();
@@ -618,7 +618,7 @@ namespace CavaPlugin
                         request =
                             (HttpWebRequest)
                                 WebRequest.Create(
-                                    "http://cavaprofiles.org/index.php/cavapages/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
+                                    "http://cavaprofiles.org/index.php/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
                         request.AllowAutoRedirect = false;
                         request.CookieContainer = cookies;
                         response = (HttpWebResponse)request.GetResponse();
@@ -658,7 +658,7 @@ namespace CavaPlugin
                         request =
                             (HttpWebRequest)
                                 WebRequest.Create(
-                                    "http://cavaprofiles.org/index.php/cavapages/profiles/profiles-list/cavaprofessions/mining/13-miningblacksmithing600/file");
+                                    "http://cavaprofiles.org/index.php/profiles/profiles-list/cavaprofessions/mining/13-miningblacksmithing600/file");
                         request.AllowAutoRedirect = false;
                         request.CookieContainer = cookies;
                         response = (HttpWebResponse)request.GetResponse();
