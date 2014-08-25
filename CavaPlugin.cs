@@ -89,7 +89,7 @@ namespace CavaPlugin
 
         public override Version Version
         {
-            get { return new Version(4, 9, 1); }
+            get { return new Version(4, 9, 2); }
         }
 
         public override string Name
@@ -530,7 +530,7 @@ namespace CavaPlugin
                 UseServer = CPGlobalSettings.Instance.UseServer;
                 if (UseServer==1)
                 {
-                    var url = string.Format("http://cavaprofiles.net/index.php?user={0}&passw={1}",
+                    var url = string.Format("https://cavaprofiles.net/index.php?user={0}&passw={1}",
                         CPGlobalSettings.Instance.CpLogin, Decrypt(CPGlobalSettings.Instance.CpPassword));
                     var request = (HttpWebRequest)WebRequest.Create(url);
                     request.AllowAutoRedirect = false;
@@ -543,7 +543,7 @@ namespace CavaPlugin
                         request =
                             (HttpWebRequest)
                                 WebRequest.Create(
-                                    "http://cavaprofiles.net/index.php/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
+                                    "https://cavaprofiles.net/index.php/cavapages/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
                         request.AllowAutoRedirect = false;
                         request.CookieContainer = cookies;
                         response = (HttpWebResponse)request.GetResponse();
@@ -583,7 +583,7 @@ namespace CavaPlugin
                         request =
                             (HttpWebRequest)
                                 WebRequest.Create(
-                                    "http://cavaprofiles.net/index.php/profiles/profiles-list/cavaprofessions/mining/13-miningblacksmithing600/file");
+                                    "https://cavaprofiles.net/index.php/cavapages/profiles/profiles-list/cavaprofessions/mining/13-miningblacksmithing600/file");
                         request.AllowAutoRedirect = false;
                         request.CookieContainer = cookies;
                         response = (HttpWebResponse)request.GetResponse();
@@ -605,7 +605,7 @@ namespace CavaPlugin
                 }
                 else
                 {
-                    var url = string.Format("http://cavaprofiles.net/index.php?user={0}&passw={1}",
+                    var url = string.Format("https://cavaprofiles.org/index.php?user={0}&passw={1}",
                        CPGlobalSettings.Instance.CpLogin, Decrypt(CPGlobalSettings.Instance.CpPassword));
                     var request = (HttpWebRequest)WebRequest.Create(url);
                     request.AllowAutoRedirect = false;
@@ -618,7 +618,7 @@ namespace CavaPlugin
                         request =
                             (HttpWebRequest)
                                 WebRequest.Create(
-                                    "http://cavaprofiles.net/index.php/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
+                                    "https://cavaprofiles.org/index.php/cavapages/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
                         request.AllowAutoRedirect = false;
                         request.CookieContainer = cookies;
                         response = (HttpWebResponse)request.GetResponse();
@@ -658,7 +658,7 @@ namespace CavaPlugin
                         request =
                             (HttpWebRequest)
                                 WebRequest.Create(
-                                    "http://cavaprofiles.net/index.php/profiles/profiles-list/cavaprofessions/mining/13-miningblacksmithing600/file");
+                                    "https://cavaprofiles.org/index.php/cavapages/profiles/profiles-list/cavaprofessions/mining/13-miningblacksmithing600/file");
                         request.AllowAutoRedirect = false;
                         request.CookieContainer = cookies;
                         response = (HttpWebResponse)request.GetResponse();
@@ -678,7 +678,7 @@ namespace CavaPlugin
                         CPGlobalSettings.Instance.ProfMinBlack600 = false;
                     }
                 }
-                if (File.Exists(_pathToOldPbLoadProfile))
+                /*if (File.Exists(_pathToOldPbLoadProfile))
                 {
                     File.Delete(_pathToOldPbLoadProfile);
                 }
@@ -693,7 +693,7 @@ namespace CavaPlugin
                         file.Write(Encoding.UTF8.GetString(Convert.FromBase64String(PbLoadProfile)));
                         file.Close();
                     }
-                }
+                }*/
 
                 if (!_erro)
                 {
@@ -774,7 +774,7 @@ namespace CavaPlugin
                     _botRunning = false;
                 }
                 Log(_botRunning ? _rm.GetString("Is_now_ENABLED", _ci) : _rm.GetString("Is_now_DISABLED", _ci));
-                if (_botRunning)
+                if (_botRunning && !Me.InVehicle)
                 {
                     Log(CPsettings.Instance.AntiStuckSystem
                         ? _rm.GetString("System_Anti-Stuck_Enabled", _ci)

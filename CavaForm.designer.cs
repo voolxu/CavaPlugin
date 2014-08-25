@@ -767,7 +767,7 @@ namespace CavaPlugin
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(146, 17);
             this.label14.TabIndex = 2;
-            this.label14.Text = "CavaPlugin V 4.9.1";
+            this.label14.Text = "CavaPlugin V 4.9.2";
             // 
             // button4
             // 
@@ -930,10 +930,10 @@ namespace CavaPlugin
             this.selectserver2radio.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.selectserver2radio.Location = new System.Drawing.Point(3, 30);
             this.selectserver2radio.Name = "selectserver2radio";
-            this.selectserver2radio.Size = new System.Drawing.Size(173, 22);
+            this.selectserver2radio.Size = new System.Drawing.Size(159, 22);
             this.selectserver2radio.TabIndex = 1;
             this.selectserver2radio.TabStop = true;
-            this.selectserver2radio.Text = "Use Server 2(Europe)";
+            this.selectserver2radio.Text = "Use Server 2(USA) ";
             this.selectserver2radio.UseVisualStyleBackColor = true;
             this.selectserver2radio.CheckedChanged += new System.EventHandler(this.selectserver2radio_CheckedChanged);
             this.selectserver2radio.MouseEnter += new System.EventHandler(this.button_MouseEnter);
@@ -945,10 +945,10 @@ namespace CavaPlugin
             this.selectserver1radio.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.selectserver1radio.Location = new System.Drawing.Point(3, 5);
             this.selectserver1radio.Name = "selectserver1radio";
-            this.selectserver1radio.Size = new System.Drawing.Size(155, 22);
+            this.selectserver1radio.Size = new System.Drawing.Size(173, 22);
             this.selectserver1radio.TabIndex = 0;
             this.selectserver1radio.TabStop = true;
-            this.selectserver1radio.Text = "Use Server 1(USA)";
+            this.selectserver1radio.Text = "Use Server 1(Europe)";
             this.selectserver1radio.UseVisualStyleBackColor = true;
             this.selectserver1radio.CheckedChanged += new System.EventHandler(this.selectserver1radio_CheckedChanged);
             this.selectserver1radio.MouseEnter += new System.EventHandler(this.button_MouseEnter);
