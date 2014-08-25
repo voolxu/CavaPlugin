@@ -178,8 +178,8 @@ namespace Bots.Professionbuddy.Components
                         var servertouse = Getdata(pathtocavasettings, "UseServer");
                         if (servertouse == "1")
                         {
-                            Path = "https://cavaprofiles.net/index.php/cavapages/profiles/profiles-list/" + Path;
-                            var url = string.Format("https://cavaprofiles.net/index.php?user={0}&passw={1}",
+                            Path = "http://cavaprofiles.net/index.php/cavapages/profiles/profiles-list/" + Path;
+                            var url = string.Format("http://cavaprofiles.net/index.php?user={0}&passw={1}",
                                  Getdata(pathtocavasettings, "CpLogin"), Decrypt(Getdata(pathtocavasettings, "CpPassword")));
                             var request = (HttpWebRequest)WebRequest.Create(url);
                             request.AllowAutoRedirect = false;
@@ -218,8 +218,8 @@ namespace Bots.Professionbuddy.Components
                         }
                         else
                         {
-                            Path = "https://cavaprofiles.org/index.php/cavapages/profiles/profiles-list/" + Path;
-                            var url = string.Format("https://cavaprofiles.org/index.php?user={0}&passw={1}",
+                            Path = "http://cavaprofiles.org/index.php/profiles/profiles-list/" + Path;
+                            var url = string.Format("http://cavaprofiles.org/index.php?user={0}&passw={1}",
                                  Getdata(pathtocavasettings, "CpLogin"), Decrypt(Getdata(pathtocavasettings, "CpPassword")));
                             var request = (HttpWebRequest)WebRequest.Create(url);
                             request.AllowAutoRedirect = false;
