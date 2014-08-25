@@ -530,7 +530,7 @@ namespace CavaPlugin
                 UseServer = CPGlobalSettings.Instance.UseServer;
                 if (UseServer==1)
                 {
-                    var url = string.Format("https://cavaprofiles.net/index.php?user={0}&passw={1}",
+                    var url = string.Format("http://cavaprofiles.net/index.php?user={0}&passw={1}",
                         CPGlobalSettings.Instance.CpLogin, Decrypt(CPGlobalSettings.Instance.CpPassword));
                     var request = (HttpWebRequest)WebRequest.Create(url);
                     request.AllowAutoRedirect = false;
@@ -543,7 +543,7 @@ namespace CavaPlugin
                         request =
                             (HttpWebRequest)
                                 WebRequest.Create(
-                                    "https://cavaprofiles.net/index.php/cavapages/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
+                                    "http://cavaprofiles.net/index.php/cavapages/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
                         request.AllowAutoRedirect = false;
                         request.CookieContainer = cookies;
                         response = (HttpWebResponse)request.GetResponse();
@@ -583,7 +583,7 @@ namespace CavaPlugin
                         request =
                             (HttpWebRequest)
                                 WebRequest.Create(
-                                    "https://cavaprofiles.net/index.php/cavapages/profiles/profiles-list/cavaprofessions/mining/13-miningblacksmithing600/file");
+                                    "http://cavaprofiles.net/index.php/cavapages/profiles/profiles-list/cavaprofessions/mining/13-miningblacksmithing600/file");
                         request.AllowAutoRedirect = false;
                         request.CookieContainer = cookies;
                         response = (HttpWebResponse)request.GetResponse();
@@ -605,7 +605,7 @@ namespace CavaPlugin
                 }
                 else
                 {
-                    var url = string.Format("https://cavaprofiles.org/index.php?user={0}&passw={1}",
+                    var url = string.Format("http://cavaprofiles.org/index.php?user={0}&passw={1}",
                        CPGlobalSettings.Instance.CpLogin, Decrypt(CPGlobalSettings.Instance.CpPassword));
                     var request = (HttpWebRequest)WebRequest.Create(url);
                     request.AllowAutoRedirect = false;
@@ -618,7 +618,7 @@ namespace CavaPlugin
                         request =
                             (HttpWebRequest)
                                 WebRequest.Create(
-                                    "https://cavaprofiles.org/index.php/cavapages/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
+                                    "http://cavaprofiles.org/index.php/cavapages/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
                         request.AllowAutoRedirect = false;
                         request.CookieContainer = cookies;
                         response = (HttpWebResponse)request.GetResponse();
@@ -658,7 +658,7 @@ namespace CavaPlugin
                         request =
                             (HttpWebRequest)
                                 WebRequest.Create(
-                                    "https://cavaprofiles.org/index.php/cavapages/profiles/profiles-list/cavaprofessions/mining/13-miningblacksmithing600/file");
+                                    "http://cavaprofiles.org/index.php/cavapages/profiles/profiles-list/cavaprofessions/mining/13-miningblacksmithing600/file");
                         request.AllowAutoRedirect = false;
                         request.CookieContainer = cookies;
                         response = (HttpWebResponse)request.GetResponse();
