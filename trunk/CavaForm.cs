@@ -1320,7 +1320,7 @@ namespace CavaPlugin
             else
             {
                 var url = string.Format("https://cavaprofiles.org/index.php?user={0}&passw={1}", LogintextBox.Text,
-                    PasswordtextBox.Text);
+                          PasswordtextBox.Text);
                 var request = (HttpWebRequest)WebRequest.Create(url);
                 request.AllowAutoRedirect = false;
                 request.CookieContainer = new CookieContainer();
@@ -1335,7 +1335,7 @@ namespace CavaPlugin
                                 "https://cavaprofiles.org/index.php/cavapages/profiles/profiles-list/leveling-1-to-90/leveling-60-to-90/5-reg-user/file");
                     request.AllowAutoRedirect = false;
                     request.CookieContainer = cookies;
-                    response = (HttpWebResponse)request.GetResponse();
+                    response = (HttpWebResponse) request.GetResponse();
                     response.Close();
                     if (response.StatusCode.ToString() == "OK") //is reg
                     {
@@ -1351,10 +1351,10 @@ namespace CavaPlugin
                             request =
                                 (HttpWebRequest)
                                     WebRequest.Create(
-                                        "https://cavaprofiles.org/index.php/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
+                                        "https://cavaprofiles.org/index.php/cavapages/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
                             request.AllowAutoRedirect = false;
                             request.CookieContainer = cookies;
-                            response = (HttpWebResponse)request.GetResponse();
+                            response = (HttpWebResponse) request.GetResponse();
                             response.Close();
                             if (response.StatusCode.ToString() == "OK") //is armageddoner
                             {
@@ -1377,7 +1377,7 @@ namespace CavaPlugin
                                         "https://cavaprofiles.org/index.php/cavapages/profiles/profiles-list/cavaprofessions/mining/13-miningblacksmithing600/file");
                             request.AllowAutoRedirect = false;
                             request.CookieContainer = cookies;
-                            response = (HttpWebResponse)request.GetResponse();
+                            response = (HttpWebResponse) request.GetResponse();
                             response.Close();
                             if (response.StatusCode.ToString() == "OK") //is profession min,bs600
                             {
