@@ -1228,7 +1228,7 @@ namespace CavaPlugin
                     request =
                         (HttpWebRequest)
                             WebRequest.Create(
-                                "https://cavaprofiles.net/index.php/profiles/profiles-list/leveling-1-to-90/leveling-60-to-90/5-reg-user/file");
+                                "https://cavaprofiles.net/index.php/cavapages/profiles/profiles-list/leveling-1-to-90/leveling-60-to-90/5-reg-user/file");
                     request.AllowAutoRedirect = false;
                     request.CookieContainer = cookies;
                     response = (HttpWebResponse) request.GetResponse();
@@ -1247,7 +1247,7 @@ namespace CavaPlugin
                             request =
                                 (HttpWebRequest)
                                     WebRequest.Create(
-                                        "https://cavaprofiles.net/index.php/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
+                                        "https://cavaprofiles.net/index.php/cavapages/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
                             request.AllowAutoRedirect = false;
                             request.CookieContainer = cookies;
                             response = (HttpWebResponse) request.GetResponse();
@@ -1270,7 +1270,7 @@ namespace CavaPlugin
                             request =
                                 (HttpWebRequest)
                                     WebRequest.Create(
-                                        "https://cavaprofiles.net/index.php/profiles/profiles-list/cavaprofessions/mining/13-miningblacksmithing600/file");
+                                        "https://cavaprofiles.net/index.php/cavapages/profiles/profiles-list/cavaprofessions/mining/13-miningblacksmithing600/file");
                             request.AllowAutoRedirect = false;
                             request.CookieContainer = cookies;
                             response = (HttpWebResponse) request.GetResponse();
@@ -1332,7 +1332,7 @@ namespace CavaPlugin
                     request =
                         (HttpWebRequest)
                             WebRequest.Create(
-                                "https://cavaprofiles.org/index.php/profiles/profiles-list/leveling-1-to-90/leveling-60-to-90/5-reg-user/file");
+                                "https://cavaprofiles.org/index.php/cavapages/profiles/profiles-list/leveling-1-to-90/leveling-60-to-90/5-reg-user/file");
                     request.AllowAutoRedirect = false;
                     request.CookieContainer = cookies;
                     response = (HttpWebResponse) request.GetResponse();
@@ -1351,7 +1351,7 @@ namespace CavaPlugin
                             request =
                                 (HttpWebRequest)
                                     WebRequest.Create(
-                                        "https://cavaprofiles.org/index.php/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
+                                        "https://cavaprofiles.org/index.php/cavapages/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
                             request.AllowAutoRedirect = false;
                             request.CookieContainer = cookies;
                             response = (HttpWebResponse) request.GetResponse();
@@ -1374,7 +1374,7 @@ namespace CavaPlugin
                             request =
                                 (HttpWebRequest)
                                     WebRequest.Create(
-                                        "https://cavaprofiles.org/index.php/profiles/profiles-list/cavaprofessions/mining/13-miningblacksmithing600/file");
+                                        "https://cavaprofiles.org/index.php/cavapages/profiles/profiles-list/cavaprofessions/mining/13-miningblacksmithing600/file");
                             request.AllowAutoRedirect = false;
                             request.CookieContainer = cookies;
                             response = (HttpWebResponse) request.GetResponse();
