@@ -35,7 +35,7 @@ namespace CavaPlugin
     // ReSharper restore UnusedMember.Global
     {
         //private Dictionary<ulong, DateTime> _blackList = new Dictionary<ulong, DateTime>();
-        public int UseServer = 1;
+        private int UseServer = 1;
         private bool _hasBeenInitialized;
         private bool _hasBeenInitialized2;
         private bool _hasBeenInitialized3;
@@ -89,7 +89,7 @@ namespace CavaPlugin
 
         public override Version Version
         {
-            get { return new Version(4, 9, 4); }
+            get { return new Version(4, 9, 5); }
         }
 
         public override string Name
@@ -126,24 +126,14 @@ namespace CavaPlugin
             //MessageBox.Show("To Start CavaPlugin load profile Cava_Starter_Profiles.xml", "WELCOME TO CAVAPLUGIN", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private const string PbLoadProfile =
-					"dXNpbmcgU3lzdGVtOw0KdXNpbmcgU3lzdGVtLkNvbXBvbmVudE1vZGVsOw0KdXNpbmcgU3lzdGVtLkRyYXdpbmcuRGVzaWduOw0KdXNpbmcgU3lzdGVtLklPOw0KdXNpbmcgU3lzdGVtLk5ldDsNCnVzaW5nIFN5c3RlbS5TZWN1cml0eS5DcnlwdG9ncmFwaHk7DQp1c2luZyBTeXN0ZW0uVGV4dDsNCnVzaW5nIFN5c3RlbS5UaHJlYWRpbmcuVGFza3M7DQp1c2luZyBTeXN0ZW0uWG1sOw0KdXNpbmcgSGlnaFZvbHR6LlByb2Zlc3Npb25idWRkeS5Db21wb25lbnRCYXNlOw0KdXNpbmcgSGlnaFZvbHR6LlByb2Zlc3Npb25idWRkeS5Qcm9wZXJ0eUdyaWRVdGlsaXRpZXM7DQp1c2luZyBIaWdoVm9sdHouUHJvZmVzc2lvbmJ1ZGR5LlByb3BlcnR5R3JpZFV0aWxpdGllcy5FZGl0b3JzOw0KdXNpbmcgU3R5eC5Db21tb24uSGVscGVyczsNCnVzaW5nIFN0eXguQ29tbW9uQm90LlByb2ZpbGVzOw0KDQovLyBSZVNoYXJwZXIgZGlzYWJsZSBvbmNlIENoZWNrTmFtZXNwYWNlDQpuYW1lc3BhY2UgSGlnaFZvbHR6LlByb2Zlc3Npb25idWRkeS5Db21wb25lbnRzDQp7DQogICAgW1BCWG1sRWxlbWVudCgiTG9hZFByb2ZpbGUiLCBuZXdbXSB7ICJFbmFibGVQcm9maWxlQWN0aW9uIiB9KV0NCiAgICBwdWJsaWMgc2VhbGVkIGNsYXNzIEVuYWJsZVByb2ZpbGVBY3Rpb24gOiBQQkFjdGlvbg0KICAgIHsNCg0KICAgICAgICBwcml2YXRlIHJlYWRvbmx5IFdhaXRUaW1lciBfbG9hZFByb2ZpbGVUaW1lciA9IG5ldyBXYWl0VGltZXIoVGltZVNwYW4uRnJvbVNlY29uZHMoNSkpOw0KICAgICAgICBwcml2YXRlIGJvb2wgX2xvYWRlZFByb2ZpbGU7DQoNCiAgICAgICAgcHVibGljIEVuYWJsZVByb2ZpbGVBY3Rpb24oKQ0KICAgICAgICB7DQogICAgICAgICAgICBQcm9wZXJ0aWVzWyJQYXRoIl0gPSBuZXcgTWV0YVByb3AoDQogICAgICAgICAgICAgICAgIlBhdGgiLA0KICAgICAgICAgICAgICAgIHR5cGVvZihzdHJpbmcpLA0KICAgICAgICAgICAgICAgIG5ldyBFZGl0b3JBdHRyaWJ1dGUoDQogICAgICAgICAgICAgICAgICAgIHR5cGVvZihGaWxlTG9jYXRpb25FZGl0b3IpLA0KICAgICAgICAgICAgICAgICAgICB0eXBlb2YoVUlUeXBlRWRpdG9yKSksDQogICAgICAgICAgICAgICAgbmV3IERpc3BsYXlOYW1lQXR0cmlidXRlKFByb2Zlc3Npb25idWRkeUJvdC5JbnN0YW5jZS5TdHJpbmdzWyJBY3Rpb25fQ29tbW9uX1BhdGgiXSkpOw0KDQogICAgICAgICAgICBQcm9wZXJ0aWVzWyJQcm9maWxlVHlwZSJdID0gbmV3IE1ldGFQcm9wKA0KICAgICAgICAgICAgICAgICJQcm9maWxlVHlwZSIsDQogICAgICAgICAgICAgICAgdHlwZW9mKExvYWRQcm9maWxlVHlwZSksDQogICAgICAgICAgICAgICAgbmV3IERpc3BsYXlOYW1lQXR0cmlidXRlKFByb2Zlc3Npb25idWRkeUJvdC5JbnN0YW5jZS5TdHJpbmdzWyJBY3Rpb25fTG9hZFByb2ZpbGVBY3Rpb25fUHJvZmlsZVR5cGUiXSkpOw0KDQogICAgICAgICAgICBQcm9wZXJ0aWVzWyJJc0xvY2FsIl0gPSBuZXcgTWV0YVByb3AoDQogICAgICAgICAgICAgICAgIklzTG9jYWwiLA0KICAgICAgICAgICAgICAgIHR5cGVvZihib29sKSwNCiAgICAgICAgICAgICAgICBuZXcgRGlzcGxheU5hbWVBdHRyaWJ1dGUoUHJvZmVzc2lvbmJ1ZGR5Qm90Lkluc3RhbmNlLlN0cmluZ3NbIkFjdGlvbl9Mb2FkUHJvZmlsZUFjdGlvbl9Jc0xvY2FsIl0pKTsNCg0KICAgICAgICAgICAgUGF0aCA9ICIiOw0KICAgICAgICAgICAgUHJvZmlsZVR5cGUgPSBMb2FkUHJvZmlsZVR5cGUuSG9ub3JidWRkeTsNCiAgICAgICAgICAgIElzTG9jYWwgPSB0cnVlOw0KICAgICAgICB9DQoNCiAgICAgICAgW1BCWG1sQXR0cmlidXRlXQ0KICAgICAgICBwdWJsaWMgTG9hZFByb2ZpbGVUeXBlIFByb2ZpbGVUeXBlDQogICAgICAgIHsNCiAgICAgICAgICAgIGdldCB7IHJldHVybiBQcm9wZXJ0aWVzLkdldFZhbHVlPExvYWRQcm9maWxlVHlwZT4oIlByb2ZpbGVUeXBlIik7IH0NCiAgICAgICAgICAgIHNldCB7IFByb3BlcnRpZXNbIlByb2ZpbGVUeXBlIl0uVmFsdWUgPSB2YWx1ZTsgfQ0KICAgICAgICB9DQoNCiAgICAgICAgW1BCWG1sQXR0cmlidXRlXQ0KICAgICAgICBwdWJsaWMgc3RyaW5nIFBhdGgNCiAgICAgICAgew0KICAgICAgICAgICAgZ2V0IHsgcmV0dXJuIFByb3BlcnRpZXMuR2V0VmFsdWU8c3RyaW5nPigiUGF0aCIpOyB9DQogICAgICAgICAgICBzZXQgeyBQcm9wZXJ0aWVzWyJQYXRoIl0uVmFsdWUgPSB2YWx1ZTsgfQ0KICAgICAgICB9DQoNCiAgICAgICAgW1BCWG1sQXR0cmlidXRlXQ0KICAgICAgICBwdWJsaWMgYm9vbCBJc0xvY2FsDQogICAgICAgIHsNCiAgICAgICAgICAgIGdldCB7IHJldHVybiBQcm9wZXJ0aWVzLkdldFZhbHVlPGJvb2w+KCJJc0xvY2FsIik7IH0NCiAgICAgICAgICAgIHNldCB7IFByb3BlcnRpZXNbIklzTG9jYWwiXS5WYWx1ZSA9IHZhbHVlOyB9DQogICAgICAgIH0NCg0KICAgICAgICBwdWJsaWMgc3RyaW5nIEFic29sdXRlUGF0aA0KICAgICAgICB7DQogICAgICAgICAgICBnZXQNCiAgICAgICAgICAgIHsNCiAgICAgICAgICAgICAgICBpZiAoIUlzTG9jYWwpDQogICAgICAgICAgICAgICAgICAgIHJldHVybiBQYXRoOw0KDQogICAgICAgICAgICAgICAgcmV0dXJuIHN0cmluZy5Jc051bGxPckVtcHR5KFByb2Zlc3Npb25idWRkeUJvdC5JbnN0YW5jZS5DdXJyZW50UHJvZmlsZS5YbWxQYXRoKQ0KICAgICAgICAgICAgICAgICAgICA/IHN0cmluZy5FbXB0eQ0KICAgICAgICAgICAgICAgICAgICA6IFN5c3RlbS5JTy5QYXRoLkNvbWJpbmUoU3lzdGVtLklPLlBhdGguR2V0RGlyZWN0b3J5TmFtZShQcm9mZXNzaW9uYnVkZHlCb3QuSW5zdGFuY2UuQ3VycmVudFByb2ZpbGUuWG1sUGF0aCksIFBhdGgpOw0KICAgICAgICAgICAgfQ0KICAgICAgICB9DQoNCiAgICAgICAgcHVibGljIG92ZXJyaWRlIHN0cmluZyBOYW1lDQogICAgICAgIHsNCiAgICAgICAgICAgIGdldCB7IHJldHVybiBQcm9mZXNzaW9uYnVkZHlCb3QuSW5zdGFuY2UuU3RyaW5nc1siQWN0aW9uX0xvYWRQcm9maWxlQWN0aW9uX05hbWUiXTsgfQ0KICAgICAgICB9DQoNCiAgICAgICAgcHVibGljIG92ZXJyaWRlIHN0cmluZyBUaXRsZQ0KICAgICAgICB7DQogICAgICAgICAgICBnZXQgeyByZXR1cm4gc3RyaW5nLkZvcm1hdCgiezB9OiB7MX0iLCBOYW1lLCBQYXRoKTsgfQ0KICAgICAgICB9DQoNCiAgICAgICAgcHVibGljIG92ZXJyaWRlIHN0cmluZyBIZWxwDQogICAgICAgIHsNCiAgICAgICAgICAgIGdldCB7IHJldHVybiBQcm9mZXNzaW9uYnVkZHlCb3QuSW5zdGFuY2UuU3RyaW5nc1siQWN0aW9uX0xvYWRQcm9maWxlQWN0aW9uX0hlbHAiXTsgfQ0KICAgICAgICB9DQoNCiAgICAgICAgcHJvdGVjdGVkIGFzeW5jIG92ZXJyaWRlIFRhc2sgUnVuKCkNCiAgICAgICAgew0KICAgICAgICAgICAgaWYgKCFfbG9hZGVkUHJvZmlsZSkNCiAgICAgICAgICAgIHsNCiAgICAgICAgICAgICAgICBpZiAoTG9hZCgpKQ0KICAgICAgICAgICAgICAgIHsNCiAgICAgICAgICAgICAgICAgICAgX2xvYWRQcm9maWxlVGltZXIuUmVzZXQoKTsNCiAgICAgICAgICAgICAgICB9DQogICAgICAgICAgICAgICAgX2xvYWRlZFByb2ZpbGUgPSB0cnVlOw0KICAgICAgICAgICAgfQ0KICAgICAgICAgICAgLy8gV2UgbmVlZCB0byB3YWl0IGZvciBhIHByb2ZpbGUgdG8gbG9hZCBiZWNhdXNlIHRoZSBwcm9maWxlIG1pZ2h0IGJlIGxvYWRlZCBhc3luY2hyb25vdXNseQ0KICAgICAgICAgICAgaWYgKF9sb2FkUHJvZmlsZVRpbWVyLklzRmluaXNoZWQgfHwNCiAgICAgICAgICAgICAgICAoIXN0cmluZy5Jc051bGxPckVtcHR5KFByb2ZpbGVNYW5hZ2VyLlhtbExvY2F0aW9uKSAmJiBQcm9maWxlTWFuYWdlci5YbWxMb2NhdGlvbi5FcXVhbHMoQWJzb2x1dGVQYXRoKSkpDQogICAgICAgICAgICB7DQogICAgICAgICAgICAgICAgSXNEb25lID0gdHJ1ZTsNCiAgICAgICAgICAgIH0NCiAgICAgICAgfQ0KDQogICAgICAgIHB1YmxpYyBzdHJpbmcgRGVjcnlwdChzdHJpbmcgY2lwaGVyVGV4dCkNCiAgICAgICAgew0KICAgICAgICAgICAgdmFyIGNpcGhlckJ5dGVzID0gQ29udmVydC5Gcm9tQmFzZTY0U3RyaW5nKGNpcGhlclRleHQpOw0KICAgICAgICAgICAgdXNpbmcgKHZhciBlbmNyeXB0b3IgPSBBZXMuQ3JlYXRlKCkpDQogICAgICAgICAgICB7DQogICAgICAgICAgICAgICAgdmFyIHBkYiA9IG5ldyBSZmMyODk4RGVyaXZlQnl0ZXMoRW52aXJvbm1lbnQuVXNlck5hbWUsDQogICAgICAgICAgICAgICAgbmV3IGJ5dGVbXSB7IDB4NDksIDB4NzYsIDB4NjEsIDB4NmUsIDB4MjAsIDB4NGQsIDB4NjUsIDB4NjQsIDB4NzYsIDB4NjUsIDB4NjQsIDB4NjUsIDB4NzYgfSk7DQogICAgICAgICAgICAgICAgaWYgKGVuY3J5cHRvciA9PSBudWxsKSByZXR1cm4gY2lwaGVyVGV4dDsNCiAgICAgICAgICAgICAgICBlbmNyeXB0b3IuS2V5ID0gcGRiLkdldEJ5dGVzKDMyKTsNCiAgICAgICAgICAgICAgICBlbmNyeXB0b3IuSVYgPSBwZGIuR2V0Qnl0ZXMoMTYpOw0KICAgICAgICAgICAgICAgIHVzaW5nICh2YXIgbXMgPSBuZXcgTWVtb3J5U3RyZWFtKCkpDQogICAgICAgICAgICAgICAgew0KICAgICAgICAgICAgICAgICAgICB1c2luZyAodmFyIGNzID0gbmV3IENyeXB0b1N0cmVhbShtcywgZW5jcnlwdG9yLkNyZWF0ZURlY3J5cHRvcigpLCBDcnlwdG9TdHJlYW1Nb2RlLldyaXRlKSkNCiAgICAgICAgICAgICAgICAgICAgew0KICAgICAgICAgICAgICAgICAgICAgICAgY3MuV3JpdGUoY2lwaGVyQnl0ZXMsIDAsIGNpcGhlckJ5dGVzLkxlbmd0aCk7DQogICAgICAgICAgICAgICAgICAgICAgICBjcy5DbG9zZSgpOw0KICAgICAgICAgICAgICAgICAgICB9DQogICAgICAgICAgICAgICAgICAgIGNpcGhlclRleHQgPSBFbmNvZGluZy5Vbmljb2RlLkdldFN0cmluZyhtcy5Ub0FycmF5KCkpOw0KICAgICAgICAgICAgICAgIH0NCiAgICAgICAgICAgIH0NCiAgICAgICAgICAgIHJldHVybiBjaXBoZXJUZXh0Ow0KICAgICAgICB9DQoNCiAgICAgICAgcHJpdmF0ZSBzdGF0aWMgc3RyaW5nIEdldGRhdGEoc3RyaW5nIHNldHRpbmdzcGF0aCwgc3RyaW5nIGNoZWNraXQpDQogICAgICAgIHsNCiAgICAgICAgICAgIHZhciBkID0gbmV3IFhtbERvY3VtZW50KCk7DQogICAgICAgICAgICBkLkxvYWQoc2V0dGluZ3NwYXRoKTsNCiAgICAgICAgICAgIHZhciBuID0gZC5HZXRFbGVtZW50c0J5VGFnTmFtZShjaGVja2l0KTsNCiAgICAgICAgICAgIHJldHVybiBuWzBdICE9IG51bGwgPyBuWzBdLklubmVyVGV4dCA6ICIiOw0KICAgICAgICB9DQogICAgICAgIHB1YmxpYyBib29sIExvYWQoKQ0KICAgICAgICB7DQogICAgICAgICAgICB2YXIgYWJzUGF0aCA9IEFic29sdXRlUGF0aDsNCg0KICAgICAgICAgICAgaWYgKElzTG9jYWwgJiYgIXN0cmluZy5Jc051bGxPckVtcHR5KFByb2ZpbGVNYW5hZ2VyLlhtbExvY2F0aW9uKSAmJg0KICAgICAgICAgICAgICAgIFByb2ZpbGVNYW5hZ2VyLlhtbExvY2F0aW9uLkVxdWFscyhhYnNQYXRoLCBTdHJpbmdDb21wYXJpc29uLkN1cnJlbnRDdWx0dXJlSWdub3JlQ2FzZSkpDQogICAgICAgICAgICAgICAgcmV0dXJuIGZhbHNlOw0KICAgICAgICAgICAgdHJ5DQogICAgICAgICAgICB7DQogICAgICAgICAgICAgICAgUHJvZmVzc2lvbmJ1ZGR5Qm90LkRlYnVnKA0KICAgICAgICAgICAgICAgICAgICAiTG9hZGluZyBQcm9maWxlIDp7MH0sIHByZXZpb3VzIHByb2ZpbGUgd2FzIHsxfSIsDQogICAgICAgICAgICAgICAgICAgIFBhdGgsDQogICAgICAgICAgICAgICAgICAgIFByb2ZpbGVNYW5hZ2VyLlhtbExvY2F0aW9uID8/ICJbTm8gUHJvZmlsZV0iKTsNCiAgICAgICAgICAgICAgICBpZiAoc3RyaW5nLklzTnVsbE9yRW1wdHkoUGF0aCkpDQogICAgICAgICAgICAgICAgew0KICAgICAgICAgICAgICAgICAgICBQcm9maWxlTWFuYWdlci5Mb2FkRW1wdHkoKTsNCiAgICAgICAgICAgICAgICB9DQogICAgICAgICAgICAgICAgZWxzZSBpZiAoIUlzTG9jYWwpDQogICAgICAgICAgICAgICAgew0KICAgICAgICAgICAgICAgICAgICBpZiAoUGF0aC5Db250YWlucygiY2F2YXByb2Zlc3Npb25zIikpDQogICAgICAgICAgICAgICAgICAgIHsNCiAgICAgICAgICAgICAgICAgICAgICAgIHZhciBwYXRodG9jYXZhc2V0dGluZ3MgPSBTeXN0ZW0uSU8uUGF0aC5Db21iaW5lKEFwcERvbWFpbi5DdXJyZW50RG9tYWluLkJhc2VEaXJlY3RvcnksDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgc3RyaW5nLkZvcm1hdChAIlNldHRpbmdzXENhdmFQbHVnaW5cTWFpbi1TZXR0aW5ncy54bWwiKSk7DQogICAgICAgICAgICAgICAgICAgICAgICB2YXIgdXJsID0gc3RyaW5nLkZvcm1hdCgiaHR0cDovL2NhdmFwcm9maWxlcy5uZXQvaW5kZXgucGhwP3VzZXI9ezB9JnBhc3N3PXsxfSIsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgR2V0ZGF0YShwYXRodG9jYXZhc2V0dGluZ3MsICJDcExvZ2luIiksIERlY3J5cHQoR2V0ZGF0YShwYXRodG9jYXZhc2V0dGluZ3MsICJDcFBhc3N3b3JkIikpKTsNCiAgICAgICAgICAgICAgICAgICAgICAgIHZhciByZXF1ZXN0ID0gKEh0dHBXZWJSZXF1ZXN0KSBXZWJSZXF1ZXN0LkNyZWF0ZSh1cmwpOw0KICAgICAgICAgICAgICAgICAgICAgICAgcmVxdWVzdC5BbGxvd0F1dG9SZWRpcmVjdCA9IGZhbHNlOw0KICAgICAgICAgICAgICAgICAgICAgICAgcmVxdWVzdC5Db29raWVDb250YWluZXIgPSBuZXcgQ29va2llQ29udGFpbmVyKCk7DQogICAgICAgICAgICAgICAgICAgICAgICB2YXIgcmVzcG9uc2UgPSAoSHR0cFdlYlJlc3BvbnNlKSByZXF1ZXN0LkdldFJlc3BvbnNlKCk7DQogICAgICAgICAgICAgICAgICAgICAgICB2YXIgY29va2llcyA9IHJlcXVlc3QuQ29va2llQ29udGFpbmVyOw0KICAgICAgICAgICAgICAgICAgICAgICAgcmVzcG9uc2UuQ2xvc2UoKTsNCiAgICAgICAgICAgICAgICAgICAgICAgIHRyeQ0KICAgICAgICAgICAgICAgICAgICAgICAgew0KICAgICAgICAgICAgICAgICAgICAgICAgICAgIHJlcXVlc3QgPQ0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAoSHR0cFdlYlJlcXVlc3QpDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBXZWJSZXF1ZXN0LkNyZWF0ZShQYXRoICsgIi9maWxlIik7DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVxdWVzdC5BbGxvd0F1dG9SZWRpcmVjdCA9IGZhbHNlOw0KICAgICAgICAgICAgICAgICAgICAgICAgICAgIHJlcXVlc3QuQ29va2llQ29udGFpbmVyID0gY29va2llczsNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICByZXNwb25zZSA9IChIdHRwV2ViUmVzcG9uc2UpIHJlcXVlc3QuR2V0UmVzcG9uc2UoKTsNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICB2YXIgZGF0YSA9IHJlc3BvbnNlLkdldFJlc3BvbnNlU3RyZWFtKCk7DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgc3RyaW5nIGh0bWw7DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgdXNpbmcgKHZhciBzciA9IG5ldyBTdHJlYW1SZWFkZXIoZGF0YSkpDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgew0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBodG1sID0gc3IuUmVhZFRvRW5kKCk7DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgfQ0KICAgICAgICAgICAgICAgICAgICAgICAgICAgIHJlc3BvbnNlLkNsb3NlKCk7DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgdmFyIHByb2ZpbGVwYXRoID0NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbmV3IE1lbW9yeVN0cmVhbSgNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEVuY29kaW5nLlVURjguR2V0Qnl0ZXMoRW5jb2RpbmcuVVRGOC5HZXRTdHJpbmcoQ29udmVydC5Gcm9tQmFzZTY0U3RyaW5nKGh0bWwpKSkpOw0KICAgICAgICAgICAgICAgICAgICAgICAgICAgIFByb2ZpbGVNYW5hZ2VyLkxvYWROZXcocHJvZmlsZXBhdGgpOw0KICAgICAgICAgICAgICAgICAgICAgICAgfQ0KICAgICAgICAgICAgICAgICAgICAgICAgY2F0Y2ggKEV4Y2VwdGlvbiBleCkNCiAgICAgICAgICAgICAgICAgICAgICAgIHsNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBQcm9mZXNzaW9uYnVkZHlCb3QuV2FybigNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIkRvZXMgbm90IGhhdmUgYWNjZXNzIHRvIFByb2ZpbGUgezB9LiBQbGVhc2UgY2hlY2sgaWYgeW91IGhhdmUgUHJvZmVzc2lvbiBhY2Nlc3MgRXJyb3IgY29kZTogezF9IiwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgUGF0aCwgZXgpOw0KICAgICAgICAgICAgICAgICAgICAgICAgICAgIHJldHVybiBmYWxzZTsNCiAgICAgICAgICAgICAgICAgICAgICAgIH0NCiAgICAgICAgICAgICAgICAgICAgfQ0KICAgICAgICAgICAgICAgICAgICBlbHNlDQogICAgICAgICAgICAgICAgICAgIHsNCiAgICAgICAgICAgICAgICAgICAgICAgIHZhciByZXEgPSBXZWJSZXF1ZXN0LkNyZWF0ZShQYXRoKTsNCiAgICAgICAgICAgICAgICAgICAgICAgIHJlcS5Qcm94eSA9IG51bGw7DQogICAgICAgICAgICAgICAgICAgICAgICB1c2luZyAoV2ViUmVzcG9uc2UgcmVzID0gcmVxLkdldFJlc3BvbnNlKCkpDQogICAgICAgICAgICAgICAgICAgICAgICB7DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgdXNpbmcgKHZhciBzdHJlYW0gPSByZXMuR2V0UmVzcG9uc2VTdHJlYW0oKSkNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICB7DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFByb2ZpbGVNYW5hZ2VyLkxvYWROZXcoc3RyZWFtKTsNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICB9DQogICAgICAgICAgICAgICAgICAgICAgICB9DQogICAgICAgICAgICAgICAgICAgIH0NCiAgICAgICAgICAgICAgICB9DQogICAgICAgICAgICAgICAgZWxzZSBpZiAoRmlsZS5FeGlzdHMoYWJzUGF0aCkpDQogICAgICAgICAgICAgICAgew0KICAgICAgICAgICAgICAgICAgICBQcm9maWxlTWFuYWdlci5Mb2FkTmV3KGFic1BhdGgsIHRydWUpOw0KICAgICAgICAgICAgICAgIH0NCiAgICAgICAgICAgICAgICBlbHNlDQogICAgICAgICAgICAgICAgew0KICAgICAgICAgICAgICAgICAgICBQcm9mZXNzaW9uYnVkZHlCb3QuV2FybigiezB9OiB7MX0iLCBQcm9mZXNzaW9uYnVkZHlCb3QuSW5zdGFuY2UuU3RyaW5nc1siRXJyb3JfVW5hYmxlVG9GaW5kUHJvZmlsZSJdLCBQYXRoKTsNCiAgICAgICAgICAgICAgICAgICAgcmV0dXJuIGZhbHNlOw0KICAgICAgICAgICAgICAgIH0NCiAgICAgICAgICAgIH0NCiAgICAgICAgICAgIGNhdGNoIChFeGNlcHRpb24gZXgpDQogICAgICAgICAgICB7DQogICAgICAgICAgICAgICAgUHJvZmVzc2lvbmJ1ZGR5Qm90Lldhcm4oInswfSIsIGV4KTsNCiAgICAgICAgICAgICAgICByZXR1cm4gZmFsc2U7DQogICAgICAgICAgICB9DQogICAgICAgICAgICByZXR1cm4gdHJ1ZTsNCiAgICAgICAgfQ0KDQogICAgICAgIHB1YmxpYyBvdmVycmlkZSBJUEJDb21wb25lbnQgRGVlcENvcHkoKQ0KICAgICAgICB7DQogICAgICAgICAgICByZXR1cm4gbmV3IEVuYWJsZVByb2ZpbGVBY3Rpb24geyBQYXRoID0gUGF0aCwgUHJvZmlsZVR5cGUgPSBQcm9maWxlVHlwZSwgSXNMb2NhbCA9IElzTG9jYWwgfTsNCiAgICAgICAgfQ0KDQogICAgICAgIHB1YmxpYyBvdmVycmlkZSB2b2lkIFJlc2V0KCkNCiAgICAgICAgew0KICAgICAgICAgICAgX2xvYWRlZFByb2ZpbGUgPSBmYWxzZTsNCiAgICAgICAgICAgIGJhc2UuUmVzZXQoKTsNCiAgICAgICAgfQ0KDQogICAgfQ0KfQ==";
-
-        // ReSharper disable PossiblyMistakenUseOfParamsMethod
-        private readonly string _pathToPbLoadProfile =                         
-            Path.Combine(Utilities.AssemblyDirectory + @"\Bots\Professionbuddy\Components\EnableProfileAction.cs");
-            //Path.Combine(Utilities.AssemblyDirectory + @"\Bots\Professionbuddy\Composites\EnableProfileAction.cs");
-        private readonly string _pathToOldPbLoadProfile =
-            Path.Combine(Utilities.AssemblyDirectory + @"\Bots\Professionbuddy\Composites\EnableProfileAction.cs");
-
         private static readonly string PathToCavaPlugin =
+        // ReSharper disable PossiblyMistakenUseOfParamsMethod
             Path.Combine(Utilities.AssemblyDirectory + @"\Plugins\CavaPlugin\");
-
         private static readonly string PathToCavaProfiles =
             Path.Combine(Utilities.AssemblyDirectory + @"\Default Profiles\Cava\");
-
         private static readonly string PathToCavaQBs =
             Path.Combine(Utilities.AssemblyDirectory + @"\Quest Behaviors\Cava\");
+        // ReSharper restore PossiblyMistakenUseOfParamsMethod
 
         private readonly HashSet<uint> _boxList = new HashSet<uint>
         {
@@ -173,8 +163,8 @@ namespace CavaPlugin
             16883 //Worn Junkbox
         };
         readonly List<string> _antigank = new List<string>();
-     
-        public WoWPlayer[] GetAllTargetingNonFriendlyPlayers()
+
+        private static IEnumerable<WoWPlayer> GetAllTargetingNonFriendlyPlayers()
         {
             return ObjectManager.GetObjectsOfType<WoWPlayer>().Where(ret => (
                 ret != null &&
@@ -184,7 +174,7 @@ namespace CavaPlugin
                 )).ToArray();
         }
 
-        public void Addgankers()
+        private void Addgankers()
         {
             foreach (var ganker in GetAllTargetingNonFriendlyPlayers())
             {
@@ -199,7 +189,7 @@ namespace CavaPlugin
             }
         }
 
-        public void Delgankers()
+        private void Delgankers()
         {
             var ganktoremove = new List<string>();
             foreach (var addedganker in _antigank)
@@ -216,7 +206,7 @@ namespace CavaPlugin
             }
         }
 
-        public bool LookForGankers()
+        private bool LookForGankers()
         {
             foreach (var checkplayer in ObjectManager.GetObjectsOfType<WoWPlayer>().Where(ret =>
                 ret != null &&
@@ -234,7 +224,8 @@ namespace CavaPlugin
             }
             return false;
         }
-        public void CavaAtackMob()
+
+        private static void CavaAtackMob()
         {
             if (!Me.IsAutoAttacking)
             { Lua.DoString("StartAttack()"); }
@@ -359,7 +350,7 @@ namespace CavaPlugin
             return false;
         }
 
-        public string Decrypt(string cipherText)
+        private static string Decrypt(string cipherText)
         {
             var cipherBytes = Convert.FromBase64String(cipherText);
             using (var encryptor = Aes.Create())
@@ -530,7 +521,7 @@ namespace CavaPlugin
                 UseServer = CPGlobalSettings.Instance.UseServer;
                 if (UseServer==1)
                 {
-                    var url = string.Format("http://cavaprofiles.net/index.php?user={0}&passw={1}",
+                    var url = string.Format("https://cavaprofiles.net/index.php?user={0}&passw={1}",
                         CPGlobalSettings.Instance.CpLogin, Decrypt(CPGlobalSettings.Instance.CpPassword));
                     var request = (HttpWebRequest)WebRequest.Create(url);
                     request.AllowAutoRedirect = false;
@@ -543,7 +534,7 @@ namespace CavaPlugin
                         request =
                             (HttpWebRequest)
                                 WebRequest.Create(
-                                    "http://cavaprofiles.net/index.php/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
+                                    "https://cavaprofiles.net/index.php/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
                         request.AllowAutoRedirect = false;
                         request.CookieContainer = cookies;
                         response = (HttpWebResponse)request.GetResponse();
@@ -583,7 +574,7 @@ namespace CavaPlugin
                         request =
                             (HttpWebRequest)
                                 WebRequest.Create(
-                                    "http://cavaprofiles.net/index.php/profiles/profiles-list/cavaprofessions/mining/13-miningblacksmithing600/file");
+                                    "https://cavaprofiles.net/index.php/profiles/profiles-list/cavaprofessions/mining/13-miningblacksmithing600/file");
                         request.AllowAutoRedirect = false;
                         request.CookieContainer = cookies;
                         response = (HttpWebResponse)request.GetResponse();
@@ -605,7 +596,7 @@ namespace CavaPlugin
                 }
                 else
                 {
-                    var url = string.Format("http://cavaprofiles.org/index.php?user={0}&passw={1}",
+                    var url = string.Format("https://cavaprofiles.org/index.php?user={0}&passw={1}",
                        CPGlobalSettings.Instance.CpLogin, Decrypt(CPGlobalSettings.Instance.CpPassword));
                     var request = (HttpWebRequest)WebRequest.Create(url);
                     request.AllowAutoRedirect = false;
@@ -618,7 +609,7 @@ namespace CavaPlugin
                         request =
                             (HttpWebRequest)
                                 WebRequest.Create(
-                                    "http://cavaprofiles.org/index.php/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
+                                    "https://cavaprofiles.org/index.php/profiles/profiles-list/armageddoner/6-armagedonner-user-1/file");
                         request.AllowAutoRedirect = false;
                         request.CookieContainer = cookies;
                         response = (HttpWebResponse)request.GetResponse();
@@ -658,7 +649,7 @@ namespace CavaPlugin
                         request =
                             (HttpWebRequest)
                                 WebRequest.Create(
-                                    "http://cavaprofiles.org/index.php/profiles/profiles-list/cavaprofessions/mining/13-miningblacksmithing600/file");
+                                    "https://cavaprofiles.org/index.php/profiles/profiles-list/cavaprofessions/mining/13-miningblacksmithing600/file");
                         request.AllowAutoRedirect = false;
                         request.CookieContainer = cookies;
                         response = (HttpWebResponse)request.GetResponse();
@@ -1009,42 +1000,6 @@ namespace CavaPlugin
             LootFrame.Instance.LootAll();
         }
 
-        public static WoWUnit IsBlaclistedFp
-        {
-            get
-            {
-                return ObjectManager.GetObjectsOfType<WoWUnit>().Where(u =>
-                    u.CanSelect &&
-                    !u.IsDead &&
-                    u.IsFlightMaster &&
-                    !u.IsHostile
-                    ).OrderBy(u => u.Distance).FirstOrDefault();
-            }
-        }
-
-        /*private void LoggingOnOnLogMessage(ReadOnlyCollection<Logging.LogMessage> messages)
-        {
-            // anti mount vendor run 
-           foreach (var logEntry in messages)
-           {
-               if (logEntry.Message.Contains(TaximapLogEntry) && CPsettings.Instance.BlacklistflycheckBox)
-               {
-                   if (IsBlaclistedFp != null)
-                   {
-                       Log("Removing Blacklist From Flight Master {0}.", IsBlaclistedFp.Name);
-                       Blacklist.Clear(blacklistEntry => blacklistEntry.Entry == IsBlaclistedFp.Entry);
-                       StyxWoW.Sleep(1000);
-                   }
-               }
-               if (!logEntry.Message.Contains(VendorMountLogEntry))
-               continue;
-               if (_vendorMountSpellId == 0 && CPsettings.Instance.FixSummonMountVendor)
-               Log("Summoning vendor mount Detected, starting fix routine");
-               var mountIdStr = logEntry.Message.Substring(VendorMountLogEntry.Length, logEntry.Message.LastIndexOf(')') - VendorMountLogEntry.Length);
-               _vendorMountSpellId = int.Parse(mountIdStr);
-               
-           }
-        }*/
         #endregion
 
 
@@ -1126,7 +1081,6 @@ namespace CavaPlugin
         //private static WoWItem ItemCelebrationPack { get { return (StyxWoW.Me.CarriedItems.FirstOrDefault(i => i.Entry == 90918)); } }
         //private static WoWItem ItemHs { get { return (StyxWoW.Me.CarriedItems.FirstOrDefault(i => i.Entry == 6948)); } }
         private static WoWItem ItemThisShiv { get { return (StyxWoW.Me.CarriedItems.FirstOrDefault(i => i.Entry == 55883)); } }
-        public WoWUnit FlightMaster { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => ret.IsAlive && !ret.Combat && ret.IsFlightMaster && ret.Location.Distance(Me.Location) <= 5).OrderBy(u => u.Distance).FirstOrDefault(); } }
         #endregion
 
         #region Override Pulse
@@ -1229,7 +1183,8 @@ namespace CavaPlugin
                     WoWMovement.MoveStop();
                     Lua.DoString("Dismount()");
                     Lua.DoString("RunMacroText('/cancelaura cat form\n/cancelaura bear form\n/cancelaura travel form\n/cancelaura ghost wolf\n/cancelaura Flight Form')");
-                    Mount.Dismount();
+                    // ReSharper disable once ObjectCreationAsStatement
+                    new Mount.ActionLandAndDismount();
                 }
 
                 if (Me.Combat && !Me.IsCasting && CPsettings.Instance.CombatLoot)
@@ -1476,7 +1431,8 @@ namespace CavaPlugin
                         {
                             Lua.DoString("RunMacroText('/cancelaura Flight Form')");
                         }
-                        Mount.Dismount();
+                        // ReSharper disable once ObjectCreationAsStatement
+                        new Mount.ActionLandAndDismount();
                     }
                     if (!Me.Combat && !CanLootMobs.Any())
                     {
@@ -1630,7 +1586,8 @@ namespace CavaPlugin
                     {  //movimento menor que 35 nos ultimos 6 segundos, mounted mais de 30 segundos,a mais de 10 do objectivo
                         // ReSharper disable once ResourceItemNotResolved
                         Log(_rm.GetString("AntiStuck_Char_is_Mounted_for_more_than_6_secs_and_stuck", _ci), DateTime.Now.ToString(CultureInfo.InvariantCulture));
-                        Mount.Dismount();
+                        // ReSharper disable once ObjectCreationAsStatement
+                        new Mount.ActionLandAndDismount();
                         StyxWoW.Sleep(2000);
                         Lua.DoString("Dismount()");
                         if (Me.Class == WoWClass.Druid)
@@ -1644,7 +1601,8 @@ namespace CavaPlugin
                     {
                         // ReSharper disable once ResourceItemNotResolved
                         Log(_rm.GetString("AntiStuck_Char_is_Mounted_for_more_than_10_min", _ci), DateTime.Now.ToString(CultureInfo.InvariantCulture));
-                        Mount.Dismount();
+                        // ReSharper disable once ObjectCreationAsStatement
+                        new Mount.ActionLandAndDismount();
                         StyxWoW.Sleep(2000);
                         Lua.DoString("Dismount()");
                         if (Me.Class == WoWClass.Druid)
@@ -1677,7 +1635,8 @@ namespace CavaPlugin
                         StyxWoW.Sleep(2000);
                         KeyboardManager.AntiAfk();
                         StyxWoW.Sleep(2000);
-                        Mount.Dismount();
+                        // ReSharper disable once ObjectCreationAsStatement
+                        new Mount.ActionLandAndDismount();
                         StyxWoW.Sleep(2000);
                         Lua.DoString("Dismount()");
                         if (Me.Class == WoWClass.Druid)
@@ -1703,7 +1662,8 @@ namespace CavaPlugin
                     {
                         // ReSharper disable once ResourceItemNotResolved
                         Log(_rm.GetString("AntiStuck_not_moving_last_5_min", _ci), DateTime.Now.ToString(CultureInfo.InvariantCulture));
-                        Mount.Dismount();
+                        // ReSharper disable once ObjectCreationAsStatement
+                        new Mount.ActionLandAndDismount();
                         StyxWoW.Sleep(2000);
                         Lua.DoString("Dismount()");
                         if (Me.Class == WoWClass.Druid)
