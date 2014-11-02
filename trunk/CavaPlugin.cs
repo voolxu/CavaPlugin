@@ -23,9 +23,11 @@ using Styx.Common;
 using Styx.CommonBot;
 using Styx.CommonBot.POI;
 using Styx.CommonBot.Profiles;
+using Styx.TreeSharp;
 using Styx.WoWInternals;
 using Styx.WoWInternals.WoWObjects;
 using Bots.Grind;
+using Action = System.Action;
 using ThreadState = System.Threading.ThreadState;
 
 namespace CavaPlugin
@@ -321,6 +323,11 @@ namespace CavaPlugin
         private static bool UpdaterCava(string f, string stuff)
         {
             var p = new Process {StartInfo = {FileName = "TortoiseProc.exe", Arguments = f}};
+            var t =
+                ObjectManager.GetObjectsOfType<WoWGameObject>()
+                    .Any(
+                        o => o.Entry == 176310 && o.Location.Distance(new WoWPoint(-8650.719, 1346.051, 0.04130154)) < 3);
+                
             try
             {
                 p.Start();
@@ -696,7 +703,7 @@ namespace CavaPlugin
                 {
                     Debug(_rm.GetString("Auto_Shutdown_in_progress_at", _ci) + " " +
                           DateTime.Now.ToString(CultureInfo.InvariantCulture));
-                    StyxWoW.Sleep(5000);
+                    new Sleep(5000);
                     Environment.Exit(0);
                 }
                 _hasBeenInitialized = true;
@@ -947,12 +954,12 @@ namespace CavaPlugin
         {
             /* antiga forma
             * TreeRoot.Stop();
-            * StyxWoW.Sleep(2000);
+            * new Sleep(2000);
             * TreeRoot.Start();
             */
             TreeRoot.Stop();
             ProfileManager.LoadNew(PathToCavaProfiles + "Cava_Starter_Profiles.xml");
-            StyxWoW.Sleep(2000);
+            new Sleep(2000); 
             TreeRoot.Start();
         }
 
@@ -1102,12 +1109,12 @@ namespace CavaPlugin
                         Lua.DoString("RunMacroText('/click GhostFrame')");
                         _oldSh = LevelBot.ShouldUseSpiritHealer;
                         _gankedressatSh = true;
-                        StyxWoW.Sleep(1000);
+                        new Sleep(1000);
                         LevelBot.ShouldUseSpiritHealer = true;
                         if (!LevelBot.BehaviorFlags.HasFlag(BehaviorFlags.Death)){LevelBot.BehaviorFlags |= BehaviorFlags.Death;}
                         return;
                     }
-                    StyxWoW.Sleep(30000);
+                    new Sleep(30000);
                 }
                 else
                 {
@@ -1129,7 +1136,7 @@ namespace CavaPlugin
             {
                 //ReSharper disable once ResourceItemNotResolved
                 Log(_rm.GetString("loading_profile", _ci), ProfileManager.CurrentOuterProfile.Name);
-                StyxWoW.Sleep(3000);
+                new Sleep(3000);
                 BotBase pbBotBase;
                 BotManager.Instance.Bots.TryGetValue("ProfessionBuddy", out pbBotBase);
                 if (pbBotBase != null && BotManager.Current != pbBotBase)
@@ -1140,7 +1147,7 @@ namespace CavaPlugin
                             {
                                 TreeRoot.Stop();
                                 BotManager.Instance.SetCurrent(pbBotBase);
-                                StyxWoW.Sleep(2000);
+                                new Sleep(2000);
                                 if (ProfileManager.CurrentOuterProfile.Name == "Mining Blacksmithing 1 to 600 by Cava") { _profileName = "Prof\\MB\\[PB]MB(Cava).xml"; }
                                 if (ProfileManager.CurrentOuterProfile.Name == "Mining Blacksmithing 1 to 300 by Cava") { _profileName = "Prof\\MB\\Free[PB]MB(Cava).xml"; }
                                 ProfileManager.LoadNew(NewCavaProfilePath, false);
@@ -1168,7 +1175,7 @@ namespace CavaPlugin
             }
             if (Me.IsDead && !Me.HasAura(8326) && CPsettings.Instance.RessAfterDie)
             {
-                StyxWoW.Sleep(5000);
+                new Sleep(5000);
                 //ReSharper disable once ResourceItemNotResolved
                 Log(_rm.GetString("Anti_Bug_Release_System", _ci));
                 Lua.DoString("RunMacroText('/click StaticPopup1Button1')");
@@ -1226,11 +1233,10 @@ namespace CavaPlugin
                         {
                             SpellManager.Cast(1804);
                             UseItem(item);
-                            StyxWoW.Sleep(6000);
+                            new Sleep(6000);
                         }
                         UseItem(item);
                         GetLoot();
-                        StyxWoW.SleepForLagDuration();
                     }
                     _checkBags.Restart();
                     // ReSharper disable once ResourceItemNotResolved
@@ -1278,13 +1284,13 @@ namespace CavaPlugin
                     MobDocZapnozzle.Count > 0)
                 {
                     MobDocZapnozzle[0].Interact();
-                    StyxWoW.Sleep(1000);
+                    new Sleep(1000);
                     Lua.DoString("RunMacroText('/click QuestFrameCompleteQuestButton')");
                 }
                 if (Me.Race == WoWRace.Worgen && Me.HasAura(68631) && Me.ZoneId == 4714 && MobKingGennGreymane.Count > 0)
                 {
                     MobKingGennGreymane[0].Interact();
-                    StyxWoW.Sleep(1000);
+                    new Sleep(1000);
                     Lua.DoString("RunMacroText('/click QuestFrameCompleteQuestButton')");
                 }
                  * */
@@ -1292,7 +1298,7 @@ namespace CavaPlugin
                     !Me.HasAura(65178) && MobArctanus.Count > 0)
                 {
                     MobArctanus[0].Interact();
-                    StyxWoW.Sleep(1000);
+                    new Sleep(1000);
                 }
                 if (Me.QuestLog.GetQuestById(24950) != null && !Me.QuestLog.GetQuestById(24950).IsCompleted &&
                     MobTidecrusher.Count > 0)
@@ -1307,7 +1313,7 @@ namespace CavaPlugin
                     MobElectromental[0].Interact();
                     MobElectromental[0].Face();
                     Lua.DoString("UseItemByName(30656)");
-                    StyxWoW.Sleep(4000);
+                    new Sleep(4000);
                 }
                 if (Me.QuestLog.GetQuestById(10609) != null && !Me.QuestLog.GetQuestById(10609).IsCompleted &&
                     MobNetherWhelp.Count > 0)
@@ -1315,7 +1321,7 @@ namespace CavaPlugin
                     MobNetherWhelp[0].Interact();
                     MobNetherWhelp[0].Face();
                     Lua.DoString("UseItemByName(30742)");
-                    StyxWoW.Sleep(4000);
+                    new Sleep(4000);
                 }
                 if (Me.QuestLog.GetQuestById(10609) != null && !Me.QuestLog.GetQuestById(10609).IsCompleted &&
                     IsObjectiveComplete(1, 10609) && MobProtoNetherDrake.Count > 0)
@@ -1323,7 +1329,7 @@ namespace CavaPlugin
                     MobProtoNetherDrake[0].Interact();
                     MobProtoNetherDrake[0].Face();
                     Lua.DoString("UseItemByName(30742)");
-                    StyxWoW.Sleep(4000);
+                    new Sleep(4000);
                 }
                 if (Me.QuestLog.GetQuestById(10609) != null && !Me.QuestLog.GetQuestById(10609).IsCompleted &&
                     IsObjectiveComplete(2, 10609) && MobAdolescentNetherDrake.Count > 0)
@@ -1331,7 +1337,7 @@ namespace CavaPlugin
                     MobAdolescentNetherDrake[0].Interact();
                     MobAdolescentNetherDrake[0].Face();
                     Lua.DoString("UseItemByName(30742)");
-                    StyxWoW.Sleep(4000);
+                    new Sleep(4000);
                 }
                 if (Me.QuestLog.GetQuestById(10609) != null && !Me.QuestLog.GetQuestById(10609).IsCompleted &&
                     IsObjectiveComplete(3, 10609) && MobMatureNetherDrake.Count > 0)
@@ -1339,7 +1345,7 @@ namespace CavaPlugin
                     MobMatureNetherDrake[0].Interact();
                     MobMatureNetherDrake[0].Face();
                     Lua.DoString("UseItemByName(30742)");
-                    StyxWoW.Sleep(4000);
+                    new Sleep(4000);
                 }
                 if (Me.QuestLog.GetQuestById(10830) != null && !Me.QuestLog.GetQuestById(10830).IsCompleted &&
                     MobKoiKoiSpirit.Count > 0)
@@ -1352,7 +1358,7 @@ namespace CavaPlugin
                 {
                     WoWMovement.MoveStop();
                     Lua.DoString("UseItemByName(29473)");
-                    StyxWoW.Sleep(500);
+                    new Sleep(500);
                 }
                 /*
                 if (Me.QuestLog.GetQuestById(28632) != null && !Me.QuestLog.GetQuestById(28632).IsCompleted &&
@@ -1366,7 +1372,7 @@ namespace CavaPlugin
                 {
                     WoWMovement.MoveStop();
                     Lua.DoString("UseItemByName(35125)");
-                    StyxWoW.Sleep(500);
+                    new Sleep(500);
                 }
                 if (Me.QuestLog.GetQuestById(26830) != null && !Me.QuestLog.GetQuestById(26830).IsCompleted &&
                     MobSauranokMystic.Count > 0)
@@ -1381,7 +1387,7 @@ namespace CavaPlugin
                     if (MobSauranokMystic[0].Location.Distance(Me.Location) <= 4 && MobSauranokMystic[0].HasAura(82531))
                     {
                         Blacklist.Add(Me.CurrentTarget, BlacklistFlags.Combat, TimeSpan.FromSeconds(1));
-                        StyxWoW.Sleep(10);
+                        new Sleep(10);
                         WoWMovement.MoveStop();
                         MobSauranokMystic[0].Target();
                         MobSauranokMystic[0].Face();
@@ -1394,7 +1400,7 @@ namespace CavaPlugin
                 {
                     WoWMovement.MoveStop();
                     Lua.DoString("UseItemByName(89769)");
-                    StyxWoW.Sleep(500);
+                    new Sleep(500);
                 }
                 if (Me.ZoneId == 616 && Me.CurrentTarget != null && Me.CurrentTarget.Entry == 41031)
                 {
@@ -1404,7 +1410,7 @@ namespace CavaPlugin
                         {
                             WoWMovement.MoveStop();
                             Lua.DoString("UseItemByName(55883)");
-                            StyxWoW.Sleep(500);
+                            new Sleep(500);
                         }
                     }
                     else
@@ -1417,7 +1423,7 @@ namespace CavaPlugin
                     Log("Using Celebration Package 9Th Aniversary at " + DateTime.Now.ToString(CultureInfo.InvariantCulture));
                     WoWMovement.MoveStop();
                     Lua.DoString("UseItemByName(90918)");
-                    StyxWoW.Sleep(500);
+                    new Sleep(500);
                 }
                  * */
 
@@ -1480,7 +1486,7 @@ namespace CavaPlugin
                     if ((Me.Location.Distance(new WoWPoint(-10606.8, -1083.83, 155.2219)) > 6) || (Me.Z < 155))
                     {
                         //5 segundos de pausa, se mantiver reseta tudo
-                        StyxWoW.Sleep(5000);
+                        new Sleep(5000);
                         if ((Me.Location.Distance(new WoWPoint(-10606.8, -1083.83, 155.2219)) > 6) || (Me.Z < 155))
                         {
                             //_movetoplace = 0;
@@ -1543,7 +1549,7 @@ namespace CavaPlugin
                     {
                         WoWMovement.MoveStop();
                         WoWSpell.FromId(_vendorMountSpellId).Cast();
-                        StyxWoW.Sleep(6000);
+                        new Sleep(6000);
                         if (!Me.Mounted)
                         {
                             //need mov
@@ -1563,7 +1569,7 @@ namespace CavaPlugin
                                     WoWMovement.Move(WoWMovement.MovementDirection.StrafeRight);
                                     break;
                             }
-                            StyxWoW.Sleep(2000);
+                            new Sleep(2000);
                             WoWMovement.MoveStop();
                         }
                     }
@@ -1588,7 +1594,7 @@ namespace CavaPlugin
                         Log(_rm.GetString("AntiStuck_Char_is_Mounted_for_more_than_6_secs_and_stuck", _ci), DateTime.Now.ToString(CultureInfo.InvariantCulture));
                         // ReSharper disable once ObjectCreationAsStatement
                         new Mount.ActionLandAndDismount();
-                        StyxWoW.Sleep(2000);
+                        new Sleep(2000);
                         Lua.DoString("Dismount()");
                         if (Me.Class == WoWClass.Druid)
                         {
@@ -1603,7 +1609,7 @@ namespace CavaPlugin
                         Log(_rm.GetString("AntiStuck_Char_is_Mounted_for_more_than_10_min", _ci), DateTime.Now.ToString(CultureInfo.InvariantCulture));
                         // ReSharper disable once ObjectCreationAsStatement
                         new Mount.ActionLandAndDismount();
-                        StyxWoW.Sleep(2000);
+                        new Sleep(2000);
                         Lua.DoString("Dismount()");
                         if (Me.Class == WoWClass.Druid)
                         {
@@ -1630,20 +1636,20 @@ namespace CavaPlugin
                         // ReSharper disable once ResourceItemNotResolved
                         Log(_rm.GetString("AntiStuck_Im_AFK_flagged_Anti_Afking_at", _ci), DateTime.Now.ToString(CultureInfo.InvariantCulture));
                         WoWMovement.Move(WoWMovement.MovementDirection.JumpAscend, TimeSpan.FromMilliseconds(100));
-                        StyxWoW.Sleep(2000);
+                        new Sleep(2000);
                         KeyboardManager.KeyUpDown((char)KeyboardManager.eVirtualKeyMessages.VK_SPACE);
-                        StyxWoW.Sleep(2000);
+                        new Sleep(2000);
                         KeyboardManager.AntiAfk();
-                        StyxWoW.Sleep(2000);
+                        new Sleep(2000);
                         // ReSharper disable once ObjectCreationAsStatement
                         new Mount.ActionLandAndDismount();
-                        StyxWoW.Sleep(2000);
+                        new Sleep(2000);
                         Lua.DoString("Dismount()");
                         if (Me.Class == WoWClass.Druid)
                         {
                             Lua.DoString("RunMacroText('/cancelaura Flight Form')");
                         }
-                        StyxWoW.Sleep(2000);
+                        new Sleep(2000);
                         StyxWoW.ResetAfk();
                         _nVezesBotUnstuck++;
                     }
@@ -1664,7 +1670,7 @@ namespace CavaPlugin
                         Log(_rm.GetString("AntiStuck_not_moving_last_5_min", _ci), DateTime.Now.ToString(CultureInfo.InvariantCulture));
                         // ReSharper disable once ObjectCreationAsStatement
                         new Mount.ActionLandAndDismount();
-                        StyxWoW.Sleep(2000);
+                        new Sleep(2000);
                         Lua.DoString("Dismount()");
                         if (Me.Class == WoWClass.Druid)
                         {
