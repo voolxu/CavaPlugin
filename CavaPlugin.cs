@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -461,10 +460,17 @@ namespace CavaPlugin
         private static List<WoWUnit> MobWitheredCorpse { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 20561 && ret.Distance < 16 && ret.HasAura(31261))).OrderBy(ret => ret.Distance).ToList(); } }
         private static List<WoWUnit> MobSauranokMystic { get { return ObjectManager.GetObjectsOfType<WoWUnit>().Where(ret => (ret.Entry == 44120 && ret.IsAlive)).OrderBy(ret => ret.Distance).ToList(); } }
         private static WoWItem ItemThisShiv { get { return (StyxWoW.Me.CarriedItems.FirstOrDefault(i => i.Entry == 55883)); } }
+        private static WoWItem ItemCelebrationPack { get { return (StyxWoW.Me.CarriedItems.FirstOrDefault(i => i.Entry == 90918)); } }
         #endregion
 
         public void RunningPulse()
         {
+            if (Me.IsAlive && !Me.HasAura(132700) && !Me.IsOnTransport && !Me.OnTaxi && !Me.Mounted && !Me.IsCasting && !Me.Combat && ItemCelebrationPack != null)
+            {
+                CavaPluginLog.Log("Using Celebration Package 9Th Aniversary at " + DateTime.Now.ToString(CultureInfo.InvariantCulture));
+                WoWMovement.MoveStop();
+                Lua.DoString("UseItemByName(90918)");
+            } 
             if (Me.QuestLog.GetQuestById(13884) != null && !Me.QuestLog.GetQuestById(13884).IsCompleted &&
                 !Me.HasAura(65178) && MobArctanus.Count > 0)
             {
@@ -872,18 +878,18 @@ namespace CavaPlugin
                 _checkBags.Start();
                 CavaPluginLog.Debug("Restarted all timers");
                 _hasBeenInitialized = true;
-                if (!_hasBeenInitialized2)
-                {
-                    _hasBeenInitialized2 = true;
-                    return;
-                }
-                if (!_hasBeenInitialized3)
-                {
-                    _hasBeenInitialized3 = true;
-                    return;
-                }
-                AbreJanela();
             }
+            if (!_hasBeenInitialized2)
+            {
+                _hasBeenInitialized2 = true;
+                return;
+            }
+            if (!_hasBeenInitialized3)
+            {
+                _hasBeenInitialized3 = true;
+                return;
+            }
+            AbreJanela();
 
         }
 
@@ -895,6 +901,7 @@ namespace CavaPlugin
             DetachEvents();
             _botRunning = false;
         }
+ 
         private void _OnBotStart(EventArgs args)
         {
             _botRunning = true;
@@ -976,6 +983,7 @@ namespace CavaPlugin
         {
             return _rm.GetString(lcllocalization, _ci);
         }
+
         private static void _Recomecar()
         {
             TreeRoot.Stop();
