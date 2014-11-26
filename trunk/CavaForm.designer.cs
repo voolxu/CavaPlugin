@@ -67,6 +67,7 @@ namespace CavaPlugin
             this.button12 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label32 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.radioButton9 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
@@ -212,7 +213,6 @@ namespace CavaPlugin
             this.button47 = new System.Windows.Forms.Button();
             this.button48 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.label32 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -820,6 +820,16 @@ namespace CavaPlugin
             this.groupBox2.TabIndex = 24;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Leveling Profiles";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.ForeColor = System.Drawing.Color.Red;
+            this.label32.Location = new System.Drawing.Point(150, 185);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(197, 20);
+            this.label32.TabIndex = 28;
+            this.label32.Text = "To Implemente near future";
             // 
             // label29
             // 
@@ -2924,16 +2934,6 @@ namespace CavaPlugin
             // 
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.ForeColor = System.Drawing.Color.Red;
-            this.label32.Location = new System.Drawing.Point(150, 185);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(197, 20);
-            this.label32.TabIndex = 28;
-            this.label32.Text = "To Implemente near future";
             // 
             // CavaForm
             // 
