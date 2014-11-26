@@ -176,7 +176,7 @@ namespace Bots.Professionbuddy.Components
                         var pathtocavasettings = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
                             string.Format(@"Settings\CavaPlugin\Main-Settings.xml"));
                         var servertouse = Getdata(pathtocavasettings, "UseServer");
-                        if (servertouse == "1")
+                        if (servertouse == "0")
                         {
                             Path = "https://cavaprofiles.net/index.php/profiles/profiles-list/" + Path;
                             var url = string.Format("https://cavaprofiles.net/index.php?user={0}&passw={1}",
