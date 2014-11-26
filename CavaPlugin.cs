@@ -1090,6 +1090,7 @@ namespace CavaPlugin
             }
             return Path.Combine(pluginsPath, folderName);
         }
+
         public static string Decrypt(string cipherText)
         {
             var cipherBytes = Convert.FromBase64String(cipherText);
@@ -1112,6 +1113,7 @@ namespace CavaPlugin
             }
             return cipherText;
         }
+
         public static string Encrypt(string clearText)
         {
             var clearBytes = Encoding.Unicode.GetBytes(clearText);
@@ -1134,6 +1136,7 @@ namespace CavaPlugin
             }
             return clearText;
         }
+
         public static void CheckAccess()
         {
             if (CPGlobalSettings.Instance.UseServer == 0)
@@ -1337,6 +1340,7 @@ namespace CavaPlugin
                 }
             }
         }
+
         private static void HaveArmageddonerAccess()
         {
             IsArmageddonerUser = true;
@@ -1449,6 +1453,7 @@ namespace CavaPlugin
             if (LastUseProfile == 7)
                 LastUseProfile = 0;
         }
+
         private void AbreJanela()
         {
             /*if (_cavaupdated)
@@ -1463,6 +1468,7 @@ namespace CavaPlugin
             var mainCavaForm = new CavaForm();
             mainCavaForm.ShowDialog();
         }
+
         private void CheckForUpdates()
         {
 

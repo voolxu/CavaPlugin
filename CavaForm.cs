@@ -35,6 +35,33 @@ namespace CavaPlugin
 
             InitializeComponent();
             //var imagePath = Path.Combine(CavaPlugin.BotPath, "Pngs\\");
+            #region WoD settings
+
+            if (Me.IsHorde)
+            {
+                label31.Text = "[H](90-92)FrostfireRidge";
+                comboBox2.Items.Clear();
+                comboBox2.Items.AddRange(new object[] { "Select your companion","Greatmother Geyah","Kal'gor the Honorable","Lokra"});
+                if (CPsettings.Instance.FriendoftheExarchs == "Andren" || CPsettings.Instance.FriendoftheExarchs == "Chel" ||
+                    CPsettings.Instance.FriendoftheExarchs == "Onaala")
+                {
+                    AppDomain.CurrentDomain.SetData("FriendoftheExarchs", null);
+                    CPsettings.Instance.FriendoftheExarchs = "null";
+                }
+            }
+            if (Me.IsAlliance)
+            {
+                label31.Text = "[A](90-92)ShadowMoonValley";
+                comboBox2.Items.Clear();
+                comboBox2.Items.AddRange(new object[] { "Select your companion","Apprentice Artificer Andren","Rangari Chel","Vindicator Onaala"});
+                if (CPsettings.Instance.FriendoftheExarchs == "Geyah" || CPsettings.Instance.FriendoftheExarchs == "Kalgor" ||
+                    CPsettings.Instance.FriendoftheExarchs == "Lokra")
+                {
+                    AppDomain.CurrentDomain.SetData("FriendoftheExarchs", null);
+                    CPsettings.Instance.FriendoftheExarchs = "null";
+                }
+            }
+            #endregion
             #region Buttons
             tabPage1.BackgroundImage = Image.FromFile(CavaPlugin.ImagePath + "bot.png");
             button1.Image = Image.FromFile(CavaPlugin.ImagePath + "amarelo60.png");
@@ -143,10 +170,19 @@ namespace CavaPlugin
                 case "Andren":
                     comboBox2.SelectedIndex = 1;
                     break;
+                case "Geyah":
+                    comboBox2.SelectedIndex = 1;
+                    break;
                 case "Chel":
                     comboBox2.SelectedIndex = 2;
                     break;
+                case "Kalgor":
+                    comboBox2.SelectedIndex = 2;
+                    break;
                 case "Onaala":
+                    comboBox2.SelectedIndex = 3;
+                    break;
+                case "Lokra":
                     comboBox2.SelectedIndex = 3;
                     break;
             }
@@ -525,7 +561,6 @@ namespace CavaPlugin
             if (!CavaPlugin.Canceled)
             {
                 timer1.Dispose();
-
                 switch (CavaPlugin.LastUseProfile)
                 {
                     default:
@@ -1531,6 +1566,7 @@ namespace CavaPlugin
             {
                 CavaPlugin.Canceled = true;
                 CloseCavaForm();
+                CavaPluginLog.Fatal("CavaPlugin Stopped");
             }
 
         }
@@ -1611,20 +1647,46 @@ namespace CavaPlugin
             }
             if (comboBox2.SelectedIndex == 1)
             {
-                AppDomain.CurrentDomain.SetData("FriendoftheExarchs", "Andren");
-                CPsettings.Instance.FriendoftheExarchs = "Andren";
-
+                if (Me.IsAlliance)
+                {
+                    AppDomain.CurrentDomain.SetData("FriendoftheExarchs", "Andren");
+                    CPsettings.Instance.FriendoftheExarchs = "Andren";
+                }
+                if (Me.IsHorde)
+                {
+                    AppDomain.CurrentDomain.SetData("FriendoftheExarchs", "Geyah");
+                    CPsettings.Instance.FriendoftheExarchs = "Geyah";
+                }
             }
+
+        
             if (comboBox2.SelectedIndex == 2)
             {
-                AppDomain.CurrentDomain.SetData("FriendoftheExarchs", "Chel");
-                CPsettings.Instance.FriendoftheExarchs = "Chel";
+                if (Me.IsAlliance)
+                {
+                    AppDomain.CurrentDomain.SetData("FriendoftheExarchs", "Chel");
+                    CPsettings.Instance.FriendoftheExarchs = "Chel";
+                }
+                if (Me.IsHorde)
+                {
+                    AppDomain.CurrentDomain.SetData("FriendoftheExarchs", "Kalgor");
+                    CPsettings.Instance.FriendoftheExarchs = "Kalgor";
+                }
             }
             if (comboBox2.SelectedIndex == 3)
             {
-                AppDomain.CurrentDomain.SetData("FriendoftheExarchs", "Onaala");
-                CPsettings.Instance.FriendoftheExarchs = "Onaala";
+                if (Me.IsAlliance)
+                {
+                    AppDomain.CurrentDomain.SetData("FriendoftheExarchs", "Onaala");
+                    CPsettings.Instance.FriendoftheExarchs = "Onaala";
+                }
+                if (Me.IsHorde)
+                {
+                    AppDomain.CurrentDomain.SetData("FriendoftheExarchs", "Lokra");
+                    CPsettings.Instance.FriendoftheExarchs = "Lokra";
+                }
             }
+            CPsettings.Instance.Save();
         }
 
        private void Lancaprofile(string ProfileToLoad)
