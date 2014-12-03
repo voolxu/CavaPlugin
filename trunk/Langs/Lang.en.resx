@@ -933,4 +933,7 @@
   <data name="Action_Common_CraftMainSpell" xml:space="preserve">
     <value>Main Crafter Spell Name</value>
   </data>
+  <data name="loading_profile" xml:space="preserve">
+    <value>Loading Profile</value>
+  </data>
 </root>
