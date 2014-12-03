@@ -131,6 +131,8 @@ namespace CavaPlugin
             this.learnportal2checkBox = new System.Windows.Forms.CheckBox();
             this.learnportal5checkBox = new System.Windows.Forms.CheckBox();
             this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.label33 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -1675,6 +1677,8 @@ namespace CavaPlugin
             // tabPage10
             // 
             this.tabPage10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(110)))), ((int)(((byte)(185)))), ((int)(((byte)(243)))));
+            this.tabPage10.Controls.Add(this.comboBox3);
+            this.tabPage10.Controls.Add(this.label33);
             this.tabPage10.Controls.Add(this.label31);
             this.tabPage10.Controls.Add(this.comboBox2);
             this.tabPage10.Location = new System.Drawing.Point(4, 32);
@@ -1682,6 +1686,31 @@ namespace CavaPlugin
             this.tabPage10.Size = new System.Drawing.Size(562, 329);
             this.tabPage10.TabIndex = 3;
             this.tabPage10.Text = "WoD Settings";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            "Select your garrison outpost",
+            "Logging Camp",
+            "Sparring Ring"});
+            this.comboBox3.Location = new System.Drawing.Point(2, 80);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(198, 23);
+            this.comboBox3.TabIndex = 3;
+            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label33.Location = new System.Drawing.Point(5, 60);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(181, 17);
+            this.label33.TabIndex = 2;
+            this.label33.Text = "Gorgond Garrison Outpost ";
             // 
             // label31
             // 
@@ -1703,7 +1732,7 @@ namespace CavaPlugin
             "Apprentice Artificer Andren",
             "Rangari Chel",
             "Vindicator Onaala"});
-            this.comboBox2.Location = new System.Drawing.Point(2, 27);
+            this.comboBox2.Location = new System.Drawing.Point(2, 25);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(198, 23);
             this.comboBox2.TabIndex = 0;
@@ -3195,5 +3224,7 @@ namespace CavaPlugin
         private Label label31;
         private ComboBox comboBox2;
         private Label label32;
+        private ComboBox comboBox3;
+        private Label label33;
     }
 }

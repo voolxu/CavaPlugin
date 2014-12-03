@@ -36,31 +36,82 @@ namespace CavaPlugin
             InitializeComponent();
             //var imagePath = Path.Combine(CavaPlugin.BotPath, "Pngs\\");
             #region WoD settings
+            comboBox2.Items.Clear();
+            comboBox3.Items.Clear();
+            if (CavaPlugin.IsQuestComplete(34788) || CavaPlugin.IsQuestComplete(37563))
+            {
+                label31.Enabled = false;
+                comboBox2.Enabled = false;
+            }
+            else
+            {
+                if (Me.IsHorde)
+                {
+                    label31.Text = "[H](90-92)FrostfireRidge";
+                    comboBox2.Items.AddRange(new object[]
+                    {"Select your companion", "Greatmother Geyah", "Kal'gor the Honorable", "Lokra"});
+                }
+                if (Me.IsAlliance)
+                {
+                    label31.Text = "[A](90-92)ShadowMoonValley";
+                    comboBox2.Items.AddRange(new object[]
+                    {"Select your companion", "Apprentice Artificer Andren", "Rangari Chel", "Vindicator Onaala"});
+                }
+                switch (CPsettings.Instance.FriendoftheExarchs)
+                {
+                    default:
+                        comboBox2.SelectedIndex = 0;
+                        break;
+                    case "null":
+                        comboBox2.SelectedIndex = 0;
+                        break;
+                    case "Andren":
+                        comboBox2.SelectedIndex = 1;
+                        break;
+                    case "Geyah":
+                        comboBox2.SelectedIndex = 1;
+                        break;
+                    case "Chel":
+                        comboBox2.SelectedIndex = 2;
+                        break;
+                    case "Kalgor":
+                        comboBox2.SelectedIndex = 2;
+                        break;
+                    case "Onaala":
+                        comboBox2.SelectedIndex = 3;
+                        break;
+                    case "Lokra":
+                        comboBox2.SelectedIndex = 3;
+                        break;
+                }
+            }
+            if (CavaPlugin.IsQuestComplete(35063) || CavaPlugin.IsQuestComplete(35151))
+            {
+                label33.Enabled = false;
+                comboBox3.Enabled = false;
+            }
+            else
+            {
+                comboBox3.Items.AddRange(Me.IsAlliance
+                    ? new object[] {"Select your garrison outpost", "Lumber Yard", "Sparring Arena"}
+                    : new object[] {"Select your garrison outpost", "Lumber Mill", "Sparring Arena"});
+                switch (CPsettings.Instance.GorgondOutpost)
+                {
+                    default:
+                        comboBox3.SelectedIndex = 0;
+                        break;
+                    case "null":
+                        comboBox3.SelectedIndex = 0;
+                        break;
+                    case "LoggingCampLumberYard":
+                        comboBox3.SelectedIndex = 1;
+                        break;
+                    case "SparringRingSavageFightClub":
+                        comboBox3.SelectedIndex = 2;
+                        break;
+                }
+            }
 
-            if (Me.IsHorde)
-            {
-                label31.Text = "[H](90-92)FrostfireRidge";
-                comboBox2.Items.Clear();
-                comboBox2.Items.AddRange(new object[] { "Select your companion","Greatmother Geyah","Kal'gor the Honorable","Lokra"});
-                if (CPsettings.Instance.FriendoftheExarchs == "Andren" || CPsettings.Instance.FriendoftheExarchs == "Chel" ||
-                    CPsettings.Instance.FriendoftheExarchs == "Onaala")
-                {
-                    AppDomain.CurrentDomain.SetData("FriendoftheExarchs", null);
-                    CPsettings.Instance.FriendoftheExarchs = "null";
-                }
-            }
-            if (Me.IsAlliance)
-            {
-                label31.Text = "[A](90-92)ShadowMoonValley";
-                comboBox2.Items.Clear();
-                comboBox2.Items.AddRange(new object[] { "Select your companion","Apprentice Artificer Andren","Rangari Chel","Vindicator Onaala"});
-                if (CPsettings.Instance.FriendoftheExarchs == "Geyah" || CPsettings.Instance.FriendoftheExarchs == "Kalgor" ||
-                    CPsettings.Instance.FriendoftheExarchs == "Lokra")
-                {
-                    AppDomain.CurrentDomain.SetData("FriendoftheExarchs", null);
-                    CPsettings.Instance.FriendoftheExarchs = "null";
-                }
-            }
             #endregion
             #region Buttons
             tabPage1.BackgroundImage = Image.FromFile(CavaPlugin.ImagePath + "bot.png");
@@ -157,33 +208,6 @@ namespace CavaPlugin
                     CavaPlugin._rm = new ResourceManager("Lang.ru", CavaPlugin._assembly);
                     richTextBox1.LoadFile(Path.Combine(CavaPlugin.BotPath, "Langs\\") + "GoodToKnow_ru.rtf");
                     richTextBox2.LoadFile(Path.Combine(CavaPlugin.BotPath, "Langs\\") + "Thanks_ru.rtf");
-                    break;
-            }
-            switch (CPsettings.Instance.FriendoftheExarchs)
-            {
-                default:
-                    comboBox2.SelectedIndex = 0;
-                    break;
-                case "null":
-                    comboBox2.SelectedIndex = 0;
-                    break;
-                case "Andren":
-                    comboBox2.SelectedIndex = 1;
-                    break;
-                case "Geyah":
-                    comboBox2.SelectedIndex = 1;
-                    break;
-                case "Chel":
-                    comboBox2.SelectedIndex = 2;
-                    break;
-                case "Kalgor":
-                    comboBox2.SelectedIndex = 2;
-                    break;
-                case "Onaala":
-                    comboBox2.SelectedIndex = 3;
-                    break;
-                case "Lokra":
-                    comboBox2.SelectedIndex = 3;
                     break;
             }
             lversion.Text = CavaPlugin.StrLocalization("cpVersion") + CavaPlugin._version.ToString().Remove(0, 2);
@@ -1698,6 +1722,7 @@ namespace CavaPlugin
             var isRunningantes = TreeRoot.IsRunning;
             if (isRunningantes)
             {
+                CavaPluginLog.Debug("Honorbuddy Is Running");
                 CPGlobalSettings.Instance.Allowlunch = true;
                 CPGlobalSettings.Instance.BaseProfileToLunch = CavaPlugin.LastUseProfile;
                 CPGlobalSettings.Instance.Save();
@@ -1705,20 +1730,45 @@ namespace CavaPlugin
             }
             else
             {
+                CavaPluginLog.Debug("Honorbuddy Is NOT Running");
                 var questBot = BotManager.Instance.Bots.Where(kvp => kvp.Value.GetType().Name == "QuestBot").Select(kvp => kvp.Value).FirstOrDefault();
                 if (questBot != null)
                 {
+                    CavaPluginLog.Debug("Changing to Quest Bot");
                     BotManager.Instance.SetCurrent(questBot);
                 }
                 else
                 {
                     CavaPluginLog.Fatal("Unable to locate Questing bot");
                 }
+                CavaPluginLog.Debug("loading Profile: " + ProfileToLoad);
                 Styx.CommonBot.Profiles.ProfileManager.LoadNew(ProfileToLoad);
                 Close();
+                CavaPluginLog.Debug("Starting Honorbuddy");
                 TreeRoot.Start();
             }
         }
+
+       private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+       {
+           button_Click();
+           if (comboBox3.SelectedIndex == 0)
+           {
+               AppDomain.CurrentDomain.SetData("GorgondOutpost", null);
+               CPsettings.Instance.GorgondOutpost = "null";
+           }
+           if (comboBox3.SelectedIndex == 1)
+           {
+               AppDomain.CurrentDomain.SetData("GorgondOutpost", "LoggingCampLumberYard");
+               CPsettings.Instance.GorgondOutpost = "LoggingCampLumberYard";
+           }
+           if (comboBox3.SelectedIndex == 2)
+           {
+               AppDomain.CurrentDomain.SetData("GorgondOutpost", "SparringRingSavageFightClub");
+               CPsettings.Instance.GorgondOutpost = "SparringRingSavageFightClub";
+           }
+           CPsettings.Instance.Save();
+       }
 }
 
 } 

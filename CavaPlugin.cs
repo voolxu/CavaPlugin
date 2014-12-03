@@ -88,6 +88,8 @@ namespace CavaPlugin
         public bool Learnportal6 { get; set; }
         [Setting, DefaultValue("null")]
         public string FriendoftheExarchs { get; set; }
+        [Setting, DefaultValue("null")]
+        public string GorgondOutpost { get; set; }
     }
 
     public class CPGlobalSettings : Settings
@@ -788,6 +790,7 @@ namespace CavaPlugin
                 CPGlobalSettings.Instance.Load();
                 CPsettings.Instance.Load();
                 CPGlobalSettings.Instance.language = 0;
+                LastUseProfile = CPsettings.Instance.LastUsedPath;
                 /*if (!CPGlobalSettings.Instance.Languageselected)
                 {
                     Form getlanguage = new Language();
@@ -1582,6 +1585,12 @@ namespace CavaPlugin
                 Lua.GetReturnVal<bool>(string.Format("return GetQuestLogLeaderBoard({0},{1})", objectiveId, returnVal),
                     2);
         }
+
+        public static bool IsQuestComplete(uint questId)
+        {
+            return Lua.GetReturnVal<bool>(string.Format("return IsQuestFlaggedCompleted({0})", questId), 0);
+        }
+
 
         private static void CavaAtackMob()
         {
