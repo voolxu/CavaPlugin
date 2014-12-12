@@ -1719,9 +1719,9 @@ namespace CavaPlugin
             this.label31.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label31.Location = new System.Drawing.Point(5, 5);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(195, 17);
+            this.label31.Size = new System.Drawing.Size(196, 17);
             this.label31.TabIndex = 1;
-            this.label31.Text = "[A](90-92)ShadowMoonValley";
+            this.label31.Text = "(SMV - FR) Follower Selection";
             // 
             // comboBox2
             // 
@@ -2969,7 +2969,7 @@ namespace CavaPlugin
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(110)))), ((int)(((byte)(185)))), ((int)(((byte)(243)))));
-            this.ClientSize = new System.Drawing.Size(834, 603);
+            this.ClientSize = new System.Drawing.Size(830, 599);
             this.ControlBox = false;
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

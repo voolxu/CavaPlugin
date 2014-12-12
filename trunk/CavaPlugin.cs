@@ -880,6 +880,10 @@ namespace CavaPlugin
                 _checkBags.Reset();
                 _checkBags.Start();
                 CavaPluginLog.Debug("Restarted all timers");
+                if (CPsettings.Instance.FriendoftheExarchs != "null" && !IsQuestComplete(34788) && !IsQuestComplete(37563))
+                    AppDomain.CurrentDomain.SetData("FriendoftheExarchs", CPsettings.Instance.FriendoftheExarchs);
+                if (CPsettings.Instance.GorgondOutpost != "null" && !IsQuestComplete(35063) && !IsQuestComplete(35151))
+                    AppDomain.CurrentDomain.SetData("GorgondOutpost", CPsettings.Instance.GorgondOutpost);
                 _hasBeenInitialized = true;
             }
             if (!_hasBeenInitialized2)
