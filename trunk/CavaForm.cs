@@ -3,11 +3,11 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Resources;
 using System.Windows.Forms;
 using Styx;
 using Styx.CommonBot;
+using Styx.CommonBot.Profiles;
 using Styx.WoWInternals;
 using Styx.WoWInternals.WoWObjects;
 
@@ -261,7 +261,7 @@ namespace CavaPlugin
                 radioButton5.Enabled = true;
                 guildInvitescheckBox.Enabled = true;
                 refuseGuildCheckBox.Enabled = true;
-                guildInvitescheckBox.Checked = CPsettings.Instance.guildInvitescheck;
+                guildInvitescheckBox.Checked = CPsettings.Instance.GuildInvitescheck;
                 refuseGuildCheckBox.Checked = CPsettings.Instance.refuseguildInvitescheck;
                 if (guildInvitescheckBox.Checked)
                 {
@@ -271,7 +271,7 @@ namespace CavaPlugin
                 if (refuseGuildCheckBox.Checked)
                 {
                     guildInvitescheckBox.Checked = false;
-                    CPsettings.Instance.guildInvitescheck = false;
+                    CPsettings.Instance.GuildInvitescheck = false;
                 }
                 refusePartyCheckBox.Enabled = true;
                 refusePartyCheckBox.Checked = CPsettings.Instance.RefusepartyInvitescheck;
@@ -574,7 +574,6 @@ namespace CavaPlugin
                 CPGlobalSettings.Instance.Allowlunch = true;
                 CloseCavaForm();
             }
-
         }
 
         private void CloseCavaForm()
@@ -609,10 +608,10 @@ namespace CavaPlugin
                         Lancaprofile(CavaPlugin.PathToCavaProfiles + "Scripts\\ArmageddonerNext[Cava].xml");
                         break;
                     case 7:
-                        Lancaprofile(CavaPlugin.PathToCavaProfiles + "Scripts\\emptymb600.xml");
+                        Lancaprofile(CavaPlugin.PathToCavaProfiles + "Scripts\\CavaProf\\MB\\[PB]MB(Cava).xml");
                         break;
                     case 8:
-                        Lancaprofile(CavaPlugin.PathToCavaProfiles + "Scripts\\emptymb300.xml");
+                        Lancaprofile(CavaPlugin.PathToCavaProfiles + "Scripts\\CavaProf\\MB\\Free[PB]MB(Cava).xml");
                         break;
                     case 10:
                         Lancaprofile(CavaPlugin.PathToCavaProfiles + "Scripts\\[N-Quest]Armageddoner_Reserved[Cava].xml");
@@ -908,7 +907,7 @@ namespace CavaPlugin
                 radioButton5.Enabled = true;
                 guildInvitescheckBox.Enabled = true;
                 refuseGuildCheckBox.Enabled = true;
-                guildInvitescheckBox.Checked = CPsettings.Instance.guildInvitescheck;
+                guildInvitescheckBox.Checked = CPsettings.Instance.GuildInvitescheck;
                 refuseGuildCheckBox.Checked = CPsettings.Instance.refuseguildInvitescheck;
                 if (guildInvitescheckBox.Checked)
                 {
@@ -918,7 +917,7 @@ namespace CavaPlugin
                 if (refuseGuildCheckBox.Checked)
                 {
                     guildInvitescheckBox.Checked = false;
-                    CPsettings.Instance.guildInvitescheck = false;
+                    CPsettings.Instance.GuildInvitescheck = false;
                 }
                 refusePartyCheckBox.Enabled = true;
                 refusePartyCheckBox.Checked = CPsettings.Instance.RefusepartyInvitescheck;
@@ -1208,7 +1207,7 @@ namespace CavaPlugin
             button_Click();
             refuseGuildCheckBox.Checked = false;
             CPsettings.Instance.refuseguildInvitescheck = refuseGuildCheckBox.Checked;
-            CPsettings.Instance.guildInvitescheck = guildInvitescheckBox.Checked;
+            CPsettings.Instance.GuildInvitescheck = guildInvitescheckBox.Checked;
         }
 
         private void refuseTradesCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -1222,7 +1221,7 @@ namespace CavaPlugin
         {
             button_Click();
             guildInvitescheckBox.Checked = false;
-            CPsettings.Instance.guildInvitescheck = guildInvitescheckBox.Checked;
+            CPsettings.Instance.GuildInvitescheck = guildInvitescheckBox.Checked;
             CPsettings.Instance.refuseguildInvitescheck = refuseGuildCheckBox.Checked;
 
         }
@@ -1713,43 +1712,58 @@ namespace CavaPlugin
             CPsettings.Instance.Save();
         }
 
-       private void Lancaprofile(string ProfileToLoad)
+        private void Lancaprofile(string profileToLoad)
         {
-            //para relogio
             timer1.Dispose();
-
-            //verifica se bot esta para ou a trabalhar
-            var isRunningantes = TreeRoot.IsRunning;
-            if (isRunningantes)
+            Close();
+            BotBase botBase;
+            if (profileToLoad.Contains("CavaProf"))
             {
-                CavaPluginLog.Debug("Honorbuddy Is Running");
-                CPGlobalSettings.Instance.Allowlunch = true;
-                CPGlobalSettings.Instance.BaseProfileToLunch = CavaPlugin.LastUseProfile;
-                CPGlobalSettings.Instance.Save();
-                Close();
+                BotManager.Instance.Bots.TryGetValue("ProfessionBuddy", out botBase);
+                if (botBase != null)
+                {
+                    if (BotManager.Current != botBase)
+                    {
+                        if (TreeRoot.IsRunning)
+                        {
+                            CavaPluginLog.Debug("Honorbuddy Is Running");
+                            TreeRoot.Stop();
+                            CavaPluginLog.Debug("Honorbuddy Is now stopped");
+                        }
+                        CavaPluginLog.Debug("Changing to ProfessionBuddy Bot");
+                        BotManager.Instance.SetCurrent(botBase);
+                    }
+                }
+                else
+                    CavaPluginLog.Fatal("Unable to locate ProfessionBuddy bot");
             }
             else
             {
-                CavaPluginLog.Debug("Honorbuddy Is NOT Running");
-                var questBot = BotManager.Instance.Bots.Where(kvp => kvp.Value.GetType().Name == "QuestBot").Select(kvp => kvp.Value).FirstOrDefault();
-                if (questBot != null)
+                BotManager.Instance.Bots.TryGetValue("Questing", out botBase);
+                if (botBase != null)
                 {
-                    CavaPluginLog.Debug("Changing to Quest Bot");
-                    BotManager.Instance.SetCurrent(questBot);
+                    if (BotManager.Current != botBase)
+                    {
+                        if (TreeRoot.IsRunning)
+                        {
+                            CavaPluginLog.Debug("Honorbuddy Is Running");
+                            TreeRoot.Stop();
+                            CavaPluginLog.Debug("Honorbuddy Is now stopped");
+                        }
+                        CavaPluginLog.Debug("Changing to Quest Bot");
+                        BotManager.Instance.SetCurrent(botBase);
+                    }
                 }
                 else
-                {
                     CavaPluginLog.Fatal("Unable to locate Questing bot");
-                }
-                CavaPluginLog.Debug("loading Profile: " + ProfileToLoad);
-                Styx.CommonBot.Profiles.ProfileManager.LoadNew(ProfileToLoad);
-                Close();
-                CavaPluginLog.Debug("Starting Honorbuddy");
-                TreeRoot.Start();
             }
+            CavaPluginLog.Debug("loading Profile: " + profileToLoad);
+            ProfileManager.LoadNew(profileToLoad, false);
+            CavaPluginLog.Debug("Starting Honorbuddy");
+            TreeRoot.Start();
         }
 
-       private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
        {
            button_Click();
            if (comboBox3.SelectedIndex == 0)
@@ -1769,6 +1783,7 @@ namespace CavaPlugin
            }
            CPsettings.Instance.Save();
        }
+
 }
 
 } 
