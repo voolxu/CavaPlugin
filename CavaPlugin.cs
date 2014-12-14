@@ -51,7 +51,7 @@ namespace CavaPlugin
         [Setting, DefaultValue(false)]
         public bool CheckAllowSummonPet { get; set; }
         [Setting, DefaultValue(false)]
-        public bool guildInvitescheck { get; set; }
+        public bool GuildInvitescheck { get; set; }
         [Setting, DefaultValue(false)]
         public bool refuseguildInvitescheck { get; set; }
         [Setting, DefaultValue(false)]
@@ -881,9 +881,15 @@ namespace CavaPlugin
                 _checkBags.Start();
                 CavaPluginLog.Debug("Restarted all timers");
                 if (CPsettings.Instance.FriendoftheExarchs != "null" && !IsQuestComplete(34788) && !IsQuestComplete(37563))
+                {
                     AppDomain.CurrentDomain.SetData("FriendoftheExarchs", CPsettings.Instance.FriendoftheExarchs);
+                    CavaPluginLog.Debug("FriendoftheExarchs:" + CPsettings.Instance.FriendoftheExarchs);
+                }
                 if (CPsettings.Instance.GorgondOutpost != "null" && !IsQuestComplete(35063) && !IsQuestComplete(35151))
+                {
                     AppDomain.CurrentDomain.SetData("GorgondOutpost", CPsettings.Instance.GorgondOutpost);
+                    CavaPluginLog.Debug("GorgondOutpost:" + CPsettings.Instance.GorgondOutpost);
+                }
                 _hasBeenInitialized = true;
             }
             if (!_hasBeenInitialized2)
@@ -967,9 +973,9 @@ namespace CavaPlugin
                 }
                 CavaPluginLog.Log(CPsettings.Instance.FixMountFlightVendor ? "Fix Mount Flight Master Bug Enabled" : "Fix Mount Flight Master Bug Disabled");
                 CavaPluginLog.Log(CPsettings.Instance.AntigankcheckBox ? "Anti Gank System Enabled" : "Anti Gank System Disabled");
-                if (CPsettings.Instance.guildInvitescheck || CPsettings.Instance.refuseguildInvitescheck)
+                if (CPsettings.Instance.GuildInvitescheck || CPsettings.Instance.refuseguildInvitescheck)
                 {
-                    if (CPsettings.Instance.guildInvitescheck)
+                    if (CPsettings.Instance.GuildInvitescheck)
                     {
                         CavaPluginLog.Log(StrLocalization("Accept_lvl_25_guild_invite_Enabled"));
                     }
@@ -1009,7 +1015,7 @@ namespace CavaPlugin
         {
             var guildName = e.Args[1].ToString();
             var guildLevel = Convert.ToInt32(e.Args[2]);
-            if (CPsettings.Instance.guildInvitescheck && guildLevel >= 25)
+            if (CPsettings.Instance.GuildInvitescheck && guildLevel >= 25)
             {
                 CavaPluginLog.Log(StrLocalization("Accepting_guild_invite_from"), guildName);
                 Lua.DoString("AcceptGuild()");
@@ -1060,7 +1066,7 @@ namespace CavaPlugin
 
         void AttachEvents()
         {
-            if (CPsettings.Instance.guildInvitescheck || CPsettings.Instance.refuseguildInvitescheck)
+            if (CPsettings.Instance.GuildInvitescheck || CPsettings.Instance.refuseguildInvitescheck)
                 Lua.Events.AttachEvent("GUILD_INVITE_REQUEST", RotinaGuildInvites);
             if (CPsettings.Instance.RefusepartyInvitescheck)
                 Lua.Events.AttachEvent("PARTY_INVITE_REQUEST", RotinaPartyInvites);
@@ -1072,7 +1078,7 @@ namespace CavaPlugin
 
         void DetachEvents()
         {
-            if (CPsettings.Instance.guildInvitescheck || CPsettings.Instance.refuseguildInvitescheck)
+            if (CPsettings.Instance.GuildInvitescheck || CPsettings.Instance.refuseguildInvitescheck)
                 Lua.Events.DetachEvent("GUILD_INVITE_REQUEST", RotinaGuildInvites);
             if (CPsettings.Instance.RefusepartyInvitescheck)
                 Lua.Events.DetachEvent("PARTY_INVITE_REQUEST", RotinaPartyInvites);
