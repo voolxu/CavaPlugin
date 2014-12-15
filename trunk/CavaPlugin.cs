@@ -12,6 +12,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Media;
@@ -467,6 +468,40 @@ namespace CavaPlugin
 
         public void RunningPulse()
         {
+            if (ProfileManager.CurrentOuterProfile.Name == "Mining Blacksmithing 1 to 300 by Cava" ||
+                ProfileManager.CurrentOuterProfile.Name == "Mining Blacksmithing 1 to 600 by Cava")
+            {
+                BotEvents.OnBotStopDelegate handler = null;
+                handler = args =>
+                {
+                    try
+                    {
+                        Task.Run(() =>
+                        {
+                            BotBase pbBotBase;
+                            BotManager.Instance.Bots.TryGetValue("ProfessionBuddy", out pbBotBase);
+                            CavaPluginLog.Debug("Changing to ProfessionBuddy Bot");
+                            BotManager.Instance.SetCurrent(pbBotBase);
+                            if (ProfileManager.CurrentOuterProfile.Name == "Mining Blacksmithing 1 to 600 by Cava")
+                                ProfileManager.LoadNew(PathToCavaProfiles + "Scripts\\CavaProf\\MB\\[PB]MB(Cava).xml", false);
+                            if (ProfileManager.CurrentOuterProfile.Name == "Mining Blacksmithing 1 to 300 by Cava")
+                                ProfileManager.LoadNew(PathToCavaProfiles + "Scripts\\CavaProf\\MB\\Free[PB]MB(Cava).xml", false);
+                            TreeRoot.Start();
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        CavaPluginLog.Warn("Failed to change to PB BotBase: " + ex.Message);
+                    }
+                    finally
+                    {
+                        BotEvents.OnBotStopped -= handler;
+                    }
+                };
+                BotEvents.OnBotStopped += handler;
+                TreeRoot.Stop("Swich to ProfessionBuddy");
+            }
+
             if (Me.IsAlive && !Me.HasAura(132700) && !Me.IsOnTransport && !Me.OnTaxi && !Me.Mounted && !Me.IsCasting && !Me.Combat && ItemCelebrationPack != null)
             {
                 CavaPluginLog.Log("Using Celebration Package 9Th Aniversary at " + DateTime.Now.ToString(CultureInfo.InvariantCulture));
@@ -1703,6 +1738,7 @@ namespace CavaPlugin
                     .Where(target => (target.IsDead && target.Lootable)));
             }
         }
+
     }
 }
 

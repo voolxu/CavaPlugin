@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Resources;
 using System.Windows.Forms;
 using Styx;
@@ -608,10 +609,10 @@ namespace CavaPlugin
                         Lancaprofile(CavaPlugin.PathToCavaProfiles + "Scripts\\ArmageddonerNext[Cava].xml");
                         break;
                     case 7:
-                        Lancaprofile(CavaPlugin.PathToCavaProfiles + "Scripts\\CavaProf\\MB\\[PB]MB(Cava).xml");
+                        Lancaprofile(CavaPlugin.PathToCavaProfiles + "Scripts\\emptymb600.xml");
                         break;
                     case 8:
-                        Lancaprofile(CavaPlugin.PathToCavaProfiles + "Scripts\\CavaProf\\MB\\Free[PB]MB(Cava).xml");
+                        Lancaprofile(CavaPlugin.PathToCavaProfiles + "Scripts\\emptymb300.xml");
                         break;
                     case 10:
                         Lancaprofile(CavaPlugin.PathToCavaProfiles + "Scripts\\[N-Quest]Armageddoner_Reserved[Cava].xml");
@@ -1715,52 +1716,37 @@ namespace CavaPlugin
         private void Lancaprofile(string profileToLoad)
         {
             timer1.Dispose();
-            Close();
-            BotBase botBase;
-            if (profileToLoad.Contains("CavaProf"))
+            if (TreeRoot.IsRunning)
             {
-                BotManager.Instance.Bots.TryGetValue("ProfessionBuddy", out botBase);
-                if (botBase != null)
-                {
-                    if (BotManager.Current != botBase)
-                    {
-                        if (TreeRoot.IsRunning)
-                        {
-                            CavaPluginLog.Debug("Honorbuddy Is Running");
-                            TreeRoot.Stop();
-                            CavaPluginLog.Debug("Honorbuddy Is now stopped");
-                        }
-                        CavaPluginLog.Debug("Changing to ProfessionBuddy Bot");
-                        BotManager.Instance.SetCurrent(botBase);
-                    }
-                }
-                else
-                    CavaPluginLog.Fatal("Unable to locate ProfessionBuddy bot");
+                CavaPluginLog.Debug("Honorbuddy Is Running");
+                CPGlobalSettings.Instance.Allowlunch = true;
+                CPGlobalSettings.Instance.BaseProfileToLunch = CavaPlugin.LastUseProfile;
+                CPGlobalSettings.Instance.Save();
+                Close();
             }
             else
             {
-                BotManager.Instance.Bots.TryGetValue("Questing", out botBase);
-                if (botBase != null)
+                CavaPluginLog.Debug("Honorbuddy Is NOT Running");
+                var questBot =
+                    BotManager.Instance.Bots.Where(kvp => kvp.Value.GetType().Name == "QuestBot")
+                        .Select(kvp => kvp.Value)
+                        .FirstOrDefault();
+                if (questBot != null)
                 {
-                    if (BotManager.Current != botBase)
+                    if (BotManager.Current != questBot)
                     {
-                        if (TreeRoot.IsRunning)
-                        {
-                            CavaPluginLog.Debug("Honorbuddy Is Running");
-                            TreeRoot.Stop();
-                            CavaPluginLog.Debug("Honorbuddy Is now stopped");
-                        }
                         CavaPluginLog.Debug("Changing to Quest Bot");
-                        BotManager.Instance.SetCurrent(botBase);
+                        BotManager.Instance.SetCurrent(questBot);
                     }
                 }
                 else
                     CavaPluginLog.Fatal("Unable to locate Questing bot");
+                CavaPluginLog.Debug("loading Profile: " + profileToLoad);
+                ProfileManager.LoadNew(profileToLoad);
+                Close();
+                CavaPluginLog.Debug("Starting Honorbuddy");
+                TreeRoot.Start();
             }
-            CavaPluginLog.Debug("loading Profile: " + profileToLoad);
-            ProfileManager.LoadNew(profileToLoad, false);
-            CavaPluginLog.Debug("Starting Honorbuddy");
-            TreeRoot.Start();
         }
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
@@ -1784,6 +1770,7 @@ namespace CavaPlugin
            CPsettings.Instance.Save();
        }
 
+ 
 }
 
 } 
