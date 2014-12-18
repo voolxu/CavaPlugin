@@ -275,7 +275,7 @@ namespace CavaPlugin
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage6);
-            this.tabControl1.Location = new System.Drawing.Point(-7, -3);
+            this.tabControl1.Location = new System.Drawing.Point(-2, -1);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(0);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
@@ -2969,12 +2969,14 @@ namespace CavaPlugin
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(110)))), ((int)(((byte)(185)))), ((int)(((byte)(243)))));
-            this.ClientSize = new System.Drawing.Size(826, 595);
+            this.ClientSize = new System.Drawing.Size(834, 603);
             this.ControlBox = false;
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(850, 642);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(850, 642);
             this.Name = "CavaForm";
             this.ShowIcon = false;
             this.Text = "Cava\'s Profiles - One Profile Ahead";
