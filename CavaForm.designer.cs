@@ -215,6 +215,8 @@ namespace CavaPlugin
             this.button47 = new System.Windows.Forms.Button();
             this.button48 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.label34 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -1677,6 +1679,8 @@ namespace CavaPlugin
             // tabPage10
             // 
             this.tabPage10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(110)))), ((int)(((byte)(185)))), ((int)(((byte)(243)))));
+            this.tabPage10.Controls.Add(this.comboBox4);
+            this.tabPage10.Controls.Add(this.label34);
             this.tabPage10.Controls.Add(this.comboBox3);
             this.tabPage10.Controls.Add(this.label33);
             this.tabPage10.Controls.Add(this.label31);
@@ -2964,6 +2968,31 @@ namespace CavaPlugin
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // comboBox4
+            // 
+            this.comboBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Items.AddRange(new object[] {
+            "Select your garrison outpost",
+            "Logging Camp",
+            "Sparring Ring"});
+            this.comboBox4.Location = new System.Drawing.Point(2, 135);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(198, 23);
+            this.comboBox4.TabIndex = 5;
+            this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label34.Location = new System.Drawing.Point(5, 115);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(174, 17);
+            this.label34.TabIndex = 4;
+            this.label34.Text = "Talador Garrison Outpost ";
+            // 
             // CavaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3228,5 +3257,7 @@ namespace CavaPlugin
         private Label label32;
         private ComboBox comboBox3;
         private Label label33;
+        private ComboBox comboBox4;
+        private Label label34;
     }
 }
