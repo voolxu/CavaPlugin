@@ -39,6 +39,7 @@ namespace CavaPlugin
             #region WoD settings
             comboBox2.Items.Clear();
             comboBox3.Items.Clear();
+            comboBox4.Items.Clear();
             if (CavaPlugin.IsQuestComplete(34788) || CavaPlugin.IsQuestComplete(37563))
             {
                 label31.Enabled = false;
@@ -113,6 +114,33 @@ namespace CavaPlugin
                 }
             }
 
+            if (CavaPlugin.IsQuestComplete(34558) || CavaPlugin.IsQuestComplete(34566))
+            {
+                label34.Enabled = false;
+                comboBox4.Enabled = false;
+            }
+            else
+            {
+                comboBox4.Items.AddRange(Me.IsAlliance
+                    ? new object[] { "Select your garrison outpost", "Wrynn Artillery Tower", "Arcane Sanctum" }
+                    : new object[] { "Select your garrison outpost", "Vol'jin's Arsenal", "Arcane Sanctum" });
+                switch (CPsettings.Instance.TaladorOutpost)
+                {
+                    default:
+                        comboBox4.SelectedIndex = 0;
+                        break;
+                    case "null":
+                        comboBox4.SelectedIndex = 0;
+                        break;
+                    case "TowerArsenal":
+                        comboBox4.SelectedIndex = 1;
+                        break;
+                    case "ArcaneSanctum":
+                        comboBox4.SelectedIndex = 2;
+                        break;
+                }
+            }
+
             #endregion
             #region Buttons
             tabPage1.BackgroundImage = Image.FromFile(CavaPlugin.ImagePath + "bot.png");
@@ -173,45 +201,9 @@ namespace CavaPlugin
             button48.Image = Image.FromFile(CavaPlugin.ImagePath + "verde60.png");
             #endregion
             #region Language
-            switch (CPGlobalSettings.Instance.language)
-            {
-                default:
-                    CavaPlugin._rm = new ResourceManager("Lang.en", CavaPlugin._assembly);
-                    richTextBox2.LoadFile(Path.Combine(CavaPlugin.BotPath, "Langs\\") + "GoodToKnow_en.rtf");
-                    richTextBox2.LoadFile(Path.Combine(CavaPlugin.BotPath, "Langs\\") + "Thanks_en.rtf");
-                    break;
-                case 0:
-                    CavaPlugin._rm = new ResourceManager("Lang.en", CavaPlugin._assembly);
-                    richTextBox2.LoadFile(Path.Combine(CavaPlugin.BotPath, "Langs\\") + "GoodToKnow_en.rtf");
-                    richTextBox2.LoadFile(Path.Combine(CavaPlugin.BotPath, "Langs\\") + "Thanks_en.rtf");
-                    break;
-                case 1:
-                    CavaPlugin._rm = new ResourceManager("Lang.da", CavaPlugin._assembly);
-                    richTextBox1.LoadFile(Path.Combine(CavaPlugin.BotPath, "Langs\\") + "GoodToKnow_da.rtf");
-                    richTextBox2.LoadFile(Path.Combine(CavaPlugin.BotPath, "Langs\\") + "Thanks_da.rtf");
-                    break;
-                case 2:
-                    CavaPlugin._rm = new ResourceManager("Lang.de", CavaPlugin._assembly);
-                    richTextBox1.LoadFile(Path.Combine(CavaPlugin.BotPath, "Langs\\") + "GoodToKnow_de.rtf");
-                    richTextBox2.LoadFile(Path.Combine(CavaPlugin.BotPath, "Langs\\") + "Thanks_de.rtf");
-                    break;
-                case 3:
-                    CavaPlugin._rm = new ResourceManager("Lang.fr", CavaPlugin._assembly);
-                    richTextBox1.LoadFile(Path.Combine(CavaPlugin.BotPath, "Langs\\") + "GoodToKnow_fr.rtf");
-                    richTextBox2.LoadFile(Path.Combine(CavaPlugin.BotPath, "Langs\\") + "Thanks_fr.rtf");
-                    break;
-                case 4:
-                    CavaPlugin._rm = new ResourceManager("Lang.pt", CavaPlugin._assembly);
-                    richTextBox1.LoadFile(Path.Combine(CavaPlugin.BotPath, "Langs\\") + "GoodToKnow_pt.rtf");
-                    richTextBox2.LoadFile(Path.Combine(CavaPlugin.BotPath, "Langs\\") + "Thanks_pt.rtf");
-                    break;
-                case 5:
-                    CavaPlugin._rm = new ResourceManager("Lang.ru", CavaPlugin._assembly);
-                    richTextBox1.LoadFile(Path.Combine(CavaPlugin.BotPath, "Langs\\") + "GoodToKnow_ru.rtf");
-                    richTextBox2.LoadFile(Path.Combine(CavaPlugin.BotPath, "Langs\\") + "Thanks_ru.rtf");
-                    break;
-            }
-            lversion.Text = CavaPlugin.StrLocalization("cpVersion") + CavaPlugin._version.ToString().Remove(0, 2);
+            richTextBox2.LoadFile(Path.Combine(CavaPlugin.BotPath, "Langs\\") + "GoodToKnow_en.rtf");
+            richTextBox2.LoadFile(Path.Combine(CavaPlugin.BotPath, "Langs\\") + "Thanks_en.rtf");
+            lversion.Text = "CavaPlugin Version: " + CavaPlugin._version.ToString().Remove(0, 2);
             #endregion
             LogintextBox.Text = CPGlobalSettings.Instance.CpLogin;
             PasswordtextBox.Text = LogintextBox.Text != "" ? CavaPlugin.Decrypt(CPGlobalSettings.Instance.CpPassword) : "";
@@ -421,121 +413,121 @@ namespace CavaPlugin
                     Setnoneprofile();
                     break;
                 case 1:
-                    llastprofile.Text = CavaPlugin.StrLocalization("leveling1to90");
-                    label6.Text = CavaPlugin.StrLocalization("leveling1to90");
-                    label9.Text = CavaPlugin.StrLocalization("leveling1to90");
-                    label14.Text = CavaPlugin.StrLocalization("leveling1to90");
-                    label11.Text = CavaPlugin.StrLocalization("leveling1to90");
-                    label17.Text = CavaPlugin.StrLocalization("leveling1to90");
+                    llastprofile.Text = "Level 1 to 100";
+                    label6.Text = "Level 1 to 100";
+                    label9.Text = "Level 1 to 100";
+                    label14.Text = "Level 1 to 100";
+                    label11.Text = "Level 1 to 100";
+                    label17.Text = "Level 1 to 100";
                     //
-                    label28.Text = CavaPlugin.StrLocalization("leveling1to90txt");
-                    label8.Text = CavaPlugin.StrLocalization("leveling1to90txt");
-                    label13.Text = CavaPlugin.StrLocalization("leveling1to90txt");
-                    label19.Text = CavaPlugin.StrLocalization("leveling1to90txt");
-                    label25.Text = CavaPlugin.StrLocalization("leveling1to90txt");
-                    label2.Text = CavaPlugin.StrLocalization("leveling1to90txt");
+                    label28.Text = "This profile will level any character from any level to 100. So far works from 1 to 95.";
+                    label8.Text = "This profile will level any character from any level to 100. So far works from 1 to 95.";
+                    label13.Text = "This profile will level any character from any level to 100. So far works from 1 to 95.";
+                    label19.Text = "lThis profile will level any character from any level to 100. So far works from 1 to 95.";
+                    label25.Text = "This profile will level any character from any level to 100. So far works from 1 to 95.";
+                    label2.Text = "This profile will level any character from any level to 100. So far works from 1 to 95.";
                     // ReSharper restore ResourceItemNotResolved
                     EnableStartButton();
                     break;
                 case 2:
-                    llastprofile.Text = CavaPlugin.StrLocalization("levelingpandahorde");
-                    label6.Text = CavaPlugin.StrLocalization("levelingpandahorde");
-                    label9.Text = CavaPlugin.StrLocalization("levelingpandahorde");
-                    label14.Text = CavaPlugin.StrLocalization("levelingpandahorde");
-                    label11.Text = CavaPlugin.StrLocalization("levelingpandahorde");
-                    label17.Text = CavaPlugin.StrLocalization("levelingpandahorde");
+                    llastprofile.Text = "Leveling Pandaren 1 to 100 Horde";
+                    label6.Text = "Leveling Pandaren 1 to 100 Horde";
+                    label9.Text = "Leveling Pandaren 1 to 100 Horde";
+                    label14.Text = "Leveling Pandaren 1 to 100 Horde";
+                    label11.Text = "Leveling Pandaren 1 to 100 Horde";
+                    label17.Text = "Leveling Pandaren 1 to 100 Horde";
                     //
-                    label28.Text = CavaPlugin.StrLocalization("levelingpandahordetxt");
-                    label8.Text = CavaPlugin.StrLocalization("levelingpandahordetxt");
-                    label13.Text = CavaPlugin.StrLocalization("levelingpandahordetxt");
-                    label19.Text = CavaPlugin.StrLocalization("levelingpandahordetxt");
-                    label25.Text = CavaPlugin.StrLocalization("levelingpandahordetxt");
-                    label2.Text = CavaPlugin.StrLocalization("levelingpandahordetxt");
+                    label28.Text = "This profile will level a Horde Pandaren character from 1 to 12. Then swich  to 1-100.";
+                    label8.Text = "This profile will level a Horde Pandaren character from 1 to 12. Then swich  to 1-100.";
+                    label13.Text = "This profile will level a Horde Pandaren character from 1 to 12. Then swich  to 1-100.";
+                    label19.Text = "This profile will level a Horde Pandaren character from 1 to 12. Then swich  to 1-100.";
+                    label25.Text = "This profile will level a Horde Pandaren character from 1 to 12. Then swich  to 1-100.";
+                    label2.Text = "This profile will level a Horde Pandaren character from 1 to 12. Then swich  to 1-100.";
                     // ReSharper restore ResourceItemNotResolved
                     EnableStartButton();
                     break;
                 case 3:
-                    llastprofile.Text = CavaPlugin.StrLocalization("levelingpandaally");
-                    label6.Text = CavaPlugin.StrLocalization("levelingpandaally");
-                    label9.Text = CavaPlugin.StrLocalization("levelingpandaally");
-                    label14.Text = CavaPlugin.StrLocalization("levelingpandaally");
-                    label11.Text = CavaPlugin.StrLocalization("levelingpandaally");
-                    label17.Text = CavaPlugin.StrLocalization("levelingpandaally");
+                    llastprofile.Text = "Level Pandaren 1 to 100 Alliance";
+                    label6.Text = "Level Pandaren 1 to 100 Alliance";
+                    label9.Text = "Level Pandaren 1 to 100 Alliance";
+                    label14.Text = "Level Pandaren 1 to 100 Alliance";
+                    label11.Text = "Level Pandaren 1 to 100 Alliance";
+                    label17.Text = "Level Pandaren 1 to 100 Alliance";
                     //
-                    label28.Text = CavaPlugin.StrLocalization("levelingpandaallytxt");
-                    label8.Text = CavaPlugin.StrLocalization("levelingpandaallytxt");
-                    label13.Text = CavaPlugin.StrLocalization("levelingpandaallytxt");
-                    label19.Text = CavaPlugin.StrLocalization("levelingpandaallytxt");
-                    label25.Text = CavaPlugin.StrLocalization("levelingpandaallytxt");
-                    label2.Text = CavaPlugin.StrLocalization("levelingpandaallytxt");
+                    label28.Text = "This profile will level a Alliance Pandaren character from 1 to 12.  Then swich  to 1-100.";
+                    label8.Text = "This profile will level a Alliance Pandaren character from 1 to 12.  Then swich  to 1-100.";
+                    label13.Text = "This profile will level a Alliance Pandaren character from 1 to 12.  Then swich  to 1-100.";
+                    label19.Text = "This profile will level a Alliance Pandaren character from 1 to 12.  Then swich  to 1-100.";
+                    label25.Text = "This profile will level a Alliance Pandaren character from 1 to 12.  Then swich  to 1-100.";
+                    label2.Text = "This profile will level a Alliance Pandaren character from 1 to 12.  Then swich  to 1-100.";
                     // ReSharper restore ResourceItemNotResolved
                     EnableStartButton();
                     break;
                 case 4:
-                    llastprofile.Text = CavaPlugin.StrLocalization("levelingarmagessonerfast");
-                    label6.Text = CavaPlugin.StrLocalization("levelingarmagessonerfast");
-                    label9.Text = CavaPlugin.StrLocalization("levelingarmagessonerfast");
-                    label14.Text = CavaPlugin.StrLocalization("levelingarmagessonerfast");
-                    label11.Text = CavaPlugin.StrLocalization("levelingarmagessonerfast");
-                    label17.Text = CavaPlugin.StrLocalization("levelingarmagessonerfast");
+                    llastprofile.Text = "Alliance And Horde (81-95) (Fast Leveling)";
+                    label6.Text = "Alliance And Horde (81-95) (Fast Leveling)";
+                    label9.Text = "Alliance And Horde (81-95) (Fast Leveling)";
+                    label14.Text = "Alliance And Horde (81-95) (Fast Leveling)";
+                    label11.Text = "Alliance And Horde (81-95) (Fast Leveling)";
+                    label17.Text = "Alliance And Horde (81-95) (Fast Leveling)";
                     //
-                    label28.Text = CavaPlugin.StrLocalization("levelarmageddonerto90txt");
-                    label8.Text = CavaPlugin.StrLocalization("levelarmageddonerto90txt");
-                    label13.Text = CavaPlugin.StrLocalization("levelarmageddonerto90txt");
-                    label19.Text = CavaPlugin.StrLocalization("levelarmageddonerto90txt");
-                    label25.Text = CavaPlugin.StrLocalization("levelarmageddonerto90txt");
-                    label2.Text = CavaPlugin.StrLocalization("levelarmageddonerto90txt");
+                    label28.Text = "This profile will level all Alliance characters from 81 to 95. This profile is not fully AFK.";
+                    label8.Text = "This profile will level all Alliance characters from 81 to 95. This profile is not fully AFK.";
+                    label13.Text = "This profile will level all Alliance characters from 81 to 95. This profile is not fully AFK.";
+                    label19.Text = "This profile will level all Alliance characters from 81 to 95. This profile is not fully AFK.";
+                    label25.Text = "This profile will level all Alliance characters from 81 to 95. This profile is not fully AFK.";
+                    label2.Text = "This profile will level all Alliance characters from 81 to 95. This profile is not fully AFK.";
                     // ReSharper restore ResourceItemNotResolved
                     EnableStartButton();
                     break;
                 case 5:
-                    llastprofile.Text = CavaPlugin.StrLocalization("levelingarmagessoner");
-                    label6.Text = CavaPlugin.StrLocalization("levelingarmagessoner");
-                    label9.Text = CavaPlugin.StrLocalization("levelingarmagessoner");
-                    label14.Text = CavaPlugin.StrLocalization("levelingarmagessoner");
-                    label11.Text = CavaPlugin.StrLocalization("levelingarmagessoner");
-                    label17.Text = CavaPlugin.StrLocalization("levelingarmagessoner");
+                    llastprofile.Text = "Alliance And Horde (81-95) (testers/donators only)";
+                    label6.Text = "Alliance And Horde (81-95) (testers/donators only)";
+                    label9.Text = "Alliance And Horde (81-95) (testers/donators only)";
+                    label14.Text = "Alliance And Horde (81-95) (testers/donators only)";
+                    label11.Text = "Alliance And Horde (81-95) (testers/donators only)";
+                    label17.Text = "Alliance And Horde (81-95) (testers/donators only)";
                     //
-                    label28.Text = CavaPlugin.StrLocalization("levelarmageddonerto90txt");
-                    label8.Text = CavaPlugin.StrLocalization("levelarmageddonerto90txt");
-                    label13.Text = CavaPlugin.StrLocalization("levelarmageddonerto90txt");
-                    label19.Text = CavaPlugin.StrLocalization("levelarmageddonerto90txt");
-                    label25.Text = CavaPlugin.StrLocalization("levelarmageddonerto90txt");
-                    label2.Text = CavaPlugin.StrLocalization("levelarmageddonerto90txt");
+                    label28.Text = "This profile will level all Alliance characters from 81 to 95. This profile is not fully AFK.";
+                    label8.Text = "This profile will level all Alliance characters from 81 to 95. This profile is not fully AFK.";
+                    label13.Text = "This profile will level all Alliance characters from 81 to 95. This profile is not fully AFK.";
+                    label19.Text = "This profile will level all Alliance characters from 81 to 95. This profile is not fully AFK.";
+                    label25.Text = "This profile will level all Alliance characters from 81 to 95. This profile is not fully AFK.";
+                    label2.Text = "This profile will level all Alliance characters from 81 to 95. This profile is not fully AFK.";
                     // ReSharper restore ResourceItemNotResolved
                     EnableStartButton();
                     break;
                 case 7:
-                    llastprofile.Text = CavaPlugin.StrLocalization("miningbs1600");
-                    label6.Text = CavaPlugin.StrLocalization("miningbs1600");
-                    label9.Text = CavaPlugin.StrLocalization("miningbs1600");
-                    label14.Text = CavaPlugin.StrLocalization("miningbs1600");
-                    label11.Text = CavaPlugin.StrLocalization("miningbs1600");
-                    label17.Text = CavaPlugin.StrLocalization("miningbs1600");
+                    llastprofile.Text = "Mining And Blacksmithing 1 to 600 (Reserved for Profession Owners)";
+                    label6.Text = "Mining And Blacksmithing 1 to 600 (Reserved for Profession Owners)";
+                    label9.Text = "Mining And Blacksmithing 1 to 600 (Reserved for Profession Owners)";
+                    label14.Text = "Mining And Blacksmithing 1 to 600 (Reserved for Profession Owners)";
+                    label11.Text = "Mining And Blacksmithing 1 to 600 (Reserved for Profession Owners)";
+                    label17.Text = "Mining And Blacksmithing 1 to 600 (Reserved for Profession Owners)";
                     //
-                    label28.Text = CavaPlugin.StrLocalization("mbs1600txt");
-                    label8.Text = CavaPlugin.StrLocalization("mbs1600txt");
-                    label13.Text = CavaPlugin.StrLocalization("mbs1600txt");
-                    label19.Text = CavaPlugin.StrLocalization("mbs1600txt");
-                    label25.Text = CavaPlugin.StrLocalization("mbs1600txt");
-                    label2.Text = CavaPlugin.StrLocalization("mbs1600txt");
+                    label28.Text = "This profile will level Mining and Blacksmithing from any level to 600.";
+                    label8.Text = "This profile will level Mining and Blacksmithing from any level to 600.";
+                    label13.Text = "This profile will level Mining and Blacksmithing from any level to 600.";
+                    label19.Text = "This profile will level Mining and Blacksmithing from any level to 600.";
+                    label25.Text = "This profile will level Mining and Blacksmithing from any level to 600.";
+                    label2.Text = "This profile will level Mining and Blacksmithing from any level to 600.";
                     // ReSharper restore ResourceItemNotResolved
                     EnableStartButton();
                     break;
                 case 8:
-                    llastprofile.Text = CavaPlugin.StrLocalization("miningbs1300");
-                    label6.Text = CavaPlugin.StrLocalization("miningbs1300");
-                    label9.Text = CavaPlugin.StrLocalization("miningbs1300");
-                    label14.Text = CavaPlugin.StrLocalization("miningbs1300");
-                    label11.Text = CavaPlugin.StrLocalization("miningbs1300");
-                    label17.Text = CavaPlugin.StrLocalization("miningbs1300");
+                    llastprofile.Text = "Mining And Blacksmithing 1 to 300 (Reserved for Registered Users)";
+                    label6.Text = "Mining And Blacksmithing 1 to 300 (Reserved for Registered Users)";
+                    label9.Text = "Mining And Blacksmithing 1 to 300 (Reserved for Registered Users)";
+                    label14.Text = "Mining And Blacksmithing 1 to 300 (Reserved for Registered Users)";
+                    label11.Text = "Mining And Blacksmithing 1 to 300 (Reserved for Registered Users)";
+                    label17.Text = "Mining And Blacksmithing 1 to 300 (Reserved for Registered Users)";
                     //
-                    label28.Text = CavaPlugin.StrLocalization("mbs1300txt");
-                    label8.Text = CavaPlugin.StrLocalization("mbs1300txt");
-                    label13.Text = CavaPlugin.StrLocalization("mbs1300txt");
-                    label19.Text = CavaPlugin.StrLocalization("mbs1300txt");
-                    label25.Text = CavaPlugin.StrLocalization("mbs1300txt");
-                    label2.Text = CavaPlugin.StrLocalization("mbs1300txt");
+                    label28.Text = "This profile will level Mining and Blacksmithing from any level to 300.";
+                    label8.Text = "This profile will level Mining and Blacksmithing from any level to 300.";
+                    label13.Text = "This profile will level Mining and Blacksmithing from any level to 300.";
+                    label19.Text = "This profile will level Mining and Blacksmithing from any level to 300.";
+                    label25.Text = "This profile will level Mining and Blacksmithing from any level to 300.";
+                    label2.Text = "This profile will level Mining and Blacksmithing from any level to 300.";
                     // ReSharper restore ResourceItemNotResolved
                     EnableStartButton();
                     break;
@@ -544,17 +536,17 @@ namespace CavaPlugin
                     break;
             }
 
-            button5.Text = CavaPlugin.StrLocalization("Close");
-            button10.Text = CavaPlugin.StrLocalization("Close");
-            button18.Text = CavaPlugin.StrLocalization("Close");
-            button29.Text = CavaPlugin.StrLocalization("Close");
-            button38.Text = CavaPlugin.StrLocalization("Close");
-            button46.Text = CavaPlugin.StrLocalization("Close");
+            button5.Text = "Close";
+            button10.Text = "Close";
+            button18.Text = "Close";
+            button29.Text = "Close";
+            button38.Text = "Close";
+            button46.Text = "Close";
             // ReSharper restore ResourceItemNotResolved
             if (CavaPlugin.LastUseProfile > 0)
             {
                 timer1.Enabled = true;
-                button5.Text = CavaPlugin.StrLocalization("Cancel");
+                button5.Text = "Cancel";
             }
 
 
@@ -651,19 +643,19 @@ namespace CavaPlugin
         {
             CavaPlugin.LastUseProfile = 10; //special armageddoner Profiles
 
-            llastprofile.Text = CavaPlugin.StrLocalization("RunCheckedReservedProfiles");
-            label6.Text = CavaPlugin.StrLocalization("RunCheckedReservedProfiles");
-            label9.Text = CavaPlugin.StrLocalization("RunCheckedReservedProfiles");
-            label14.Text = CavaPlugin.StrLocalization("RunCheckedReservedProfiles");
-            label11.Text = CavaPlugin.StrLocalization("RunCheckedReservedProfiles");
-            label17.Text = CavaPlugin.StrLocalization("RunCheckedReservedProfiles");
+            llastprofile.Text = "Run Checked List Of Reserved Profiles For Armageddoner Users";
+            label6.Text = "Run Checked List Of Reserved Profiles For Armageddoner Users";
+            label9.Text = "Run Checked List Of Reserved Profiles For Armageddoner Users";
+            label14.Text = "Run Checked List Of Reserved Profiles For Armageddoner Users";
+            label11.Text = "Run Checked List Of Reserved Profiles For Armageddoner Users";
+            label17.Text = "Run Checked List Of Reserved Profiles For Armageddoner Users";
             //
-            label28.Text = CavaPlugin.StrLocalization("RunCheckedReservedProfilestxt");
-            label8.Text = CavaPlugin.StrLocalization("RunCheckedReservedProfilestxt");
-            label13.Text = CavaPlugin.StrLocalization("RunCheckedReservedProfilestxt");
-            label19.Text = CavaPlugin.StrLocalization("RunCheckedReservedProfilestxt");
-            label25.Text = CavaPlugin.StrLocalization("RunCheckedReservedProfilestxt");
-            label2.Text = CavaPlugin.StrLocalization("RunCheckedReservedProfilestxt");
+            label28.Text = "This Option will level selected Profiles";
+            label8.Text = "This Option will level selected Profiles";
+            label13.Text = "This Option will level selected Profiles";
+            label19.Text = "This Option will level selected Profiles";
+            label25.Text = "This Option will level selected Profiles";
+            label2.Text = "This Option will level selected Profiles";
             // ReSharper restore ResourceItemNotResolved
             EnableStartButton();
         }
@@ -672,12 +664,12 @@ namespace CavaPlugin
         {
             CavaPlugin.LastUseProfile = 0; //special armageddoner Profiles
 
-            llastprofile.Text = CavaPlugin.StrLocalization("lastusedprofiletxtdef");
-            label6.Text = CavaPlugin.StrLocalization("lastusedprofiletxtdef");
-            label9.Text = CavaPlugin.StrLocalization("lastusedprofiletxtdef");
-            label14.Text = CavaPlugin.StrLocalization("lastusedprofiletxtdef");
-            label11.Text = CavaPlugin.StrLocalization("lastusedprofiletxtdef");
-            label17.Text = CavaPlugin.StrLocalization("lastusedprofiletxtdef");
+            llastprofile.Text = "There is no previously selected profile";
+            label6.Text = "There is no previously selected profile";
+            label9.Text = "There is no previously selected profile";
+            label14.Text = "There is no previously selected profile";
+            label11.Text = "There is no previously selected profile";
+            label17.Text = "There is no previously selected profile";
             //
             label28.Text = "";
             label8.Text = "";
@@ -1324,19 +1316,19 @@ namespace CavaPlugin
             timer1.Enabled = false;
             CavaPlugin.LastUseProfile = 1; //Leveling 1 to 90
 
-            llastprofile.Text = CavaPlugin.StrLocalization("leveling1to90");
-            label6.Text = CavaPlugin.StrLocalization("leveling1to90");
-            label9.Text = CavaPlugin.StrLocalization("leveling1to90");
-            label14.Text = CavaPlugin.StrLocalization("leveling1to90");
-            label11.Text = CavaPlugin.StrLocalization("leveling1to90");
-            label17.Text = CavaPlugin.StrLocalization("leveling1to90");
+            llastprofile.Text = "Level 1 to 100";
+            label6.Text = "Level 1 to 100";
+            label9.Text = "Level 1 to 100";
+            label14.Text = "Level 1 to 100";
+            label11.Text = "Level 1 to 100";
+            label17.Text = "Level 1 to 100";
             //
-            label28.Text = CavaPlugin.StrLocalization("leveling1to90txt");
-            label8.Text = CavaPlugin.StrLocalization("leveling1to90txt");
-            label13.Text = CavaPlugin.StrLocalization("leveling1to90txt");
-            label19.Text = CavaPlugin.StrLocalization("leveling1to90txt");
-            label25.Text = CavaPlugin.StrLocalization("leveling1to90txt");
-            label2.Text = CavaPlugin.StrLocalization("leveling1to90txt");
+            label28.Text = "This profile will level any character from any level to 100. So far works from 1 to 95.";
+            label8.Text = "This profile will level any character from any level to 100. So far works from 1 to 95.";
+            label13.Text = "This profile will level any character from any level to 100. So far works from 1 to 95.";
+            label19.Text = "This profile will level any character from any level to 100. So far works from 1 to 95.";
+            label25.Text = "This profile will level any character from any level to 100. So far works from 1 to 95.";
+            label2.Text = "This profile will level any character from any level to 100. So far works from 1 to 95.";
             // ReSharper restore ResourceItemNotResolved
             EnableStartButton();
         }
@@ -1347,19 +1339,19 @@ namespace CavaPlugin
             timer1.Enabled = false;
             CavaPlugin.LastUseProfile = 2; //pandaren horde 1 to 12->12 to 90
 
-            llastprofile.Text = CavaPlugin.StrLocalization("levelingpandahorde");
-            label6.Text = CavaPlugin.StrLocalization("levelingpandahorde");
-            label9.Text = CavaPlugin.StrLocalization("levelingpandahorde");
-            label14.Text = CavaPlugin.StrLocalization("levelingpandahorde");
-            label11.Text = CavaPlugin.StrLocalization("levelingpandahorde");
-            label17.Text = CavaPlugin.StrLocalization("levelingpandahorde");
+            llastprofile.Text = "Leveling Pandaren 1 to 100 Horde";
+            label6.Text = "Leveling Pandaren 1 to 100 Horde";
+            label9.Text = "Leveling Pandaren 1 to 100 Horde";
+            label14.Text = "Leveling Pandaren 1 to 100 Horde";
+            label11.Text = "Leveling Pandaren 1 to 100 Horde";
+            label17.Text = "Leveling Pandaren 1 to 100 Horde";
             //
-            label28.Text = CavaPlugin.StrLocalization("levelingpandahordetxt");
-            label8.Text = CavaPlugin.StrLocalization("levelingpandahordetxt");
-            label13.Text = CavaPlugin.StrLocalization("levelingpandahordetxt");
-            label19.Text = CavaPlugin.StrLocalization("levelingpandahordetxt");
-            label25.Text = CavaPlugin.StrLocalization("levelingpandahordetxt");
-            label2.Text = CavaPlugin.StrLocalization("levelingpandahordetxt");
+            label28.Text = "This profile will level a Horde Pandaren character from 1 to 12. Then swich  to 1-100.";
+            label8.Text = "This profile will level a Horde Pandaren character from 1 to 12. Then swich  to 1-100.";
+            label13.Text = "This profile will level a Horde Pandaren character from 1 to 12. Then swich  to 1-100.";
+            label19.Text = "This profile will level a Horde Pandaren character from 1 to 12. Then swich  to 1-100.";
+            label25.Text = "This profile will level a Horde Pandaren character from 1 to 12. Then swich  to 1-100.";
+            label2.Text = "This profile will level a Horde Pandaren character from 1 to 12. Then swich  to 1-100.";
             // ReSharper restore ResourceItemNotResolved
             EnableStartButton();
         }
@@ -1370,19 +1362,19 @@ namespace CavaPlugin
             timer1.Enabled = false;
             CavaPlugin.LastUseProfile = 3; //pandaren ally 1 to 12->12 to 90
 
-            llastprofile.Text = CavaPlugin.StrLocalization("levelingpandaally");
-            label6.Text = CavaPlugin.StrLocalization("levelingpandaally");
-            label9.Text = CavaPlugin.StrLocalization("levelingpandaally");
-            label14.Text = CavaPlugin.StrLocalization("levelingpandaally");
-            label11.Text = CavaPlugin.StrLocalization("levelingpandaally");
-            label17.Text = CavaPlugin.StrLocalization("levelingpandaally");
+            llastprofile.Text = "Level Pandaren 1 to 100 Alliance";
+            label6.Text = "Level Pandaren 1 to 100 Alliance";
+            label9.Text = "Level Pandaren 1 to 100 Alliance";
+            label14.Text = "Level Pandaren 1 to 100 Alliance";
+            label11.Text = "Level Pandaren 1 to 100 Alliance";
+            label17.Text = "Level Pandaren 1 to 100 Alliance";
             //
-            label28.Text = CavaPlugin.StrLocalization("levelingpandaallytxt");
-            label8.Text = CavaPlugin.StrLocalization("levelingpandaallytxt");
-            label13.Text = CavaPlugin.StrLocalization("levelingpandaallytxt");
-            label19.Text = CavaPlugin.StrLocalization("levelingpandaallytxt");
-            label25.Text = CavaPlugin.StrLocalization("levelingpandaallytxt");
-            label2.Text = CavaPlugin.StrLocalization("levelingpandaallytxt");
+            label28.Text = "This profile will level a Alliance Pandaren character from 1 to 12.  Then swich  to 1-100.";
+            label8.Text = "This profile will level a Alliance Pandaren character from 1 to 12.  Then swich  to 1-100.";
+            label13.Text = "This profile will level a Alliance Pandaren character from 1 to 12.  Then swich  to 1-100.";
+            label19.Text = "This profile will level a Alliance Pandaren character from 1 to 12.  Then swich  to 1-100.";
+            label25.Text = "This profile will level a Alliance Pandaren character from 1 to 12.  Then swich  to 1-100.";
+            label2.Text = "This profile will level a Alliance Pandaren character from 1 to 12.  Then swich  to 1-100.";
             // ReSharper restore ResourceItemNotResolved
             EnableStartButton();
         }
@@ -1393,19 +1385,19 @@ namespace CavaPlugin
             timer1.Enabled = false;
             CavaPlugin.LastUseProfile = 5; //armageddoner 81 to 90
 
-            llastprofile.Text = CavaPlugin.StrLocalization("levelingarmagessoner");
-            label6.Text = CavaPlugin.StrLocalization("levelingarmagessoner");
-            label9.Text = CavaPlugin.StrLocalization("levelingarmagessoner");
-            label14.Text = CavaPlugin.StrLocalization("levelingarmagessoner");
-            label11.Text = CavaPlugin.StrLocalization("levelingarmagessoner");
-            label17.Text = CavaPlugin.StrLocalization("levelingarmagessoner");
+            llastprofile.Text = "Alliance And Horde (81-95) (testers/donators only)";
+            label6.Text = "Alliance And Horde (81-95) (testers/donators only)";
+            label9.Text = "Alliance And Horde (81-95) (testers/donators only)";
+            label14.Text = "Alliance And Horde (81-95) (testers/donators only)";
+            label11.Text = "Alliance And Horde (81-95) (testers/donators only)";
+            label17.Text = "Alliance And Horde (81-95) (testers/donators only)";
             //
-            label28.Text = CavaPlugin.StrLocalization("levelarmageddonerto90txt");
-            label8.Text = CavaPlugin.StrLocalization("levelarmageddonerto90txt");
-            label13.Text = CavaPlugin.StrLocalization("levelarmageddonerto90txt");
-            label19.Text = CavaPlugin.StrLocalization("levelarmageddonerto90txt");
-            label25.Text = CavaPlugin.StrLocalization("levelarmageddonerto90txt");
-            label2.Text = CavaPlugin.StrLocalization("levelarmageddonerto90txt");
+            label28.Text = "This profile will level all Alliance characters from 81 to 95. This profile is not fully AFK.";
+            label8.Text = "This profile will level all Alliance characters from 81 to 95. This profile is not fully AFK.";
+            label13.Text = "This profile will level all Alliance characters from 81 to 95. This profile is not fully AFK.";
+            label19.Text = "This profile will level all Alliance characters from 81 to 95. This profile is not fully AFK.";
+            label25.Text = "This profile will level all Alliance characters from 81 to 95. This profile is not fully AFK.";
+            label2.Text = "This profile will level all Alliance characters from 81 to 95. This profile is not fully AFK.";
             // ReSharper restore ResourceItemNotResolved
             EnableStartButton();
         }
@@ -1416,19 +1408,19 @@ namespace CavaPlugin
             timer1.Enabled = false;
             CavaPlugin.LastUseProfile = 4; //armageddoner 81 to 90 fast
 
-            llastprofile.Text = CavaPlugin.StrLocalization("levelingarmagessonerfast");
-            label6.Text = CavaPlugin.StrLocalization("levelingarmagessonerfast");
-            label9.Text = CavaPlugin.StrLocalization("levelingarmagessonerfast");
-            label14.Text = CavaPlugin.StrLocalization("levelingarmagessonerfast");
-            label11.Text = CavaPlugin.StrLocalization("levelingarmagessonerfast");
-            label17.Text = CavaPlugin.StrLocalization("levelingarmagessonerfast");
+            llastprofile.Text = "Alliance And Horde (81-95) (Fast Leveling)";
+            label6.Text = "Alliance And Horde (81-95) (Fast Leveling)";
+            label9.Text = "Alliance And Horde (81-95) (Fast Leveling)";
+            label14.Text = "Alliance And Horde (81-95) (Fast Leveling)";
+            label11.Text = "Alliance And Horde (81-95) (Fast Leveling)";
+            label17.Text = "Alliance And Horde (81-95) (Fast Leveling)";
             //
-            label28.Text = CavaPlugin.StrLocalization("levelarmageddonerto90txt");
-            label8.Text = CavaPlugin.StrLocalization("levelarmageddonerto90txt");
-            label13.Text = CavaPlugin.StrLocalization("levelarmageddonerto90txt");
-            label19.Text = CavaPlugin.StrLocalization("levelarmageddonerto90txt");
-            label25.Text = CavaPlugin.StrLocalization("levelarmageddonerto90txt");
-            label2.Text = CavaPlugin.StrLocalization("levelarmageddonerto90txt");
+            label28.Text = "This profile will level all Alliance characters from 81 to 95. This profile is not fully AFK.";
+            label8.Text = "This profile will level all Alliance characters from 81 to 95. This profile is not fully AFK.";
+            label13.Text = "This profile will level all Alliance characters from 81 to 95. This profile is not fully AFK.";
+            label19.Text = "This profile will level all Alliance characters from 81 to 95. This profile is not fully AFK.";
+            label25.Text = "This profile will level all Alliance characters from 81 to 95. This profile is not fully AFK.";
+            label2.Text = "This profile will level all Alliance characters from 81 to 95. This profile is not fully AFK.";
             // ReSharper restore ResourceItemNotResolved
             EnableStartButton();
         }
@@ -1439,19 +1431,19 @@ namespace CavaPlugin
             timer1.Enabled = false;
             CavaPlugin.LastUseProfile = 7; //MB 1 to 600
 
-            llastprofile.Text = CavaPlugin.StrLocalization("miningbs1600");
-            label6.Text = CavaPlugin.StrLocalization("miningbs1600");
-            label9.Text = CavaPlugin.StrLocalization("miningbs1600");
-            label14.Text = CavaPlugin.StrLocalization("miningbs1600");
-            label11.Text = CavaPlugin.StrLocalization("miningbs1600");
-            label17.Text = CavaPlugin.StrLocalization("miningbs1600");
+            llastprofile.Text = "Mining And Blacksmithing 1 to 600 (Reserved for Profession Owners)";
+            label6.Text = "Mining And Blacksmithing 1 to 600 (Reserved for Profession Owners)";
+            label9.Text = "Mining And Blacksmithing 1 to 600 (Reserved for Profession Owners)";
+            label14.Text = "Mining And Blacksmithing 1 to 600 (Reserved for Profession Owners)";
+            label11.Text = "Mining And Blacksmithing 1 to 600 (Reserved for Profession Owners)";
+            label17.Text = "Mining And Blacksmithing 1 to 600 (Reserved for Profession Owners)";
             //
-            label28.Text = CavaPlugin.StrLocalization("mbs1600txt");
-            label8.Text = CavaPlugin.StrLocalization("mbs1600txt");
-            label13.Text = CavaPlugin.StrLocalization("mbs1600txt");
-            label19.Text = CavaPlugin.StrLocalization("mbs1600txt");
-            label25.Text = CavaPlugin.StrLocalization("mbs1600txt");
-            label2.Text = CavaPlugin.StrLocalization("mbs1600txt");
+            label28.Text = "This profile will level Mining and Blacksmithing from any level to 600.";
+            label8.Text = "This profile will level Mining and Blacksmithing from any level to 600.";
+            label13.Text = "This profile will level Mining and Blacksmithing from any level to 600.";
+            label19.Text = "This profile will level Mining and Blacksmithing from any level to 600.";
+            label25.Text = "This profile will level Mining and Blacksmithing from any level to 600.";
+            label2.Text = "This profile will level Mining and Blacksmithing from any level to 600.";
             // ReSharper restore ResourceItemNotResolved
             EnableStartButton();
         }
@@ -1462,19 +1454,19 @@ namespace CavaPlugin
             timer1.Enabled = false;
             CavaPlugin.LastUseProfile = 8; //MB 1 to 300
 
-            llastprofile.Text = CavaPlugin.StrLocalization("miningbs1300");
-            label6.Text = CavaPlugin.StrLocalization("miningbs1300");
-            label9.Text = CavaPlugin.StrLocalization("miningbs1300");
-            label14.Text = CavaPlugin.StrLocalization("miningbs1300");
-            label11.Text = CavaPlugin.StrLocalization("miningbs1300");
-            label17.Text = CavaPlugin.StrLocalization("miningbs1300");
+            llastprofile.Text = "Mining And Blacksmithing 1 to 300 (Reserved for Registered Users)";
+            label6.Text = "Mining And Blacksmithing 1 to 300 (Reserved for Registered Users)";
+            label9.Text = "Mining And Blacksmithing 1 to 300 (Reserved for Registered Users)";
+            label14.Text = "Mining And Blacksmithing 1 to 300 (Reserved for Registered Users)";
+            label11.Text = "Mining And Blacksmithing 1 to 300 (Reserved for Registered Users)";
+            label17.Text = "Mining And Blacksmithing 1 to 300 (Reserved for Registered Users)";
             //
-            label28.Text = CavaPlugin.StrLocalization("mbs1300txt");
-            label8.Text = CavaPlugin.StrLocalization("mbs1300txt");
-            label13.Text = CavaPlugin.StrLocalization("mbs1300txt");
-            label19.Text = CavaPlugin.StrLocalization("mbs1300txt");
-            label25.Text = CavaPlugin.StrLocalization("mbs1300txt");
-            label2.Text = CavaPlugin.StrLocalization("mbs1300txt");
+            label28.Text = "This profile will level Mining and Blacksmithing from any level to 300.";
+            label8.Text = "This profile will level Mining and Blacksmithing from any level to 300.";
+            label13.Text = "This profile will level Mining and Blacksmithing from any level to 300.";
+            label19.Text = "This profile will level Mining and Blacksmithing from any level to 300.";
+            label25.Text = "This profile will level Mining and Blacksmithing from any level to 300.";
+            label2.Text = "This profile will level Mining and Blacksmithing from any level to 300.";
             // ReSharper restore ResourceItemNotResolved
             EnableStartButton();
         }
@@ -1581,9 +1573,9 @@ namespace CavaPlugin
             {
                 button_Click();
                 timer1.Enabled = false;
-                button5.Text = CavaPlugin.StrLocalization("Close");
-                button10.Text = CavaPlugin.StrLocalization("Close");
-                button9.Text = CavaPlugin.StrLocalization("Start");
+                button5.Text = "Close";
+                button10.Text = "Close";
+                button9.Text = "Start";
                 // ReSharper restore ResourceItemNotResolved
             }
             else
@@ -1769,6 +1761,27 @@ namespace CavaPlugin
            }
            CPsettings.Instance.Save();
        }
+
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            button_Click();
+            if (comboBox4.SelectedIndex == 0)
+            {
+                AppDomain.CurrentDomain.SetData("TaladorOutpost", null);
+                CPsettings.Instance.TaladorOutpost = "null";
+            }
+            if (comboBox4.SelectedIndex == 1)
+            {
+                AppDomain.CurrentDomain.SetData("TaladorOutpost", "TowerArsenal");
+                CPsettings.Instance.TaladorOutpost = "TowerArsenal";
+            }
+            if (comboBox4.SelectedIndex == 2)
+            {
+                AppDomain.CurrentDomain.SetData("TaladorOutpost", "ArcaneSanctum");
+                CPsettings.Instance.TaladorOutpost = "ArcaneSanctum";
+            }
+            CPsettings.Instance.Save();
+        }
 
  
 }

@@ -91,6 +91,8 @@ namespace CavaPlugin
         public string FriendoftheExarchs { get; set; }
         [Setting, DefaultValue("null")]
         public string GorgondOutpost { get; set; }
+        [Setting, DefaultValue("null")]
+        public string TaladorOutpost { get; set; }
     }
 
     public class CPGlobalSettings : Settings
@@ -408,10 +410,6 @@ namespace CavaPlugin
         private WoWPoint _asLastSavedPosition;
         #endregion
         #region Static Members.
-        public static CultureInfo _ci;
-        public static readonly string Str = Assembly.GetExecutingAssembly().FullName.Remove(Assembly.GetExecutingAssembly().FullName.IndexOf(','));
-        public static readonly Assembly _assembly = Assembly.Load(Str);
-        public static ResourceManager _rm;
         public static Version _version;
         private bool _cavaupdateavailable;
         private bool _error;
@@ -438,8 +436,8 @@ namespace CavaPlugin
         {
             if (TreeRoot.IsRunning)
             {
-                MessageBox.Show(StrLocalization("Bot_is_running_stop_bot_before_initiate_Cava_Plugin"),
-                    StrLocalization("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Bot is running, stop bot before initiate CavaPlugin",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Player.SoundLocation = PathToCavaPlugin + "Sounds\\Error.wav";
                 Player.Play();
                 return;
@@ -693,7 +691,7 @@ namespace CavaPlugin
                     BotPoi.Current.Location.DistanceSqr(Me.Location) > 10 && !_asLastSavedPositionTrigger)
                 {
                     //movimento menor que 35 nos ultimos 6 segundos, mounted mais de 30 segundos,a mais de 10 do objectivo
-                    CavaPluginLog.Log(StrLocalization("AntiStuck_Char_is_Mounted_for_more_than_6_secs_and_stuck"),
+                    CavaPluginLog.Log("[AntiStuck] Character is mounted for more than 6 seconds and stuck : Forcing Dismount at {0}.",
                     DateTime.Now.ToString(CultureInfo.InvariantCulture));
                     // ReSharper disable once ObjectCreationAsStatement
                     new Mount.ActionLandAndDismount();
@@ -709,7 +707,7 @@ namespace CavaPlugin
                 }
                 if (Me.IsAlive && Me.Mounted && !Me.OnTaxi && _mountedTime.ElapsedMilliseconds > 600000)
                 {
-                    CavaPluginLog.Log(StrLocalization("AntiStuck_Char_is_Mounted_for_more_than_10_min"),
+                    CavaPluginLog.Log("[AntiStuck] Character is mounted for more than 10 min : Forcing Dismount at {0}.",
                     DateTime.Now.ToString(CultureInfo.InvariantCulture));
                     // ReSharper disable once ObjectCreationAsStatement
                     new Mount.ActionLandAndDismount();
@@ -725,7 +723,7 @@ namespace CavaPlugin
                 }
                 if (!TreeRoot.IsRunning && _ultimoSemStuck.ElapsedMilliseconds > 30000)
                 {
-                    CavaPluginLog.Log(StrLocalization("AntiStuck_LastPosition_reseted_bot_is_not_running"),
+                    CavaPluginLog.Log("[AntiStuck] LastPosition reseted, bot is not running (is bot pulse is called ?)",
                     DateTime.Now.ToString(CultureInfo.InvariantCulture));
                     _ultimoSemStuck.Restart();
                     return;
@@ -740,7 +738,7 @@ namespace CavaPlugin
                 if (Me.IsAlive && Me.IsAFKFlagged && !Me.IsCasting && !Me.IsMoving && !Me.Combat && !Me.OnTaxi &&
                     _nVezesBotUnstuck == 0)
                 {
-                    CavaPluginLog.Log(StrLocalization("AntiStuck_Im_AFK_flagged_Anti_Afking_at"),
+                    CavaPluginLog.Log("[AntiStuck] I'm flagged AFK, Anti-Afking at {0}.",
                     DateTime.Now.ToString(CultureInfo.InvariantCulture));
                     WoWMovement.Move(WoWMovement.MovementDirection.JumpAscend, TimeSpan.FromMilliseconds(100));
                     new Sleep(2000);
@@ -774,7 +772,7 @@ namespace CavaPlugin
                 }
                 if (_ultimoSemStuck.ElapsedMilliseconds > 300000 && _nVezesBotUnstuck == 0)
                 {
-                    CavaPluginLog.Log(StrLocalization("AntiStuck_not_moving_last_5_min"),
+                    CavaPluginLog.Log("[AntiStuck] No movement for 5 minutes = Forcing Dismount at {0}.",
                     DateTime.Now.ToString(CultureInfo.InvariantCulture));
                     // ReSharper disable once ObjectCreationAsStatement
                     new Mount.ActionLandAndDismount();
@@ -789,7 +787,7 @@ namespace CavaPlugin
                 }
                 if (_ultimoSemStuck.ElapsedMilliseconds > 600000 && _nVezesBotUnstuck == 1)
                 {
-                    CavaPluginLog.Log(StrLocalization("AntiStuck_not_moving_last_10_min"),
+                    CavaPluginLog.Log("[AntiStuck] No movement for 10 minutes = Restarting bot at {0}.",
                     DateTime.Now.ToString(CultureInfo.InvariantCulture));
 
                     if (_recomecar.ThreadState == ThreadState.Running) _recomecar.Abort();
@@ -798,7 +796,7 @@ namespace CavaPlugin
                 }
                 if (_ultimoSemStuck.ElapsedMilliseconds > 900000 && Me.ZoneId != 1519 && Me.ZoneId != 1637)
                 {
-                    CavaPluginLog.Log(StrLocalization("AntiStuck_not_moving_last_15_min"),
+                    CavaPluginLog.Log("[AntiStuck] No movement for 15 minutes = Closing WOW Game at {0}.",
                     DateTime.Now.ToString(CultureInfo.InvariantCulture));
                     Lua.DoString(@"ForceQuit()");
                 }
@@ -831,55 +829,24 @@ namespace CavaPlugin
                     Form getlanguage = new Language();
                     getlanguage.ShowDialog();
                 }*/
-                switch (CPGlobalSettings.Instance.language)
-                {
-                    default:
-                        _ci = new CultureInfo("en-US");
-                        _rm = new ResourceManager("Lang.en", _assembly);
-                        break;
-                    case 0:
-                        _ci = new CultureInfo("en-US");
-                        _rm = new ResourceManager("Lang.en", _assembly);
-                        break;
-                    case 1:
-                        _ci = new CultureInfo("da");
-                        _rm = new ResourceManager("Lang.da", _assembly);
-                        break;
-                    case 2:
-                        _ci = new CultureInfo("de");
-                        _rm = new ResourceManager("Lang.de", _assembly);
-                        break;
-                    case 3:
-                        _ci = new CultureInfo("fr");
-                        _rm = new ResourceManager("Lang.fr", _assembly);
-                        break;
-                    case 4:
-                        _ci = new CultureInfo("pt-PT");
-                        _rm = new ResourceManager("Lang.pt", _assembly);
-                        break;
-                    case 5:
-                        _ci = new CultureInfo("ru-RU");
-                        _rm = new ResourceManager("Lang.ru", _assembly);
-                        break;
-                }
                 //verifica se pode iniciar
                 if (!File.Exists(PathToCavaPlugin + "Plugin.ver") ||
                     !File.Exists(PathToCavaPlugin + "Profiles.ver") ||
                     !File.Exists(PathToCavaPlugin + "QuestBehaviors.ver"))
                 {
 
-                    MessageBox.Show(StrLocalization("Welcome_to_PrimumBot") + Environment.NewLine +
-                                    StrLocalization("Seems_there_is_a_problem_with_your_instalation")
+                    MessageBox.Show("Welcome to CavaPlugin" + Environment.NewLine +
+                                    "Seems there is a problem with your instalation"
                                     + Environment.NewLine +
-                                    StrLocalization("Run_cavaplugin")
+                                    "Run CavaPlugin"
                                     + Environment.NewLine +
-                                    StrLocalization("And_Reinstall"),
-                        StrLocalization("information"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    "And Reinstall CavaPlugin",
+                        "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Player.SoundLocation = SoundPath + "Information.wav";
                     Player.Play();
-                    CavaPluginLog.Warn(StrLocalization("Seems_there_is_a_problem_with_your_instalation"));
-                    CavaPluginLog.Warn(StrLocalization("Run_cavaplugin"));
-                    CavaPluginLog.Warn(StrLocalization("And_Reinstall"));
+                    CavaPluginLog.Warn("Seems there is a problem with your instalation");
+                    CavaPluginLog.Warn("Run CavaPlugin");
+                    CavaPluginLog.Warn("And Reinstall CavaPlugin");
                     CavaPluginLog.Fatal("CavaPlugin Stoped");
                     return;
                 }
@@ -925,6 +892,11 @@ namespace CavaPlugin
                     AppDomain.CurrentDomain.SetData("GorgondOutpost", CPsettings.Instance.GorgondOutpost);
                     CavaPluginLog.Debug("GorgondOutpost:" + CPsettings.Instance.GorgondOutpost);
                 }
+                if (CPsettings.Instance.TaladorOutpost != "null" && !IsQuestComplete(34558) && !IsQuestComplete(34566))
+                {
+                    AppDomain.CurrentDomain.SetData("TaladorOutpost", CPsettings.Instance.TaladorOutpost);
+                    CavaPluginLog.Debug("TaladorOutpost:" + CPsettings.Instance.TaladorOutpost);
+                }
                 _hasBeenInitialized = true;
             }
             if (!_hasBeenInitialized2)
@@ -944,7 +916,7 @@ namespace CavaPlugin
         public void CavaPluginDisabled()
         {
             BotEvents.OnBotStartRequested -= _OnBotStart;
-            CavaPluginLog.Log(StrLocalization("CavaPlugin_Disposed"));
+            CavaPluginLog.Log("CavaPlugin Disposed");
             if (!_botRunning) return;
             DetachEvents();
             _botRunning = false;
@@ -959,7 +931,7 @@ namespace CavaPlugin
                 _botRunning = false;
             }
 
-            CavaPluginLog.Log(_botRunning ? StrLocalization("Is_now_ENABLED") : StrLocalization("Is_now_DISABLED"));
+            CavaPluginLog.Log(_botRunning ? "Is now ENABLED" : "Is now DISABLED");
             if (_botRunning)
             { 
                 if (Me.InVehicle)
@@ -967,7 +939,7 @@ namespace CavaPlugin
                     CavaPluginLog.Log("Ejecting from vehicle");
                     Lua.DoString("VehicleExit()");
                 }
-                CavaPluginLog.Log(CPsettings.Instance.AntiStuckSystem ? StrLocalization("System_Anti-Stuck_Enabled"): StrLocalization("System_Anti-Stuck_Disabled"));
+                CavaPluginLog.Log(CPsettings.Instance.AntiStuckSystem ? "System Anti-Stuck Enabled": "System Anti-Stuck Disabled");
                 CavaPluginLog.Debug("Restarted _mountedTime"); 
                 _mountedTime.Restart();
                 CavaPluginLog.Debug("Started Thread _Recomecar"); 
@@ -976,35 +948,35 @@ namespace CavaPlugin
                 _asLastSavedTimer.Restart();
                 if (CPsettings.Instance.OpenBox)
                 {
-                    CavaPluginLog.Log(StrLocalization("Open_Boxes_is_Enabled"));
+                    CavaPluginLog.Log("Open Boxes is Enabled");
                     CavaPluginLog.Debug("Restarted _checkBags");
                     _checkBags.Restart();
                 }
                 else
                 {
-                    CavaPluginLog.Log(StrLocalization("Open_Boxes_is_Disabled"));
+                    CavaPluginLog.Log("Open Boxes is Disabled");
                 }
                 if (CPsettings.Instance.CheckAllowSummonPet)
                 {
                     var numMinipets = Lua.GetReturnVal<int>("return GetNumCompanions('CRITTER')", 0);
                     if (numMinipets > 0)
                     {
-                        CavaPluginLog.Log(StrLocalization("Summon_Random_Pet_Enabled"), DateTime.Now.ToString(CultureInfo.InvariantCulture));
+                        CavaPluginLog.Log("Summon Random Pet Enabled", DateTime.Now.ToString(CultureInfo.InvariantCulture));
                         Lua.DoString("RunMacroText('/randompet')");
                         CavaPluginLog.Debug("Restarted _summonpettime");
                         _summonpettime.Restart();
                     }
                     else
                     {
-                        CavaPluginLog.Log(StrLocalization("Dont_have_any_Pet_to_summom_disabling_Summon_Random_Pet"));
-                        CavaPluginLog.Log(StrLocalization("Summon_Random_Pet_Disabled"), DateTime.Now.ToString(CultureInfo.InvariantCulture));
+                        CavaPluginLog.Log("Don't have any pet to summon, disabling Summon Random Pet");
+                        CavaPluginLog.Log("Summon Random Pet Disabled", DateTime.Now.ToString(CultureInfo.InvariantCulture));
                         CPsettings.Instance.CheckAllowSummonPet = false;
                         CPsettings.Instance.Save();
                     }
                 }
                 else
                 {
-                    CavaPluginLog.Log(StrLocalization("Summon_Random_Pet_Disabled"), DateTime.Now.ToString(CultureInfo.InvariantCulture));
+                    CavaPluginLog.Log("Summon Random Pet Disabled", DateTime.Now.ToString(CultureInfo.InvariantCulture));
                 }
                 CavaPluginLog.Log(CPsettings.Instance.FixMountFlightVendor ? "Fix Mount Flight Master Bug Enabled" : "Fix Mount Flight Master Bug Disabled");
                 CavaPluginLog.Log(CPsettings.Instance.AntigankcheckBox ? "Anti Gank System Enabled" : "Anti Gank System Disabled");
@@ -1012,25 +984,21 @@ namespace CavaPlugin
                 {
                     if (CPsettings.Instance.GuildInvitescheck)
                     {
-                        CavaPluginLog.Log(StrLocalization("Accept_lvl_25_guild_invite_Enabled"));
+                        CavaPluginLog.Log("[Accept Level 25 Guild Invite: Enabled]");
                     }
                     if (CPsettings.Instance.refuseguildInvitescheck)
                     {
-                        CavaPluginLog.Log(StrLocalization("Refuse_guild_invites_Enabled"));
+                        CavaPluginLog.Log("[Refuse Duel Invites: Enabled]");
                     }
                 }
-                CavaPluginLog.Log(CPsettings.Instance.RefusepartyInvitescheck ? StrLocalization("Refuse_party_invites_Enabled") : StrLocalization("Refuse_party_invites_Disabled"));
-                CavaPluginLog.Log(CPsettings.Instance.RefusetradeInvitescheck ? StrLocalization("Refuse_trade_invites_Enabled") : StrLocalization("Refuse_trade_invites_Disabled"));
-                CavaPluginLog.Log(CPsettings.Instance.RefuseduelInvitescheck ? StrLocalization("Refuse_duel_invites_Enabled") : StrLocalization("Refuse_duel_invites_Disabled"));
-                CavaPluginLog.Log(CPsettings.Instance.CombatLoot ? "Auto Loot in combate Enabled." : "Auto Loot in combate Disabled.");
+                CavaPluginLog.Log(CPsettings.Instance.RefusepartyInvitescheck ? "[Refuse Guild Invites: Enabled]" : "[Refuse Party Invites: Disabled]");
+                CavaPluginLog.Log(CPsettings.Instance.RefusetradeInvitescheck ? "[Refuse Trade Invites: Enabled]" : "[Refuse Trade Invites: Disabled]");
+                CavaPluginLog.Log(CPsettings.Instance.RefuseduelInvitescheck ? "[Refuse Duel Invites: Enabled]" : "[Refuse Duel Invites: Disabled]");
+                CavaPluginLog.Log(CPsettings.Instance.CombatLoot ? "[Auto Loot in combate: Enabled]" : "Auto Loot in combate Disabled.");
                 AttachEvents();
             }
         }
 
-        public static string StrLocalization(string lcllocalization)
-        {
-            return _rm.GetString(lcllocalization, _ci);
-        }
 
         private static void _Recomecar()
         {
@@ -1052,7 +1020,7 @@ namespace CavaPlugin
             var guildLevel = Convert.ToInt32(e.Args[2]);
             if (CPsettings.Instance.GuildInvitescheck && guildLevel >= 25)
             {
-                CavaPluginLog.Log(StrLocalization("Accepting_guild_invite_from"), guildName);
+                CavaPluginLog.Log("Accepting guild invite from {0}", guildName);
                 Lua.DoString("AcceptGuild()");
                 Lua.DoString("RunMacroText('/click GuildInviteFrameJoinButton')");
             }
@@ -1063,7 +1031,7 @@ namespace CavaPlugin
                 CavaPluginLog.Debug("Restarted  _refuseguildtimer");
                 _refusetime = RandomNumber(3000, 8000);
                 _gotGuildInvite = true;
-                CavaPluginLog.Log(StrLocalization("Declining_guild_invite_from"), guildName, guildLevel, _refusetime / 1000);
+                CavaPluginLog.Log("Declining guild invite from {0} lvl {1} in {2} seconds", guildName, guildLevel, _refusetime / 1000);
             }
         }
 
@@ -1075,7 +1043,7 @@ namespace CavaPlugin
             CavaPluginLog.Debug("Restarted  _refusepartytimer");
             _refusetime = RandomNumber(3000, 8000);
             _gotPartyInvite = true;
-            CavaPluginLog.Log(StrLocalization("Declining_party_invite_from"), userInviter, _refusetime / 1000);
+            CavaPluginLog.Log("Declining party invite from {0} in {1 } seconds", userInviter, _refusetime / 1000);
         }
 
         private void RotinaTradeInvites(object sender, LuaEventArgs e)
@@ -1085,7 +1053,7 @@ namespace CavaPlugin
             CavaPluginLog.Debug("Restarted  _refusetradetimer");
             _refusetime = RandomNumber(3000, 8000);
             _gotTradeinvite = true;
-            CavaPluginLog.Log(StrLocalization("Declining_trade_in"), _refusetime / 1000);
+            CavaPluginLog.Log("Declining trade in {0} seconds", _refusetime / 1000);
         }
 
         private void RotinaDuelInvites(object sender, LuaEventArgs e)
@@ -1096,7 +1064,7 @@ namespace CavaPlugin
             CavaPluginLog.Debug("Restarted  _refusedueltimer");
             _refusetime = RandomNumber(3000, 8000);
             _gotDuelinvite = true;
-            CavaPluginLog.Log(StrLocalization("Declining_duel_invite_from"), userInviter, _refusetime / 1000);
+            CavaPluginLog.Log("Declining duel invite from {0} in {1} seconds", userInviter, _refusetime / 1000);
         }
 
         void AttachEvents()
@@ -1209,12 +1177,12 @@ namespace CavaPlugin
                     response.Close();
                     if (response.StatusCode.ToString() == "OK") //is reg
                     {
-                        CavaPluginLog.Debug(StrLocalization("Registered_Access_Tested_and_Passed"));
+                        CavaPluginLog.Debug("Registered Access Tested and Passed.");
                         IsRegisteredUser = true;
                     }
                     else
                     {
-                        CavaPluginLog.Warn(StrLocalization("Something_Wrong_cant_confirm_you_have_registered_access"));
+                        CavaPluginLog.Warn("Something Wrong, cant confirm you have registered access, opening browser to test access");
                         CPGlobalSettings.Instance.CpLogin = "";
                         CPGlobalSettings.Instance.CpPassword = "";
                         IsRegisteredUser = false;
@@ -1226,7 +1194,7 @@ namespace CavaPlugin
                 }
                 catch (Exception)
                 {
-                    CavaPluginLog.Warn(StrLocalization("Something_Wrong_cant_confirm_you_have_registered_access"));
+                    CavaPluginLog.Warn("Something Wrong, cant confirm you have registered access, opening browser to test access");
                     CPGlobalSettings.Instance.CpLogin = "";
                     CPGlobalSettings.Instance.CpPassword = "";
                     IsRegisteredUser = false;
@@ -1309,12 +1277,12 @@ namespace CavaPlugin
                     response.Close();
                     if (response.StatusCode.ToString() == "OK") //is reg
                     {
-                        CavaPluginLog.Debug(StrLocalization("Registered_Access_Tested_and_Passed"));
+                        CavaPluginLog.Debug("Registered Access Tested and Passed");
                         IsRegisteredUser = true;
                     }
                     else
                     {
-                        CavaPluginLog.Warn(StrLocalization("Something_Wrong_cant_confirm_you_have_registered_access"));
+                        CavaPluginLog.Warn("Something Wrong, cant confirm you have registered access, opening browser to test access");
                         DontHaveArmageddonerAccess();
                         DontHaveprofessionminingblacksmithing600Access();
                         IsRegisteredUser = false;
@@ -1326,7 +1294,7 @@ namespace CavaPlugin
                 }
                 catch (Exception)
                 {
-                    CavaPluginLog.Warn(StrLocalization("Something_Wrong_cant_confirm_you_have_registered_access"));
+                    CavaPluginLog.Warn("Something Wrong, cant confirm you have registered access, opening browser to test access");
                     DontHaveArmageddonerAccess();
                     DontHaveprofessionminingblacksmithing600Access();
                     IsRegisteredUser = false;
@@ -1393,14 +1361,14 @@ namespace CavaPlugin
         {
             IsArmageddonerUser = true;
 
-            CavaPluginLog.Debug(StrLocalization("Armageddoner_Access_Tested_and_Passed"));
+            CavaPluginLog.Debug("Armageddoner Access Tested and Passed");
             IsArmageddonerUser = true;
         }
 
         private static void DontHaveArmageddonerAccess()
         {
 
-            CavaPluginLog.Debug(StrLocalization("Armageddoner_Access_Tested"));
+            CavaPluginLog.Debug("Armageddoner Access Tested");
             IsArmageddonerUser = false;
         }
 
@@ -1485,7 +1453,7 @@ namespace CavaPlugin
         private static void Haveprofessionminingblacksmithing600Access()
         {
 
-            CavaPluginLog.Debug(StrLocalization("Profession_Owner_Access_Tested_and_Passed_for_Mining_Blacksmithing"));
+            CavaPluginLog.Debug("Profession Owner Access Tested and Passed for Mining/Blacksmithing 1 to 600");
             HaveMiningBlacksmithingAccess = true;
             if (CPsettings.Instance.LastUsedPath == 7)
             {
@@ -1496,7 +1464,7 @@ namespace CavaPlugin
         private static void DontHaveprofessionminingblacksmithing600Access()
         {
 
-            CavaPluginLog.Debug(StrLocalization("Profession_Owner_Access_Tested_for_Mining_Blacksmithing"));
+            CavaPluginLog.Debug("Profession Owner Access Tested for Mining Blacksmithing");
             HaveMiningBlacksmithingAccess = false;
             if (LastUseProfile == 7)
                 LastUseProfile = 0;
@@ -1520,20 +1488,20 @@ namespace CavaPlugin
         private void CheckForUpdates()
         {
 
-            CavaPluginLog.Debug(StrLocalization("Please_Wait_While_CavaPlugin_Check_For_Updates"));
+            CavaPluginLog.Debug("Please Wait While CavaPlugin Check For Updates");
             var cavaupdated = false;
             if (CavaPluginUpdater.UpdateAvailable("http://cavaplugin.googlecode.com/svn/trunk/", "Plugin.ver"))
             {
                 var newrev = CavaPluginUpdater.GetNewestRev("http://cavaplugin.googlecode.com/svn/trunk/").ToString(CultureInfo.InvariantCulture);
-                CavaPluginLog.Debug(StrLocalization("Cava_Plugin_Update_to_0_is_available_You_are_on_1"), newrev, CavaPluginUpdater.GetCurrentRev("Plugin.ver"));
+                CavaPluginLog.Debug("CavaPlugin Update to new Rev {0} is available. You are on: {1}.", newrev, CavaPluginUpdater.GetCurrentRev("Plugin.ver"));
                 if (UpdaterCava("/command:\"update\" /path:\"" + PathToCavaPlugin + "\" /closeonend:1"))
                 {
                     CavaPluginUpdater.WriteNewRevFile("Plugin.ver", newrev.ToString(CultureInfo.InvariantCulture));
-                    CavaPluginLog.Debug(StrLocalization("its_now_updated_to_rev"), newrev);
+                    CavaPluginLog.Debug("Its now updated to Rev: {0}", newrev);
                 }
                 else
                 {
-                    CavaPluginLog.Warn(StrLocalization("There_is_a_problem_updating") + " CavaPlugin.");
+                    CavaPluginLog.Warn("There is a problem updating CavaPlugin.");
                     Player.SoundLocation = SoundPath + "Error2.wav";
                     Player.Play();
                     _error = true;
@@ -1544,15 +1512,15 @@ namespace CavaPlugin
             if (CavaPluginUpdater.UpdateAvailable("http://cavaqbs.googlecode.com/svn/trunk/Cava/", "QuestBehaviors.ver"))
             {
                 var newrev = CavaPluginUpdater.GetNewestRev("http://cavaqbs.googlecode.com/svn/trunk/Cava/").ToString(CultureInfo.InvariantCulture);
-                CavaPluginLog.Debug(StrLocalization("Cava_QB_Update_to_0_is_available_You_are_on_1"), newrev, CavaPluginUpdater.GetCurrentRev("QuestBehaviors.ver"));
+                CavaPluginLog.Debug("Cava Quest Behaviors Update to new Rev {0} is available. You are on: {1}.", newrev, CavaPluginUpdater.GetCurrentRev("QuestBehaviors.ver"));
                 if (UpdaterCava("/command:\"update\" /path:\"" + PathToCavaQBs + "\" /closeonend:1"))
                 {
                     CavaPluginUpdater.WriteNewRevFile("QuestBehaviors.ver", newrev.ToString(CultureInfo.InvariantCulture));
-                    CavaPluginLog.Debug(StrLocalization("its_now_updated_to_rev"), newrev);
+                    CavaPluginLog.Debug("Its now updated to Rev: {0}", newrev);
                 }
                 else
                 {
-                    CavaPluginLog.Warn(StrLocalization("There_is_a_problem_updating") + " Cava Quest Behaviors.");
+                    CavaPluginLog.Warn("There is a problem updating Cava Quest Behaviors.");
                     Player.SoundLocation = SoundPath + "Error2.wav";
                     Player.Play();
                     _error = true;
@@ -1563,16 +1531,16 @@ namespace CavaPlugin
             if (CavaPluginUpdater.UpdateAvailable("http://cavaprofiles.googlecode.com/svn/trunk/", "Profiles.ver"))
             {
                 var newrev = CavaPluginUpdater.GetNewestRev("http://cavaprofiles.googlecode.com/svn/trunk/").ToString(CultureInfo.InvariantCulture);
-                CavaPluginLog.Debug(StrLocalization("Cava_QB_Update_to_0_is_available_You_are_on_1"), newrev, CavaPluginUpdater.GetCurrentRev("Profiles.ver"));
+                CavaPluginLog.Debug("Cava Profiles Update to new Rev {0} is available. You are on: {1}.", newrev, CavaPluginUpdater.GetCurrentRev("Profiles.ver"));
                 CavaPluginUpdater.GetCurrentRev("Profiles.ver");
                 if (UpdaterCava("/command:\"update\" /path:\"" + PathToCavaProfiles + "\" /closeonend:1"))
                 {
                     CavaPluginUpdater.WriteNewRevFile("Profiles.ver", newrev);
-                    CavaPluginLog.Debug(StrLocalization("its_now_updated_to_rev"), newrev);
+                    CavaPluginLog.Debug("Its now updated to Rev: {0}", newrev);
                 }
                 else
                 {
-                    CavaPluginLog.Warn(StrLocalization("There_is_a_problem_updating") + " Cava Profiles.");
+                    CavaPluginLog.Warn("There is a problem updating Cava Profiles.");
                     Player.SoundLocation = SoundPath + "Error2.wav";
                     Player.Play();
                     _error = true;
@@ -1583,14 +1551,13 @@ namespace CavaPlugin
             {
                 if (CPGlobalSettings.Instance.AutoShutdownWhenUpdate)
                 {
-                    CavaPluginLog.Warn(StrLocalization("Auto_Shutdown_in_progress_at"),
-                    DateTime.Now.ToString(CultureInfo.InvariantCulture));
+                    CavaPluginLog.Warn("Auto Shut-down in progress at {0}", DateTime.Now.ToString(CultureInfo.InvariantCulture));
                     Environment.Exit(0);
                 }
                 else
                 {
-                    MessageBox.Show(StrLocalization("CavaPlugin_Quest_Behaviors_has_been_updated_restart_required"),
-                    StrLocalization("RESTART_REQUIRED"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("CavaPlugin/Quest Behaviors has been updated a restart is required.",
+                    "RESTART REQUIRED", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     // ReSharper restore ResourceItemNotResolved
                     Player.SoundLocation = SoundPath + "notify.wav";
                     Player.Play();
@@ -1613,7 +1580,7 @@ namespace CavaPlugin
             }
             catch (Exception ex)
             {
-                CavaPluginLog.Warn(StrLocalization("Unable_to_run_TortoiseSVN"));
+                CavaPluginLog.Warn("Unable to run TortoiseSVN");
                 CavaPluginLog.Fatal("Exception " + ex.Message);
             }
             return false;
